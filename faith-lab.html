@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Faith Lab — Optimistic Labs</title>
+<meta name="description" content="Faith Lab helps faith-based and values-driven organizations navigate conflict and bridge differences, so their communities come through stronger and more connected." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+.svc{display:flex;flex-direction:column;gap:18px;margin-top:18px}
+.svc .card h3{margin-bottom:6px}
+.svc .summary{font-size:16px;line-height:1.55;color:var(--ink-soft);margin-bottom:16px}
+.leader-grid{display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:start;margin-top:18px}
+@media (max-width:640px){.leader-grid{grid-template-columns:1fr}}
+.headshot{width:180px;height:180px;border-radius:16px;background:var(--violet-pale);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;color:var(--violet)}
+.headshot .cap{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.leader-bio{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:60ch}
+.soft-link{color:var(--violet);font-weight:500}
+.soft-link:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="index.html" aria-label="Optimistic Labs — home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html#labs">Our Labs</a>
+    <a href="faith-lab.html">Faith Lab</a>
+    <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+    <a class="pill pill-primary navcta" data-book>Book a call</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <a href="index.html#labs">Our Labs</a>
+  <a href="faith-lab.html">Faith Lab</a>
+  <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+  <a class="pill pill-primary navcta" data-book>Book a call</a>
+</nav>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" aria-label="Faith Lab — Trust is the advantage">
+    <div class="hero-ripples" aria-hidden="true">
+      <svg viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid meet">
+        <circle class="ring r1" cx="600" cy="600" r="150" stroke-width="1.5"/>
+        <circle class="ring r2" cx="600" cy="600" r="300" stroke-width="1.5"/>
+        <circle class="ring r3" cx="600" cy="600" r="450" stroke-width="1.5"/>
+        <circle class="ring r4" cx="600" cy="600" r="600" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="inner">
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Optimistic Labs | Faith</span>
+      <img class="hero-emblem" src="assets/ol-mark-white.svg" alt="" />
+      <h1 class="display">Trust is the <em class="em-italic">advantage.</em></h1>
+      <p class="lead">We help faith-based and values-driven organizations navigate conflict and bridge differences, so their communities come through stronger, more connected, and better equipped for what's ahead.</p>
+      <div class="cta-row"><a class="pill pill-primary" data-book>Book a call</a></div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="section section--narrow reveal" aria-label="About Faith Lab">
+    <p class="lead">Faith Lab is Optimistic Labs' practice for communities rooted in shared purpose. We partner with congregations, foundations, denominational bodies, nonprofits, and the leaders who carry them, to do the hardest, most important work a community can do: stay connected across real disagreement. We don't hand you a curriculum and walk away. We design and facilitate the experiences, relationships, and frameworks that let your community move through difference and come out more whole.</p>
+  </section>
+
+  <!-- ===== BELIEF ===== -->
+  <section class="section section--mid reveal" aria-label="What we believe">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What we believe</span>
+    <p style="font-size:19px;line-height:1.7;color:var(--ink);max-width:64ch">Most organizations treat conflict as a problem to solve and difference as a risk to manage. We believe the opposite. Communities that learn to move through genuine disagreement, across ideology, theology, politics, and identity, don't just survive it. They become more trustworthy, more resilient, and more capable of living out the values they say they stand for.</p>
+    <div class="pull-quote" style="margin:30px 0">The goal is not to broker agreement. It's mutual understanding and respect.</div>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch">We're not here to broker agreement. We're here to build mutual understanding and respect — the kind that holds when the conversation gets hard. Faith, as we mean it, is what a community is rooted in: its traditions, its texts, its values, its shared purpose. Not a label, and not a fence. Every tradition already carries wisdom about how to hold difference, repair what's torn, and return to common ground. Our job is to translate that wisdom into tools you can actually use.</p>
+  </section>
+
+  <!-- ===== HOW WE'RE DIFFERENT ===== -->
+  <section class="section reveal" aria-label="How we're different">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How we're different</span>
+    <h2 class="h-sec">A practice, not a playbook.</h2>
+    <div class="grid grid-2" style="margin-top:18px">
+      <div class="card"><svg class="ripple-glyph" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+        <h3>We design from the inside out</h3><p>We don't separate logistics from programming. The room, the flow, the transitions, the moment someone walks in the door, all of it is part of the design. How a gathering feels is not an afterthought to what it's about. It's how the work actually lands.</p></div>
+      <div class="card"><svg class="ripple-glyph" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+        <h3>We work toward our own obsolescence</h3><p>We build capacity, not dependency. The point is to leave you able to keep doing this work without us, with practices and frameworks your own people can carry forward. Success means you need us less over time, not more.</p></div>
+      <div class="card"><svg class="ripple-glyph" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+        <h3>We bring the outside in</h3><p>A neutral perspective lets people see themselves and their community clearly, sometimes for the first time. The outsider can be a mirror, naming what's true in the room without an agenda inside the disagreement. That clarity is hard to reach from within.</p></div>
+      <div class="card"><svg class="ripple-glyph" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+        <h3>We bring lived expertise inside</h3><p>We're practitioners who know faith-based and values-driven organizations from the inside, not consultants reading from a manual. We understand the texts, the tensions, and the stakes, and we meet your community where it actually is.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== WHO WE HELP ===== -->
+  <section class="section reveal" aria-label="Who we help">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who we help</span>
+    <h2 class="h-sec">Three places this work begins.</h2>
+    <div class="grid grid-3" style="margin-top:18px">
+      <div class="card"><h3>Communities carrying an unaddressed conflict</h3><p>Something difficult has gone unspoken, or a conversation keeps getting deferred because no one knows how to start it well. You need an experienced partner who can hold the room so the hard thing can finally be said, and heard. <a class="soft-link" data-book>Let's talk about where you're stuck.</a></p></div>
+      <div class="card"><h3>Mission-aligned organizations building programming</h3><p>Foundations, denominational bodies, and nonprofits that want to help their broader communities navigate difference. You're not solving one conflict, you're building lasting capacity across many. <a class="soft-link" data-book>Let's scope what you want to build.</a></p></div>
+      <div class="card"><h3>Individual leaders growing their own capacity</h3><p>Board members, clergy, educators, and practitioners who want to get better at this work themselves. You want sharper instincts, real practices, and a circle of peers doing the same. <a class="soft-link" data-book>Let's find the right starting point for you.</a></p></div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE AREAS ===== -->
+  <section class="section section--mid reveal" aria-label="What we do">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What we do</span>
+    <h2 class="h-sec">Five ways we work with you.</h2>
+    <div class="svc">
+      <div class="card"><h3>Conflict Navigation &amp; Difficult Conversations</h3>
+        <p class="summary">When a hard conversation has gone unaddressed, or a community is reeling from a rupture, we design and facilitate the experiences that let people move through it together, with care and honesty.</p>
+        <ul class="bullets">
+          <li>The Facilitated Session — a single, carefully designed conversation to move through a specific moment of tension</li>
+          <li>The Community Building Process — a multi-session engagement for deeper, sustained work over time</li>
+          <li>Post-Crisis and Post-Launch Realignment — to help a community find its footing again after something hard or something big</li>
+        </ul></div>
+      <div class="card"><h3>Mission, Vision &amp; Values Alignment</h3>
+        <p class="summary">When what you say you stand for and what you actually do have drifted apart, we help you name the gap and rebuild the alignment, so your purpose shows up in your programming.</p>
+        <ul class="bullets">
+          <li>The Alignment Audit — an honest read on where mission, values, and lived practice line up and where they've come apart</li>
+          <li>The Programmatic Redesign — rebuilding how your programs work so they actually express what you stand for</li>
+        </ul></div>
+      <div class="card"><h3>Experience Design</h3>
+        <p class="summary">Gatherings don't connect people by accident. We design the experiences, from the agenda to the architecture of the room, so the moments that matter most are built to land.</p>
+        <ul class="bullets">
+          <li>The Experience Design Consultation — where we shape the design of a gathering with you from the inside out</li>
+          <li>Event and Gathering Facilitation — where we lead the room so the experience does what you need it to do</li>
+        </ul></div>
+      <div class="card"><h3>Long-term Fractional Support</h3>
+        <p class="summary">When community work needs a steady, senior hand over time, we embed as an ongoing partner, holding the strategy with you month over month rather than just for a single moment.</p>
+        <ul class="bullets">
+          <li>Strategic Community Advisor — an ongoing partner for the leaders shaping your community work</li>
+          <li>Fractional Chief Community Officer — senior community leadership on a fractional basis, in the room and in the strategy</li>
+        </ul></div>
+      <div class="card"><h3>Individual Practice &amp; Development</h3>
+        <p class="summary">This work is a practice, and practices grow with company and reps. We help individual leaders build their own capacity through cohorts, an ongoing circle, and one-on-one support.</p>
+        <ul class="bullets">
+          <li>The Faith Lab Cohort — a guided group experience for leaders building this capacity together</li>
+          <li>The Faith Lab Circle — an ongoing membership and community of practice for people doing this work</li>
+          <li>Coaching and Advising — one-on-one support for the specific work in front of you</li>
+        </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== HOW WE WORK ===== -->
+  <section class="section section--mid reveal" aria-label="How we work">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How we work</span>
+    <h2 class="h-sec">Start with the <em class="em-italic">architect</em>, not the tools.</h2>
+    <p class="lead" style="max-width:64ch">If you want to build a house, you don't start with the tools. You start with the architect. The same is true for community. We don't lead with a fixed program; we start with your community as it actually is, then design the experience around it. Most partnerships begin with a single facilitated session, something concrete and contained, and grow from there as trust builds and the work deepens. You don't have to commit to everything to start. You just have to start.</p>
+    <div class="spine" style="margin-top:24px">
+      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
+        <div><div class="spine-ix">01</div><div class="spine-title">Start a conversation</div><p class="spine-desc">We begin with a call. You tell us where your community is, what's at stake, and what feels stuck. We listen for what's really going on underneath the moment.</p></div></div>
+      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
+        <div><div class="spine-ix">02</div><div class="spine-title">Design from the inside out</div><p class="spine-desc">We design the engagement around your community, the room, the flow, the people, the purpose. Nothing off the shelf. Everything built for where you actually are.</p></div></div>
+      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
+        <div><div class="spine-ix">03</div><div class="spine-title">Do the work together</div><p class="spine-desc">We facilitate the experiences and hold the room so your community can move through its hardest, most important conversations with honesty and care.</p></div></div>
+      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
+        <div><div class="spine-ix">04</div><div class="spine-title">Leave you able to carry it</div><p class="spine-desc">We build capacity, not dependency. You come away with the practices and frameworks to keep doing this work, with us needed less over time, by design.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== WHO LEADS FAITH LAB ===== -->
+  <!-- TBD from Liz: final approved bio copy and a headshot for Aliza are placeholders, to be replaced before launch. -->
+  <section class="section section--mid reveal" aria-label="Who leads Faith Lab">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who leads Faith Lab</span>
+    <div class="leader-grid">
+      <div class="headshot" aria-label="Headshot placeholder">
+        <svg class="ripple-glyph" viewBox="0 0 34 34" fill="none" aria-hidden="true" style="width:44px;height:44px"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+        <span class="cap">Headshot to come</span>
+      </div>
+      <div>
+        <h3 style="font-size:30px">Aliza Goodman</h3>
+        <p class="leader-bio">Aliza Goodman leads Faith Lab, bringing lived expertise inside faith-based and values-driven organizations and a practitioner's instinct for the work of holding difference and repairing trust. She designs and facilitates the experiences that help communities stay connected across what divides them. A fuller bio is on the way.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section class="band reveal" aria-label="Start with a single conversation">
+    <div class="hero-ripples" aria-hidden="true">
+      <svg viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid meet">
+        <circle class="ring r1" cx="600" cy="600" r="150" stroke-width="1.5"/>
+        <circle class="ring r2" cx="600" cy="600" r="300" stroke-width="1.5"/>
+        <circle class="ring r3" cx="600" cy="600" r="450" stroke-width="1.5"/>
+        <circle class="ring r4" cx="600" cy="600" r="600" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="inner" style="position:relative;z-index:2">
+      <h2>Start with a single conversation.</h2>
+      <p>You don't have to have it all figured out to begin. The best first step is usually one facilitated session, something concrete, contained, and real. Book a call and tell us where your community is. We'll help you find the right place to start, and scope the work from there.</p>
+      <div class="cta-row" style="justify-content:center"><a class="pill pill-primary" data-book>Book a call</a></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      <a class="footer-logo" href="index.html" aria-label="Optimistic Labs — home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+      <div class="footer-tag">Trust is the <em class="em-italic">advantage.</em></div>
+      <div class="footer-loc">Built from Atlanta, GA and Syracuse, NY.</div>
+    </div>
+    <div class="footer-links">
+      <a data-book>Book a call</a>
+      <a href="faith-lab.html">Faith Lab</a>
+      <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+      <a id="linkedInLink">LinkedIn</a>
+    </div>
+    <div class="footer-sign">© 2026 Optimistic Labs · Built with ❤️</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
