@@ -73,7 +73,6 @@
   <a class="nav-logo" href="index.html" aria-label="Optimistic Labs — home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#labs">Our Labs</a>
-    <a href="faith-lab.html">Faith Lab</a>
     <a href="become-a-lab-leader.html">Become a Lab Leader</a>
     <a class="pill pill-primary navcta" data-book>Book a call</a>
   </nav>
@@ -82,7 +81,6 @@
 <nav class="sheet" id="sheet" aria-hidden="true">
   <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
   <a href="#labs">Our Labs</a>
-  <a href="faith-lab.html">Faith Lab</a>
   <a href="become-a-lab-leader.html">Become a Lab Leader</a>
   <a class="pill pill-primary navcta" data-book>Book a call</a>
 </nav>
@@ -153,7 +151,7 @@
           <circle class="map-ring" cx="480" cy="260" r="280" stroke-width="1" opacity=".10"/>
           <image href="assets/ol-mark-white.svg" x="446" y="225" width="68" height="70"/>
           <!-- Faith (live) NE -->
-          <g class="lab-node" data-id="faith" tabindex="0" role="button" aria-label="Faith Lab — live. Open the Faith Lab page.">
+          <g class="lab-node" data-id="faith" tabindex="0" role="button" aria-label="Faith Lab — live. Open a quick preview.">
             <circle class="halo" cx="621" cy="119" r="22" stroke-width="1.5"/>
             <circle class="dot" cx="621" cy="119" r="10" fill="#fff"/>
             <image href="assets/star.svg" x="632" y="100" width="14" height="14" aria-hidden="true"/>
@@ -288,13 +286,26 @@
 (function(){
   "use strict";
   var INFO={
-    impact:{name:'Impact Lab', line:"Impact Lab is coming soon. We’re convening the practitioners and partners now — book a call if you want to help shape it or be first to know."},
-    policy:{name:'Policy Lab',  line:"Policy Lab is coming soon. We’re gathering the leaders building community and credibility around a clear, human point of view."},
-    sports:{name:'Sports Lab',  line:"Sports Lab is coming soon. We’re convening the people building culture, connection, and systems around sport — on and off the field."}
+    faith:{name:'Faith Lab', status:'Live',
+      line:"Faith Lab helps faith-based organizations close the gap between their values and their work — through honest assessment, intentional design, and gatherings that actually mean something. Led by Aliza Goodman, it’s our first live lab.",
+      cta:{label:'Explore the Faith Lab →', href:'faith-lab.html'}},
+    impact:{name:'Impact Lab', status:'Coming soon',
+      line:"Impact Lab is coming soon. We’re convening the practitioners and partners now — book a call if you want to help shape it or be first to know.",
+      cta:{label:'Book a call →', book:true}},
+    policy:{name:'Policy Lab', status:'Coming soon',
+      line:"Policy Lab is coming soon. We’re gathering the leaders building community and credibility around a clear, human point of view.",
+      cta:{label:'Book a call →', book:true}},
+    sports:{name:'Sports Lab', status:'Coming soon',
+      line:"Sports Lab is coming soon. We’re convening the people building culture, connection, and systems around sport — on and off the field.",
+      cta:{label:'Book a call →', book:true}}
   };
   var panel=document.getElementById('labPanel'), backdrop=document.getElementById('labBackdrop'),
-      x=document.getElementById('labPanelX'), lpName=document.getElementById('lpName'),
+      x=document.getElementById('labPanelX'), lpChip=document.getElementById('lpChip'), lpName=document.getElementById('lpName'),
       lpLine=document.getElementById('lpLine'), lpCta=document.getElementById('lpCta'), lastFocus=null;
+  function bookingHref(){
+    var c=window.OL_CONFIG||{};
+    return c.bookingUrl || ('mailto:'+(c.contactEmail||'hello@optimisticlabs.com')+'?subject='+encodeURIComponent('Book a call — Optimistic Labs'));
+  }
   function trap(e){
     if(e.key!=='Tab') return;
     var first=x, last=lpCta;
@@ -304,7 +315,17 @@
   function openPanel(id){
     var d=INFO[id]; if(!d) return;
     lastFocus=document.activeElement;
+    lpChip.textContent=d.status||'Coming soon';
     lpName.textContent=d.name; lpLine.textContent=d.line;
+    var cta=d.cta||{};
+    lpCta.textContent=cta.label||'Book a call →';
+    if(cta.href){
+      lpCta.setAttribute('href',cta.href); lpCta.removeAttribute('target'); lpCta.removeAttribute('rel');
+    } else {
+      lpCta.setAttribute('href',bookingHref());
+      if(window.OL_CONFIG&&window.OL_CONFIG.bookingUrl){ lpCta.setAttribute('target','_blank'); lpCta.setAttribute('rel','noopener'); }
+      else { lpCta.removeAttribute('target'); lpCta.removeAttribute('rel'); }
+    }
     panel.classList.add('open'); backdrop.classList.add('open'); panel.setAttribute('aria-hidden','false');
     panel.addEventListener('keydown',trap);
     x.focus();
@@ -315,9 +336,7 @@
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
   }
   function activate(node){
-    var id=node.getAttribute('data-id');
-    if(id==='faith'){ var c=(window.OL_CONFIG&&window.OL_CONFIG.faithUrl)||'faith-lab.html'; window.location.href=c; return; }
-    openPanel(id);
+    openPanel(node.getAttribute('data-id'));
   }
   document.querySelectorAll('#labMap .lab-node').forEach(function(node){
     node.addEventListener('click',function(){ activate(node); });
