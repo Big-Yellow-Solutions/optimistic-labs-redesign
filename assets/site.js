@@ -1,5 +1,5 @@
 /* ============================================================
-   OPTIMISTIC LABS — shared site behaviour
+   OPTIMISTIC LABS · shared site behaviour
    CONFIG · booking/link wiring · mobile nav · scroll reveal · forms
    ============================================================ */
 (function(){
@@ -16,7 +16,7 @@
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
   };
   window.OL_CONFIG = CONFIG;
-  var bookHref = CONFIG.bookingUrl || ('mailto:' + CONFIG.contactEmail + '?subject=' + encodeURIComponent('Book a call — Optimistic Labs'));
+  var bookHref = CONFIG.bookingUrl || ('mailto:' + CONFIG.contactEmail + '?subject=' + encodeURIComponent('Book a call · Optimistic Labs'));
 
   function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
 
@@ -85,7 +85,7 @@
         var v=(newsEmail.value||'').trim();
         if(!EMAIL_RE.test(v)){ setErr(newsEmail,v?'Enter a valid email address.':'Email is required.'); newsEmail.focus(); return; }
         clearErr(newsEmail); flashBtn(newsForm.querySelector('button'));
-        deliver({Email:v,Source:'Newsletter signup'},'Newsletter signup — Optimistic Labs',function(){
+        deliver({Email:v,Source:'Newsletter signup'},'Newsletter signup · Optimistic Labs',function(){
           if(newsNote) newsNote.classList.add('show'); newsEmail.value='';
         });
       });
@@ -106,7 +106,7 @@
         if(firstBad){ firstBad.focus(); return; }
         flashBtn(contactForm.querySelector('button[type=submit]'));
         var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Message:cf.message.value.trim()};
-        deliver(payload,'New inquiry — Optimistic Labs',function(){
+        deliver(payload,'New inquiry · Optimistic Labs',function(){
           if(formNote) formNote.classList.add('show');
           cf.name.value=cf.email.value=cf.message.value='';
         });
