@@ -12,8 +12,10 @@
 <style>
 .lockup-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:18px}
 @media (max-width:760px){.lockup-row{grid-template-columns:1fr}}
-.lab-card{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;gap:14px}
-.lab-card .lock{height:26px;width:auto;align-self:flex-start}
+.lab-card{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.lab-card .lock-wrap{background:var(--violet-pale);display:flex;align-items:center;justify-content:center;padding:36px 20px}
+.lab-card .lock{height:32px;width:auto}
+.lab-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px}
 .lab-card p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
 .lab-card .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
 .lab-card a.more{font-weight:500;color:var(--violet);font-size:14px}
@@ -29,7 +31,6 @@
   <a class="nav-logo" href="index.html" aria-label="Optimistic Labs — home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="index.html#labs">Our Labs</a>
-    <a href="faith-lab.html">Faith Lab</a>
     <a href="become-a-lab-leader.html">Become a Lab Leader</a>
     <a class="pill pill-primary navcta" data-book>Book a call</a>
   </nav>
@@ -38,7 +39,6 @@
 <nav class="sheet" id="sheet" aria-hidden="true">
   <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
   <a href="index.html#labs">Our Labs</a>
-  <a href="faith-lab.html">Faith Lab</a>
   <a href="become-a-lab-leader.html">Become a Lab Leader</a>
   <a class="pill pill-primary navcta" data-book>Book a call</a>
 </nav>
@@ -47,7 +47,7 @@
   <!-- ===== HERO (light, split, photo-ready) ===== -->
   <section class="hero-light" aria-label="Become a lab leader">
     <div class="inner2">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Become a lab leader</span>
         <h1 class="display" style="font-size:clamp(38px,5.2vw,60px)">Build something <em class="em-italic">real</em>. Don't build it alone.</h1>
         <p class="lead">Optimistic Labs is a platform for practitioners who are done choosing between independence and infrastructure. As a Lab Leader, you bring the expertise, the vision, and the relationships. We bring everything else.</p>
@@ -67,7 +67,7 @@
   <section class="section section--mid reveal" aria-label="The pitch">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The pitch</span>
     <h2 class="h-sec">Going independent shouldn't mean going it <em class="em-italic">alone</em>.</h2>
-    <p class="lead" style="max-width:64ch">Most consultants and advisors hit the same ceiling. They're good at the work — but the overhead, the business development, the brand-building, the admin, all competes with the thing they actually want to do.</p>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch">Most consultants and advisors hit the same ceiling. They're good at the work — but the overhead, the business development, the brand-building, the admin, all competes with the thing they actually want to do.</p>
     <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px">So they stay smaller than they should. Or they join a firm and trade autonomy for stability.</p>
     <p style="font-size:17px;line-height:1.7;color:var(--ink);max-width:64ch;margin-top:16px">Now, there's a better option. Optimistic Labs is built for people who want to lead their own practice — and have a real team, a real brand, and real infrastructure behind them while they do it.</p>
   </section>
@@ -78,24 +78,32 @@
     <h2 class="h-sec">The labs already building.</h2>
     <div class="lockup-row">
       <div class="lab-card">
-        <img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs — Faith" />
-        <p>Led by Aliza Goodman. The first lab with a dedicated practice, and the model for how a lab leader brings the community while OL brings the apparatus.</p>
-        <div class="row"><span class="chip">Live</span><a class="more" href="faith-lab.html">Visit Faith Lab →</a></div>
+        <div class="lock-wrap"><img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs — Faith" /></div>
+        <div class="lab-card-body">
+          <p>Led by Aliza Goodman. The first lab with a dedicated practice, and the model for how a lab leader brings the community while OL brings the apparatus.</p>
+          <div class="row"><span class="chip">Live</span><a class="more" href="faith-lab.html">Visit Faith Lab →</a></div>
+        </div>
       </div>
       <div class="lab-card">
-        <img class="lock" src="assets/impact-logo.svg" alt="Optimistic Labs — Impact" />
-        <p>A practice built for leaders and organizations working toward measurable good — strategy and trusted networks pointed at outcomes that matter.</p>
-        <div class="row"><span class="chip chip--soft">In formation</span></div>
+        <div class="lock-wrap"><img class="lock" src="assets/impact-logo.svg" alt="Optimistic Labs — Impact" /></div>
+        <div class="lab-card-body">
+          <p>A practice built for leaders and organizations working toward measurable good — strategy and trusted networks pointed at outcomes that matter.</p>
+          <div class="row"><span class="chip chip--soft">In formation</span></div>
+        </div>
       </div>
       <div class="lab-card">
-        <img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs — Policy" />
-        <p>Where practitioners shaping policy build community and credibility around a clear, human point of view.</p>
-        <div class="row"><span class="chip chip--soft">In formation</span></div>
+        <div class="lock-wrap"><img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs — Policy" /></div>
+        <div class="lab-card-body">
+          <p>Where practitioners shaping policy build community and credibility around a clear, human point of view.</p>
+          <div class="row"><span class="chip chip--soft">In formation</span></div>
+        </div>
       </div>
       <div class="lab-card">
-        <img class="lock" src="assets/sports-logo.svg" alt="Optimistic Labs — Sports" />
-        <p>A lab for the people building the culture, the connection, and the systems around sport — on and off the field.</p>
-        <div class="row"><span class="chip chip--soft">In formation</span></div>
+        <div class="lock-wrap"><img class="lock" src="assets/sports-logo.svg" alt="Optimistic Labs — Sports" /></div>
+        <div class="lab-card-body">
+          <p>A lab for the people building the culture, the connection, and the systems around sport — on and off the field.</p>
+          <div class="row"><span class="chip chip--soft">In formation</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -121,12 +129,12 @@
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What you get</span>
     <h2 class="h-sec">The apparatus, so you can lead the mission.</h2>
     <div class="grid grid-3" style="margin-top:18px">
-      <div class="card"><h3>Strategy and infrastructure behind you</h3><p>Optimistic Labs sits underneath your lab — the strategy, the platforms, and the operating systems that turn a point of view into a working practice. You lead the community. We architect the machine that lets you scale it.</p></div>
-      <div class="card"><h3>A trusted network already in motion</h3><p>You join an ecosystem of operators, creators, and builders who are already moving — including partners who have stood up practices like this before. Independence without isolation. You set the direction; the network gives you momentum from day one.</p></div>
-      <div class="card"><h3>Help productizing and pricing your offerings</h3><p>We work with you to turn your methodology into clear, packaged offerings and tiers — the difference between selling your time and building a practice. Concrete deliverable shapes, honest pricing, repeatable value.</p></div>
-      <div class="card"><h3>A co-branded lab, with real credibility</h3><p>Your lab launches under a shared lockup — <span class="lockup-text">OPTIMISTIC LABS | YOUR LAB</span> — so you carry the weight of the brand and the trust of the network while keeping your own name and voice front and center. Faith Lab is the model for how this looks in practice.</p></div>
-      <div class="card"><h3>Go-to-market and demand generation</h3><p>We bring the apparatus that gets you in front of the right community: positioning, channels, and a demand engine built for your vertical. You spend your time on the work only you can do, not on chasing the next conversation.</p></div>
-      <div class="card"><h3>Shared tools, shared learnings, shared upside</h3><p>Every lab makes the next one sharper. You get the systems, the playbooks, and the experiments that are already working across the ecosystem — and a model where doing well by your community means doing well, period.</p></div>
+      <div class="card card--flat"><h3>Strategy and infrastructure behind you</h3><p>Optimistic Labs sits underneath your lab — the strategy, the platforms, and the operating systems that turn a point of view into a working practice. You lead the community. We architect the machine that lets you scale it.</p></div>
+      <div class="card card--flat"><h3>A trusted network already in motion</h3><p>You join an ecosystem of operators, creators, and builders who are already moving — including partners who have stood up practices like this before. Independence without isolation. You set the direction; the network gives you momentum from day one.</p></div>
+      <div class="card card--flat"><h3>Help productizing and pricing your offerings</h3><p>We work with you to turn your methodology into clear, packaged offerings and tiers — the difference between selling your time and building a practice. Concrete deliverable shapes, honest pricing, repeatable value.</p></div>
+      <div class="card card--flat"><h3>A co-branded lab, with real credibility</h3><p>Your lab launches under a shared lockup — <span class="lockup-text">OPTIMISTIC LABS | YOUR LAB</span> — so you carry the weight of the brand and the trust of the network while keeping your own name and voice front and center. Faith Lab is the model for how this looks in practice.</p></div>
+      <div class="card card--flat"><h3>Go-to-market and demand generation</h3><p>We bring the apparatus that gets you in front of the right community: positioning, channels, and a demand engine built for your vertical. You spend your time on the work only you can do, not on chasing the next conversation.</p></div>
+      <div class="card card--flat"><h3>Shared tools, shared learnings, shared upside</h3><p>Every lab makes the next one sharper. You get the systems, the playbooks, and the experiments that are already working across the ecosystem — and a model where doing well by your community means doing well, period.</p></div>
     </div>
   </section>
 
@@ -152,7 +160,7 @@
       <li>You value independence — but you're done building it all alone</li>
     </ul>
     <div class="card" style="margin-top:28px;background:var(--violet-pale);border-color:transparent">
-      <p style="font-size:15.5px;line-height:1.62;color:var(--ink)"><strong style="font-weight:600">Not ready to lead a Lab but want to plug in?</strong> We also work with subject matter experts on a more limited basis — as a spot consultant, facilitator, or fractional contributor to specific projects.</p>
+      <p style="font-size:15.5px;line-height:1.62;color:var(--ink);max-width:none;text-align:center"><strong style="font-weight:600">Not ready to lead a Lab but want to plug in?</strong> We also work with subject matter experts on a more limited basis — as a spot consultant, facilitator, or fractional contributor to specific projects.</p>
     </div>
   </section>
 
