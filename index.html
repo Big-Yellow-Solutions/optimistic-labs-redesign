@@ -171,7 +171,7 @@
           <div class="legend"><b>Filled</b> = live &nbsp;·&nbsp; <b>Outlined</b> = coming soon</div>
         </div>
         <div class="map-wrap">
-        <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Impact, Policy, Sports, arranged around the Optimistic Labs mark. Activate a lab to learn more.">
+        <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Impact, Policy, Philanthropy, Sports, arranged around the Optimistic Labs mark. Activate a lab to learn more.">
           <circle class="map-ring" cx="300" cy="300" r="120" stroke-width="1" opacity=".30"/>
           <circle class="map-ring" cx="300" cy="300" r="200" stroke-width="1" opacity=".18"/>
           <circle class="map-ring" cx="300" cy="300" r="280" stroke-width="1" opacity=".10"/>
@@ -186,22 +186,30 @@
             <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
           </g>
           <!-- Impact (in formation) SE -->
-          <g class="lab-node" data-id="impact" data-angle="45" tabindex="0" role="button" aria-label="Impact Lab: in formation. Learn more.">
+          <g class="lab-node" data-id="impact" data-angle="27" tabindex="0" role="button" aria-label="Impact Lab: in formation. Learn more.">
             <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
             <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
             <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Impact Lab</text>
             <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Coming soon</text>
           </g>
           <!-- Policy (live) SW -->
-          <g class="lab-node" data-id="policy" data-angle="135" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
+          <g class="lab-node" data-id="policy" data-angle="99" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
             <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
             <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
             <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
             <text class="lab-name" x="0" y="33" text-anchor="middle">Policy Lab</text>
             <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
           </g>
+          <!-- Philanthropy (live) S -->
+          <g class="lab-node" data-id="philanthropy" data-angle="171" tabindex="0" role="button" aria-label="Philanthropy Lab: live. Open a quick preview.">
+            <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
+            <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
+            <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
+            <text class="lab-name" x="0" y="33" text-anchor="middle">Philanthropy Lab</text>
+            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+          </g>
           <!-- Sports NW -->
-          <g class="lab-node" data-id="sports" data-angle="225" tabindex="0" role="button" aria-label="Sports Lab: in formation. Learn more.">
+          <g class="lab-node" data-id="sports" data-angle="243" tabindex="0" role="button" aria-label="Sports Lab: in formation. Learn more.">
             <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
             <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
             <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Sports Lab</text>
@@ -343,6 +351,9 @@
     policy:{name:'Policy Lab', status:'Live',
       line:"Policy Lab is an impact-focused strategy studio and activation engine for institutions, associations, nonprofits, and public affairs teams working to restore civic trust and advance policy through connection, clarity, and creativity. Led by the OL co-founders.",
       cta:{label:'Explore the Policy Lab →', href:'policy-lab.html'}},
+    philanthropy:{name:'Philanthropy Lab', status:'Live',
+      line:"Philanthropy Lab is a dynamic advisory and activation platform built to serve the full spectrum of the philanthropic ecosystem, from major foundations and philanthropic investors to grassroots NGOs and family and emerging philanthropists. Led by the OL co-founders.",
+      cta:{label:'Explore the Philanthropy Lab →', href:'philanthropy-lab.html'}},
     sports:{name:'Sports Lab', status:'Coming soon',
       line:"Sports Lab is coming soon. We’re convening the people building culture, connection, and systems around sport, on and off the field.",
       cta:{label:'Book a call →', book:true}}
