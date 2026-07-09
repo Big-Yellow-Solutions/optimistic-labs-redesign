@@ -55,6 +55,29 @@
       document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
     }
 
+    /* ---- carousels ---- */
+    document.querySelectorAll('[data-carousel]').forEach(function(car){
+      var track=car.querySelector('.carousel-track'),
+          prev=car.querySelector('.car-btn.prev'), next=car.querySelector('.car-btn.next');
+      if(!track||!prev||!next) return;
+      function step(){
+        var item=track.firstElementChild;
+        var gap=parseFloat(getComputedStyle(track).columnGap)||24;
+        return item?item.getBoundingClientRect().width+gap:track.clientWidth*.8;
+      }
+      function update(){
+        var overflow=track.scrollWidth>track.clientWidth+4;
+        prev.style.display=next.style.display=overflow?'':'none';
+        prev.disabled=track.scrollLeft<=8;
+        next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-8;
+      }
+      prev.addEventListener('click',function(){ track.scrollBy({left:-step(),behavior:reduceMotion?'auto':'smooth'}); });
+      next.addEventListener('click',function(){ track.scrollBy({left:step(),behavior:reduceMotion?'auto':'smooth'}); });
+      track.addEventListener('scroll',update,{passive:true});
+      window.addEventListener('resize',update);
+      update();
+    });
+
     /* ---- forms (newsletter + contact): validate + mailto/endpoint submit ---- */
     var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     function setErr(input,msg){

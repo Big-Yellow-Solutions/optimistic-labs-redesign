@@ -18,12 +18,31 @@
 .triad .v{font-family:var(--sans);font-size:16px;color:var(--ink-soft)}
 .triad .v b{font-weight:600;color:var(--ink)}
 
+/* case for community */
+.case-p{font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px}
+.case-p:first-of-type{margin-top:0}
+.belief-close{margin-top:32px;font-family:var(--sans);font-weight:600;font-size:clamp(20px,2.8vw,25px);line-height:1.4;color:var(--ink);max-width:none}
+
+/* how we work pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:38px 34px;margin-top:38px;text-align:center}
+@media (max-width:760px){.pillars{grid-template-columns:1fr;gap:42px}}
+.pillar{display:flex;flex-direction:column;align-items:center}
+.pillar-icon{height:54px;width:auto;margin-bottom:20px}
+.pillar-title{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink);margin-bottom:12px}
+.pillar p{font-size:15px;line-height:1.62;color:var(--ink-soft);max-width:36ch;margin:0 auto}
+
+/* team carousel + note */
+.team-cards-track .team-card{width:min(350px,80vw)}
+.team-note--wide{max-width:none;font-size:17.5px;line-height:1.65;margin-top:14px}
+
 /* labs band */
 .labs.band{text-align:left;padding:80px 32px}
-.labs .inner{max-width:1080px}
+.labs .inner{max-width:1120px}
 .labs h2,.labs .lead{text-align:left}
 .labs .lead{color:rgba(255,255,255,.8);max-width:none;margin-bottom:8px}
-.map-wrap{margin:18px auto 0;max-width:920px;position:relative}
+.labs-split{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;align-items:center}
+@media (max-width:860px){.labs-split{grid-template-columns:1fr;gap:6px}}
+.map-wrap{position:relative}
 #labMap{display:block;width:100%;height:auto}
 .map-ring{fill:none;stroke:#fff}
 .lab-node{cursor:pointer}
@@ -33,8 +52,8 @@
 .lab-node:hover .dot,.lab-node:focus .dot{transform:scale(1.12);transform-box:fill-box;transform-origin:center}
 .lab-node:focus{outline:none}
 .lab-node:focus-visible .halo{opacity:.95;stroke-width:2.5}
-.lab-name{font-family:var(--serif);font-size:clamp(12px,2.1vw,17px);fill:#fff}
-.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(7.5px,1.4vw,9.5px);letter-spacing:.14em;text-transform:uppercase}
+.lab-name{font-family:var(--serif);font-size:clamp(13px,2.4vw,20px);fill:#fff}
+.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(8px,1.6vw,11px);letter-spacing:.14em;text-transform:uppercase}
 .legend{margin-top:18px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
 .legend b{color:#fff;font-weight:600}
 .lab-backdrop{position:fixed;inset:0;background:rgba(17,17,17,.32);opacity:0;pointer-events:none;transition:opacity .35s;z-index:80}
@@ -110,46 +129,53 @@
   <!-- ===== BELIEF ===== -->
   <section class="section section--mid reveal" id="belief" aria-label="The case for community">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The case for community</span>
-    <h2 class="h-sec">Technology has made it easier than ever to reach people, and harder than ever to truly <em class="em-italic">connect</em> with them.</h2>
-    <p class="lead" style="max-width:100%">The organizations that thrive through recessions, trade wars, pandemics, and major technology shifts are the ones that build communities, not just brands. The tools keep multiplying, but the trust, and the growth that comes from it, does not.</p>
+    <p class="case-p">Optimistic Labs was built on a simple observation: The organizations that thrive through recessions, trade wars, pandemics, and major technology shifts are the ones that build communities&mdash;not just brands.</p>
+    <p class="case-p">When people feel connected to a mission, a network, or a shared purpose, something powerful happens. Loyalty deepens. Ideas move faster. Growth becomes more resilient.</p>
+    <p class="case-p">But this trust doesn&rsquo;t just appear on accident.</p>
+    <p class="case-p">It requires the right strategy, the right tools, and the right people working together to cultivate purpose, knowledge, and curiosity.</p>
+    <p class="belief-close">Community building is not a side project. Community has to be <em class="em-italic">designed</em>.</p>
   </section>
 
   <!-- ===== PILLARS ===== -->
   <section class="section section--mid reveal" id="approach" aria-label="How we work">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How we work</span>
-    <h2 class="h-sec">Three things that hold <em class="em-italic">everything</em> up.</h2>
-    <div class="spine">
-      <div class="spine-item">
-        <div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">01</div><div class="spine-title">Strategy</div>
-          <p class="spine-desc">We clarify your goals and design the community strategy to reach them, including where AI helps and where human trust still wins. Clear thinking before clever tactics.</p></div>
+    <h2 class="h-sec">That&rsquo;s where <em class="em-italic">Optimistic Labs</em> comes in.</h2>
+    <p class="lead" style="max-width:100%">We help organizations move beyond scattered tactics and build communities intentionally&mdash;connecting strategy, technology, and trusted networks to create ecosystems where people actually want to participate.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <img class="pillar-icon" src="assets/icons/icon-lightbulb.svg" alt="" />
+        <div class="pillar-title">Strategy</div>
+        <p>We work alongside leaders as strategic partners, helping clarify goals, design community strategy, and navigate how emerging technologies like AI can support smarter, more connected organizations.</p>
       </div>
-      <div class="spine-item">
-        <div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">02</div><div class="spine-title">Experimentation</div>
-          <p class="spine-desc">We test ideas, build prototypes, and launch real initiatives, then keep what works and let go of what doesn't. Momentum comes from learning in public, not planning in private.</p></div>
+      <div class="pillar">
+        <img class="pillar-icon" src="assets/icons/icon-flask.svg" alt="" />
+        <div class="pillar-title">Experimentation</div>
+        <p>Community building is not a static playbook. It evolves. Together, we test ideas, build prototypes, launch initiatives, and refine what works, turning strategy into real-world momentum.</p>
       </div>
-      <div class="spine-item">
-        <div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">03</div><div class="spine-title">Trusted Networks</div>
-          <p class="spine-desc">We connect you with the right people across an ecosystem of operators, creators, and builders. The relationships that move your work forward, already vouched for.</p></div>
+      <div class="pillar">
+        <img class="pillar-icon" src="assets/icons/icon-network.svg" alt="" />
+        <div class="pillar-title">Trusted Networks</div>
+        <p>When organizations need specialized support, we connect them with the right people from across our ecosystem of collaborators, operators, creators, and builders.</p>
       </div>
     </div>
-    <p class="muted" style="margin-top:26px;font-size:13px;letter-spacing:.04em">Guided by three values: Purpose · Knowledge · Wonder.</p>
   </section>
 
   <!-- ===== LABS MAP ===== -->
   <section class="labs band reveal" id="labs" aria-label="Our labs">
     <div class="inner">
-      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Our labs</span>
-      <h2 class="h-sec">An <em class="em-italic">ecosystem</em>, not an org chart.</h2>
-      <p class="lead">Optimistic Labs is a network of focused labs: each one a practice led by an expert, serving a specific community, with our strategy and apparatus behind it. Click a lab to explore.</p>
-      <div class="map-wrap">
-        <svg id="labMap" viewBox="0 0 960 520" role="group" aria-label="Our labs: Faith, Impact, Policy, Sports, arranged around the Optimistic Labs mark. Activate a lab to learn more.">
-          <circle class="map-ring" cx="480" cy="260" r="120" stroke-width="1" opacity=".30"/>
-          <circle class="map-ring" cx="480" cy="260" r="200" stroke-width="1" opacity=".18"/>
-          <circle class="map-ring" cx="480" cy="260" r="280" stroke-width="1" opacity=".10"/>
-          <image href="assets/ol-mark-white.svg" x="446" y="225" width="68" height="70"/>
+      <div class="labs-split">
+        <div class="labs-copy">
+          <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Our labs</span>
+          <h2 class="h-sec">An <em class="em-italic">ecosystem</em>,<br />not an org chart.</h2>
+          <p class="lead">Optimistic Labs is a network of focused labs: each one a practice led by an expert, serving a specific community, with our strategy and apparatus behind it. Click a lab to explore.</p>
+          <div class="legend"><b>Filled</b> = live &nbsp;·&nbsp; <b>Outlined</b> = coming soon</div>
+        </div>
+        <div class="map-wrap">
+        <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Impact, Policy, Sports, arranged around the Optimistic Labs mark. Activate a lab to learn more.">
+          <circle class="map-ring" cx="300" cy="300" r="120" stroke-width="1" opacity=".30"/>
+          <circle class="map-ring" cx="300" cy="300" r="200" stroke-width="1" opacity=".18"/>
+          <circle class="map-ring" cx="300" cy="300" r="280" stroke-width="1" opacity=".10"/>
+          <image href="assets/ol-mark-white.svg" x="266" y="265" width="68" height="70"/>
           <!-- Nodes are positioned by JS: they orbit the mark, pausing on hover/focus or while the panel is open -->
           <!-- Faith (live) NE -->
           <g class="lab-node" data-id="faith" data-angle="-45" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
@@ -166,12 +192,13 @@
             <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Impact Lab</text>
             <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Coming soon</text>
           </g>
-          <!-- Policy SW -->
-          <g class="lab-node" data-id="policy" data-angle="135" tabindex="0" role="button" aria-label="Policy Lab: in formation. Learn more.">
-            <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-            <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Policy Lab</text>
-            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Coming soon</text>
+          <!-- Policy (live) SW -->
+          <g class="lab-node" data-id="policy" data-angle="135" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
+            <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
+            <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
+            <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
+            <text class="lab-name" x="0" y="33" text-anchor="middle">Policy Lab</text>
+            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
           </g>
           <!-- Sports NW -->
           <g class="lab-node" data-id="sports" data-angle="225" tabindex="0" role="button" aria-label="Sports Lab: in formation. Learn more.">
@@ -181,8 +208,8 @@
             <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Coming soon</text>
           </g>
         </svg>
+        </div>
       </div>
-      <div class="legend"><b>Filled</b> = live &nbsp;·&nbsp; <b>Outlined</b> = coming soon</div>
     </div>
   </section>
 
@@ -198,7 +225,9 @@
   <section class="section section--mid reveal" id="team" aria-label="Meet the team">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Meet the team</span>
     <h2 class="h-sec">The people behind <em class="em-italic">Optimistic Labs</em>.</h2>
-    <div class="team-cards">
+    <div class="carousel" data-carousel>
+      <button class="car-btn prev" type="button" aria-label="Previous team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="carousel-track team-cards-track">
       <article class="team-card" tabindex="0">
         <div class="team-card-photo"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
         <div class="team-card-body">
@@ -223,22 +252,28 @@
           <p>Lauren is a political theorist and Associate Dean of Academic Affairs at the Rochester Institute of Technology, and co-founder of the Excelsior Center for Civic Innovation. She advises Optimistic Labs on pluralism, narrative change, and civic capacity-building, drawing on nearly two decades of scholarship and two published books.</p>
         </div>
       </article>
+      </div>
+      <button class="car-btn next" type="button" aria-label="Next team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-    <p class="team-note">Plus a trusted network of <b>fractional executives and specialists</b> who support our clients across strategy, technology, content, and community operations.</p>
+    <p class="team-note team-note--wide">Plus a trusted network of <b>fractional executives and specialists</b> who support our clients across strategy, technology, content, and community operations.</p>
   </section>
 
-  <!-- ===== NEWSLETTER ===== -->
-  <section class="section section--mid reveal" id="newsletter" aria-label="The newsletter">
+  <!-- ===== LATEST FROM OL (Supascribe feed) ===== -->
+  <section class="section reveal" id="latest" aria-label="The latest from Optimistic Labs">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The newsletter</span>
+    <h2 class="h-sec">The <em class="em-italic">latest</em> from Optimistic Labs.</h2>
+    <!-- Feed embed code -->
+    <div data-supascribe-embed-id="739893412643" data-supascribe-feed></div>
+  </section>
+
+  <!-- ===== NEWSLETTER SIGNUP ===== -->
+  <section class="section section--mid reveal" id="newsletter" aria-label="Subscribe to the newsletter">
     <div class="news-card">
       <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Signals</span>
-      <h2 class="h-sec">Get the <em class="em-italic">latest</em> from Optimistic Labs.</h2>
+      <h2 class="h-sec">Get it straight to your <em class="em-italic">inbox</em>.</h2>
       <p class="lead" style="max-width:560px">Insights and signals for leaders designing communities that move ideas and people forward. No noise. Just the thinking worth your inbox.</p>
-      <label for="newsEmail" class="news-label">Email address</label>
-      <form class="news-form" id="newsForm" novalidate>
-        <input id="newsEmail" type="email" placeholder="you@organization.com" required />
-        <button type="submit" class="pill pill-primary">Subscribe</button>
-      </form>
-      <div class="note" id="newsNote" role="status" aria-live="polite">Signal received.</div>
+      <!-- Subscribe embed code -->
+      <div style="margin-top:22px" data-supascribe-embed-id="193078040495" data-supascribe-subscribe></div>
     </div>
   </section>
 
@@ -272,6 +307,8 @@
     <div class="footer-links">
       <a data-book>Book a call</a>
       <a href="faith-lab.html">Faith Lab</a>
+      <a href="policy-lab.html">Policy Lab</a>
+      <a href="philanthropy-lab.html">Philanthropy Lab</a>
       <a href="become-a-lab-leader.html">Become a Lab Leader</a>
       <a id="linkedInLink">LinkedIn</a>
     </div>
@@ -290,6 +327,8 @@
 </aside>
 
 <script src="assets/site.js"></script>
+<!-- Supascribe loader (newsletter feed + subscribe embeds) -->
+<script src="https://js.supascribe.com/v1/loader/4FRyWbKbkShk3nGqWqq3HTijyR82.js" async></script>
 <script>
 /* ---- labs map interaction (homepage only) ---- */
 (function(){
@@ -301,9 +340,9 @@
     impact:{name:'Impact Lab', status:'Coming soon',
       line:"Impact Lab is coming soon. We’re convening the practitioners and partners now: book a call if you want to help shape it or be first to know.",
       cta:{label:'Book a call →', book:true}},
-    policy:{name:'Policy Lab', status:'Coming soon',
-      line:"Policy Lab is coming soon. We’re gathering the leaders building community and credibility around a clear, human point of view.",
-      cta:{label:'Book a call →', book:true}},
+    policy:{name:'Policy Lab', status:'Live',
+      line:"Policy Lab is an impact-focused strategy studio and activation engine for institutions, associations, nonprofits, and public affairs teams working to restore civic trust and advance policy through connection, clarity, and creativity. Led by the OL co-founders.",
+      cta:{label:'Explore the Policy Lab →', href:'policy-lab.html'}},
     sports:{name:'Sports Lab', status:'Coming soon',
       line:"Sports Lab is coming soon. We’re convening the people building culture, connection, and systems around sport, on and off the field.",
       cta:{label:'Book a call →', book:true}}
@@ -357,7 +396,7 @@
 
   /* ---- orbital rotation: nodes drift around the mark; paused on hover/focus or while the panel is open ---- */
   (function(){
-    var CX=480, CY=260, R=200, SPEED=6; /* degrees per second */
+    var CX=300, CY=300, R=200, SPEED=6; /* degrees per second */
     var nodes=Array.prototype.slice.call(document.querySelectorAll('#labMap .lab-node'));
     if(!nodes.length) return;
     var offset=0, last=null, hovering=false;

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Policy Lab · Optimistic Labs</title>
+<meta name="description" content="Policy Lab is an impact-focused strategy studio and activation engine for institutions, associations, nonprofits, and public affairs teams working to restore civic trust and advance policy through connection, clarity, and creativity." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+.svc{display:flex;flex-direction:column;gap:18px;margin-top:18px}
+.svc .card{display:flex;flex-direction:column;gap:12px}
+.svc .card h3{margin-bottom:0}
+.svc .card p{font-size:15.5px;line-height:1.62;color:var(--ink-soft)}
+.intro-statement{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1.2;color:var(--ink);margin-bottom:22px;max-width:22ch}
+.who-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:64ch}
+.who-list li{position:relative;padding-left:26px;font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
+.who-list li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:#7C6DF5}
+.svc-note{font-style:italic;font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:14px}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html#labs">Our Labs</a>
+    <a href="faith-lab.html">Faith Lab</a>
+    <a href="policy-lab.html">Policy Lab</a>
+    <a href="philanthropy-lab.html">Philanthropy Lab</a>
+    <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+    <a class="pill pill-primary navcta" data-book>Book a call</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <a href="index.html#labs">Our Labs</a>
+  <a href="faith-lab.html">Faith Lab</a>
+  <a href="policy-lab.html">Policy Lab</a>
+  <a href="philanthropy-lab.html">Philanthropy Lab</a>
+  <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+  <a class="pill pill-primary navcta" data-book>Book a call</a>
+</nav>
+
+<main>
+  <!-- ===== HERO (light, split, photo-ready) ===== -->
+  <section class="hero-light" aria-label="Policy Lab">
+    <div class="inner2">
+      <div>
+        <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Optimistic Labs | Policy</span>
+        <h1 class="display" style="font-size:clamp(38px,5.2vw,60px)">Where policy and <em class="em-italic">civic imagination</em> meet strategic influence.</h1>
+        <p class="lead">Policy Lab is an impact-focused strategy studio and activation engine for institutions, associations, nonprofits, and public affairs teams working to restore civic trust and advance policy through connection, clarity, and creativity.</p>
+        <div class="cta-row"><a class="pill pill-primary" data-book>Book a conversation</a></div>
+      </div>
+      <!-- TODO Liz: replace with a real photo of people. <img src="assets/policy-hero.jpg" alt="..."> -->
+      <div class="people-photo" aria-label="Photo placeholder">
+        <div class="ph">
+          <svg width="40" height="40" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+          Photo of people (to come)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY IT MATTERS ===== -->
+  <section class="section section--mid reveal" aria-label="Why it matters">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Why it matters</span>
+    <div class="intro-statement">Trust is the cornerstone of policy-making and democracy — and it's <em class="em-italic">under pressure</em>.</div>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch">Those working in public policy and civic life are being asked to do more, faster, with fewer shared spaces, fewer common stories, and greater scrutiny. The result is fragmented strategies, disconnected stakeholders, and a diminished belief in what's possible.</p>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px">Influence today isn't earned through effort alone. It's earned through voice, relationships, and narrative design. Policy Lab exists for institutions and leaders who want to build differently — helping stakeholders across the policy influence ecosystem move beyond talking points and position papers toward network-centered frameworks for influence, narrative, and collaboration that reflect both substance and story.</p>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink);max-width:64ch;margin-top:16px">We are not a lobbying firm. We are not a messaging consultant. We're the connective tissue between trust, storytelling, and public action.</p>
+  </section>
+
+  <!-- ===== WHO WE WORK WITH ===== -->
+  <section class="section section--mid reveal" aria-label="Who we work with">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who we work with</span>
+    <h2 class="h-sec">Built for the institutions shaping <em class="em-italic">public trust</em>.</h2>
+    <p class="lead" style="max-width:64ch">Policy Lab works with a diverse array of public-facing institutions and influence ecosystems, including:</p>
+    <ul class="who-list">
+      <li>National and regional associations navigating generational change, member trust, and evolving civic mandates</li>
+      <li>Civic and policy nonprofits advancing new ideas or field-wide frameworks for social, economic, or democratic innovation</li>
+      <li>Corporate public affairs and social responsibility teams aligning civic strategy with internal values and public-facing messaging</li>
+      <li>Think tanks and educational centers building bridges between research, community experience, and policy pathways</li>
+      <li>Civic funders and democracy advocates funding narrative change, civic innovation, or infrastructure for democratic resilience</li>
+    </ul>
+    <p style="font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:18px">We also work with coalitions, mayors' offices, cultural institutions, and cross-sector intermediaries looking to refresh their civic engagement strategy.</p>
+  </section>
+
+  <!-- ===== WHAT WE DO ===== -->
+  <section class="section section--mid reveal" aria-label="What we do">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What we do</span>
+    <h2 class="h-sec">Four ways we work with you.</h2>
+    <p class="svc-note">Policy Lab engagements are structured as multi-month partnerships — we serve as fractional experts and advisors, balancing deep listening with strategic precision to clarify voice, grow community, and mobilize alignment across your stakeholders.</p>
+    <div class="svc">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Narrative Strategy &amp; Public Positioning</h3><span class="chip">Multi-month partnership</span></div>
+        <p>We help organizations develop clear, emotionally intelligent messaging that speaks across stakeholder segments and political divides — including message platform development, values framing, and strategic communications support for campaigns, testimony, and institutional voice.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Stakeholder Engagement &amp; Community Activation</h3><span class="chip">Multi-month partnership</span></div>
+        <p>We design experiences, both digital and in-person, that bring together unusual allies and elevate public participation: salons, convenings, public engagement strategies, and co-learning spaces between government, private, and community sectors.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Coalition &amp; Partnership Architecture</h3><span class="chip">Multi-month partnership</span></div>
+        <p>We support the development of aligned initiatives across public, nonprofit, and corporate sectors — building or refreshing multi-organization coalitions, national initiatives, and cross-functional working groups through facilitation, shared language tools, and ecosystem design.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Field Strategy &amp; Civic Infrastructure Design</h3><span class="chip">Multi-month partnership</span></div>
+        <p>We advise civic funders, associations, and field leaders on how to shape or scale long-term civic infrastructure, including democracy movement analysis, trust-based governance strategy, and public narrative campaigns aligned with cultural, political, and geographic context.</p>
+      </div>
+    </div>
+    <p class="svc-note">All Policy Lab work is grounded in respect for diverse perspectives, attention to civic nuance, and a commitment to designing systems that invite — not dictate — public imagination.</p>
+  </section>
+
+  <!-- ===== THE TEAM ===== -->
+  <section class="section section--mid reveal" aria-label="The team">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team</span>
+    <p class="lead" style="max-width:64ch">Policy Lab is led directly by Optimistic Labs' co-founders, backed by the full OL team — a trusted network of fractional executives and specialists across strategy, technology, content, and community operations.</p>
+    <div class="team-row" style="grid-template-columns:repeat(3,minmax(0,300px));justify-content:center;max-width:1000px;margin-left:auto;margin-right:auto">
+      <div class="team-member">
+        <img class="team-photo" src="assets/seth-cohen.jpg" alt="Seth Cohen" width="124" height="124" />
+        <h3>Seth Cohen</h3><div class="team-role">Co-Founder</div>
+        <p>25+ years across media, philanthropy, and civic leadership, most recently Chief Impact Officer at Forbes and founder of the Forbes Impact Lab, and before that a Senior Director at the Charles and Lynn Schusterman Family Philanthropies.</p>
+      </div>
+      <div class="team-member">
+        <img class="team-photo" src="assets/liz-russell.jpg" alt="Liz Russell" width="124" height="124" />
+        <h3>Liz Russell</h3><div class="team-role">Co-Founder</div>
+        <p>14+ years building high-performing teams and scalable systems across SaaS, GovTech, and public-sector consulting. Worked directly with state and local governments on tech and disaster-recovery initiatives.</p>
+      </div>
+      <div class="team-member">
+        <img class="team-photo" src="assets/lauren-hall.jpg" alt="Lauren Hall, PhD" width="124" height="124" />
+        <h3>Lauren Hall, PhD</h3><div class="team-role">Strategic Advisor</div>
+        <p>Political theorist and Associate Dean of Academic Affairs at Rochester Institute of Technology and a Distinguished Fellow at the Institute for Humane Studies, and previously served as a Pluralism and Civil Exchange Fellow with the Mercatus Center.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="band reveal" aria-label="Let's start with a conversation">
+    <div class="hero-ripples" aria-hidden="true">
+      <svg viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid meet">
+        <circle class="ring r1" cx="600" cy="600" r="150" stroke-width="1.5"/>
+        <circle class="ring r2" cx="600" cy="600" r="300" stroke-width="1.5"/>
+        <circle class="ring r3" cx="600" cy="600" r="450" stroke-width="1.5"/>
+        <circle class="ring r4" cx="600" cy="600" r="600" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="inner" style="position:relative;z-index:2">
+      <h2>Let's start with a conversation.</h2>
+      <p>Every engagement begins with a call: no agenda, no pitch. Just a chance to understand where your organization is and whether Policy Lab is the right fit.</p>
+      <div class="cta-row" style="justify-content:center"><a class="pill pill-primary" data-book>Book a call with Liz &amp; Seth</a></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      <a class="footer-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+      <div class="footer-tag">Trust is the <em class="em-italic">advantage.</em></div>
+      <div class="footer-loc">Built from Atlanta, GA and Syracuse, NY.</div>
+    </div>
+    <div class="footer-links">
+      <a data-book>Book a call</a>
+      <a href="faith-lab.html">Faith Lab</a>
+      <a href="policy-lab.html">Policy Lab</a>
+      <a href="philanthropy-lab.html">Philanthropy Lab</a>
+      <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+      <a id="linkedInLink">LinkedIn</a>
+    </div>
+    <div class="footer-sign">© 2026 Optimistic Labs · Built with ❤️</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -200,6 +200,24 @@ p{max-width:64ch}
 .team-note{margin-top:28px;font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:60ch}
 .team-note b{color:var(--ink);font-weight:600}
 
+/* ---------- carousel ---------- */
+.carousel{position:relative}
+.carousel-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-ms-overflow-style:none;padding:12px 4px 28px}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-track>*{flex:0 0 auto;scroll-snap-align:start}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;
+  border-radius:50%;background:#fff;border:1px solid var(--hair);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:var(--violet-deep);
+  box-shadow:0 6px 18px rgba(17,17,17,.16);transition:background .2s,opacity .2s}
+.car-btn:hover{background:var(--violet-pale)}
+.car-btn svg{width:18px;height:18px;display:block}
+.car-btn.prev{left:-14px}
+.car-btn.next{right:-14px}
+.car-btn[disabled]{opacity:.3;cursor:default;pointer-events:none}
+@media (max-width:560px){.car-btn.prev{left:-6px}.car-btn.next{right:-6px}}
+.carousel .team-card:hover,.carousel .team-card:focus-within{transform:scale(1.02)}
+
 /* ---------- economics ---------- */
 .econ-lead{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.2;color:var(--ink);margin-bottom:20px}
 .econ-lead .em-italic{color:var(--violet)}

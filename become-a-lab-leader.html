@@ -10,18 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
-.lockup-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:18px}
-@media (max-width:760px){.lockup-row{grid-template-columns:1fr}}
+.labs-carousel{margin-top:18px}
+.labs-track .lab-card{width:min(470px,86vw)}
 .lab-card{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
-.lab-card .lock-wrap{background:var(--violet-pale);display:flex;align-items:center;justify-content:center;padding:36px 20px}
-.lab-card .lock{height:32px;width:auto}
+.lab-card .lock-wrap{background:var(--violet-pale);display:flex;align-items:center;justify-content:center;padding:52px 20px}
+.lab-card .lock{height:38px;width:auto}
 .lab-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px}
 .lab-card p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
 .lab-card .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
 .lab-card a.more{font-weight:500;color:var(--violet);font-size:14px}
 .lab-card a.more:hover{text-decoration:underline}
 .lockup-text{font-family:var(--sans);font-weight:600;letter-spacing:.04em;color:var(--violet)}
-.team-note{margin-top:22px;font-family:var(--sans);font-size:13.5px;color:var(--warm-gray);text-align:center}
+.apparatus{gap:42px 26px;margin-top:26px}
+.card-icon{height:46px;width:auto;margin-bottom:20px}
+.apparatus .card--flat h3{margin-bottom:12px}
+.team-track{margin-top:14px}
+.team-track .team-member{width:min(240px,72vw)}
 </style>
 </head>
 <body>
@@ -75,8 +79,10 @@
   <!-- ===== LABS ALREADY BUILDING (kept) ===== -->
   <section class="section reveal" aria-label="The labs already building">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Proof</span>
-    <h2 class="h-sec">The labs already building.</h2>
-    <div class="lockup-row">
+    <h2 class="h-sec">Our Lab Leaders are in good <em class="em-italic">company</em>.</h2>
+    <div class="carousel labs-carousel" data-carousel>
+      <button class="car-btn prev" type="button" aria-label="Previous labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="carousel-track labs-track">
       <div class="lab-card">
         <div class="lock-wrap"><img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs · Faith" /></div>
         <div class="lab-card-body">
@@ -94,8 +100,8 @@
       <div class="lab-card">
         <div class="lock-wrap"><img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs · Policy" /></div>
         <div class="lab-card-body">
-          <p>Where practitioners shaping policy build community and credibility around a clear, human point of view.</p>
-          <div class="row"><span class="chip chip--soft">In formation</span></div>
+          <p>Led by the OL co-founders. An impact-focused strategy studio and activation engine for institutions working to restore civic trust and advance policy through connection, clarity, and creativity.</p>
+          <div class="row"><span class="chip">Live</span><a class="more" href="policy-lab.html">Visit Policy Lab →</a></div>
         </div>
       </div>
       <div class="lab-card">
@@ -105,6 +111,8 @@
           <div class="row"><span class="chip chip--soft">In formation</span></div>
         </div>
       </div>
+      </div>
+      <button class="car-btn next" type="button" aria-label="Next labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </section>
 
@@ -128,13 +136,13 @@
   <section class="section reveal" aria-label="What you get">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What you get</span>
     <h2 class="h-sec">The apparatus, so you can lead the mission.</h2>
-    <div class="grid grid-3" style="margin-top:18px">
-      <div class="card card--flat"><h3>Strategy and infrastructure behind you</h3><p>Optimistic Labs sits underneath your lab: the strategy, the platforms, and the operating systems that turn a point of view into a working practice. You lead the community. We architect the machine that lets you scale it.</p></div>
-      <div class="card card--flat"><h3>A trusted network already in motion</h3><p>You join an ecosystem of operators, creators, and builders who are already moving, including partners who have stood up practices like this before. Independence without isolation. You set the direction; the network gives you momentum from day one.</p></div>
-      <div class="card card--flat"><h3>Help productizing and pricing your offerings</h3><p>We work with you to turn your methodology into clear, packaged offerings and tiers: the difference between selling your time and building a practice. Concrete deliverable shapes, honest pricing, repeatable value.</p></div>
-      <div class="card card--flat"><h3>A co-branded lab, with real credibility</h3><p>Your lab launches under a shared lockup: <span class="lockup-text">OPTIMISTIC LABS | YOUR LAB</span>, so you carry the weight of the brand and the trust of the network while keeping your own name and voice front and center. Faith Lab is the model for how this looks in practice.</p></div>
-      <div class="card card--flat"><h3>Go-to-market and demand generation</h3><p>We bring the apparatus that gets you in front of the right community: positioning, channels, and a demand engine built for your vertical. You spend your time on the work only you can do, not on chasing the next conversation.</p></div>
-      <div class="card card--flat"><h3>Shared tools, shared learnings, shared upside</h3><p>Every lab makes the next one sharper. You get the systems, the playbooks, and the experiments that are already working across the ecosystem, and a model where doing well by your community means doing well, period.</p></div>
+    <div class="grid grid-3 apparatus">
+      <div class="card card--flat"><img class="card-icon" src="assets/icons/icon-lightbulb.svg" alt="" /><h3>Strategy and infrastructure behind you</h3><p>Optimistic Labs sits underneath your lab: the strategy, the platforms, and the operating systems that turn a point of view into a working practice. You lead the community. We architect the machine that lets you scale it.</p></div>
+      <div class="card card--flat"><img class="card-icon" src="assets/icons/icon-network.svg" alt="" /><h3>A trusted network already in motion</h3><p>You join an ecosystem of operators, creators, and builders who are already moving, including partners who have stood up practices like this before. Independence without isolation. You set the direction; the network gives you momentum from day one.</p></div>
+      <div class="card card--flat"><img class="card-icon" src="assets/icons/icon-piggybank.svg" alt="" /><h3>Help productizing and pricing your offerings</h3><p>We work with you to turn your methodology into clear, packaged offerings and tiers: the difference between selling your time and building a practice. Concrete deliverable shapes, honest pricing, repeatable value.</p></div>
+      <div class="card card--flat"><img class="card-icon" src="assets/icons/icon-badge.svg" alt="" /><h3>A co-branded lab, with real credibility</h3><p>Your lab launches under a shared lockup: <span class="lockup-text">OPTIMISTIC LABS | YOUR LAB</span>, so you carry the weight of the brand and the trust of the network while keeping your own name and voice front and center. Faith Lab is the model for how this looks in practice.</p></div>
+      <div class="card card--flat"><img class="card-icon" src="assets/icons/icon-compass.svg" alt="" /><h3>Go-to-market and demand generation</h3><p>We bring the apparatus that gets you in front of the right community: positioning, channels, and a demand engine built for your vertical. You spend your time on the work only you can do, not on chasing the next conversation.</p></div>
+      <div class="card card--flat"><img class="card-icon" src="assets/icons/icon-toolbox.svg" alt="" /><h3>Shared tools, shared learnings, shared upside</h3><p>Every lab makes the next one sharper. You get the systems, the playbooks, and the experiments that are already working across the ecosystem, and a model where doing well by your community means doing well, period.</p></div>
     </div>
   </section>
 
@@ -168,7 +176,9 @@
   <section class="section section--mid reveal" aria-label="The team behind the platform">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team behind the platform</span>
     <h2 class="h-sec">A real team, behind every lab.</h2>
-    <div class="team-row">
+    <div class="carousel" data-carousel>
+      <button class="car-btn prev" type="button" aria-label="Previous team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="carousel-track team-track">
       <div class="team-member">
         <img class="team-photo" src="assets/seth-cohen.jpg" alt="Seth Cohen" width="124" height="124" />
         <h3>Seth Cohen</h3><div class="team-role">Co-Founder</div>
@@ -189,8 +199,9 @@
         <h3>Lauren Hall, PhD</h3><div class="team-role">Senior Advisor</div>
         <p>Political theorist and Associate Dean at RIT; co-founder of the Excelsior Center for Civic Innovation, advising on pluralism and narrative strategy.</p>
       </div>
+      </div>
+      <button class="car-btn next" type="button" aria-label="Next team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-    <p class="team-note">A growing roster of Lab Leaders, added to over time.</p>
   </section>
 
   <!-- ===== FAQ (kept) ===== -->
@@ -236,6 +247,8 @@
     <div class="footer-links">
       <a data-book>Book a call</a>
       <a href="faith-lab.html">Faith Lab</a>
+      <a href="policy-lab.html">Policy Lab</a>
+      <a href="philanthropy-lab.html">Philanthropy Lab</a>
       <a href="become-a-lab-leader.html">Become a Lab Leader</a>
       <a id="linkedInLink">LinkedIn</a>
     </div>
