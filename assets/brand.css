@@ -36,6 +36,7 @@ h3{font-size:var(--h3)}
 p{max-width:64ch}
 .lead{font-size:20px;line-height:1.55;color:var(--ink-soft)}
 .em-italic{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet)}
+.display .em-italic{font-size:1.12em;line-height:1}
 .on-dark .em-italic,.hero .em-italic,.band .em-italic{color:var(--violet-light)}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin-bottom:22px}
 .eyebrow .star{width:12px;height:12px;flex:none}
