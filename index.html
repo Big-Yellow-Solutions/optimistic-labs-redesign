@@ -7,10 +7,13 @@
 <meta name="description" content="Optimistic Labs helps organizations build communities that make their brands stronger, their growth stickier, and their strategy more human. Community has to be designed." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
 /* ---- homepage-specific ---- */
+/* Homepage uses Inter Bold for headings instead of the shared Anton */
+:root{--head:var(--sans)}
+h1,h2,h3{font-weight:700;letter-spacing:-.015em}
 .forces{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 34px}
 .triad{display:flex;flex-direction:column;gap:0;max-width:560px;border-top:1px solid var(--hair)}
 .triad div{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding:16px 0;border-bottom:1px solid var(--hair)}
