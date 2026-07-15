@@ -22,7 +22,8 @@
 .case-p{font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px}
 .case-p:first-of-type{margin-top:0}
 .belief-statement{max-width:none;padding-top:0}
-.statement-big{font-family:var(--head);font-weight:400;line-height:1.08;letter-spacing:.01em;color:var(--ink);font-size:clamp(44px,8.2vw,200px);margin:0}
+.statement-big{font-family:var(--head);font-weight:400;line-height:1.08;letter-spacing:.01em;color:var(--ink);white-space:nowrap;font-size:calc((100vw - 64px)*.0502);margin:0}
+@media (max-width:760px){.statement-big{white-space:normal;font-size:clamp(34px,9vw,60px)}}
 .statement-sub{font-family:var(--head);font-weight:400;line-height:1.15;letter-spacing:.01em;color:var(--ink);font-size:clamp(28px,4.8vw,62px);margin-top:20px}
 .statement-sub .em-italic{font-size:1.12em;line-height:1}
 
@@ -31,7 +32,7 @@
 @media (max-width:760px){.pillars{grid-template-columns:1fr;gap:42px}}
 .pillar{display:flex;flex-direction:column;align-items:center}
 .pillar-icon{height:54px;width:auto;margin-bottom:20px}
-.pillar-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;font-size:24px;line-height:1.1;white-space:nowrap;color:var(--ink);margin-bottom:12px;display:flex;align-items:flex-end;justify-content:center}
+.pillar-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;font-size:24px;line-height:1.1;white-space:nowrap;color:var(--ink);margin-bottom:12px}
 .pillar p{font-size:15px;line-height:1.62;color:var(--ink-soft);max-width:36ch;margin:0 auto}
 
 /* team carousel + note */
@@ -443,7 +444,8 @@
   })();
 })();
 
-/* ---- pillar titles: size each so it spans its paragraph width, bottom-aligned as a row ---- */
+/* ---- pillars: one shared title size (longest title fills its column), then each
+       paragraph is constrained to exactly its own title's width ---- */
 (function(){
   var pillars=Array.prototype.slice.call(document.querySelectorAll('.pillars .pillar'));
   if(!pillars.length) return;
@@ -452,16 +454,16 @@
     pillars.forEach(function(pl){
       var t=pl.querySelector('.pillar-title'), p=pl.querySelector('p');
       if(!t||!p) return;
-      t.style.fontSize=''; t.style.height='';
-      var target=p.getBoundingClientRect().width, w=t.getBoundingClientRect().width;
-      if(w>0&&target>0) entries.push({t:t, size:parseFloat(getComputedStyle(t).fontSize)*target/w});
+      t.style.fontSize=''; p.style.maxWidth='';
+      var target=pl.getBoundingClientRect().width, w=t.getBoundingClientRect().width;
+      if(w>0&&target>0) entries.push({t:t, p:p, size:parseFloat(getComputedStyle(t).fontSize)*target/w});
     });
     if(!entries.length) return;
-    /* short words would fit at a huge size; cap them near the smallest fitted size so the row stays even */
-    var cap=Math.min.apply(null,entries.map(function(e){ return e.size; }))*1.1;
-    entries.forEach(function(e){ e.t.style.fontSize=Math.min(e.size,cap).toFixed(2)+'px'; });
-    var maxH=Math.max.apply(null,entries.map(function(e){ return e.t.getBoundingClientRect().height; }));
-    entries.forEach(function(e){ e.t.style.height=maxH.toFixed(2)+'px'; });
+    var size=Math.min(44,Math.min.apply(null,entries.map(function(e){ return e.size; })));
+    entries.forEach(function(e){
+      e.t.style.fontSize=size.toFixed(2)+'px';
+      e.p.style.maxWidth=e.t.getBoundingClientRect().width.toFixed(2)+'px';
+    });
   }
   var raf=null;
   window.addEventListener('resize',function(){ cancelAnimationFrame(raf); raf=requestAnimationFrame(fit); });
