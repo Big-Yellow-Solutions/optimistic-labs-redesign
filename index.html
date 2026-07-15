@@ -7,13 +7,10 @@
 <meta name="description" content="Optimistic Labs helps organizations build communities that make their brands stronger, their growth stickier, and their strategy more human. Community has to be designed." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
 /* ---- homepage-specific ---- */
-/* Homepage uses Inter Bold for headings instead of the shared Anton */
-:root{--head:var(--sans)}
-h1,h2,h3{font-weight:700;letter-spacing:-.015em}
 .forces{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 34px}
 .triad{display:flex;flex-direction:column;gap:0;max-width:560px;border-top:1px solid var(--hair)}
 .triad div{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding:16px 0;border-bottom:1px solid var(--hair)}
@@ -34,7 +31,7 @@ h1,h2,h3{font-weight:700;letter-spacing:-.015em}
 @media (max-width:760px){.pillars{grid-template-columns:1fr;gap:42px}}
 .pillar{display:flex;flex-direction:column;align-items:center}
 .pillar-icon{height:54px;width:auto;margin-bottom:20px}
-.pillar-title{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.15;white-space:nowrap;color:var(--ink);margin-bottom:12px}
+.pillar-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;font-size:24px;line-height:1.15;white-space:nowrap;color:var(--ink);margin-bottom:12px;transform-origin:center}
 .pillar p{font-size:15px;line-height:1.62;color:var(--ink-soft);max-width:36ch;margin:0 auto}
 
 /* team carousel + note */
@@ -46,7 +43,7 @@ h1,h2,h3{font-weight:700;letter-spacing:-.015em}
 .labs .inner{max-width:1120px}
 .labs h2,.labs .lead{text-align:left}
 .labs .lead{color:rgba(255,255,255,.8);max-width:none;margin-bottom:8px}
-.labs-split{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;align-items:center}
+.labs-split{display:grid;grid-template-columns:.6fr 1.4fr;gap:48px;align-items:center}
 @media (max-width:860px){.labs-split{grid-template-columns:1fr;gap:6px}}
 .map-wrap{position:relative}
 #labMap{display:block;width:100%;height:auto}
@@ -446,7 +443,7 @@ h1,h2,h3{font-weight:700;letter-spacing:-.015em}
   })();
 })();
 
-/* ---- pillar titles: size each so it spans the width of its paragraph ---- */
+/* ---- pillar titles: stretch each horizontally to span its paragraph (height unchanged) ---- */
 (function(){
   var pillars=Array.prototype.slice.call(document.querySelectorAll('.pillars .pillar'));
   if(!pillars.length) return;
@@ -454,9 +451,9 @@ h1,h2,h3{font-weight:700;letter-spacing:-.015em}
     pillars.forEach(function(pl){
       var t=pl.querySelector('.pillar-title'), p=pl.querySelector('p');
       if(!t||!p) return;
-      t.style.fontSize='';
+      t.style.transform='';
       var target=p.getBoundingClientRect().width, w=t.getBoundingClientRect().width;
-      if(w>0&&target>0) t.style.fontSize=(parseFloat(getComputedStyle(t).fontSize)*target/w).toFixed(2)+'px';
+      if(w>0&&target>0) t.style.transform='scaleX('+(target/w).toFixed(4)+')';
     });
   }
   var raf=null;
