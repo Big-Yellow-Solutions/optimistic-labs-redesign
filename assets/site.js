@@ -45,6 +45,25 @@
       document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&sheet.classList.contains('open')) closeSheet(); });
     }
 
+    /* ---- labs nav dropdown ---- */
+    document.querySelectorAll('[data-dd]').forEach(function(dd){
+      var trigger=dd.querySelector('.nav-dd-trigger'), panel=dd.querySelector('.nav-dd-panel');
+      if(!trigger||!panel) return;
+      var closeTimer=null, hoverOpened=false;
+      function setOpen(open){ dd.classList.toggle('open',open); trigger.setAttribute('aria-expanded',open?'true':'false'); }
+      function cancelClose(){ if(closeTimer){ clearTimeout(closeTimer); closeTimer=null; } }
+      dd.addEventListener('mouseenter',function(){ cancelClose(); hoverOpened=true; setOpen(true); });
+      dd.addEventListener('mouseleave',function(){ cancelClose(); hoverOpened=false; closeTimer=setTimeout(function(){ setOpen(false); },160); });
+      trigger.addEventListener('click',function(){
+        if(dd.classList.contains('open')&&hoverOpened){ hoverOpened=false; return; } /* hover already opened it; don't toggle shut */
+        setOpen(!dd.classList.contains('open'));
+      });
+      dd.addEventListener('focusout',function(e){ if(!dd.contains(e.relatedTarget)) setOpen(false); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&dd.classList.contains('open')){ setOpen(false); trigger.focus(); } });
+      document.addEventListener('click',function(e){ if(!dd.contains(e.target)&&dd.classList.contains('open')) setOpen(false); });
+      panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setOpen(false); }); });
+    });
+
     /* ---- scroll reveal ---- */
     if('IntersectionObserver' in window){
       var io=new IntersectionObserver(function(es){
