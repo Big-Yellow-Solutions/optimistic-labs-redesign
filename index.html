@@ -21,8 +21,8 @@
 /* case for community */
 .case-p{font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px}
 .case-p:first-of-type{margin-top:0}
-.belief-statement{max-width:1080px;padding-top:0}
-.statement-big{font-family:var(--head);font-weight:400;line-height:1.08;letter-spacing:.01em;color:var(--ink);font-size:clamp(44px,8.2vw,108px)}
+.belief-statement{max-width:none;padding-top:0}
+.statement-big{font-family:var(--head);font-weight:400;line-height:1.08;letter-spacing:.01em;color:var(--ink);font-size:clamp(44px,8.2vw,200px);margin:0}
 .statement-sub{font-family:var(--head);font-weight:400;line-height:1.15;letter-spacing:.01em;color:var(--ink);font-size:clamp(28px,4.8vw,62px);margin-top:20px}
 .statement-sub .em-italic{font-size:1.12em;line-height:1}
 
@@ -31,7 +31,7 @@
 @media (max-width:760px){.pillars{grid-template-columns:1fr;gap:42px}}
 .pillar{display:flex;flex-direction:column;align-items:center}
 .pillar-icon{height:54px;width:auto;margin-bottom:20px}
-.pillar-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;font-size:24px;line-height:1.15;white-space:nowrap;color:var(--ink);margin-bottom:12px;transform-origin:center}
+.pillar-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;font-size:24px;line-height:1.1;white-space:nowrap;color:var(--ink);margin-bottom:12px;display:flex;align-items:flex-end;justify-content:center}
 .pillar p{font-size:15px;line-height:1.62;color:var(--ink-soft);max-width:36ch;margin:0 auto}
 
 /* team carousel + note */
@@ -140,7 +140,7 @@
 
   <!-- ===== BELIEF STATEMENT ===== -->
   <section class="section belief-statement reveal" aria-label="Community has to be designed">
-    <p class="statement-big">Community building is not a side project.</p>
+    <h1 class="statement-big">Community building is not a side project.</h1>
     <p class="statement-sub">Community has to be <em class="em-italic">designed</em>.</p>
   </section>
 
@@ -443,18 +443,22 @@
   })();
 })();
 
-/* ---- pillar titles: stretch each horizontally to span its paragraph (height unchanged) ---- */
+/* ---- pillar titles: size each so it spans its paragraph width, bottom-aligned as a row ---- */
 (function(){
   var pillars=Array.prototype.slice.call(document.querySelectorAll('.pillars .pillar'));
   if(!pillars.length) return;
   function fit(){
+    var titles=[];
     pillars.forEach(function(pl){
       var t=pl.querySelector('.pillar-title'), p=pl.querySelector('p');
       if(!t||!p) return;
-      t.style.transform='';
+      t.style.fontSize=''; t.style.height='';
       var target=p.getBoundingClientRect().width, w=t.getBoundingClientRect().width;
-      if(w>0&&target>0) t.style.transform='scaleX('+(target/w).toFixed(4)+')';
+      if(w>0&&target>0) t.style.fontSize=(parseFloat(getComputedStyle(t).fontSize)*target/w).toFixed(2)+'px';
+      titles.push(t);
     });
+    var maxH=Math.max.apply(null,titles.map(function(t){ return t.getBoundingClientRect().height; }));
+    titles.forEach(function(t){ t.style.height=maxH.toFixed(2)+'px'; });
   }
   var raf=null;
   window.addEventListener('resize',function(){ cancelAnimationFrame(raf); raf=requestAnimationFrame(fit); });
