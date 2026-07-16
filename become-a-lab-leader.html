@@ -26,6 +26,16 @@
 .apparatus .card--flat h3{margin-bottom:12px}
 .team-track{margin-top:14px}
 .team-track .team-member{width:min(240px,72vw)}
+
+/* ---- lab carousel: coverflow wrapper only (cards themselves untouched) ---- */
+.coverflow-stage{position:relative}
+.coverflow-viewport{overflow:hidden}
+.coverflow-viewport .labs-track{overflow:visible;scroll-snap-type:none;transition:transform .6s cubic-bezier(.5,.05,.2,1)}
+.coverflow-viewport .labs-track .lab-card{transition:transform .6s cubic-bezier(.5,.05,.2,1),opacity .6s cubic-bezier(.5,.05,.2,1);cursor:pointer}
+.coverflow-viewport .labs-track .lab-card.is-focal{cursor:default}
+.coverflow-dots{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.coverflow-dots button{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:var(--hair);cursor:pointer;transition:background .2s,transform .2s}
+.coverflow-dots button.active{background:var(--violet);transform:scale(1.25)}
 </style>
 </head>
 <body>
@@ -101,39 +111,44 @@
   <section class="section reveal" aria-label="The labs already building">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Proof</span>
     <h2 class="h-sec">Our Lab Leaders are in good <em class="em-italic">company</em>.</h2>
-    <div class="carousel labs-carousel" data-carousel>
-      <button class="car-btn prev" type="button" aria-label="Previous labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="carousel-track labs-track">
-      <div class="lab-card">
-        <div class="lock-wrap"><img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs · Faith" /></div>
-        <div class="lab-card-body">
-          <p>Led by Aliza Goodman. The first lab with a dedicated practice, and the model for how a lab leader brings the community while OL brings the apparatus.</p>
-          <div class="row"><span class="chip">Live</span><a class="more" href="faith-lab.html">Visit Faith Lab →</a></div>
+    <div class="carousel labs-carousel" data-coverflow data-autoplay="true" data-interval="4000" data-pause-hover="true">
+      <div class="coverflow-stage">
+        <button class="car-btn prev" type="button" aria-label="Previous labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="coverflow-viewport">
+          <div class="carousel-track labs-track">
+          <div class="lab-card">
+            <div class="lock-wrap"><img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs · Faith" /></div>
+            <div class="lab-card-body">
+              <p>Led by Aliza Goodman. The first lab with a dedicated practice, and the model for how a lab leader brings the community while OL brings the apparatus.</p>
+              <div class="row"><span class="chip">Live</span><a class="more" href="faith-lab.html">Visit Faith Lab →</a></div>
+            </div>
+          </div>
+          <div class="lab-card">
+            <div class="lock-wrap"><img class="lock" src="assets/impact-logo.svg" alt="Optimistic Labs · Impact" /></div>
+            <div class="lab-card-body">
+              <p>A practice built for leaders and organizations working toward measurable good: strategy and trusted networks pointed at outcomes that matter.</p>
+              <div class="row"><span class="chip chip--soft">In formation</span></div>
+            </div>
+          </div>
+          <div class="lab-card">
+            <div class="lock-wrap"><img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs · Policy" /></div>
+            <div class="lab-card-body">
+              <p>Led by the OL co-founders. An impact-focused strategy studio and activation engine for institutions working to restore civic trust and advance policy through connection, clarity, and creativity.</p>
+              <div class="row"><span class="chip">Live</span><a class="more" href="policy-lab.html">Visit Policy Lab →</a></div>
+            </div>
+          </div>
+          <div class="lab-card">
+            <div class="lock-wrap"><img class="lock" src="assets/sports-logo.svg" alt="Optimistic Labs · Sports" /></div>
+            <div class="lab-card-body">
+              <p>A lab for the people building the culture, the connection, and the systems around sport, on and off the field.</p>
+              <div class="row"><span class="chip chip--soft">In formation</span></div>
+            </div>
+          </div>
+          </div>
         </div>
+        <button class="car-btn next" type="button" aria-label="Next labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="lab-card">
-        <div class="lock-wrap"><img class="lock" src="assets/impact-logo.svg" alt="Optimistic Labs · Impact" /></div>
-        <div class="lab-card-body">
-          <p>A practice built for leaders and organizations working toward measurable good: strategy and trusted networks pointed at outcomes that matter.</p>
-          <div class="row"><span class="chip chip--soft">In formation</span></div>
-        </div>
-      </div>
-      <div class="lab-card">
-        <div class="lock-wrap"><img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs · Policy" /></div>
-        <div class="lab-card-body">
-          <p>Led by the OL co-founders. An impact-focused strategy studio and activation engine for institutions working to restore civic trust and advance policy through connection, clarity, and creativity.</p>
-          <div class="row"><span class="chip">Live</span><a class="more" href="policy-lab.html">Visit Policy Lab →</a></div>
-        </div>
-      </div>
-      <div class="lab-card">
-        <div class="lock-wrap"><img class="lock" src="assets/sports-logo.svg" alt="Optimistic Labs · Sports" /></div>
-        <div class="lab-card-body">
-          <p>A lab for the people building the culture, the connection, and the systems around sport, on and off the field.</p>
-          <div class="row"><span class="chip chip--soft">In formation</span></div>
-        </div>
-      </div>
-      </div>
-      <button class="car-btn next" type="button" aria-label="Next labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="coverflow-dots" aria-label="Choose a lab"></div>
     </div>
   </section>
 
