@@ -25,9 +25,18 @@
 .belief-photo{flex:0 0 33.3333%;align-self:stretch;position:relative;overflow:hidden;background:var(--violet-pale)}
 .belief-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .belief-photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:24px}
-.belief-copy{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;text-align:left;padding:clamp(64px,8vw,140px) clamp(28px,5vw,80px) clamp(64px,8vw,140px) clamp(44px,6.5vw,110px)}
-.statement-sub{font-family:var(--head);letter-spacing:-.015em;line-height:1.02;font-size:clamp(32px,5.4vw,210px);margin:0;font-weight:700;color:var(--ink)}
+.belief-photo-right{flex:0 0 clamp(60px,8vw,140px)}
+.belief-photo-right .ph{padding:8px;gap:0}
+.belief-copy{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;text-align:left;padding:clamp(120px,15vw,250px) clamp(28px,5vw,80px) clamp(120px,15vw,250px) clamp(44px,6.5vw,110px)}
+.statement-sub{font-family:var(--head);letter-spacing:-.015em;line-height:1.02;font-size:clamp(32px,4.4vw,175px);margin:0;font-weight:700;color:var(--ink)}
 .case-statement{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--ink);font-size:var(--h-sec);line-height:1.2;text-align:center;max-width:44ch;margin:36px auto 0}
+.belief-tagline{text-align:left;max-width:none;margin:0 0 12px}
+@media (max-width:760px){
+  .belief-statement{flex-direction:column}
+  .belief-photo{flex:0 0 220px}
+  .belief-photo-right{flex:0 0 90px}
+  .belief-copy{padding:72px 24px}
+}
 .word-cycle{position:relative;display:inline-block;width:6.9em;height:1.14em;text-align:left;vertical-align:top;color:var(--violet-deep)}
 .word-cycle-word{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;animation:bnWord 9s cubic-bezier(.5,.05,.2,1) infinite}
 .word-cycle-word:nth-child(1){animation-delay:0s}
@@ -182,7 +191,6 @@
     <p class="case-p">When people feel connected to a mission, a network, or a shared purpose, something powerful happens. Loyalty deepens. Ideas move faster. Growth becomes more resilient.</p>
     <p class="case-p">But this trust doesn&rsquo;t just appear on accident.</p>
     <p class="case-p">It requires the right strategy, the right tools, and the right people working together to cultivate purpose, knowledge, and curiosity.</p>
-    <h2 class="case-statement">Community building is not a side project.</h2>
   </section>
 
   <!-- ===== BELIEF STATEMENT ===== -->
@@ -195,7 +203,14 @@
       </div>
     </div>
     <div class="belief-copy">
+      <h2 class="case-statement belief-tagline">Community building is not a side project.</h2>
       <h1 class="statement-sub">Community has<br />to be <span class="word-cycle" aria-hidden="true"><span class="word-cycle-word">designed.</span><span class="word-cycle-word">intentional.</span><span class="word-cycle-word">engineered.</span><span class="word-cycle-word">crafted.</span></span><span class="sr-only">designed.</span></h1>
+    </div>
+    <!-- TODO Liz: replace with a real skinny photo (same image as the left, cropped, to read as one continuous photo interrupted by the text). -->
+    <div class="belief-photo belief-photo-right" aria-label="Photo placeholder">
+      <div class="ph">
+        <svg width="28" height="28" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+      </div>
     </div>
   </section>
 
