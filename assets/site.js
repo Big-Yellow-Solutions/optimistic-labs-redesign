@@ -132,7 +132,7 @@
       var intervalMs=parseInt(root.getAttribute('data-interval'),10)||4000;
       var pauseOnHover=root.getAttribute('data-pause-hover')!=='false';
 
-      function cardWidth(){ return cards[0]?cards[0].getBoundingClientRect().width:0; }
+      function cardWidth(){ return cards[0]?cards[0].offsetWidth:0; }
       function gap(){ return parseFloat(getComputedStyle(track).columnGap)||24; }
 
       function applyTransforms(){
