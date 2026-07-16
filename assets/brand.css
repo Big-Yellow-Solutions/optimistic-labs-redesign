@@ -15,6 +15,7 @@
   --ease-ripple:cubic-bezier(.34,1.2,.64,1);
   --nav-h:68px; --focus:var(--violet);
   --display:clamp(44px,7vw,82px); --h-sec:clamp(32px,4.6vw,52px); --h3:clamp(21px,2.2vw,27px);
+  --h1-split:clamp(38px,5.2vw,60px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:calc(var(--nav-h) + 16px)}
