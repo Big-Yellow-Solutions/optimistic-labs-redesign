@@ -25,10 +25,10 @@
 .belief-photo{flex:0 0 33.3333%;align-self:stretch;position:relative;overflow:hidden;background:var(--violet-pale)}
 .belief-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .belief-photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:24px}
-.belief-copy{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;text-align:left;padding:clamp(64px,8vw,140px) clamp(28px,5vw,80px)}
-.statement-sub{font-family:var(--head);letter-spacing:-.015em;line-height:1.07;font-size:clamp(28px,3.94vw,114px);margin:0;font-weight:700;color:var(--ink);margin-top:14px}
-.statement-big{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--ink);font-size:var(--h-sec);line-height:1.2;margin:0}
-.word-cycle{position:relative;display:inline-block;width:10.83em;height:1.14em;text-align:left;vertical-align:top;color:var(--violet-deep)}
+.belief-copy{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;text-align:left;padding:clamp(64px,8vw,140px) clamp(28px,5vw,80px) clamp(64px,8vw,140px) clamp(44px,6.5vw,110px)}
+.statement-sub{font-family:var(--head);letter-spacing:-.015em;line-height:1.02;font-size:clamp(32px,5.4vw,210px);margin:0;font-weight:700;color:var(--ink)}
+.case-statement{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--ink);font-size:var(--h-sec);line-height:1.2;text-align:center;max-width:44ch;margin:36px auto 0}
+.word-cycle{position:relative;display:inline-block;width:6.9em;height:1.14em;text-align:left;vertical-align:top;color:var(--violet-deep)}
 .word-cycle-word{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;animation:bnWord 9s cubic-bezier(.5,.05,.2,1) infinite}
 .word-cycle-word:nth-child(1){animation-delay:0s}
 .word-cycle-word:nth-child(2){animation-delay:2.25s}
@@ -182,6 +182,7 @@
     <p class="case-p">When people feel connected to a mission, a network, or a shared purpose, something powerful happens. Loyalty deepens. Ideas move faster. Growth becomes more resilient.</p>
     <p class="case-p">But this trust doesn&rsquo;t just appear on accident.</p>
     <p class="case-p">It requires the right strategy, the right tools, and the right people working together to cultivate purpose, knowledge, and curiosity.</p>
+    <h2 class="case-statement">Community building is not a side project.</h2>
   </section>
 
   <!-- ===== BELIEF STATEMENT ===== -->
@@ -194,8 +195,7 @@
       </div>
     </div>
     <div class="belief-copy">
-      <h1 class="statement-big">Community building is not a side project.</h1>
-      <p class="statement-sub">Community has to be <span class="word-cycle" aria-hidden="true"><span class="word-cycle-word">designed.</span><span class="word-cycle-word">intentional.</span><span class="word-cycle-word">engineered.</span><span class="word-cycle-word">crafted.</span></span><span class="sr-only">designed.</span></p>
+      <h1 class="statement-sub">Community has<br />to be <span class="word-cycle" aria-hidden="true"><span class="word-cycle-word">designed.</span><span class="word-cycle-word">intentional.</span><span class="word-cycle-word">engineered.</span><span class="word-cycle-word">crafted.</span></span><span class="sr-only">designed.</span></h1>
     </div>
   </section>
 
