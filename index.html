@@ -102,10 +102,10 @@
 .fork-card>p{font-size:15.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:18px}
 .fork-card .cta-row{margin-top:22px}
 
-/* newsletter card */
-#latest{max-width:1400px}
-.news-card{background:var(--violet-pale);border-radius:20px;padding:44px 40px}
-.news-card .eyebrow{color:var(--violet)}
+/* newsletter band (full-bleed) */
+.news-band{max-width:none;background:var(--violet-pale);padding:0}
+.news-band .inner{max-width:1400px;margin:0 auto;padding:80px 32px}
+.news-band .eyebrow{color:var(--violet)}
 .news-subscribe{margin-top:32px}
 .contact-lead-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:26px 0 40px}
 .news-label{display:block;font-family:var(--sans);font-weight:600;font-size:12px;color:var(--ink);margin-top:20px}
@@ -336,9 +336,9 @@
     <p class="team-note team-note--wide">Plus a trusted network of <b>fractional executives and specialists</b> who support our clients across strategy, technology, content, and community operations.</p>
   </section>
 
-  <!-- ===== LATEST FROM OL + NEWSLETTER SIGNUP (combined, Supascribe embeds) ===== -->
-  <section class="section reveal" id="latest" aria-label="The latest from Optimistic Labs and newsletter signup">
-    <div class="news-card">
+  <!-- ===== LATEST FROM OL + NEWSLETTER SIGNUP (combined, full-bleed, Supascribe embeds) ===== -->
+  <section class="section news-band reveal" id="latest" aria-label="The latest from Optimistic Labs and newsletter signup">
+    <div class="inner">
       <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The newsletter</span>
       <h2 class="h-sec">The <em class="em-italic">latest</em> from Optimistic Labs.</h2>
       <!-- Feed embed code -->
