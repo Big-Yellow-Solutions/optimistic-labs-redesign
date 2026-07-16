@@ -103,8 +103,10 @@
 .fork-card .cta-row{margin-top:22px}
 
 /* newsletter card */
-.news-card{background:var(--violet-pale);border-radius:20px;padding:44px 40px;margin-top:8px}
+#latest{max-width:1400px}
+.news-card{background:var(--violet-pale);border-radius:20px;padding:44px 40px}
 .news-card .eyebrow{color:var(--violet)}
+.news-subscribe{margin-top:32px}
 .contact-lead-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:26px 0 40px}
 .news-label{display:block;font-family:var(--sans);font-weight:600;font-size:12px;color:var(--ink);margin-top:20px}
 .news-card .news-form{margin-top:8px}
@@ -334,22 +336,20 @@
     <p class="team-note team-note--wide">Plus a trusted network of <b>fractional executives and specialists</b> who support our clients across strategy, technology, content, and community operations.</p>
   </section>
 
-  <!-- ===== LATEST FROM OL (Supascribe feed) ===== -->
-  <section class="section reveal" id="latest" aria-label="The latest from Optimistic Labs">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The newsletter</span>
-    <h2 class="h-sec">The <em class="em-italic">latest</em> from Optimistic Labs.</h2>
-    <!-- Feed embed code -->
-    <div data-supascribe-embed-id="739893412643" data-supascribe-feed></div>
-  </section>
-
-  <!-- ===== NEWSLETTER SIGNUP ===== -->
-  <section class="section section--mid reveal" id="newsletter" aria-label="Subscribe to the newsletter">
+  <!-- ===== LATEST FROM OL + NEWSLETTER SIGNUP (combined, Supascribe embeds) ===== -->
+  <section class="section reveal" id="latest" aria-label="The latest from Optimistic Labs and newsletter signup">
     <div class="news-card">
-      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Signals</span>
-      <h2 class="h-sec">Get it straight to your <em class="em-italic">inbox</em>.</h2>
-      <p class="lead" style="max-width:560px">Insights and signals for leaders designing communities that move ideas and people forward. No noise. Just the thinking worth your inbox.</p>
-      <!-- Subscribe embed code -->
-      <div style="margin-top:22px" data-supascribe-embed-id="193078040495" data-supascribe-subscribe></div>
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The newsletter</span>
+      <h2 class="h-sec">The <em class="em-italic">latest</em> from Optimistic Labs.</h2>
+      <!-- Feed embed code -->
+      <div data-supascribe-embed-id="739893412643" data-supascribe-feed></div>
+
+      <div class="news-subscribe">
+        <h2 class="h-sec">Get it straight to your <em class="em-italic">inbox</em>.</h2>
+        <p class="lead" style="max-width:560px">Insights and signals for leaders designing communities that move ideas and people forward. No noise. Just the thinking worth your inbox.</p>
+        <!-- Subscribe embed code -->
+        <div style="margin-top:22px" data-supascribe-embed-id="193078040495" data-supascribe-subscribe></div>
+      </div>
     </div>
   </section>
 
