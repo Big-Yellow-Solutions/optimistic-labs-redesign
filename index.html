@@ -21,8 +21,12 @@
 /* case for community */
 .case-p{font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px}
 .case-p:first-of-type{margin-top:0}
-.belief-statement{max-width:none;background:var(--paper);text-align:center;padding:clamp(56px,9vw,110px) 6vw}
-.statement-big,.statement-sub{font-family:var(--head);letter-spacing:-.015em;line-height:1.07;font-size:clamp(26px,4.4vw,52px);text-wrap:balance;margin:0}
+.belief-statement{max-width:none;background:var(--paper);display:flex;align-items:stretch;padding:0}
+.belief-photo{flex:none;align-self:stretch;aspect-ratio:1/1;position:relative;min-width:220px;overflow:hidden;background:var(--violet-pale)}
+.belief-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.belief-photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:24px}
+.belief-copy{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;text-align:left;padding:clamp(48px,6vw,96px) clamp(28px,5vw,80px)}
+.statement-big,.statement-sub{font-family:var(--head);letter-spacing:-.015em;line-height:1.07;font-size:clamp(24px,3.6vw,50px);text-wrap:balance;margin:0}
 .statement-big{font-weight:600;color:var(--ink-soft)}
 .statement-sub{font-weight:700;color:var(--ink);margin-top:14px}
 .word-cycle{position:relative;display:inline-block;width:6.9em;height:1.14em;text-align:left;vertical-align:top;color:var(--violet-deep)}
@@ -179,8 +183,17 @@
 
   <!-- ===== BELIEF STATEMENT ===== -->
   <section class="section belief-statement reveal" aria-label="Community has to be designed">
-    <h1 class="statement-big">Community building is not a side project.</h1>
-    <p class="statement-sub">Community has to be <span class="word-cycle" aria-hidden="true"><span class="word-cycle-word">designed.</span><span class="word-cycle-word">intentional.</span><span class="word-cycle-word">engineered.</span><span class="word-cycle-word">crafted.</span></span><span class="sr-only">designed.</span></p>
+    <!-- TODO Liz: replace with a real square photo. -->
+    <div class="belief-photo" aria-label="Photo placeholder">
+      <div class="ph">
+        <svg width="40" height="40" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
+        Photo (to come)
+      </div>
+    </div>
+    <div class="belief-copy">
+      <h1 class="statement-big">Community building is not a side project.</h1>
+      <p class="statement-sub">Community has to be <span class="word-cycle" aria-hidden="true"><span class="word-cycle-word">designed.</span><span class="word-cycle-word">intentional.</span><span class="word-cycle-word">engineered.</span><span class="word-cycle-word">crafted.</span></span><span class="sr-only">designed.</span></p>
+    </div>
   </section>
 
   <!-- ===== PILLARS ===== -->
