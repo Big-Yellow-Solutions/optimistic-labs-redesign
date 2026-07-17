@@ -37,23 +37,26 @@
         return '<div class="leader-stat"><div class="leader-stat-value">'+escHtml(s.value)+'</div>'+
           '<div class="leader-stat-label">'+escHtml(s.label)+'</div></div>';
       }).join('');
-      var rosterHtml = (cfg.team||[]).map(function(p){
-        return '<div class="roster-row">'+
-          '<div class="roster-photo"><img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
-          '<div><div class="roster-name-row"><span class="roster-name">'+escHtml(p.name)+'</span>'+
-          '<span class="roster-role">'+escHtml(p.role)+'</span></div>'+
-          '<p class="roster-bio">'+escHtml(p.bio)+'</p></div>'+
-          '</div>';
+      var mosaicHtml = (cfg.team||[]).map(function(p, i){
+        var tall = i === 0;
+        return '<div class="mosaic-card'+(tall?' mosaic-card--tall':'')+'">'+
+          '<div class="mosaic-photo '+(tall?'mosaic-photo--square':'mosaic-photo--wide')+'">'+
+            '<img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
+          '<div class="mosaic-card-body">'+
+            '<span class="roster-name">'+escHtml(p.name)+'</span>'+
+            '<span class="roster-role">'+escHtml(p.role)+'</span>'+
+            '<p class="roster-bio">'+escHtml(p.bio)+'</p>'+
+          '</div>'+
+        '</div>';
       }).join('');
       var pillsHtml = (cfg.pills||[]).map(function(t){ return '<span class="roster-pill">'+escHtml(t)+'</span>'; }).join('');
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
             '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />'+escHtml(cfg.leaderKicker||'The Lab Leader')+'</span>'+
-            '<div class="leader-head">'+
-              '<div class="leader-photo"><img src="'+escHtml(L.photo)+'" alt="'+escHtml(L.name)+'" /></div>'+
-              '<div><h3 class="leader-name">'+escHtml(L.name)+'</h3><div class="leader-role">'+escHtml(L.role)+'</div></div>'+
-            '</div>'+
+            '<div class="leader-photo-lg"><img src="'+escHtml(L.photo)+'" alt="'+escHtml(L.name)+'" /></div>'+
+            '<h3 class="leader-name">'+escHtml(L.name)+'</h3>'+
+            '<div class="leader-role">'+escHtml(L.role)+'</div>'+
             '<p class="leader-bio">'+escHtml(L.bio)+'</p>'+
             '<div class="leader-stats">'+statsHtml+'</div>'+
             '<a class="pill pill-outline leader-cta" data-book>'+escHtml(L.ctaText||'Book a conversation')+
@@ -63,8 +66,8 @@
           '</div>'+
           '<div class="roster-col">'+
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
-            '<div class="roster-panel">'+rosterHtml+
-              '<div class="roster-footer"><div class="roster-footer-label">'+
+            '<div class="mosaic-grid">'+mosaicHtml+
+              '<div class="mosaic-network"><div class="roster-footer-label">'+
               escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
               '<div class="roster-pills">'+pillsHtml+'</div></div>'+
             '</div>'+

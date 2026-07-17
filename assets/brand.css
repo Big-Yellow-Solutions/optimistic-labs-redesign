@@ -179,7 +179,9 @@ p{max-width:64ch}
 .leader-head{display:flex;align-items:center;gap:22px;margin-top:26px}
 .leader-photo{width:118px;height:118px;flex:none;border-radius:12px;overflow:hidden;background:var(--violet-pale);border:1px solid var(--hair)}
 .leader-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.leader-name{margin:0;font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.leader-photo-lg{width:100%;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--violet-pale);position:relative}
+.leader-photo-lg img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.leader-name{margin:26px 0 0;font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .leader-role{margin-top:9px;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
 .leader-bio{margin-top:28px;font-size:17px;line-height:1.64;color:var(--ink-soft)}
 .leader-stats{margin-top:30px;border-top:1px solid var(--hair);display:flex;flex-wrap:wrap}
@@ -203,8 +205,22 @@ p{max-width:64ch}
 .roster-pills{display:flex;flex-wrap:wrap;gap:8px}
 .roster-pill{padding:5px 11px;border-radius:999px;background:var(--white);font-size:12px;font-weight:500;color:var(--ink-soft)}
 
+.mosaic-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:min-content;gap:16px}
+.mosaic-card{background:var(--card);border:1px solid var(--hair);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.mosaic-card--tall{grid-row:span 2}
+.mosaic-photo{width:100%;background:var(--violet-pale);position:relative;overflow:hidden}
+.mosaic-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.mosaic-photo--square{aspect-ratio:1/1}
+.mosaic-photo--wide{aspect-ratio:16/10}
+.mosaic-card-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:4px}
+.mosaic-network{background:var(--violet-pale);border:1px solid var(--hair);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
+
 @media (max-width:860px){
   .leader-grid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .mosaic-grid{grid-template-columns:1fr}
+  .mosaic-card--tall{grid-row:auto}
 }
 @media (max-width:480px){
   .leader-head{gap:16px}
