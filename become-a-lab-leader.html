@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
 #proof{max-width:1400px}
+#team{max-width:1400px}
 .labs-carousel{margin-top:18px}
 .labs-track .lab-card{width:min(470px,86vw)}
 .lab-card{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
@@ -21,8 +22,8 @@
 .lab-card .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
 .lab-card a.more{font-weight:500;color:var(--violet);font-size:14px}
 .lab-card a.more:hover{text-decoration:underline}
-.team-track{margin-top:14px}
-.team-track .team-member{width:min(240px,72vw)}
+.team-cards-track .team-card{width:min(350px,80vw)}
+.team-note--wide{max-width:none;font-size:17.5px;line-height:1.65;margin-top:14px}
 
 /* ---- lab carousel: coverflow wrapper only (cards themselves untouched) ---- */
 .coverflow-stage{position:relative}
@@ -239,35 +240,48 @@
   </section>
 
   <!-- ===== THE TEAM BEHIND THE PLATFORM ===== -->
-  <section class="section section--mid reveal" aria-label="The team behind the platform">
+  <section class="section section--mid reveal" id="team" aria-label="The team behind the platform">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team behind the platform</span>
     <h2 class="h-sec">A real team, behind every lab.</h2>
     <div class="carousel" data-carousel>
       <button class="car-btn prev" type="button" aria-label="Previous team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="carousel-track team-track">
-      <div class="team-member">
-        <img class="team-photo" src="assets/seth-cohen.jpg" alt="Seth Cohen" width="124" height="124" />
-        <h3>Seth Cohen</h3><div class="team-role">Co-Founder</div>
-        <p>25+ years across media, philanthropy, and civic leadership, most recently Chief Impact Officer at Forbes and founder of the Forbes Impact Lab.</p>
-      </div>
-      <div class="team-member">
-        <img class="team-photo" src="assets/liz-russell.jpg" alt="Liz Russell" width="124" height="124" />
-        <h3>Liz Russell</h3><div class="team-role">Co-Founder</div>
-        <p>Turns complexity into clear, scalable systems. Most recently VP of Customer Success at Forerunner; earlier oversaw $2.6B+ in FEMA and HUD disaster-recovery funding.</p>
-      </div>
-      <div class="team-member">
-        <img class="team-photo" src="assets/aliza-goodman.jpg" alt="Aliza Goodman" width="124" height="124" />
-        <h3>Aliza Goodman</h3><div class="team-role">Lab Leader · Faith</div>
-        <p>20+ years driving innovation in Jewish and Israel education; 16 years a senior leader at The iCenter for Israel Education.</p>
-      </div>
-      <div class="team-member">
-        <img class="team-photo" src="assets/lauren-hall.jpg" alt="Lauren Hall" width="124" height="124" />
-        <h3>Lauren Hall, PhD</h3><div class="team-role">Senior Advisor</div>
-        <p>Political theorist and Associate Dean at RIT; co-founder of the Excelsior Center for Civic Innovation, advising on pluralism and narrative strategy.</p>
-      </div>
+      <div class="carousel-track team-cards-track">
+      <article class="team-card" tabindex="0">
+        <div class="team-card-photo"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
+        <div class="team-card-body">
+          <h3>Seth Cohen</h3>
+          <div class="team-role">Co-founder</div>
+          <p>Seth believes there is tremendous power at the intersection of storytelling, community, and action. He brings more than 25 years across media, philanthropy, and civic leadership, most recently as Chief Impact Officer at Forbes, where he founded the Forbes Impact Lab, and before that at the Schusterman Family Philanthropies.</p>
+        </div>
+      </article>
+      <article class="team-card" tabindex="0">
+        <div class="team-card-photo"><img src="assets/liz-russell.jpg" alt="Liz Russell" /></div>
+        <div class="team-card-body">
+          <h3>Liz Russell</h3>
+          <div class="team-role">Co-founder</div>
+          <p>Liz believes strong communities depend on strong, easy-to-use systems. She designs the operational foundations that let communities grow, drawing on more than a decade across SaaS, emergency management, and GovTech, most recently as VP of Customer Success at Forerunner.</p>
+        </div>
+      </article>
+      <article class="team-card" tabindex="0">
+        <div class="team-card-photo"><img src="assets/lauren-hall.jpg" alt="Lauren Hall" /></div>
+        <div class="team-card-body">
+          <h3>Lauren Hall, PhD</h3>
+          <div class="team-role">Senior Advisor</div>
+          <p>Lauren is a political theorist and Associate Dean of Academic Affairs at the Rochester Institute of Technology, and co-founder of the Excelsior Center for Civic Innovation. She advises Optimistic Labs on pluralism, narrative change, and civic capacity-building, drawing on nearly two decades of scholarship and two published books.</p>
+        </div>
+      </article>
+      <article class="team-card" tabindex="0">
+        <div class="team-card-photo"><img src="assets/aliza-goodman.jpg" alt="Aliza Goodman" /></div>
+        <div class="team-card-body">
+          <h3>Aliza Goodman</h3>
+          <div class="team-role">Lab Leader, Faith</div>
+          <p>Aliza believes lasting communities are built on infrastructure, not just inspiration. She brings more than 20 years designing and scaling professional development programs in Jewish and Israel education, including 16 years as a senior leader at The iCenter for Israel Education, where she built two of the field's most recognized programs. She holds an MBA in Social Policy and Management and an MA in Jewish Professional Leadership from Brandeis University.</p>
+        </div>
+      </article>
       </div>
       <button class="car-btn next" type="button" aria-label="Next team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
+    <p class="team-note team-note--wide">Plus a trusted network of <b>fractional executives and specialists</b> who support our clients across strategy, technology, content, and community operations.</p>
   </section>
 
   <!-- ===== FAQ (kept) ===== -->
