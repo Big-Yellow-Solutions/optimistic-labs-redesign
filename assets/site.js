@@ -37,19 +37,23 @@
         return '<div class="leader-stat"><div class="leader-stat-value">'+escHtml(s.value)+'</div>'+
           '<div class="leader-stat-label">'+escHtml(s.label)+'</div></div>';
       }).join('');
-      var mosaicHtml = (cfg.team||[]).map(function(p, i){
-        var tall = i === 0;
-        return '<div class="mosaic-card'+(tall?' mosaic-card--tall':'')+'">'+
-          '<div class="mosaic-photo '+(tall?'mosaic-photo--square':'mosaic-photo--wide')+'">'+
-            '<img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
+      function personCard(p){
+        if(!p) return '';
+        return '<div class="mosaic-card">'+
+          '<div class="mosaic-photo"><img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
           '<div class="mosaic-card-body">'+
             '<span class="roster-name">'+escHtml(p.name)+'</span>'+
             '<span class="roster-role">'+escHtml(p.role)+'</span>'+
             '<p class="roster-bio">'+escHtml(p.bio)+'</p>'+
           '</div>'+
         '</div>';
-      }).join('');
+      }
+      var team = cfg.team || [];
       var pillsHtml = (cfg.pills||[]).map(function(t){ return '<span class="roster-pill">'+escHtml(t)+'</span>'; }).join('');
+      var networkHtml =
+        '<div class="mosaic-network"><div class="roster-footer-label">'+
+        escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
+        '<div class="roster-pills">'+pillsHtml+'</div></div>';
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
@@ -66,10 +70,9 @@
           '</div>'+
           '<div class="roster-col">'+
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
-            '<div class="mosaic-grid">'+mosaicHtml+
-              '<div class="mosaic-network"><div class="roster-footer-label">'+
-              escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
-              '<div class="roster-pills">'+pillsHtml+'</div></div>'+
+            '<div class="mosaic-grid">'+
+              '<div class="mosaic-col">'+personCard(team[0])+networkHtml+'</div>'+
+              '<div class="mosaic-col">'+personCard(team[1])+personCard(team[2])+'</div>'+
             '</div>'+
           '</div>'+
         '</div>';
