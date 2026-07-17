@@ -169,6 +169,49 @@ p{max-width:64ch}
 .principle-row h3{font-size:clamp(21px,2vw,27px);line-height:1.14;margin:0 0 12px}
 .principle-row p{font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:60ch;margin:0}
 
+/* ---------- lab leader & team roster ----------
+   Data-driven: markup is rendered by site.js from a <script type="application/json"
+   data-lab-team-config> block inside [data-lab-team]. See faith-lab.html for an example
+   payload (leader, team[], pills[]) to copy onto other lab pages.
+*/
+.leader-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.leader-col{display:flex;flex-direction:column}
+.leader-head{display:flex;align-items:center;gap:22px;margin-top:26px}
+.leader-photo{width:118px;height:118px;flex:none;border-radius:12px;overflow:hidden;background:var(--violet-pale);border:1px solid var(--hair)}
+.leader-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.leader-name{margin:0;font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.leader-role{margin-top:9px;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
+.leader-bio{margin-top:28px;font-size:17px;line-height:1.64;color:var(--ink-soft)}
+.leader-stats{margin-top:30px;border-top:1px solid var(--hair);display:flex;flex-wrap:wrap}
+.leader-stat{flex:1 1 140px;padding:18px 0}
+.leader-stat-value{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.leader-stat-label{font-size:12.5px;color:var(--warm-gray);margin-top:2px}
+.leader-cta{margin-top:26px;align-self:flex-start;border-radius:9px}
+.leader-cta:hover{background:var(--violet);color:#fff}
+
+.roster-lead{font-size:18px;line-height:1.55;color:var(--ink-soft);margin:26px 0 24px}
+.roster-panel{background:var(--card);border:1px solid var(--hair);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(17,17,17,.04)}
+.roster-row{display:flex;gap:20px;padding:24px;border-bottom:1px solid var(--hair)}
+.roster-photo{width:88px;align-self:stretch;flex:none;border-radius:12px;overflow:hidden;background:var(--violet-pale)}
+.roster-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.roster-name-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.roster-name{font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.roster-role{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
+.roster-bio{margin-top:7px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.roster-footer{padding:22px 24px;background:var(--violet-pale);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.roster-footer-label{font-size:14.5px;font-weight:700;color:var(--ink)}
+.roster-pills{display:flex;flex-wrap:wrap;gap:8px}
+.roster-pill{padding:5px 11px;border-radius:999px;background:var(--white);font-size:12px;font-weight:500;color:var(--ink-soft)}
+
+@media (max-width:860px){
+  .leader-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .leader-head{gap:16px}
+  .leader-photo{width:88px;height:88px}
+  .leader-name{font-size:28px}
+}
+
 /* ---------- pull quote ---------- */
 .pull-quote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.2vw,34px);line-height:1.3;
   color:var(--violet);max-width:22ch;border-left:2px solid var(--violet);padding-left:24px;margin:6px 0}

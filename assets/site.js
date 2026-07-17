@@ -21,6 +21,58 @@
   function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
 
   ready(function(){
+    /* ---- lab leader & team roster (data-driven) ---- */
+    function escHtml(s){
+      return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+    document.querySelectorAll('[data-lab-team]').forEach(function(root){
+      var cfgEl = root.querySelector('script[data-lab-team-config]');
+      if(!cfgEl) return;
+      var cfg;
+      try { cfg = JSON.parse(cfgEl.textContent); } catch(e){ return; }
+      var L = cfg.leader || {};
+      var statsHtml = (L.stats||[]).map(function(s){
+        return '<div class="leader-stat"><div class="leader-stat-value">'+escHtml(s.value)+'</div>'+
+          '<div class="leader-stat-label">'+escHtml(s.label)+'</div></div>';
+      }).join('');
+      var rosterHtml = (cfg.team||[]).map(function(p){
+        return '<div class="roster-row">'+
+          '<div class="roster-photo"><img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
+          '<div><div class="roster-name-row"><span class="roster-name">'+escHtml(p.name)+'</span>'+
+          '<span class="roster-role">'+escHtml(p.role)+'</span></div>'+
+          '<p class="roster-bio">'+escHtml(p.bio)+'</p></div>'+
+          '</div>';
+      }).join('');
+      var pillsHtml = (cfg.pills||[]).map(function(t){ return '<span class="roster-pill">'+escHtml(t)+'</span>'; }).join('');
+      root.innerHTML =
+        '<div class="leader-grid">'+
+          '<div class="leader-col">'+
+            '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The Lab Leader</span>'+
+            '<div class="leader-head">'+
+              '<div class="leader-photo"><img src="'+escHtml(L.photo)+'" alt="'+escHtml(L.name)+'" /></div>'+
+              '<div><h3 class="leader-name">'+escHtml(L.name)+'</h3><div class="leader-role">'+escHtml(L.role)+'</div></div>'+
+            '</div>'+
+            '<p class="leader-bio">'+escHtml(L.bio)+'</p>'+
+            '<div class="leader-stats">'+statsHtml+'</div>'+
+            '<a class="pill pill-outline leader-cta" data-book>'+escHtml(L.ctaText||'Book a conversation')+
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '+
+              'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
+            '</a>'+
+          '</div>'+
+          '<div class="roster-col">'+
+            '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team behind her</span>'+
+            '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
+            '<div class="roster-panel">'+rosterHtml+
+              '<div class="roster-footer"><div class="roster-footer-label">'+
+              escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
+              '<div class="roster-pills">'+pillsHtml+'</div></div>'+
+            '</div>'+
+          '</div>'+
+        '</div>';
+    });
+
     /* ---- wire destinations ---- */
     document.querySelectorAll('[data-book]').forEach(function(el){
       el.setAttribute('href', bookHref);

@@ -10,9 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
-.aliza-grid{display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:start;margin-top:18px}
-@media (max-width:640px){.aliza-grid{grid-template-columns:1fr;justify-items:center;text-align:center}}
-.aliza-bio{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:62ch}
 .intro-statement{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1.2;color:var(--ink);margin-bottom:22px;max-width:18ch}
 </style>
 </head>
@@ -163,33 +160,48 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT ALIZA ===== -->
-  <section class="section section--mid reveal" aria-label="About Aliza">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />About Aliza</span>
-    <div class="aliza-grid">
-      <img class="headshot-circle" src="assets/aliza-goodman.jpg" alt="Aliza Goodman" width="170" height="170" />
-      <div>
-        <h3 style="font-size:30px">Aliza Goodman</h3>
-        <p class="aliza-bio">Aliza Goodman brings over 20 years of experience driving innovation in Jewish and Israel education. For 16 years, she was a senior leader at The iCenter for Israel Education, where she designed, built, and ran their professional development portfolio, including iCON and Conflicts of Interest, two of the field's most recognized programs. She holds an MBA in Social Policy and Management and an MA in Jewish Professional Leadership from Brandeis University.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== THE TEAM ===== -->
-  <section class="section section--mid reveal" aria-label="The team">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team</span>
-    <p class="lead" style="max-width:64ch">Aliza brings Faith Lab's practice expertise, but she's backed by the full Optimistic Labs team, a trusted network of fractional executives and specialists across strategy, technology, content, and community operations.</p>
-    <div class="team-row" style="grid-template-columns:repeat(2,minmax(0,300px));justify-content:center;max-width:700px;margin-left:auto;margin-right:auto">
-      <div class="team-member">
-        <img class="team-photo" src="assets/seth-cohen.jpg" alt="Seth Cohen" width="124" height="124" />
-        <h3>Seth Cohen</h3><div class="team-role">Co-Founder</div>
-        <p>25+ years across media, philanthropy, and civic leadership, most recently Chief Impact Officer at Forbes and founder of the Forbes Impact Lab, and before that a Senior Director at the Charles and Lynn Schusterman Family Philanthropies.</p>
-      </div>
-      <div class="team-member">
-        <img class="team-photo" src="assets/liz-russell.jpg" alt="Liz Russell" width="124" height="124" />
-        <h3>Liz Russell</h3><div class="team-role">Co-Founder</div>
-        <p>Specializes in turning complexity into clear, scalable systems. Most recently VP of Customer Success at Forerunner, and earlier managed FEMA and HUD disaster-recovery initiatives overseeing more than $2.6 billion in federal funding.</p>
-      </div>
+  <!-- ===== LAB LEADER & TEAM ===== -->
+  <section class="section reveal" aria-label="Lab Leader and team">
+    <div data-lab-team>
+      <script type="application/json" data-lab-team-config>
+      {
+        "leader": {
+          "name": "Aliza Goodman",
+          "role": "Lab Leader — Faith",
+          "photo": "assets/aliza-goodman.jpg",
+          "bio": "Aliza brings over 20 years driving innovation in Jewish and Israel education. For 16 years she was a senior leader at The iCenter for Israel Education, where she designed, built, and ran their professional development portfolio — including iCON and Conflicts of Interest, two of the field's most recognized programs.",
+          "stats": [
+            { "value": "20+", "label": "years in the field" },
+            { "value": "16 yrs", "label": "senior leader, The iCenter" },
+            { "value": "MBA · MA", "label": "Brandeis University" }
+          ],
+          "ctaText": "Book a conversation with Aliza"
+        },
+        "rosterLead": "Aliza brings Faith Lab's practice expertise — but she's backed by the full Optimistic Labs team.",
+        "team": [
+          {
+            "name": "Seth Cohen",
+            "role": "Co-Founder",
+            "photo": "assets/seth-cohen.jpg",
+            "bio": "25+ years across media, philanthropy, and civic leadership — most recently Chief Impact Officer at Forbes and founder of the Forbes Impact Lab."
+          },
+          {
+            "name": "Liz Russell",
+            "role": "Co-Founder",
+            "photo": "assets/liz-russell.jpg",
+            "bio": "Turns complexity into clear, scalable systems. Most recently VP of Customer Success at Forerunner; earlier oversaw $2.6B+ in federal disaster-recovery funding."
+          },
+          {
+            "name": "Lauren Hall, PhD",
+            "role": "Senior Advisor",
+            "photo": "assets/lauren-hall.jpg",
+            "bio": "Political theorist and Associate Dean of Academic Affairs at RIT, and co-founder of the Excelsior Center for Civic Innovation."
+          }
+        ],
+        "networkLabel": "+ a network of fractional executives and SMEs",
+        "pills": ["Tech", "Community Ops", "AI", "Marketing", "Design", "Strategy"]
+      }
+      </script>
     </div>
   </section>
 
