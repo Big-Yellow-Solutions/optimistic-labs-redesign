@@ -49,7 +49,7 @@
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
-            '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The Lab Leader</span>'+
+            '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />'+escHtml(cfg.leaderKicker||'The Lab Leader')+'</span>'+
             '<div class="leader-head">'+
               '<div class="leader-photo"><img src="'+escHtml(L.photo)+'" alt="'+escHtml(L.name)+'" /></div>'+
               '<div><h3 class="leader-name">'+escHtml(L.name)+'</h3><div class="leader-role">'+escHtml(L.role)+'</div></div>'+
@@ -62,7 +62,6 @@
             '</a>'+
           '</div>'+
           '<div class="roster-col">'+
-            '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team behind her</span>'+
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
             '<div class="roster-panel">'+rosterHtml+
               '<div class="roster-footer"><div class="roster-footer-label">'+
