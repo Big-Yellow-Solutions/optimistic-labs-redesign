@@ -224,7 +224,8 @@ p{max-width:64ch}
 .wyg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .wyg-card{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:28px;
   display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(17,17,17,.04)}
-.wyg-icon{width:30px;height:30px;object-fit:contain}
+.wyg-icon{width:30px;height:30px;object-fit:contain;
+  filter:brightness(0) saturate(100%) invert(58%) sepia(21%) saturate(1180%) hue-rotate(213deg) brightness(92%) contrast(89%)}
 .wyg-card h3{font-size:19px;line-height:1.2;letter-spacing:-.01em}
 .wyg-card p{font-size:14px;line-height:1.55;color:var(--ink-soft)}
 
