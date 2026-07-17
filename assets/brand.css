@@ -215,8 +215,28 @@ p{max-width:64ch}
 .mosaic-network{background:var(--violet-pale);border:1px solid var(--hair);border-radius:16px;padding:24px;
   display:flex;flex-direction:column;justify-content:center;gap:12px;flex:1}
 
+/* ---------- what-you-get card grid ----------
+   Data-driven: markup is rendered by site.js from a <script type="application/json"
+   data-wyg-config> block inside [data-wyg]. See become-a-lab-leader.html for an
+   example payload (kicker, heading, intro, items[]).
+*/
+.wyg-header{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:end;margin-bottom:44px}
+.wyg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.wyg-card{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:28px;
+  display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(17,17,17,.04)}
+.wyg-icon{width:30px;height:30px;object-fit:contain}
+.wyg-card h3{font-size:19px;line-height:1.2;letter-spacing:-.01em}
+.wyg-card p{font-size:14px;line-height:1.55;color:var(--ink-soft)}
+
 @media (max-width:860px){
   .leader-grid{grid-template-columns:1fr}
+}
+@media (max-width:1000px){
+  .wyg-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .wyg-header{grid-template-columns:1fr;align-items:start;gap:20px}
+  .wyg-grid{grid-template-columns:1fr}
 }
 @media (max-width:600px){
   .mosaic-grid{grid-template-columns:1fr}

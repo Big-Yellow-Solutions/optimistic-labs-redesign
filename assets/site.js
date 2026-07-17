@@ -78,6 +78,28 @@
         '</div>';
     });
 
+    /* ---- what-you-get card grid (data-driven) ---- */
+    document.querySelectorAll('[data-wyg]').forEach(function(root){
+      var cfgEl = root.querySelector('script[data-wyg-config]');
+      if(!cfgEl) return;
+      var cfg;
+      try { cfg = JSON.parse(cfgEl.textContent); } catch(e){ return; }
+      var cardsHtml = (cfg.items||[]).map(function(it){
+        return '<div class="wyg-card">'+
+          '<img class="wyg-icon" src="'+escHtml(it.icon)+'" alt="" />'+
+          '<h3>'+escHtml(it.title)+'</h3>'+
+          '<p>'+escHtml(it.body)+'</p>'+
+        '</div>';
+      }).join('');
+      root.innerHTML =
+        '<div class="wyg-header">'+
+          '<div><span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />'+escHtml(cfg.kicker||'What you get')+'</span>'+
+          '<h2 class="h-sec" style="letter-spacing:-0.035em;line-height:1.02;margin:0">'+escHtml(cfg.heading||'')+'</h2></div>'+
+          '<p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-soft)">'+escHtml(cfg.intro||'')+'</p>'+
+        '</div>'+
+        '<div class="wyg-grid">'+cardsHtml+'</div>';
+    });
+
     /* ---- wire destinations ---- */
     document.querySelectorAll('[data-book]').forEach(function(el){
       el.setAttribute('href', bookHref);
