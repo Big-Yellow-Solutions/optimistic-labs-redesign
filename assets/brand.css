@@ -17,10 +17,10 @@
   --display:clamp(44px,7vw,82px); --h-sec:clamp(32px,4.6vw,52px); --h3:clamp(21px,2.2vw,27px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:calc(var(--nav-h) + 16px)}
+html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:calc(var(--nav-h) + 16px)}
 body{
   background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;
 }
 ::selection{background:var(--violet-pale);color:var(--ink)}
 a{color:inherit;text-decoration:none}
@@ -139,6 +139,35 @@ p{max-width:64ch}
 .grid-2{grid-template-columns:repeat(2,1fr)}
 .grid-3{grid-template-columns:repeat(3,1fr)}
 .card .glyph{margin-bottom:16px}
+
+/* ---------- services card grid (offerings) ---------- */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--card);border:1px solid var(--hair);border-radius:20px;overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .5s var(--ease-signal),box-shadow .5s var(--ease-signal)}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 28px 54px -18px rgba(61,47,212,.35),0 10px 24px rgba(17,17,17,.10)}
+.svc-card-head{background:var(--violet-pale);padding:34px 30px 30px;display:flex;flex-direction:column;gap:16px;min-height:190px}
+.svc-index{font-family:var(--serif);font-style:italic;font-weight:500;font-size:34px;line-height:1;color:var(--violet-light)}
+.svc-card-head h3{font-size:clamp(22px,1.9vw,28px);line-height:1.12}
+.svc-card-body{padding:26px 30px 30px;display:flex;flex-direction:column;flex:1}
+.svc-card-body p{font-size:16px;line-height:1.65;color:var(--ink-soft)}
+
+/* ---------- principles (sticky-intro + numbered rows) ----------
+   Props, set as CSS custom properties on .principles-grid:
+     --principles-sticky-pos : "sticky" | "static"  (default sticky)
+     --principles-sticky-top : sticky offset        (default 96px)
+     --principles-divider    : row border-top value (default 1px solid var(--hair))
+   e.g. <div class="principles-grid" style="--principles-sticky-pos:static;--principles-divider:1px solid transparent">
+*/
+.section--principles{padding:104px 32px}
+.principles-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,400px) 1fr;
+  gap:clamp(40px,6vw,104px);align-items:start}
+.principles-intro{position:var(--principles-sticky-pos,sticky);top:var(--principles-sticky-top,96px)}
+.principle-row{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,2.4vw,36px);padding:clamp(30px,3.4vw,44px) 0;
+  border-top:var(--principles-divider,1px solid var(--hair))}
+.principle-index{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(30px,3vw,42px);
+  line-height:1;color:var(--violet-light)}
+.principle-row h3{font-size:clamp(21px,2vw,27px);line-height:1.14;margin:0 0 12px}
+.principle-row p{font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:60ch;margin:0}
 
 /* ---------- pull quote ---------- */
 .pull-quote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.2vw,34px);line-height:1.3;
@@ -315,12 +344,17 @@ p{max-width:64ch}
   .nav-links{display:none}
   .burger{display:flex}
   .grid-2,.grid-3{grid-template-columns:1fr}
+  .svc{grid-template-columns:repeat(2,1fr)}
+  .principles-grid{grid-template-columns:1fr}
+  .principles-intro{position:static;top:auto}
   .section{padding:64px 22px}
+  .section--principles{padding:64px 22px}
   .hero{padding:72px 22px 64px}
   .footer .inner{flex-direction:column;gap:24px}
 }
 @media (max-width:560px){
   .display{font-size:40px}
+  .svc{grid-template-columns:1fr}
   .cta-row .pill{flex:1 1 100%;justify-content:center}
   .field-row{flex-direction:column}
   .news-form{flex-direction:column}
