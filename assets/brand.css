@@ -293,7 +293,7 @@ p{max-width:64ch}
 .hero{position:relative;background:var(--violet-deep);color:#fff;overflow:hidden;
   padding:96px 32px 88px}
 .hero .inner2{position:relative;z-index:2;max-width:1400px;margin:0 auto;display:grid;
-  grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;text-align:left}
+  grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;text-align:left}
 .hero .hero-copy{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .hero h1{color:#fff;font-size:clamp(36px,4.6vw,58px)}
 .hero .lead{color:rgba(255,255,255,.82);max-width:520px;margin:0}
