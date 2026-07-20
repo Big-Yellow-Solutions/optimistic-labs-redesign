@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
+.hero-light .inner2{align-items:stretch}
+.hero-light .people-photo{aspect-ratio:auto}
+@media (max-width:820px){.hero-light .people-photo{aspect-ratio:5/4}}
 #proof{max-width:1400px}
 #team{max-width:1400px}
 .labs-carousel{margin-top:18px}
@@ -88,12 +91,8 @@
         <p class="lead">Optimistic Labs is a platform for practitioners who are done choosing between independence and infrastructure. As a Lab Leader, you bring the expertise, the vision, and the relationships. We bring everything else.</p>
         <div class="cta-row"><a class="pill pill-primary" data-book>Let's talk about your Lab</a></div>
       </div>
-      <!-- TODO Liz: replace with a real photo of people. -->
-      <div class="people-photo" aria-label="Photo placeholder">
-        <div class="ph">
-          <svg width="40" height="40" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="6" fill="#7C6DF5"/><circle cx="17" cy="17" r="11" stroke="#7C6DF5" stroke-opacity=".5"/><circle cx="17" cy="17" r="15.5" stroke="#7C6DF5" stroke-opacity=".25"/></svg>
-          Photo of people (to come)
-        </div>
+      <div class="people-photo">
+        <img src="assets/leader-hero.jpg" alt="A smiling practitioner working at a laptop in a bright office" />
       </div>
     </div>
   </section>
