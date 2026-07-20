@@ -242,10 +242,10 @@ p{max-width:64ch}
 @media (max-width:600px){
   .mosaic-grid{grid-template-columns:1fr}
   .mosaic-col{display:contents}
-  .mosaic-col:nth-child(1) .mosaic-card:first-child{order:1}
-  .mosaic-col:nth-child(2) .mosaic-card{order:2}
-  .mosaic-col:nth-child(1) .mosaic-card:last-child{order:3}
-  .mosaic-network{order:99}
+  .mosaic-card[data-idx="0"]{order:1}
+  .mosaic-card[data-idx="1"]{order:2}
+  .mosaic-card[data-idx="2"]{order:3}
+  .mosaic-network{order:4}
 }
 @media (max-width:480px){
   .leader-head{gap:16px}

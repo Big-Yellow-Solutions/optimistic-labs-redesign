@@ -37,9 +37,9 @@
         return '<div class="leader-stat"><div class="leader-stat-value">'+escHtml(s.value)+'</div>'+
           '<div class="leader-stat-label">'+escHtml(s.label)+'</div></div>';
       }).join('');
-      function personCard(p){
+      function personCard(p,idx){
         if(!p) return '';
-        return '<div class="mosaic-card">'+
+        return '<div class="mosaic-card" data-idx="'+idx+'">'+
           '<div class="mosaic-photo"><img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
           '<div class="mosaic-card-body">'+
             '<span class="roster-name">'+escHtml(p.name)+'</span>'+
@@ -71,8 +71,8 @@
           '<div class="roster-col">'+
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
             '<div class="mosaic-grid">'+
-              '<div class="mosaic-col">'+personCard(team[0])+personCard(team[2])+'</div>'+
-              '<div class="mosaic-col">'+personCard(team[1])+networkHtml+'</div>'+
+              '<div class="mosaic-col">'+personCard(team[0],0)+personCard(team[2],2)+'</div>'+
+              '<div class="mosaic-col">'+personCard(team[1],1)+networkHtml+'</div>'+
             '</div>'+
           '</div>'+
         '</div>';
