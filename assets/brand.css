@@ -150,6 +150,7 @@ p{max-width:64ch}
 .svc-card-head h3{font-size:clamp(22px,1.9vw,28px);line-height:1.12}
 .svc-card-body{padding:26px 30px 30px;display:flex;flex-direction:column;flex:1}
 .svc-card-body p{font-size:16px;line-height:1.65;color:var(--ink-soft)}
+.svc--4{grid-template-columns:repeat(2,1fr)}
 
 /* ---------- principles (sticky-intro + numbered rows) ----------
    Props, set as CSS custom properties on .principles-grid:
@@ -242,10 +243,10 @@ p{max-width:64ch}
 @media (max-width:600px){
   .mosaic-grid{grid-template-columns:1fr}
   .mosaic-col{display:contents}
-  .mosaic-col:nth-child(1) .mosaic-card:first-child{order:1}
-  .mosaic-col:nth-child(2) .mosaic-card{order:2}
-  .mosaic-col:nth-child(1) .mosaic-card:last-child{order:3}
-  .mosaic-network{order:99}
+  .mosaic-card[data-idx="0"]{order:1}
+  .mosaic-card[data-idx="1"]{order:2}
+  .mosaic-card[data-idx="2"]{order:3}
+  .mosaic-network{order:4}
 }
 @media (max-width:480px){
   .leader-head{gap:16px}

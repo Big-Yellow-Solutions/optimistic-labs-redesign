@@ -10,14 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
-.svc{display:flex;flex-direction:column;gap:18px;margin-top:18px}
-.svc .card{display:flex;flex-direction:column;gap:12px}
-.svc .card h3{margin-bottom:0}
-.svc .card p{font-size:15.5px;line-height:1.62;color:var(--ink-soft)}
 .intro-statement{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1.2;color:var(--ink);margin-bottom:22px;max-width:22ch}
-.who-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:64ch}
-.who-list li{position:relative;padding-left:26px;font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
-.who-list li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:#7C6DF5}
+.who-list{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid var(--hair);display:grid;grid-template-columns:repeat(2,1fr);column-gap:32px}
+.who-list li{position:relative;padding:22px 0 22px 26px;border-bottom:1px solid var(--hair);font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.1vw,25px);line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+.who-list li::before{content:"";position:absolute;left:0;top:calc(22px + .55em);width:8px;height:8px;border-radius:50%;background:var(--violet)}
+@media (max-width:860px){.who-list{grid-template-columns:1fr}}
 .svc-note{font-style:italic;font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:14px}
 </style>
 </head>
@@ -92,63 +89,103 @@
   <section class="section section--mid reveal" aria-label="Who we work with">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who we work with</span>
     <h2 class="h-sec">Built for the institutions shaping <em class="em-italic">public trust</em>.</h2>
-    <p class="lead" style="max-width:64ch">Policy Lab works with a diverse array of public-facing institutions and influence ecosystems, including:</p>
     <ul class="who-list">
-      <li>National and regional associations navigating generational change, member trust, and evolving civic mandates</li>
-      <li>Civic and policy nonprofits advancing new ideas or field-wide frameworks for social, economic, or democratic innovation</li>
-      <li>Corporate public affairs and social responsibility teams aligning civic strategy with internal values and public-facing messaging</li>
-      <li>Think tanks and educational centers building bridges between research, community experience, and policy pathways</li>
-      <li>Civic funders and democracy advocates funding narrative change, civic innovation, or infrastructure for democratic resilience</li>
+      <li>National &amp; regional associations</li>
+      <li>Civic &amp; policy nonprofits</li>
+      <li>Corporate public affairs teams</li>
+      <li>Think tanks &amp; educational centers</li>
+      <li>Civic funders &amp; democracy advocates</li>
+      <li>Coalitions</li>
+      <li>Mayors' offices</li>
+      <li>Cultural institutions</li>
+      <li>Cross-sector intermediaries</li>
+      <li>&amp; more</li>
     </ul>
-    <p style="font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:18px">We also work with coalitions, mayors' offices, cultural institutions, and cross-sector intermediaries looking to refresh their civic engagement strategy.</p>
   </section>
 
   <!-- ===== WHAT WE DO ===== -->
-  <section class="section section--mid reveal" aria-label="What we do">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What we do</span>
-    <h2 class="h-sec">Four ways we work with you.</h2>
+  <section class="section reveal" aria-label="What we do">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />What We Do</span>
+    <h2 class="h-sec" style="font-size:clamp(34px,5vw,58px);line-height:1.05;letter-spacing:-0.02em;max-width:16ch;margin:0 0 24px">Four ways we work with <em class="em-italic">you</em>.</h2>
     <p class="svc-note">Policy Lab engagements are structured as multi-month partnerships: we serve as fractional experts and advisors, balancing deep listening with strategic precision to clarify voice, grow community, and mobilize alignment across your stakeholders.</p>
-    <div class="svc">
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Narrative Strategy &amp; Public Positioning</h3><span class="chip">Multi-month partnership</span></div>
-        <p>We help organizations develop clear, emotionally intelligent messaging that speaks across stakeholder segments and political divides, including message platform development, values framing, and strategic communications support for campaigns, testimony, and institutional voice.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Stakeholder Engagement &amp; Community Activation</h3><span class="chip">Multi-month partnership</span></div>
-        <p>We design experiences, both digital and in-person, that bring together unusual allies and elevate public participation: salons, convenings, public engagement strategies, and co-learning spaces between government, private, and community sectors.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Coalition &amp; Partnership Architecture</h3><span class="chip">Multi-month partnership</span></div>
-        <p>We support the development of aligned initiatives across public, nonprofit, and corporate sectors, building or refreshing multi-organization coalitions, national initiatives, and cross-functional working groups through facilitation, shared language tools, and ecosystem design.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h3>Field Strategy &amp; Civic Infrastructure Design</h3><span class="chip">Multi-month partnership</span></div>
-        <p>We advise civic funders, associations, and field leaders on how to shape or scale long-term civic infrastructure, including democracy movement analysis, trust-based governance strategy, and public narrative campaigns aligned with cultural, political, and geographic context.</p>
-      </div>
+    <div class="svc svc--4" style="margin-top:32px">
+      <article class="svc-card">
+        <div class="svc-card-head">
+          <span class="svc-index">01</span>
+          <h3>Narrative Strategy &amp; Public Positioning</h3>
+        </div>
+        <div class="svc-card-body">
+          <p>We help organizations develop clear, emotionally intelligent messaging that speaks across stakeholder segments and political divides, including message platform development, values framing, and strategic communications support for campaigns, testimony, and institutional voice.</p>
+        </div>
+      </article>
+      <article class="svc-card">
+        <div class="svc-card-head">
+          <span class="svc-index">02</span>
+          <h3>Stakeholder Engagement &amp; Community Activation</h3>
+        </div>
+        <div class="svc-card-body">
+          <p>We design experiences, both digital and in-person, that bring together unusual allies and elevate public participation: salons, convenings, public engagement strategies, and co-learning spaces between government, private, and community sectors.</p>
+        </div>
+      </article>
+      <article class="svc-card">
+        <div class="svc-card-head">
+          <span class="svc-index">03</span>
+          <h3>Coalition &amp; Partnership Architecture</h3>
+        </div>
+        <div class="svc-card-body">
+          <p>We support the development of aligned initiatives across public, nonprofit, and corporate sectors, building or refreshing multi-organization coalitions, national initiatives, and cross-functional working groups through facilitation, shared language tools, and ecosystem design.</p>
+        </div>
+      </article>
+      <article class="svc-card">
+        <div class="svc-card-head">
+          <span class="svc-index">04</span>
+          <h3>Field Strategy &amp; Civic Infrastructure Design</h3>
+        </div>
+        <div class="svc-card-body">
+          <p>We advise civic funders, associations, and field leaders on how to shape or scale long-term civic infrastructure, including democracy movement analysis, trust-based governance strategy, and public narrative campaigns aligned with cultural, political, and geographic context.</p>
+        </div>
+      </article>
     </div>
     <p class="svc-note">All Policy Lab work is grounded in respect for diverse perspectives, attention to civic nuance, and a commitment to designing systems that invite, not dictate, public imagination.</p>
   </section>
 
-  <!-- ===== THE TEAM ===== -->
-  <section class="section section--mid reveal" aria-label="The team">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The team</span>
-    <p class="lead" style="max-width:64ch">Policy Lab is led directly by Optimistic Labs' co-founders, backed by the full OL team: a trusted network of fractional executives and specialists across strategy, technology, content, and community operations.</p>
-    <div class="team-row" style="grid-template-columns:repeat(3,minmax(0,300px));justify-content:center;max-width:1000px;margin-left:auto;margin-right:auto">
-      <div class="team-member">
-        <img class="team-photo" src="assets/seth-cohen.jpg" alt="Seth Cohen" width="124" height="124" />
-        <h3>Seth Cohen</h3><div class="team-role">Co-Founder</div>
-        <p>25+ years across media, philanthropy, and civic leadership, most recently Chief Impact Officer at Forbes and founder of the Forbes Impact Lab, and before that a Senior Director at the Charles and Lynn Schusterman Family Philanthropies.</p>
-      </div>
-      <div class="team-member">
-        <img class="team-photo" src="assets/liz-russell.jpg" alt="Liz Russell" width="124" height="124" />
-        <h3>Liz Russell</h3><div class="team-role">Co-Founder</div>
-        <p>14+ years building high-performing teams and scalable systems across SaaS, GovTech, and public-sector consulting. Worked directly with state and local governments on tech and disaster-recovery initiatives.</p>
-      </div>
-      <div class="team-member">
-        <img class="team-photo" src="assets/lauren-hall.jpg" alt="Lauren Hall, PhD" width="124" height="124" />
-        <h3>Lauren Hall, PhD</h3><div class="team-role">Strategic Advisor</div>
-        <p>Political theorist and Associate Dean of Academic Affairs at Rochester Institute of Technology and a Distinguished Fellow at the Institute for Humane Studies, and previously served as a Pluralism and Civil Exchange Fellow with the Mercatus Center.</p>
-      </div>
+  <!-- ===== LAB LEADER & TEAM ===== -->
+  <section class="section reveal" aria-label="Lab Leader and team">
+    <div data-lab-team>
+      <script type="application/json" data-lab-team-config>
+      {
+        "leaderKicker": "The Policy Lab Team",
+        "leader": {
+          "name": "Seth Cohen",
+          "role": "Lab Leader — Policy",
+          "photo": "assets/seth-cohen.jpg",
+          "bio": "Seth believes there is tremendous power at the intersection of storytelling, community, and action. He brings more than 25 years across media, philanthropy, and civic leadership — most recently as Chief Impact Officer at Forbes, where he founded the Forbes Impact Lab, and before that at the Schusterman Family Philanthropies.",
+          "stats": [
+            { "value": "25+", "label": "years in media & philanthropy" },
+            { "value": "Forbes", "label": "Chief Impact Officer" },
+            { "value": "Schusterman", "label": "Senior Director, Family Philanthropies" }
+          ],
+          "ctaText": "Book a conversation with Seth"
+        },
+        "rosterLead": "Seth brings Policy Lab's practice expertise — but he's backed by the full Optimistic Labs team.",
+        "team": [
+          {
+            "name": "Liz Russell",
+            "role": "Co-Founder",
+            "photo": "assets/liz-russell.jpg",
+            "bio": "14+ years building high-performing teams and scalable systems across SaaS, GovTech, and public-sector consulting. Worked directly with state and local governments on tech and disaster-recovery initiatives."
+          },
+          {
+            "name": "Lauren Hall, PhD",
+            "role": "Strategic Advisor",
+            "photo": "assets/lauren-hall.jpg",
+            "bio": "Political theorist and Associate Dean of Academic Affairs at Rochester Institute of Technology and a Distinguished Fellow at the Institute for Humane Studies, and previously served as a Pluralism and Civil Exchange Fellow with the Mercatus Center."
+          }
+        ],
+        "networkLabel": "+ a network of fractional executives and SMEs",
+        "pills": ["Tech", "Community Ops", "AI", "Marketing", "Design", "Strategy"]
+      }
+      </script>
     </div>
   </section>
 
