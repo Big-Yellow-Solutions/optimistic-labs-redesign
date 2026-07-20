@@ -81,6 +81,7 @@
 .lab-node{cursor:pointer}
 .lab-node .node-inner{transition:transform .3s var(--ease-ripple);transform-origin:0 0}
 .lab-node .halo{fill:none;stroke:#fff;opacity:0;transition:opacity .3s}
+.lab-node .dot{filter:drop-shadow(0 3px 5px rgba(0,0,0,.45))}
 .lab-node:hover .halo,.lab-node:focus .halo{opacity:.5}
 .lab-node:hover .node-inner,.lab-node:focus .node-inner{transform:scale(1.25)}
 .lab-node:focus{outline:none}
@@ -275,15 +276,6 @@
               <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
             </g>
           </g>
-          <!-- Customer Success (lab leader needed) — ring 0 -->
-          <g class="lab-node" data-id="customer-success" data-ring="0" data-phase="135" data-safe-hw="83" tabindex="0" role="button" aria-label="Customer Success Lab: lab leader needed. Learn more.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Customer Success Lab</text>
-              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
-            </g>
-          </g>
           <!-- Policy (live) — ring 1 -->
           <g class="lab-node" data-id="policy" data-ring="1" data-phase="0" data-safe-hw="45" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
             <g class="node-inner">
@@ -314,7 +306,7 @@
             </g>
           </g>
           <!-- Sports (lab leader needed) — ring 2 -->
-          <g class="lab-node" data-id="sports" data-ring="2" data-phase="60" data-safe-hw="76" tabindex="0" role="button" aria-label="Sports Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="sports" data-ring="2" data-phase="45" data-safe-hw="76" tabindex="0" role="button" aria-label="Sports Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -323,7 +315,7 @@
             </g>
           </g>
           <!-- Workforce (lab leader needed) — ring 2 -->
-          <g class="lab-node" data-id="workforce" data-ring="2" data-phase="180" data-safe-hw="76" tabindex="0" role="button" aria-label="Workforce Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="workforce" data-ring="2" data-phase="135" data-safe-hw="76" tabindex="0" role="button" aria-label="Workforce Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -332,11 +324,20 @@
             </g>
           </g>
           <!-- Food (lab leader needed) — ring 2 -->
-          <g class="lab-node" data-id="food" data-ring="2" data-phase="300" data-safe-hw="76" tabindex="0" role="button" aria-label="Food Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="food" data-ring="2" data-phase="225" data-safe-hw="76" tabindex="0" role="button" aria-label="Food Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
               <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Food Lab</text>
+              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
+            </g>
+          </g>
+          <!-- Customer Success (lab leader needed) — ring 2 -->
+          <g class="lab-node" data-id="customer-success" data-ring="2" data-phase="315" data-safe-hw="83" tabindex="0" role="button" aria-label="Customer Success Lab: lab leader needed. Learn more.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Customer Success Lab</text>
               <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
             </g>
           </g>
