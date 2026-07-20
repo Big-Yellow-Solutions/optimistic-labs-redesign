@@ -259,12 +259,13 @@
         </div>
         <div class="map-wrap">
         <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Policy, Philanthropy, Sports, Customer Success, AI, Workforce, and Food, arranged around the Optimistic Labs mark in orbiting rings. Activate a lab to learn more.">
-          <ellipse class="map-ring" cx="300" cy="300" rx="85" ry="81.7" transform="rotate(-15 300 300)" stroke-width="1" opacity=".30"/>
-          <ellipse class="map-ring" cx="300" cy="300" rx="140" ry="125.8" transform="rotate(10 300 300)" stroke-width="1" opacity=".18"/>
-          <ellipse class="map-ring" cx="300" cy="300" rx="185" ry="156.9" transform="rotate(-25 300 300)" stroke-width="1" opacity=".10"/>
+          <circle class="map-ring" cx="300" cy="300" r="70" stroke-width="1" opacity=".30"/>
+          <circle class="map-ring" cx="300" cy="300" r="140" stroke-width="1" opacity=".18"/>
+          <circle class="map-ring" cx="300" cy="300" r="210" stroke-width="1" opacity=".10"/>
           <image href="assets/ol-mark-white.svg" x="266" y="265" width="68" height="70"/>
-          <!-- Nodes are positioned by JS: each orbits its own tilted ring at its own speed (like a solar system),
-               scaling up as it swings toward the viewer, pausing on hover/focus or while the panel is open -->
+          <!-- Nodes are positioned by JS: three evenly-spaced concentric rings, each orbiting at
+               its own speed (the middle ring runs counter to the inner and outer ones), pausing
+               on hover/focus or while the panel is open -->
           <!-- Faith (live) — ring 0 -->
           <g class="lab-node" data-id="faith" data-ring="0" data-phase="-45" data-safe-hw="41" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
             <g class="node-inner">
@@ -546,18 +547,16 @@
   backdrop.addEventListener('click',closePanel);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&panel.classList.contains('open')) closePanel(); });
 
-  /* ---- orbital rotation: like a solar system — each ring has its own tilt and speed, and
-         nodes scale up as their orbit swings them toward the viewer. Paused on hover/focus or
-         while the panel is open. ---- */
+  /* ---- orbital rotation: three evenly-spaced concentric rings, each orbiting at its own
+         speed — the middle ring runs opposite the inner and outer ones. Paused on hover/focus
+         or while the panel is open. ---- */
   (function(){
     var CX=300, CY=300;
     var DEG=Math.PI/180;
-    /* Ring radii/tilts are spaced so each ring's closest approach to the center clears the
-       ring inside it by a wide margin — the rings themselves can never cross. */
     var RINGS=[
-      {r:85, tilt:16*DEG, rot:-15*DEG, speed:9},
-      {r:140, tilt:26*DEG, rot: 10*DEG, speed:-6},
-      {r:185, tilt:32*DEG, rot:-25*DEG, speed:4}
+      {r:70, speed:9},
+      {r:140, speed:-6},
+      {r:210, speed:4}
     ];
     var svg=document.getElementById('labMap');
     var nodes=Array.prototype.slice.call(document.querySelectorAll('#labMap .lab-node'));
@@ -571,24 +570,35 @@
     nodes.forEach(function(n){ n._safeHW=parseFloat(n.getAttribute('data-safe-hw'))||60; });
     var offsets=RINGS.map(function(){ return 0; }), last=null, hovering=false;
     var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    /* A node's distance from the mark is fixed entirely by its own ring's r/tilt/rot — never
-       by its angle. So crowding is resolved by nudging *angle only* (sliding a node along its
-       own ring), which can never push a node further out than that ring already reaches.
-       That keeps every label inside the canvas for free, with no separate bounds-clamp needed. */
+    /* A node's distance from the mark is fixed entirely by its own ring's radius — never by its
+       angle. So crowding is resolved by nudging *angle only* (sliding a node along its own
+       ring), which can never push a node further out than that ring already reaches. */
     function posAt(item){
       var t=item.deg*DEG;
-      var x3=item.ring.r*Math.cos(t), y3=item.ring.r*Math.sin(t)*Math.cos(item.ring.tilt);
-      var cr=Math.cos(item.ring.rot), sr=Math.sin(item.ring.rot);
-      return {x:x3*cr-y3*sr, y:x3*sr+y3*cr, z:Math.sin(t)};
+      return {x:item.ring.r*Math.cos(t), y:item.ring.r*Math.sin(t)};
     }
     function tangentAt(item){
       var t=item.deg*DEG;
-      var dx3=-item.ring.r*Math.sin(t), dy3=item.ring.r*Math.cos(t)*Math.cos(item.ring.tilt);
-      var cr=Math.cos(item.ring.rot), sr=Math.sin(item.ring.rot);
-      return {x:dx3*cr-dy3*sr, y:dx3*sr+dy3*cr};
+      return {x:-item.ring.r*Math.sin(t), y:item.ring.r*Math.cos(t)};
     }
-    function resolveCrowding(items){
-      for(var iter=0; iter<300; iter++){
+    function worstSlack(items){
+      var worst=Infinity;
+      for(var i=0;i<items.length;i++){
+        for(var j=i+1;j<items.length;j++){
+          var a=items[i], b=items[j];
+          var pa=posAt(a), pb=posAt(b);
+          var dx=pb.x-pa.x, dy=pb.y-pa.y;
+          var rx=a.n._safeHW+b.n._safeHW, ry=2*SAFE_HH;
+          var nx=dx/rx, ny=dy/ry;
+          var ndist=Math.sqrt(nx*nx+ny*ny);
+          var slack=(ndist-1)*Math.min(rx,ry);
+          if(slack<worst) worst=slack;
+        }
+      }
+      return worst;
+    }
+    function gradientResolve(items, iters){
+      for(var iter=0; iter<iters; iter++){
         for(var i=0;i<items.length;i++){
           for(var j=i+1;j<items.length;j++){
             var a=items[i], b=items[j];
@@ -614,6 +624,24 @@
         }
       }
     }
+    /* On perfect concentric circles two crowded nodes can occasionally settle into a locally
+       stable (but not fully resolved) tangle that small nudges alone can't escape. When that
+       happens, try a handful of randomized restarts from nearby angles and keep whichever
+       comes closest to fully clearing everyone — this always finds a clean arrangement in
+       practice, it just isn't reachable by pure gradient descent from every starting point. */
+    function resolveCrowding(items){
+      gradientResolve(items, 60);
+      var best=worstSlack(items);
+      if(best>=-0.5) return;
+      var bestDegs=items.map(function(it){ return it.deg; });
+      for(var restart=0; restart<10; restart++){
+        var trial=items.map(function(it,i){ return {n:it.n, ring:it.ring, deg:bestDegs[i]+(Math.random()-0.5)*160}; });
+        gradientResolve(trial, 60);
+        var score=worstSlack(trial);
+        if(score>best){ best=score; bestDegs=trial.map(function(it){ return it.deg; }); }
+      }
+      items.forEach(function(it,i){ it.deg=bestDegs[i]; });
+    }
     function place(){
       var items=nodes.map(function(n){
         var ring=RINGS[parseInt(n.getAttribute('data-ring'),10)||0];
@@ -621,16 +649,9 @@
         return {n:n, ring:ring, deg:deg};
       });
       resolveCrowding(items);
-      var placed=items.map(function(item){
+      items.forEach(function(item){
         var p=posAt(item);
-        return {n:item.n, x:p.x, y:p.y, z:p.z};
-      });
-      placed.sort(function(a,b){ return a.z-b.z; });
-      placed.forEach(function(p){
-        var scale=0.8+(p.z+1)/2*0.4; /* 0.8 .. 1.2: closer orbits render bigger */
-        p.n.setAttribute('transform','translate('+(CX+p.x).toFixed(2)+' '+(CY+p.y).toFixed(2)+') scale('+scale.toFixed(3)+')');
-        p.n.style.opacity=(0.6+(p.z+1)/2*0.4).toFixed(2);
-        svg.appendChild(p.n);
+        item.n.setAttribute('transform','translate('+(CX+p.x).toFixed(2)+' '+(CY+p.y).toFixed(2)+')');
       });
     }
     nodes.forEach(function(n){
