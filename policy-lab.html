@@ -11,9 +11,10 @@
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
 .intro-statement{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1.2;color:var(--ink);margin-bottom:22px;max-width:22ch}
-.who-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:64ch}
-.who-list li{position:relative;padding-left:26px;font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
-.who-list li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:#7C6DF5}
+.who-list{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid var(--hair);display:grid;grid-template-columns:repeat(2,1fr);column-gap:32px}
+.who-list li{position:relative;padding:22px 0 22px 26px;border-bottom:1px solid var(--hair);font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.1vw,25px);line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+.who-list li::before{content:"";position:absolute;left:0;top:calc(22px + .55em);width:8px;height:8px;border-radius:50%;background:var(--violet)}
+@media (max-width:860px){.who-list{grid-template-columns:1fr}}
 .svc-note{font-style:italic;font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:14px}
 </style>
 </head>
@@ -88,15 +89,18 @@
   <section class="section section--mid reveal" aria-label="Who we work with">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who we work with</span>
     <h2 class="h-sec">Built for the institutions shaping <em class="em-italic">public trust</em>.</h2>
-    <p class="lead" style="max-width:64ch">Policy Lab works with a diverse array of public-facing institutions and influence ecosystems, including:</p>
     <ul class="who-list">
-      <li>National and regional associations navigating generational change, member trust, and evolving civic mandates</li>
-      <li>Civic and policy nonprofits advancing new ideas or field-wide frameworks for social, economic, or democratic innovation</li>
-      <li>Corporate public affairs and social responsibility teams aligning civic strategy with internal values and public-facing messaging</li>
-      <li>Think tanks and educational centers building bridges between research, community experience, and policy pathways</li>
-      <li>Civic funders and democracy advocates funding narrative change, civic innovation, or infrastructure for democratic resilience</li>
+      <li>National &amp; regional associations</li>
+      <li>Civic &amp; policy nonprofits</li>
+      <li>Corporate public affairs teams</li>
+      <li>Think tanks &amp; educational centers</li>
+      <li>Civic funders &amp; democracy advocates</li>
+      <li>Coalitions</li>
+      <li>Mayors' offices</li>
+      <li>Cultural institutions</li>
+      <li>Cross-sector intermediaries</li>
+      <li>&amp; more</li>
     </ul>
-    <p style="font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:18px">We also work with coalitions, mayors' offices, cultural institutions, and cross-sector intermediaries looking to refresh their civic engagement strategy.</p>
   </section>
 
   <!-- ===== WHAT WE DO ===== -->
