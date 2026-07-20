@@ -79,14 +79,14 @@
 #labMap{display:block;width:100%;height:auto}
 .map-ring{fill:none;stroke:#fff}
 .lab-node{cursor:pointer}
-.lab-node .dot{transition:transform .3s var(--ease-ripple)}
+.lab-node .node-inner{transition:transform .3s var(--ease-ripple);transform-origin:0 0}
 .lab-node .halo{fill:none;stroke:#fff;opacity:0;transition:opacity .3s}
 .lab-node:hover .halo,.lab-node:focus .halo{opacity:.5}
-.lab-node:hover .dot,.lab-node:focus .dot{transform:scale(1.12);transform-box:fill-box;transform-origin:center}
+.lab-node:hover .node-inner,.lab-node:focus .node-inner{transform:scale(1.25)}
 .lab-node:focus{outline:none}
 .lab-node:focus-visible .halo{opacity:.95;stroke-width:2.5}
-.lab-name{font-family:var(--serif);font-size:clamp(13px,2.4vw,20px);fill:#fff}
-.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(8px,1.6vw,11px);letter-spacing:.14em;text-transform:uppercase}
+.lab-name{font-family:var(--serif);font-size:clamp(11px,1.9vw,16px);fill:#fff}
+.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(7px,1.3vw,9.5px);letter-spacing:.13em;text-transform:uppercase}
 .legend{margin-top:18px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
 .legend b{color:#fff;font-weight:600}
 .lab-backdrop{position:fixed;inset:0;background:rgba(17,17,17,.32);opacity:0;pointer-events:none;transition:opacity .35s;z-index:80}
@@ -253,52 +253,90 @@
           <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Our labs</span>
           <h2 class="h-sec">An <em class="em-italic">ecosystem</em>,<br />not an org chart.</h2>
           <p class="lead">Optimistic Labs is a network of focused labs: each one a practice led by an expert, serving a specific community, with our strategy and apparatus behind it. Click a lab to explore.</p>
-          <div class="legend"><b>Filled</b> = live &nbsp;·&nbsp; <b>Outlined</b> = coming soon</div>
+          <div class="legend"><b>Filled</b> = live &nbsp;·&nbsp; <b>Outlined</b> = lab leader needed</div>
         </div>
         <div class="map-wrap">
-        <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Impact, Policy, Philanthropy, Sports, arranged around the Optimistic Labs mark. Activate a lab to learn more.">
-          <circle class="map-ring" cx="300" cy="300" r="120" stroke-width="1" opacity=".30"/>
-          <circle class="map-ring" cx="300" cy="300" r="200" stroke-width="1" opacity=".18"/>
-          <circle class="map-ring" cx="300" cy="300" r="280" stroke-width="1" opacity=".10"/>
+        <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Policy, Philanthropy, Sports, Customer Success, AI, Workforce, and Food, arranged around the Optimistic Labs mark in orbiting rings. Activate a lab to learn more.">
+          <ellipse class="map-ring" cx="300" cy="300" rx="100" ry="94.0" transform="rotate(-15 300 300)" stroke-width="1" opacity=".30"/>
+          <ellipse class="map-ring" cx="300" cy="300" rx="175" ry="145.1" transform="rotate(10 300 300)" stroke-width="1" opacity=".18"/>
+          <ellipse class="map-ring" cx="300" cy="300" rx="250" ry="167.3" transform="rotate(-25 300 300)" stroke-width="1" opacity=".10"/>
           <image href="assets/ol-mark-white.svg" x="266" y="265" width="68" height="70"/>
-          <!-- Nodes are positioned by JS: they orbit the mark, pausing on hover/focus or while the panel is open -->
-          <!-- Faith (live) NE -->
-          <g class="lab-node" data-id="faith" data-angle="-45" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
-            <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
-            <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
-            <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
-            <text class="lab-name" x="0" y="33" text-anchor="middle">Faith Lab</text>
-            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+          <!-- Nodes are positioned by JS: each orbits its own tilted ring at its own speed (like a solar system),
+               scaling up as it swings toward the viewer, pausing on hover/focus or while the panel is open -->
+          <!-- Faith (live) — ring 0 -->
+          <g class="lab-node" data-id="faith" data-ring="0" data-phase="-45" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
+              <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle">Faith Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+            </g>
           </g>
-          <!-- Impact (in formation) SE -->
-          <g class="lab-node" data-id="impact" data-angle="27" tabindex="0" role="button" aria-label="Impact Lab: in formation. Learn more.">
-            <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-            <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Impact Lab</text>
-            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Coming soon</text>
+          <!-- Customer Success (lab leader needed) — ring 0 -->
+          <g class="lab-node" data-id="customer-success" data-ring="0" data-phase="135" tabindex="0" role="button" aria-label="Customer Success Lab: lab leader needed. Learn more.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Customer Success Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+            </g>
           </g>
-          <!-- Policy (live) SW -->
-          <g class="lab-node" data-id="policy" data-angle="99" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
-            <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
-            <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
-            <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
-            <text class="lab-name" x="0" y="33" text-anchor="middle">Policy Lab</text>
-            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+          <!-- Policy (live) — ring 1 -->
+          <g class="lab-node" data-id="policy" data-ring="1" data-phase="0" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
+              <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle">Policy Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+            </g>
           </g>
-          <!-- Philanthropy (live) S -->
-          <g class="lab-node" data-id="philanthropy" data-angle="171" tabindex="0" role="button" aria-label="Philanthropy Lab: live. Open a quick preview.">
-            <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
-            <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
-            <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
-            <text class="lab-name" x="0" y="33" text-anchor="middle">Philanthropy Lab</text>
-            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+          <!-- Philanthropy (live) — ring 1 -->
+          <g class="lab-node" data-id="philanthropy" data-ring="1" data-phase="120" tabindex="0" role="button" aria-label="Philanthropy Lab: live. Open a quick preview.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
+              <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle">Philanthropy Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
+            </g>
           </g>
-          <!-- Sports NW -->
-          <g class="lab-node" data-id="sports" data-angle="243" tabindex="0" role="button" aria-label="Sports Lab: in formation. Learn more.">
-            <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-            <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Sports Lab</text>
-            <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Coming soon</text>
+          <!-- AI (lab leader needed) — ring 1 -->
+          <g class="lab-node" data-id="ai" data-ring="1" data-phase="240" tabindex="0" role="button" aria-label="AI Lab: lab leader needed. Learn more.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">AI Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+            </g>
+          </g>
+          <!-- Sports (lab leader needed) — ring 2 -->
+          <g class="lab-node" data-id="sports" data-ring="2" data-phase="60" tabindex="0" role="button" aria-label="Sports Lab: lab leader needed. Learn more.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Sports Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+            </g>
+          </g>
+          <!-- Workforce (lab leader needed) — ring 2 -->
+          <g class="lab-node" data-id="workforce" data-ring="2" data-phase="180" tabindex="0" role="button" aria-label="Workforce Lab: lab leader needed. Learn more.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Workforce Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+            </g>
+          </g>
+          <!-- Food (lab leader needed) — ring 2 -->
+          <g class="lab-node" data-id="food" data-ring="2" data-phase="300" tabindex="0" role="button" aria-label="Food Lab: lab leader needed. Learn more.">
+            <g class="node-inner">
+              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
+              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Food Lab</text>
+              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+            </g>
           </g>
         </svg>
         </div>
@@ -419,7 +457,7 @@
 <div class="lab-backdrop" id="labBackdrop"></div>
 <aside class="lab-panel" id="labPanel" role="dialog" aria-modal="true" aria-label="Lab details" aria-hidden="true">
   <button class="lab-panel-x" id="labPanelX" aria-label="Close">×</button>
-  <div class="chip" id="lpChip">Coming soon</div>
+  <div class="chip" id="lpChip">Lab Leader Needed</div>
   <h3 id="lpName"></h3>
   <p id="lpLine"></p>
   <a class="pill pill-primary" id="lpCta" data-book>Book a call →</a>
@@ -436,17 +474,26 @@
     faith:{name:'Faith Lab', status:'Live',
       line:"Faith Lab helps faith-based organizations close the gap between their values and their work, through honest assessment, intentional design, and gatherings that actually mean something. Led by Aliza Goodman, it’s our first live lab.",
       cta:{label:'Explore the Faith Lab →', href:'faith-lab.html'}},
-    impact:{name:'Impact Lab', status:'Coming soon',
-      line:"Impact Lab is coming soon. We’re convening the practitioners and partners now: book a call if you want to help shape it or be first to know.",
-      cta:{label:'Book a call →', book:true}},
     policy:{name:'Policy Lab', status:'Live',
       line:"Policy Lab is an impact-focused strategy studio and activation engine for institutions, associations, nonprofits, and public affairs teams working to restore civic trust and advance policy through connection, clarity, and creativity. Led by the OL co-founders.",
       cta:{label:'Explore the Policy Lab →', href:'policy-lab.html'}},
     philanthropy:{name:'Philanthropy Lab', status:'Live',
       line:"Philanthropy Lab is a dynamic advisory and activation platform built to serve the full spectrum of the philanthropic ecosystem, from major foundations and philanthropic investors to grassroots NGOs and family and emerging philanthropists. Led by the OL co-founders.",
       cta:{label:'Explore the Philanthropy Lab →', href:'philanthropy-lab.html'}},
-    sports:{name:'Sports Lab', status:'Coming soon',
+    sports:{name:'Sports Lab', status:'Lab Leader Needed',
       line:"Sports Lab is coming soon. We’re convening the people building culture, connection, and systems around sport, on and off the field.",
+      cta:{label:'Book a call →', book:true}},
+    'customer-success':{name:'Customer Success Lab', status:'Lab Leader Needed',
+      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Book a call if you want to help shape it or be first to know.",
+      cta:{label:'Book a call →', book:true}},
+    ai:{name:'AI Lab', status:'Lab Leader Needed',
+      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      cta:{label:'Book a call →', book:true}},
+    workforce:{name:'Workforce Lab', status:'Lab Leader Needed',
+      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      cta:{label:'Book a call →', book:true}},
+    food:{name:'Food Lab', status:'Lab Leader Needed',
+      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       cta:{label:'Book a call →', book:true}}
   };
   var panel=document.getElementById('labPanel'), backdrop=document.getElementById('labBackdrop'),
@@ -496,18 +543,37 @@
   backdrop.addEventListener('click',closePanel);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&panel.classList.contains('open')) closePanel(); });
 
-  /* ---- orbital rotation: nodes drift around the mark; paused on hover/focus or while the panel is open ---- */
+  /* ---- orbital rotation: like a solar system — each ring has its own tilt and speed, and
+         nodes scale up as their orbit swings them toward the viewer. Paused on hover/focus or
+         while the panel is open. ---- */
   (function(){
-    var CX=300, CY=300, R=200, SPEED=6; /* degrees per second */
+    var CX=300, CY=300;
+    var DEG=Math.PI/180;
+    var RINGS=[
+      {r:100, tilt:20*DEG, rot:-15*DEG, speed:9},
+      {r:175, tilt:34*DEG, rot: 10*DEG, speed:-6},
+      {r:250, tilt:48*DEG, rot:-25*DEG, speed:4}
+    ];
+    var svg=document.getElementById('labMap');
     var nodes=Array.prototype.slice.call(document.querySelectorAll('#labMap .lab-node'));
     if(!nodes.length) return;
-    var offset=0, last=null, hovering=false;
+    var offsets=RINGS.map(function(){ return 0; }), last=null, hovering=false;
     var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function place(){
-      nodes.forEach(function(n){
-        var a=((parseFloat(n.getAttribute('data-angle'))||0)+offset)*Math.PI/180;
-        n.setAttribute('transform','translate('+(CX+R*Math.cos(a)).toFixed(2)+' '+(CY+R*Math.sin(a)).toFixed(2)+')');
+      var placed=nodes.map(function(n){
+        var ring=RINGS[parseInt(n.getAttribute('data-ring'),10)||0];
+        var t=((parseFloat(n.getAttribute('data-phase'))||0)+offsets[RINGS.indexOf(ring)])*DEG;
+        var x3=ring.r*Math.cos(t), y3=ring.r*Math.sin(t)*Math.cos(ring.tilt);
+        var zNorm=Math.sin(t); /* -1 = farthest, 1 = closest to viewer */
+        var cr=Math.cos(ring.rot), sr=Math.sin(ring.rot);
+        var xr=x3*cr-y3*sr, yr=x3*sr+y3*cr;
+        var scale=0.8+(zNorm+1)/2*0.4; /* 0.8 .. 1.2: closer orbits render bigger */
+        n.setAttribute('transform','translate('+(CX+xr).toFixed(2)+' '+(CY+yr).toFixed(2)+') scale('+scale.toFixed(3)+')');
+        n.style.opacity=(0.6+(zNorm+1)/2*0.4).toFixed(2);
+        return {n:n, z:zNorm};
       });
+      placed.sort(function(a,b){ return a.z-b.z; });
+      placed.forEach(function(p){ svg.appendChild(p.n); });
     }
     nodes.forEach(function(n){
       n.addEventListener('mouseenter',function(){ hovering=true; });
@@ -518,7 +584,10 @@
     function tick(t){
       if(last===null) last=t;
       var dt=Math.min((t-last)/1000,.1); last=t;
-      if(!hovering && !panel.classList.contains('open')){ offset=(offset+SPEED*dt)%360; place(); }
+      if(!hovering && !panel.classList.contains('open')){
+        offsets=offsets.map(function(o,i){ return (o+RINGS[i].speed*dt)%360; });
+        place();
+      }
       requestAnimationFrame(tick);
     }
     place();
