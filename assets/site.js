@@ -100,6 +100,88 @@
         '<div class="wyg-grid">'+cardsHtml+'</div>';
     });
 
+    /* ---- service-area audience switcher (data-driven) ---- */
+    document.querySelectorAll('[data-svc-switch]').forEach(function(root){
+      var cfgEl = root.querySelector('script[data-svc-switch-config]');
+      if(!cfgEl) return;
+      var cfg;
+      try { cfg = JSON.parse(cfgEl.textContent); } catch(e){ return; }
+      var audiences = cfg.audiences || [];
+      if(!audiences.length) return;
+      var active = 0;
+
+      root.innerHTML =
+        '<div class="svc-switch-panel">'+
+          '<div class="svc-tabs" role="tablist">'+
+            audiences.map(function(a,i){
+              return '<button class="svc-tab" type="button" role="tab" id="svc-tab-'+i+'" aria-controls="svc-panel-cards" '+
+                'aria-selected="'+(i===0?'true':'false')+'" tabindex="'+(i===0?'0':'-1')+'" data-idx="'+i+'">'+
+                '<span>'+escHtml(a.label)+'</span><span class="svc-tab-count">'+(a.offerings||[]).length+'</span>'+
+              '</button>';
+            }).join('')+
+          '</div>'+
+          '<p class="svc-blurb" id="svc-blurb" aria-live="polite"></p>'+
+        '</div>'+
+        '<div class="svc svc--4" id="svc-panel-cards" role="tabpanel"></div>';
+
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.svc-tab'));
+      var blurb = root.querySelector('#svc-blurb');
+      var cardsWrap = root.querySelector('#svc-panel-cards');
+
+      function renderCards(i, animate){
+        var items = audiences[i].offerings || [];
+        cardsWrap.innerHTML = items.map(function(o,idx){
+          return '<article class="svc-card svc-card--anim">'+
+            '<div class="svc-card-head"><span class="svc-index">'+String(idx+1).padStart(2,'0')+'</span><h3>'+escHtml(o.title)+'</h3></div>'+
+            '<div class="svc-card-body"><p>'+escHtml(o.desc)+'</p></div>'+
+          '</article>';
+        }).join('');
+        var cards = cardsWrap.querySelectorAll('.svc-card--anim');
+        cards.forEach(function(card,idx){
+          var delay = (animate?0.05+idx*0.07:0).toFixed(2);
+          card.style.transitionDelay = delay+'s';
+        });
+        if(reduceMotion){ cards.forEach(function(c){ c.classList.add('is-shown'); }); return; }
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            cards.forEach(function(c){ c.classList.add('is-shown'); });
+          });
+        });
+      }
+
+      function select(i){
+        if(i===active) return;
+        active = i;
+        tabs.forEach(function(t,idx){
+          var isActive = idx===i;
+          t.setAttribute('aria-selected', isActive?'true':'false');
+          t.tabIndex = isActive?0:-1;
+        });
+        blurb.style.opacity = '0';
+        setTimeout(function(){
+          blurb.textContent = audiences[i].blurb || '';
+          blurb.style.opacity = '1';
+        }, reduceMotion?0:180);
+        renderCards(i, true);
+      }
+
+      tabs.forEach(function(tab,i){
+        tab.addEventListener('click', function(){ select(i); });
+      });
+      root.querySelector('.svc-tabs').addEventListener('keydown', function(e){
+        var i;
+        if(e.key==='ArrowRight'||e.key==='ArrowDown'){ i=(active+1)%tabs.length; }
+        else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ i=(active-1+tabs.length)%tabs.length; }
+        else return;
+        e.preventDefault();
+        tabs[i].focus();
+        select(i);
+      });
+
+      blurb.textContent = audiences[0].blurb || '';
+      renderCards(0, false);
+    });
+
     /* ---- wire destinations ---- */
     document.querySelectorAll('[data-book]').forEach(function(el){
       el.setAttribute('href', bookHref);
