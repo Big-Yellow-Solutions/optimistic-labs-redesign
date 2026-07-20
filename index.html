@@ -86,7 +86,8 @@
 .lab-node:focus{outline:none}
 .lab-node:focus-visible .halo{opacity:.95;stroke-width:2.5}
 .lab-name{font-family:var(--serif);font-size:clamp(11px,1.9vw,16px);fill:#fff}
-.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(7px,1.3vw,9.5px);letter-spacing:.13em;text-transform:uppercase}
+.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(7px,1.3vw,9.5px);letter-spacing:.13em;text-transform:uppercase;fill:#B0A6FA}
+.lab-status--needed{fill:var(--warm-gray);font-weight:800}
 .legend{margin-top:18px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
 .legend b{color:#fff;font-weight:600}
 .lab-backdrop{position:fixed;inset:0;background:rgba(17,17,17,.32);opacity:0;pointer-events:none;transition:opacity .35s;z-index:80}
@@ -95,6 +96,7 @@
   border-left:3px solid var(--violet);z-index:90;padding:40px 32px;transform:translateX(100%);transition:transform .45s var(--ease-signal);overflow-y:auto}
 .lab-panel.open{transform:translateX(0)}
 .lab-panel-x{position:absolute;top:22px;right:20px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--warm-gray);font-size:22px}
+.chip--needed{background:rgba(158,149,137,.18);color:var(--warm-gray);font-weight:800}
 .lab-panel h3{margin:14px 0 12px}
 .lab-panel p{font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:22px}
 @media (max-width:560px){.lab-panel{width:100%;max-width:100%;height:74vh;top:auto;bottom:0;border-left:none;border-top:3px solid var(--violet);border-radius:18px 18px 0 0;transform:translateY(100%)}.lab-panel.open{transform:translateY(0)}}
@@ -257,14 +259,14 @@
         </div>
         <div class="map-wrap">
         <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Policy, Philanthropy, Sports, Customer Success, AI, Workforce, and Food, arranged around the Optimistic Labs mark in orbiting rings. Activate a lab to learn more.">
-          <ellipse class="map-ring" cx="300" cy="300" rx="100" ry="94.0" transform="rotate(-15 300 300)" stroke-width="1" opacity=".30"/>
-          <ellipse class="map-ring" cx="300" cy="300" rx="175" ry="145.1" transform="rotate(10 300 300)" stroke-width="1" opacity=".18"/>
-          <ellipse class="map-ring" cx="300" cy="300" rx="250" ry="167.3" transform="rotate(-25 300 300)" stroke-width="1" opacity=".10"/>
+          <ellipse class="map-ring" cx="300" cy="300" rx="85" ry="81.7" transform="rotate(-15 300 300)" stroke-width="1" opacity=".30"/>
+          <ellipse class="map-ring" cx="300" cy="300" rx="140" ry="125.8" transform="rotate(10 300 300)" stroke-width="1" opacity=".18"/>
+          <ellipse class="map-ring" cx="300" cy="300" rx="185" ry="156.9" transform="rotate(-25 300 300)" stroke-width="1" opacity=".10"/>
           <image href="assets/ol-mark-white.svg" x="266" y="265" width="68" height="70"/>
           <!-- Nodes are positioned by JS: each orbits its own tilted ring at its own speed (like a solar system),
                scaling up as it swings toward the viewer, pausing on hover/focus or while the panel is open -->
           <!-- Faith (live) — ring 0 -->
-          <g class="lab-node" data-id="faith" data-ring="0" data-phase="-45" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
+          <g class="lab-node" data-id="faith" data-ring="0" data-phase="-45" data-safe-hw="41" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
@@ -274,16 +276,16 @@
             </g>
           </g>
           <!-- Customer Success (lab leader needed) — ring 0 -->
-          <g class="lab-node" data-id="customer-success" data-ring="0" data-phase="135" tabindex="0" role="button" aria-label="Customer Success Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="customer-success" data-ring="0" data-phase="135" data-safe-hw="83" tabindex="0" role="button" aria-label="Customer Success Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
               <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Customer Success Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
             </g>
           </g>
           <!-- Policy (live) — ring 1 -->
-          <g class="lab-node" data-id="policy" data-ring="1" data-phase="0" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
+          <g class="lab-node" data-id="policy" data-ring="1" data-phase="0" data-safe-hw="45" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
@@ -293,7 +295,7 @@
             </g>
           </g>
           <!-- Philanthropy (live) — ring 1 -->
-          <g class="lab-node" data-id="philanthropy" data-ring="1" data-phase="120" tabindex="0" role="button" aria-label="Philanthropy Lab: live. Open a quick preview.">
+          <g class="lab-node" data-id="philanthropy" data-ring="1" data-phase="120" data-safe-hw="66" tabindex="0" role="button" aria-label="Philanthropy Lab: live. Open a quick preview.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
@@ -303,39 +305,39 @@
             </g>
           </g>
           <!-- AI (lab leader needed) — ring 1 -->
-          <g class="lab-node" data-id="ai" data-ring="1" data-phase="240" tabindex="0" role="button" aria-label="AI Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="ai" data-ring="1" data-phase="240" data-safe-hw="76" tabindex="0" role="button" aria-label="AI Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
               <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">AI Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
             </g>
           </g>
           <!-- Sports (lab leader needed) — ring 2 -->
-          <g class="lab-node" data-id="sports" data-ring="2" data-phase="60" tabindex="0" role="button" aria-label="Sports Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="sports" data-ring="2" data-phase="60" data-safe-hw="76" tabindex="0" role="button" aria-label="Sports Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
               <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Sports Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
             </g>
           </g>
           <!-- Workforce (lab leader needed) — ring 2 -->
-          <g class="lab-node" data-id="workforce" data-ring="2" data-phase="180" tabindex="0" role="button" aria-label="Workforce Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="workforce" data-ring="2" data-phase="180" data-safe-hw="76" tabindex="0" role="button" aria-label="Workforce Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
               <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Workforce Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
             </g>
           </g>
           <!-- Food (lab leader needed) — ring 2 -->
-          <g class="lab-node" data-id="food" data-ring="2" data-phase="300" tabindex="0" role="button" aria-label="Food Lab: lab leader needed. Learn more.">
+          <g class="lab-node" data-id="food" data-ring="2" data-phase="300" data-safe-hw="76" tabindex="0" role="button" aria-label="Food Lab: lab leader needed. Learn more.">
             <g class="node-inner">
               <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
               <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
               <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Food Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#fff" opacity=".5">Lab Leader Needed</text>
+              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
             </g>
           </g>
         </svg>
@@ -457,7 +459,7 @@
 <div class="lab-backdrop" id="labBackdrop"></div>
 <aside class="lab-panel" id="labPanel" role="dialog" aria-modal="true" aria-label="Lab details" aria-hidden="true">
   <button class="lab-panel-x" id="labPanelX" aria-label="Close">×</button>
-  <div class="chip" id="lpChip">Lab Leader Needed</div>
+  <div class="chip chip--needed" id="lpChip">Lab Leader Needed</div>
   <h3 id="lpName"></h3>
   <p id="lpLine"></p>
   <a class="pill pill-primary" id="lpCta" data-book>Book a call →</a>
@@ -513,6 +515,7 @@
     var d=INFO[id]; if(!d) return;
     lastFocus=document.activeElement;
     lpChip.textContent=d.status||'Coming soon';
+    lpChip.classList.toggle('chip--needed', d.status==='Lab Leader Needed');
     lpName.textContent=d.name; lpLine.textContent=d.line;
     var cta=d.cta||{};
     lpCta.textContent=cta.label||'Book a call →';
@@ -549,31 +552,86 @@
   (function(){
     var CX=300, CY=300;
     var DEG=Math.PI/180;
+    /* Ring radii/tilts are spaced so each ring's closest approach to the center clears the
+       ring inside it by a wide margin — the rings themselves can never cross. */
     var RINGS=[
-      {r:100, tilt:20*DEG, rot:-15*DEG, speed:9},
-      {r:175, tilt:34*DEG, rot: 10*DEG, speed:-6},
-      {r:250, tilt:48*DEG, rot:-25*DEG, speed:4}
+      {r:85, tilt:16*DEG, rot:-15*DEG, speed:9},
+      {r:140, tilt:26*DEG, rot: 10*DEG, speed:-6},
+      {r:185, tilt:32*DEG, rot:-25*DEG, speed:4}
     ];
     var svg=document.getElementById('labMap');
     var nodes=Array.prototype.slice.call(document.querySelectorAll('#labMap .lab-node'));
     if(!nodes.length) return;
+    /* Each node carries a "safe half-width" (its own label's half-width + padding) and shares a
+       fixed "safe half-height" (the label block is short and roughly the same height for every
+       lab). Together these define an elliptical no-go zone around each node — wide sideways,
+       short up/down — so two nodes are never allowed to land close enough for their labels to
+       overlap, regardless of where their independent orbits carry them. */
+    var SAFE_HH=42;
+    nodes.forEach(function(n){ n._safeHW=parseFloat(n.getAttribute('data-safe-hw'))||60; });
     var offsets=RINGS.map(function(){ return 0; }), last=null, hovering=false;
     var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* A node's distance from the mark is fixed entirely by its own ring's r/tilt/rot — never
+       by its angle. So crowding is resolved by nudging *angle only* (sliding a node along its
+       own ring), which can never push a node further out than that ring already reaches.
+       That keeps every label inside the canvas for free, with no separate bounds-clamp needed. */
+    function posAt(item){
+      var t=item.deg*DEG;
+      var x3=item.ring.r*Math.cos(t), y3=item.ring.r*Math.sin(t)*Math.cos(item.ring.tilt);
+      var cr=Math.cos(item.ring.rot), sr=Math.sin(item.ring.rot);
+      return {x:x3*cr-y3*sr, y:x3*sr+y3*cr, z:Math.sin(t)};
+    }
+    function tangentAt(item){
+      var t=item.deg*DEG;
+      var dx3=-item.ring.r*Math.sin(t), dy3=item.ring.r*Math.cos(t)*Math.cos(item.ring.tilt);
+      var cr=Math.cos(item.ring.rot), sr=Math.sin(item.ring.rot);
+      return {x:dx3*cr-dy3*sr, y:dx3*sr+dy3*cr};
+    }
+    function resolveCrowding(items){
+      for(var iter=0; iter<300; iter++){
+        for(var i=0;i<items.length;i++){
+          for(var j=i+1;j<items.length;j++){
+            var a=items[i], b=items[j];
+            var pa=posAt(a), pb=posAt(b);
+            var dx=pb.x-pa.x, dy=pb.y-pa.y;
+            /* normalize into a space where the combined ellipse is a unit circle */
+            var rx=a.n._safeHW+b.n._safeHW, ry=2*SAFE_HH;
+            var nx=dx/rx, ny=dy/ry;
+            var ndist=Math.sqrt(nx*nx+ny*ny);
+            if(ndist<1){
+              var dist=Math.sqrt(dx*dx+dy*dy)||0.001;
+              var targetDist=dist/(ndist||0.001);
+              var overlap=targetDist-dist;
+              var ux=dx/dist, uy=dy/dist;
+              var ta=tangentAt(a), tb=tangentAt(b);
+              var la2=ta.x*ta.x+ta.y*ta.y||1, lb2=tb.x*tb.x+tb.y*tb.y||1;
+              /* project the desired separation onto each node's own tangent direction, then
+                 convert that arc-length nudge into a change in its angle (radians -> degrees) */
+              a.deg += (-(overlap/2)*ux*ta.x + -(overlap/2)*uy*ta.y)/la2/DEG;
+              b.deg += (( (overlap/2)*ux*tb.x) + ( (overlap/2)*uy*tb.y))/lb2/DEG;
+            }
+          }
+        }
+      }
+    }
     function place(){
-      var placed=nodes.map(function(n){
+      var items=nodes.map(function(n){
         var ring=RINGS[parseInt(n.getAttribute('data-ring'),10)||0];
-        var t=((parseFloat(n.getAttribute('data-phase'))||0)+offsets[RINGS.indexOf(ring)])*DEG;
-        var x3=ring.r*Math.cos(t), y3=ring.r*Math.sin(t)*Math.cos(ring.tilt);
-        var zNorm=Math.sin(t); /* -1 = farthest, 1 = closest to viewer */
-        var cr=Math.cos(ring.rot), sr=Math.sin(ring.rot);
-        var xr=x3*cr-y3*sr, yr=x3*sr+y3*cr;
-        var scale=0.8+(zNorm+1)/2*0.4; /* 0.8 .. 1.2: closer orbits render bigger */
-        n.setAttribute('transform','translate('+(CX+xr).toFixed(2)+' '+(CY+yr).toFixed(2)+') scale('+scale.toFixed(3)+')');
-        n.style.opacity=(0.6+(zNorm+1)/2*0.4).toFixed(2);
-        return {n:n, z:zNorm};
+        var deg=(parseFloat(n.getAttribute('data-phase'))||0)+offsets[RINGS.indexOf(ring)];
+        return {n:n, ring:ring, deg:deg};
+      });
+      resolveCrowding(items);
+      var placed=items.map(function(item){
+        var p=posAt(item);
+        return {n:item.n, x:p.x, y:p.y, z:p.z};
       });
       placed.sort(function(a,b){ return a.z-b.z; });
-      placed.forEach(function(p){ svg.appendChild(p.n); });
+      placed.forEach(function(p){
+        var scale=0.8+(p.z+1)/2*0.4; /* 0.8 .. 1.2: closer orbits render bigger */
+        p.n.setAttribute('transform','translate('+(CX+p.x).toFixed(2)+' '+(CY+p.y).toFixed(2)+') scale('+scale.toFixed(3)+')');
+        p.n.style.opacity=(0.6+(p.z+1)/2*0.4).toFixed(2);
+        svg.appendChild(p.n);
+      });
     }
     nodes.forEach(function(n){
       n.addEventListener('mouseenter',function(){ hovering=true; });
