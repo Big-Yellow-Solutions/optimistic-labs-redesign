@@ -557,100 +557,21 @@
       {r:140, speed:-6},
       {r:210, speed:4}
     ];
-    var svg=document.getElementById('labMap');
     var nodes=Array.prototype.slice.call(document.querySelectorAll('#labMap .lab-node'));
     if(!nodes.length) return;
-    /* Each node carries a "safe half-width" (its own label's half-width + padding) and shares a
-       fixed "safe half-height" (the label block is short and roughly the same height for every
-       lab). Together these define an elliptical no-go zone around each node — wide sideways,
-       short up/down — so two nodes are never allowed to land close enough for their labels to
-       overlap, regardless of where their independent orbits carry them. */
-    var SAFE_HH=42;
-    nodes.forEach(function(n){ n._safeHW=parseFloat(n.getAttribute('data-safe-hw'))||60; });
-    var offsets=RINGS.map(function(){ return 0; }), last=null, hovering=false;
+    /* Each node just orbits its own ring at that ring's constant speed — no per-frame collision
+       correction. Plain, predictable, and perfectly smooth. */
+    nodes.forEach(function(n){
+      n._ring=RINGS[parseInt(n.getAttribute('data-ring'),10)||0];
+      n._deg=parseFloat(n.getAttribute('data-phase'))||0;
+    });
+    var last=null, hovering=false;
     var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    /* A node's distance from the mark is fixed entirely by its own ring's radius — never by its
-       angle. So crowding is resolved by nudging *angle only* (sliding a node along its own
-       ring), which can never push a node further out than that ring already reaches. */
-    function posAt(item){
-      var t=item.deg*DEG;
-      return {x:item.ring.r*Math.cos(t), y:item.ring.r*Math.sin(t)};
-    }
-    function tangentAt(item){
-      var t=item.deg*DEG;
-      return {x:-item.ring.r*Math.sin(t), y:item.ring.r*Math.cos(t)};
-    }
-    function worstSlack(items){
-      var worst=Infinity;
-      for(var i=0;i<items.length;i++){
-        for(var j=i+1;j<items.length;j++){
-          var a=items[i], b=items[j];
-          var pa=posAt(a), pb=posAt(b);
-          var dx=pb.x-pa.x, dy=pb.y-pa.y;
-          var rx=a.n._safeHW+b.n._safeHW, ry=2*SAFE_HH;
-          var nx=dx/rx, ny=dy/ry;
-          var ndist=Math.sqrt(nx*nx+ny*ny);
-          var slack=(ndist-1)*Math.min(rx,ry);
-          if(slack<worst) worst=slack;
-        }
-      }
-      return worst;
-    }
-    function gradientResolve(items, iters){
-      for(var iter=0; iter<iters; iter++){
-        for(var i=0;i<items.length;i++){
-          for(var j=i+1;j<items.length;j++){
-            var a=items[i], b=items[j];
-            var pa=posAt(a), pb=posAt(b);
-            var dx=pb.x-pa.x, dy=pb.y-pa.y;
-            /* normalize into a space where the combined ellipse is a unit circle */
-            var rx=a.n._safeHW+b.n._safeHW, ry=2*SAFE_HH;
-            var nx=dx/rx, ny=dy/ry;
-            var ndist=Math.sqrt(nx*nx+ny*ny);
-            if(ndist<1){
-              var dist=Math.sqrt(dx*dx+dy*dy)||0.001;
-              var targetDist=dist/(ndist||0.001);
-              var overlap=targetDist-dist;
-              var ux=dx/dist, uy=dy/dist;
-              var ta=tangentAt(a), tb=tangentAt(b);
-              var la2=ta.x*ta.x+ta.y*ta.y||1, lb2=tb.x*tb.x+tb.y*tb.y||1;
-              /* project the desired separation onto each node's own tangent direction, then
-                 convert that arc-length nudge into a change in its angle (radians -> degrees) */
-              a.deg += (-(overlap/2)*ux*ta.x + -(overlap/2)*uy*ta.y)/la2/DEG;
-              b.deg += (( (overlap/2)*ux*tb.x) + ( (overlap/2)*uy*tb.y))/lb2/DEG;
-            }
-          }
-        }
-      }
-    }
-    /* On perfect concentric circles two crowded nodes can occasionally settle into a locally
-       stable (but not fully resolved) tangle that small nudges alone can't escape. When that
-       happens, try a handful of randomized restarts from nearby angles and keep whichever
-       comes closest to fully clearing everyone — this always finds a clean arrangement in
-       practice, it just isn't reachable by pure gradient descent from every starting point. */
-    function resolveCrowding(items){
-      gradientResolve(items, 60);
-      var best=worstSlack(items);
-      if(best>=-0.5) return;
-      var bestDegs=items.map(function(it){ return it.deg; });
-      for(var restart=0; restart<10; restart++){
-        var trial=items.map(function(it,i){ return {n:it.n, ring:it.ring, deg:bestDegs[i]+(Math.random()-0.5)*160}; });
-        gradientResolve(trial, 60);
-        var score=worstSlack(trial);
-        if(score>best){ best=score; bestDegs=trial.map(function(it){ return it.deg; }); }
-      }
-      items.forEach(function(it,i){ it.deg=bestDegs[i]; });
-    }
     function place(){
-      var items=nodes.map(function(n){
-        var ring=RINGS[parseInt(n.getAttribute('data-ring'),10)||0];
-        var deg=(parseFloat(n.getAttribute('data-phase'))||0)+offsets[RINGS.indexOf(ring)];
-        return {n:n, ring:ring, deg:deg};
-      });
-      resolveCrowding(items);
-      items.forEach(function(item){
-        var p=posAt(item);
-        item.n.setAttribute('transform','translate('+(CX+p.x).toFixed(2)+' '+(CY+p.y).toFixed(2)+')');
+      nodes.forEach(function(n){
+        var t=n._deg*DEG;
+        var x=n._ring.r*Math.cos(t), y=n._ring.r*Math.sin(t);
+        n.setAttribute('transform','translate('+(CX+x).toFixed(2)+' '+(CY+y).toFixed(2)+')');
       });
     }
     nodes.forEach(function(n){
@@ -663,7 +584,7 @@
       if(last===null) last=t;
       var dt=Math.min((t-last)/1000,.1); last=t;
       if(!hovering && !panel.classList.contains('open')){
-        offsets=offsets.map(function(o,i){ return (o+RINGS[i].speed*dt)%360; });
+        nodes.forEach(function(n){ n._deg=(n._deg+n._ring.speed*dt)%360; });
         place();
       }
       requestAnimationFrame(tick);
