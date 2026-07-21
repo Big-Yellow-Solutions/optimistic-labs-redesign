@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Work with Optimistic Labs · Optimistic Labs</title>
+<meta name="description" content="Two ways to engage with Optimistic Labs: work on OL projects as a subcontractor, or lead a Lab and build your own practice inside a community of builders." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:30px;max-width:1080px}
+.path-card{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:34px 32px;display:flex;flex-direction:column;gap:18px}
+.path-card h3{font-size:clamp(21px,2.4vw,26px)}
+.path-card>p.path-lede{font-size:16px;line-height:1.65;color:var(--ink-soft)}
+.path-fact div.k{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:4px}
+.path-fact p{font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
+.path-fit .k{font-family:var(--sans);font-weight:600;font-size:13px;color:var(--ink);margin-bottom:8px}
+.path-fit .bullets li{font-size:14.5px}
+.path-cta{margin-top:auto;padding-top:8px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.path-cta a.more{font-weight:500;color:var(--violet);font-size:14.5px}
+.path-cta a.more:hover{text-decoration:underline}
+@media (max-width:860px){.paths{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-dd" data-dd>
+      <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="false">Our Labs
+        <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dd-panel" aria-label="Our Labs">
+        <div class="nav-dd-grid">
+          <a class="nav-dd-feature" href="become-a-lab-leader.html">
+            <img src="assets/ol-mark-white.svg" alt="" />
+            <span class="nav-dd-feature-title">Become a Lab Leader</span>
+            <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+          </a>
+          <ul class="nav-dd-list">
+            <li><a href="faith-lab.html"><span class="nav-dd-item-title">Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+            <li><a href="policy-lab.html"><span class="nav-dd-item-title">Policy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+            <li><a href="philanthropy-lab.html"><span class="nav-dd-item-title">Philanthropy Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+    <a class="pill pill-primary navcta" data-book>Book a call</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <a href="index.html#labs">Our Labs</a>
+  <a href="faith-lab.html">Faith Lab</a>
+  <a href="policy-lab.html">Policy Lab</a>
+  <a href="philanthropy-lab.html">Philanthropy Lab</a>
+  <a href="about.html">About</a>
+  <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+  <a class="pill pill-primary navcta" data-book>Book a call</a>
+</nav>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero-light" aria-label="Work with Optimistic Labs">
+    <div style="max-width:1080px;margin:0 auto">
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Work with Optimistic Labs</span>
+      <h1 class="display" style="font-size:clamp(36px,5vw,56px)">The best work happens <em class="em-italic">in community</em>.</h1>
+      <p class="lead" style="margin-top:18px;max-width:60ch">Whether you're ready to build a full practice, want to contribute your expertise on specific projects, or see an opportunity to create something together, there's a place for you here.</p>
+      <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px"><strong style="font-weight:600;color:var(--ink)">There are two ways to engage with Optimistic Labs.</strong> They're not a hierarchy; each is a genuine and valued path. The right one depends on where you are, what you want to build, and how much you want to take on.</p>
+    </div>
+  </section>
+
+  <!-- ===== FIND YOUR PATH ===== -->
+  <section class="section section--mid reveal" aria-label="Find your path" style="max-width:1160px">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Find your path</span>
+    <h2 class="h-sec">Two ways in. Both <em class="em-italic">real</em>.</h2>
+    <p class="lead" style="max-width:56ch">Neither is a stepping stone to the other unless you want it to be.</p>
+
+    <div class="paths">
+
+      <!-- PATH 1: PROJECT-BASED -->
+      <article class="path-card" aria-label="Work on OL projects as a subcontractor">
+        <div>
+          <span class="chip chip--soft">Project-based</span>
+          <h3 style="margin-top:14px">Work on OL projects as a subcontractor</h3>
+        </div>
+        <p class="path-lede">Contribute your skills on a project-by-project basis, with no overhead of building or running a practice of your own.</p>
+        <div class="path-fact"><div class="k">Best for</div><p>Subject matter experts, facilitators, researchers, writers, and strategists who want high-quality project work without leading a Lab.</p></div>
+        <div class="path-fact"><div class="k">Commitment</div><p>Varies by project: a single workshop, a multi-week engagement, or ongoing fractional support.</p></div>
+        <div class="path-fact"><div class="k">Compensation</div><p>Project-based or day-rate, scoped up front, with no long-term financial obligations or revenue sharing.</p></div>
+        <div class="path-fact"><div class="k">The work</div><p>Facilitation and workshops, research and analysis, strategic consulting, content development, writing, and more.</p></div>
+        <div class="path-fact"><div class="k">How it's structured</div><p>OL brings you in for specific projects where your expertise is the need. You deliver, get paid, no ongoing platform requirements.</p></div>
+        <div class="path-fit">
+          <div class="k">A natural fit if you want to:</div>
+          <ul class="bullets">
+            <li>Stay independent while taking on mission-aligned, high-quality project work</li>
+            <li>Contribute without the responsibility of building or managing a Lab</li>
+            <li>Get a feel for OL before deciding if you want more</li>
+            <li>Bring specialized expertise to engagements where it's the need</li>
+          </ul>
+        </div>
+        <div class="path-cta"><a class="pill pill-primary" data-book>Book a call →</a></div>
+      </article>
+
+      <!-- PATH 2: BUILD A PRACTICE -->
+      <article class="path-card" aria-label="Lead a Lab">
+        <div>
+          <span class="chip">Build a practice</span>
+          <h3 style="margin-top:14px">Lead a Lab</h3>
+        </div>
+        <p class="path-lede">Build your own practice inside a community of builders. You bring the expertise, vision, and relationships; we bring the brand, infrastructure, and a network building alongside you.</p>
+        <div class="path-fact"><div class="k">Best for</div><p>Practitioners ready to own a practice: launching something new or consolidating an existing consultancy into a platform with shared services and long-term upside.</p></div>
+        <div class="path-fact"><div class="k">Commitment</div><p>20 to 40 hours a week during the build phase; most Labs launch within 30 to 90 days of onboarding.</p></div>
+        <div class="path-fact"><div class="k">Compensation</div><p>A substantial percentage of direct client revenue, referral revenue from clients sent to other Labs, and profit-sharing via equity or distributions.</p></div>
+        <div class="path-fact"><div class="k">The work</div><p>Client consulting, community building, IP development, and cross-Lab collaboration, under your Lab's brand and focus area.</p></div>
+        <div class="path-fact"><div class="k">How it's structured</div><p>You define your Lab's vision and offerings; OL provides brand, legal, financial, and operational infrastructure. Existing contracts and content stay fully yours.</p></div>
+        <div class="path-fit">
+          <div class="k">This is a fit if:</div>
+          <ul class="bullets">
+            <li>You want to build something of your own but don't want to build it alone</li>
+            <li>You're energized by community and see peer relationships as part of the value</li>
+            <li>You have a clear domain, a point of view, and clients or relationships to build from</li>
+            <li>You want long-term upside, not just project income, and will invest in building toward it</li>
+          </ul>
+        </div>
+        <div class="path-cta">
+          <a class="pill pill-primary" href="lab-leader-quiz.html">Take the fit quiz →</a>
+          <a class="more" href="become-a-lab-leader.html">Learn more about leading a Lab →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="band reveal" aria-label="The first step is the same">
+    <div class="hero-ripples" aria-hidden="true">
+      <svg viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid meet">
+        <circle class="ring r1" cx="600" cy="600" r="150" stroke-width="1.5"/>
+        <circle class="ring r2" cx="600" cy="600" r="300" stroke-width="1.5"/>
+        <circle class="ring r3" cx="600" cy="600" r="450" stroke-width="1.5"/>
+        <circle class="ring r4" cx="600" cy="600" r="600" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="inner" style="position:relative;z-index:2">
+      <h2>Wherever you're starting from, <em class="em-italic">the first step is the same.</em></h2>
+      <p>Some people come to Optimistic Labs knowing exactly what they want to build. Others are curious, mid-transition, or just starting to ask the question. All of that is welcome. The conversation is low-stakes and high-value.</p>
+      <div class="cta-row" style="justify-content:center"><a class="pill pill-primary" data-book>Book a call with our team →</a></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      <a class="footer-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+      <div class="footer-tag">Trust is the <em class="em-italic">advantage.</em></div>
+      <div class="footer-loc">Built from Atlanta, GA and Syracuse, NY.</div>
+    </div>
+    <div class="footer-links">
+      <a data-book>Book a call</a>
+      <a href="faith-lab.html">Faith Lab</a>
+      <a href="policy-lab.html">Policy Lab</a>
+      <a href="philanthropy-lab.html">Philanthropy Lab</a>
+      <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+      <a href="about.html">About</a>
+      <a id="linkedInLink">LinkedIn</a>
+    </div>
+    <div class="footer-sign">© 2026 Optimistic Labs · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · Built with ❤️</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

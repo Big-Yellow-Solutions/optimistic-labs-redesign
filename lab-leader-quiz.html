@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lab Leader Fit Quiz · Optimistic Labs</title>
+<meta name="description" content="Could you lead a Lab at Optimistic Labs? Seven quick questions on experience, sales, and domain depth. Two minutes, straight answer." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+.quiz-shell{max-width:720px;margin:0 auto;padding:56px 24px 96px;min-height:calc(100vh - var(--nav-h) - 220px)}
+.quiz-screen{display:none}
+.quiz-screen.active{display:block;animation:qfade .45s var(--ease-signal)}
+@keyframes qfade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.quiz-progress{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.quiz-progress-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
+.quiz-bar{flex:1;height:5px;border-radius:99px;background:var(--violet-pale);overflow:hidden}
+.quiz-bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--violet);transition:width .4s var(--ease-signal)}
+.quiz-q{font-size:clamp(24px,3.4vw,32px);line-height:1.18;margin-bottom:26px}
+.quiz-opts{display:flex;flex-direction:column;gap:12px}
+.quiz-opt{font-family:var(--sans);font-size:16px;line-height:1.45;text-align:left;color:var(--ink);
+  background:#fff;border:1px solid var(--hair);border-radius:14px;padding:16px 20px;cursor:pointer;
+  transition:border-color .18s,background .18s,transform .18s var(--ease-ripple)}
+.quiz-opt:hover{border-color:var(--violet);transform:translateY(-1px)}
+.quiz-opt.selected{border-color:var(--violet);background:var(--violet-pale)}
+.quiz-back{display:inline-block;margin-top:26px;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--violet);background:none;border:none;cursor:pointer;padding:4px 0}
+.quiz-back:hover{text-decoration:underline}
+.quiz-fine{font-size:13px;line-height:1.6;color:var(--warm-gray);margin-top:18px;max-width:56ch}
+.result-chip{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.result-score{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray)}
+.result-h{font-size:clamp(26px,3.8vw,38px);line-height:1.15;margin-bottom:18px}
+.result-body p{font-size:17px;line-height:1.7;color:var(--ink-soft)}
+.result-sub{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:26px 0 10px}
+.result-body .bullets li{font-size:16px}
+.result-body ol{margin:0 0 0 20px;display:flex;flex-direction:column;gap:8px}
+.result-body ol li{font-size:16px;line-height:1.6;color:var(--ink-soft)}
+.result-cta{margin-top:30px}
+.result-subcta{margin-top:22px;font-size:15px;color:var(--ink-soft)}
+.result-subcta a{color:var(--violet);font-weight:500}
+.result-subcta a:hover{text-decoration:underline}
+.quiz-note{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);margin-top:14px;display:none}
+.quiz-note.show{display:block}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-dd" data-dd>
+      <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="false">Our Labs
+        <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dd-panel" aria-label="Our Labs">
+        <div class="nav-dd-grid">
+          <a class="nav-dd-feature" href="become-a-lab-leader.html">
+            <img src="assets/ol-mark-white.svg" alt="" />
+            <span class="nav-dd-feature-title">Become a Lab Leader</span>
+            <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+          </a>
+          <ul class="nav-dd-list">
+            <li><a href="faith-lab.html"><span class="nav-dd-item-title">Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+            <li><a href="policy-lab.html"><span class="nav-dd-item-title">Policy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+            <li><a href="philanthropy-lab.html"><span class="nav-dd-item-title">Philanthropy Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+    <a class="pill pill-primary navcta" data-book>Book a call</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <a href="index.html#labs">Our Labs</a>
+  <a href="faith-lab.html">Faith Lab</a>
+  <a href="policy-lab.html">Policy Lab</a>
+  <a href="philanthropy-lab.html">Philanthropy Lab</a>
+  <a href="about.html">About</a>
+  <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+  <a class="pill pill-primary navcta" data-book>Book a call</a>
+</nav>
+
+<main>
+  <div class="quiz-shell">
+
+    <!-- ===== WELCOME ===== -->
+    <section class="quiz-screen active" id="screenWelcome" aria-label="Welcome">
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Lab Leader fit quiz</span>
+      <h1 class="display" style="font-size:clamp(34px,5vw,52px)">Could you lead a Lab at Optimistic <em class="em-italic">Labs?</em></h1>
+      <p class="lead" style="margin-top:18px;max-width:56ch">Seven quick questions on experience, sales, and domain depth: the same lens we use when we evaluate real candidates. Give us about two minutes, and you'll get a straight answer.</p>
+      <div class="cta-row" style="margin-top:28px"><button class="pill pill-primary" id="startBtn" type="button">Start the check →</button></div>
+    </section>
+
+    <!-- ===== QUESTIONS (rendered by JS) ===== -->
+    <section class="quiz-screen" id="screenQ" aria-label="Quiz question">
+      <div class="quiz-progress">
+        <span class="quiz-progress-label" id="qLabel">Question 1 of 7</span>
+        <div class="quiz-bar" aria-hidden="true"><i id="qBar"></i></div>
+      </div>
+      <h2 class="quiz-q" id="qText"></h2>
+      <div class="quiz-opts" id="qOpts" role="group" aria-labelledby="qText"></div>
+      <button class="quiz-back" id="qBack" type="button">← Back</button>
+    </section>
+
+    <!-- ===== EMAIL CAPTURE ===== -->
+    <section class="quiz-screen" id="screenEmail" aria-label="Get your results">
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />One last step</span>
+      <h2 class="quiz-q">Almost there.</h2>
+      <p class="lead" style="margin-bottom:24px">Where should we send your results?</p>
+      <form class="form" id="quizEmailForm" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="qz-name">First name</label><input id="qz-name" type="text" name="firstName" autocomplete="given-name" /></div>
+          <div class="field"><label for="qz-email">Email</label><input id="qz-email" type="email" name="email" autocomplete="email" /></div>
+        </div>
+        <button type="submit" class="pill pill-primary">See my results →</button>
+      </form>
+      <p class="quiz-fine">If you're a great fit, we may reach out to talk about building a lab. We'll also send you the occasional note from Optimistic Labs. Unsubscribe anytime.</p>
+      <button class="quiz-back" id="emailBack" type="button">← Back</button>
+    </section>
+
+    <!-- ===== RESULT ===== -->
+    <section class="quiz-screen" id="screenResult" aria-label="Your result">
+      <div class="result-chip"><span class="chip" id="resultTier"></span><span class="result-score" id="resultScore"></span></div>
+      <h2 class="result-h" id="resultH"></h2>
+      <div class="result-body" id="resultBody"></div>
+      <div class="cta-row result-cta" id="resultCta"></div>
+      <p class="result-subcta" id="resultSub"></p>
+    </section>
+
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      <a class="footer-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+      <div class="footer-tag">Trust is the <em class="em-italic">advantage.</em></div>
+      <div class="footer-loc">Built from Atlanta, GA and Syracuse, NY.</div>
+    </div>
+    <div class="footer-links">
+      <a data-book>Book a call</a>
+      <a href="faith-lab.html">Faith Lab</a>
+      <a href="policy-lab.html">Policy Lab</a>
+      <a href="philanthropy-lab.html">Philanthropy Lab</a>
+      <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+      <a href="about.html">About</a>
+      <a id="linkedInLink">LinkedIn</a>
+    </div>
+    <div class="footer-sign">© 2026 Optimistic Labs · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · Built with ❤️</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ---- quiz data: full question and logic map (scores 0-3 per answer) ---- */
+  var QUESTIONS=[
+    {key:'Management experience',q:'How would you describe your management experience?',opts:[
+      {t:"I've led teams at the executive level (VP, C-suite, or owner)",s:3},
+      {t:"I've managed people or projects as a senior manager or director",s:2},
+      {t:"I've led projects, but haven't managed people directly",s:1},
+      {t:"I'm early in my career",s:0}]},
+    {key:'Sales capability',q:'Have you built and sold your own client relationships before?',opts:[
+      {t:"Yes, I've built and sold my own book of business",s:3},
+      {t:"Yes, but as part of a firm or team, not solo",s:2},
+      {t:"I've been client-facing, but sales wasn't my job",s:1},
+      {t:"Not really, I haven't sold services before",s:0}]},
+    {key:'ICP clarity',q:'How clear are you on who your ideal client is and the problem you solve for them?',opts:[
+      {t:"Crystal clear: I could pitch it in one sentence",s:3},
+      {t:"Pretty clear, still sharpening the edges",s:2},
+      {t:"I have a general sense, but it's fuzzy",s:1},
+      {t:"Honestly, still figuring it out",s:0}]},
+    {key:'Domain depth',q:"How deep is your expertise in the industry or domain you'd want to serve?",opts:[
+      {t:"10+ years in, and well-networked",s:3},
+      {t:"5 to 10 years of solid experience",s:2},
+      {t:"2 to 5 years, still building depth",s:1},
+      {t:"Less than 2 years",s:0}]},
+    {key:'Working style fit',q:'Which sounds most like you?',opts:[
+      {t:"I want to build my own thing, backed by shared infrastructure and a team",s:3},
+      {t:"I want full independence: no partners, no shared systems",s:1},
+      {t:"I'd rather execute someone else's vision than build my own",s:1},
+      {t:"Still deciding what kind of setup I want",s:0}]},
+    {key:'Entrepreneurial mindset',q:'How do you feel about ambiguity and building something from scratch?',opts:[
+      {t:"Energized: I like building in the open, without a playbook",s:3},
+      {t:"Comfortable with some structure, open to new challenges",s:2},
+      {t:"I prefer clearly defined roles and expectations",s:1},
+      {t:"I prefer stability and established systems",s:0}]},
+    {key:'Existing pipeline',q:"What's your current pipeline like in your target market?",opts:[
+      {t:"Strong: I have warm relationships I could activate quickly",s:3},
+      {t:"Decent: some contacts, but I'd need to build more",s:2},
+      {t:"A handful of contacts, nothing warm yet",s:1},
+      {t:"Starting from zero",s:0}]}
+  ];
+  /* score 0-9: Tier 1 Stay Close · 10-15: Tier 2 Building Toward It · 16-21: Tier 3 Founding Lab Leader Fit */
+
+  var answers=new Array(QUESTIONS.length).fill(null);
+  var current=0;
+
+  var screens={welcome:document.getElementById('screenWelcome'),q:document.getElementById('screenQ'),
+    email:document.getElementById('screenEmail'),result:document.getElementById('screenResult')};
+  var qLabel=document.getElementById('qLabel'),qBar=document.getElementById('qBar'),
+      qText=document.getElementById('qText'),qOpts=document.getElementById('qOpts');
+
+  function show(name){
+    Object.keys(screens).forEach(function(k){ screens[k].classList.toggle('active',k===name); });
+    window.scrollTo({top:0,behavior:'auto'});
+  }
+
+  function renderQ(){
+    var item=QUESTIONS[current];
+    qLabel.textContent='Question '+(current+1)+' of '+QUESTIONS.length;
+    qBar.style.width=Math.round(((current)/QUESTIONS.length)*100)+'%';
+    qText.textContent=item.q;
+    qOpts.innerHTML='';
+    item.opts.forEach(function(opt,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='quiz-opt'; b.textContent=opt.t;
+      if(answers[current]===i) b.classList.add('selected');
+      b.addEventListener('click',function(){
+        answers[current]=i;
+        Array.prototype.forEach.call(qOpts.children,function(c){ c.classList.remove('selected'); });
+        b.classList.add('selected');
+        setTimeout(function(){
+          if(current<QUESTIONS.length-1){ current++; renderQ(); }
+          else { show('email'); var f=document.getElementById('qz-name'); if(f) f.focus(); }
+        },240);
+      });
+      qOpts.appendChild(b);
+    });
+    show('q');
+  }
+
+  document.getElementById('startBtn').addEventListener('click',function(){ current=0; renderQ(); });
+  document.getElementById('qBack').addEventListener('click',function(){
+    if(current>0){ current--; renderQ(); } else { show('welcome'); }
+  });
+  document.getElementById('emailBack').addEventListener('click',function(){ current=QUESTIONS.length-1; renderQ(); });
+
+  /* ---- email capture + result ---- */
+  var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function setErr(input,msg){
+    input.setAttribute('aria-invalid','true');
+    var err=input.parentNode.querySelector('.field-err');
+    if(!err){ err=document.createElement('span'); err.className='field-err'; err.setAttribute('role','alert'); input.parentNode.appendChild(err); }
+    err.textContent=msg;
+  }
+  function clearErr(input){ input.removeAttribute('aria-invalid'); var e=input.parentNode.querySelector('.field-err'); if(e) e.textContent=''; }
+
+  function totalScore(){
+    var s=0;
+    QUESTIONS.forEach(function(item,i){ if(answers[i]!==null) s+=item.opts[answers[i]].s; });
+    return s;
+  }
+  function tierFor(score){
+    if(score>=16) return {n:3,name:'Founding Lab Leader Fit'};
+    if(score>=10) return {n:2,name:'Building Toward It'};
+    return {n:1,name:'Stay Close'};
+  }
+
+  function deliverLead(firstName,email,score,tier){
+    var CONFIG=window.OL_CONFIG||{};
+    var payload={FirstName:firstName,Email:email,Score:score+' of 21',Tier:'Tier '+tier.n+': '+tier.name,Source:'Lab Leader Fit Quiz'};
+    QUESTIONS.forEach(function(item,i){
+      payload['Q'+(i+1)+' ('+item.key+')']=answers[i]!==null?item.opts[answers[i]].t+' ['+item.opts[answers[i]].s+']':'(skipped)';
+    });
+    if(CONFIG.formEndpoint){
+      fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+    } else {
+      var lines=[]; for(var k in payload){ lines.push(k+': '+payload[k]); }
+      window.location.href='mailto:'+(CONFIG.contactEmail||'hello@optimisticlabs.com')+
+        '?subject='+encodeURIComponent('Lab Leader Fit Quiz result · '+firstName)+
+        '&body='+encodeURIComponent(lines.join('\n'));
+    }
+  }
+
+  function renderResult(firstName){
+    var score=totalScore(), tier=tierFor(score);
+    document.getElementById('resultTier').textContent=tier.name;
+    document.getElementById('resultScore').textContent='Score: '+score+' of 21';
+    var h=document.getElementById('resultH'), body=document.getElementById('resultBody'),
+        cta=document.getElementById('resultCta'), sub=document.getElementById('resultSub');
+    var hi=firstName?firstName+', y':'Y';
+
+    if(tier.n===3){
+      h.textContent=hi+"ou've got the leadership track record, sales instincts, and domain depth we look for in a Lab Leader.";
+      body.innerHTML=
+        '<p>This is the actual profile: someone who has led at a senior level, sold and owned their own client relationships, knows exactly who they serve, and has real relationships in that market already. That\'s rare, and it\'s exactly what makes a Lab work from day one.</p>'+
+        '<div class="result-sub">What\'s working</div>'+
+        '<ul class="bullets"><li>Demonstrated management and sales track record</li>'+
+        '<li>Clear, sharp point of view on who you serve and why</li>'+
+        '<li>Real domain depth and an activatable pipeline</li></ul>'+
+        '<div class="result-sub">Next moves</div>'+
+        '<ol><li>Apply to lead a Lab</li>'+
+        '<li>Book a follow-up call with us and come ready to talk through your Lab concept: ICP, offerings, and how you\'d build it</li></ol>';
+      cta.innerHTML='<a class="pill pill-primary" href="lab-leader-application.html">Apply to lead a Lab →</a>';
+      sub.innerHTML='Not ready to apply just yet? <a href="work-with-us.html">Check out the other ways to contribute to Optimistic Labs.</a>';
+    } else {
+      h.textContent=hi+"ou've got real momentum!";
+      body.innerHTML=
+        '<p>You\'re building the pieces that make a strong Lab Leader, whether it\'s management chops, domain depth, a sense of who you\'d serve, or a pipeline that\'s warming up. Everyone who leads a lab at OL started somewhere on this path. The fastest way to close the distance is usually from inside OL, not outside it: working alongside the org, inside real client engagements, while you sharpen your ICP and build your track record.</p>'+
+        '<div class="result-sub">What\'s in motion for you</div>'+
+        '<ul class="bullets"><li>Management or sales experience that\'s real but still building its track record</li>'+
+        '<li>An ICP or domain focus that\'s taking shape</li>'+
+        '<li>A pipeline that\'s warming up but not fully activated yet</li></ul>'+
+        '<p style="margin-top:22px">See the paths available to work with Optimistic Labs, and then book time to talk through yours.</p>';
+      cta.innerHTML='<a class="pill pill-primary" href="work-with-us.html">See the ways to work with OL →</a>';
+      sub.innerHTML='';
+    }
+    show('result');
+  }
+
+  var form=document.getElementById('quizEmailForm');
+  var nameInput=document.getElementById('qz-name'), emailInput=document.getElementById('qz-email');
+  [nameInput,emailInput].forEach(function(inp){ inp.addEventListener('input',function(){ if(inp.getAttribute('aria-invalid')) clearErr(inp); }); });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var firstBad=null;
+    var nameV=(nameInput.value||'').trim(), emailV=(emailInput.value||'').trim();
+    if(!nameV){ setErr(nameInput,'First name is required.'); firstBad=nameInput; } else clearErr(nameInput);
+    if(!EMAIL_RE.test(emailV)){ setErr(emailInput,emailV?'Enter a valid email address.':'Email is required.'); if(!firstBad) firstBad=emailInput; } else clearErr(emailInput);
+    if(firstBad){ firstBad.focus(); return; }
+    var score=totalScore(), tier=tierFor(score);
+    deliverLead(nameV,emailV,score,tier);
+    renderResult(nameV);
+  });
+})();
+</script>
+</body>
+</html>

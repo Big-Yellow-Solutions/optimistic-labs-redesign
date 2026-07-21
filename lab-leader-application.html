@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lab Leader Application · Optimistic Labs</title>
+<meta name="description" content="Apply to lead a Lab at Optimistic Labs. Tell us what you'd build, who you'd serve, and where you're starting from." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+.app-shell{max-width:760px;margin:0 auto;padding:56px 24px 96px}
+.app-intro p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin-top:14px}
+.app-save-note{background:var(--violet-pale);border-radius:14px;padding:16px 20px;margin-top:24px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.app-section{margin-top:44px}
+.app-section-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-bottom:6px}
+.app-section h2{font-size:clamp(20px,2.6vw,25px);margin-bottom:18px}
+.app-form{display:flex;flex-direction:column;gap:18px}
+.app-form .field textarea{min-height:96px}
+.app-status{font-family:var(--sans);font-size:12.5px;color:var(--warm-gray);margin-top:8px;min-height:18px}
+#appDone{display:none}
+#appDone.show{display:block}
+#appDone p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin-top:14px}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-dd" data-dd>
+      <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="false">Our Labs
+        <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dd-panel" aria-label="Our Labs">
+        <div class="nav-dd-grid">
+          <a class="nav-dd-feature" href="become-a-lab-leader.html">
+            <img src="assets/ol-mark-white.svg" alt="" />
+            <span class="nav-dd-feature-title">Become a Lab Leader</span>
+            <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+          </a>
+          <ul class="nav-dd-list">
+            <li><a href="faith-lab.html"><span class="nav-dd-item-title">Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+            <li><a href="policy-lab.html"><span class="nav-dd-item-title">Policy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+            <li><a href="philanthropy-lab.html"><span class="nav-dd-item-title">Philanthropy Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+    <a class="pill pill-primary navcta" data-book>Book a call</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <a href="index.html#labs">Our Labs</a>
+  <a href="faith-lab.html">Faith Lab</a>
+  <a href="policy-lab.html">Policy Lab</a>
+  <a href="philanthropy-lab.html">Philanthropy Lab</a>
+  <a href="about.html">About</a>
+  <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+  <a class="pill pill-primary navcta" data-book>Book a call</a>
+</nav>
+
+<main>
+  <div class="app-shell">
+
+    <div id="appMain">
+      <section class="app-intro" aria-label="About this application">
+        <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Lab Leader application</span>
+        <h1 class="display" style="font-size:clamp(32px,4.6vw,46px)">Apply to lead a <em class="em-italic">Lab</em>.</h1>
+        <p>This should take about 15 to 20 minutes. A few of the questions ask you to think, not just fill in a blank. Take the time they deserve.</p>
+        <p>We're asking because we want to come into our call already knowing you: what you'd build, who you'd serve, and where you're starting from. That way the call is a real conversation about your lab, not a first-pass interview.</p>
+        <p>Once you submit, we'll ask you to set a call with us to discuss. If you have any questions or issues, please don't hesitate to email us at <a href="mailto:hello@optimisticlabs.com" style="color:var(--violet)">hello@optimisticlabs.com</a>.</p>
+        <div class="app-save-note"><strong style="font-weight:600">Your answers save automatically in this browser</strong> as you type, so you can step away and come back to finish later. There's no account or login, so you'll need to return on the same device and browser; switching devices or clearing your browsing data starts you fresh.</div>
+      </section>
+
+      <form class="app-form" id="appForm" novalidate>
+
+        <section class="app-section" aria-label="About you">
+          <div class="app-section-label">Section 1 of 7</div>
+          <h2>About you</h2>
+          <div class="field-row">
+            <div class="field"><label for="a-name">Name</label><input id="a-name" type="text" name="name" autocomplete="name" data-save /></div>
+            <div class="field"><label for="a-email">Email</label><input id="a-email" type="email" name="email" autocomplete="email" data-save /></div>
+          </div>
+          <div class="field-row" style="margin-top:18px">
+            <div class="field"><label for="a-phone">Phone (optional)</label><input id="a-phone" type="tel" name="phone" autocomplete="tel" data-save /></div>
+            <div class="field"><label for="a-link">LinkedIn or website</label><input id="a-link" type="text" name="link" data-save /></div>
+          </div>
+          <div class="field" style="margin-top:18px"><label for="a-role">Current role / what you do now</label><input id="a-role" type="text" name="role" data-save /></div>
+          <div class="field" style="margin-top:18px"><label for="a-location">Where are you based?</label><input id="a-location" type="text" name="location" data-save /></div>
+        </section>
+
+        <section class="app-section" aria-label="Your background">
+          <div class="app-section-label">Section 2 of 7</div>
+          <h2>Your background</h2>
+          <div class="field"><label for="a-career">Give us a quick snapshot of your career so far. What's the through-line?</label><textarea id="a-career" name="career" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-mgmt">Do you have management or leadership experience? Briefly describe.</label><textarea id="a-mgmt" name="mgmt" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-sales">Have you sold your own work before (consulting, freelance, business development)? What did that look like?</label><textarea id="a-sales" name="sales" data-save></textarea></div>
+        </section>
+
+        <section class="app-section" aria-label="Your domain">
+          <div class="app-section-label">Section 3 of 7</div>
+          <h2>Your domain</h2>
+          <div class="field"><label for="a-focus">What industry, community, or space would your lab focus on?</label><textarea id="a-focus" name="focus" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-why">Why this space? What's your connection to it?</label><textarea id="a-why" name="why" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-serve">Who would you want to serve? (Rough answer is fine. We'll sharpen this together.)</label><textarea id="a-serve" name="serve" data-save></textarea></div>
+        </section>
+
+        <section class="app-section" aria-label="Your pipeline">
+          <div class="app-section-label">Section 4 of 7</div>
+          <h2>Your pipeline</h2>
+          <div class="field"><label for="a-network">Do you have existing relationships or a network in this space you could draw on? Describe briefly.</label><textarea id="a-network" name="network" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-warm">Is any of it warm enough to activate quickly, or is it more dormant or aspirational right now?</label><textarea id="a-warm" name="warm" data-save></textarea></div>
+        </section>
+
+        <section class="app-section" aria-label="Your vision">
+          <div class="app-section-label">Section 5 of 7</div>
+          <h2>Your vision</h2>
+          <div class="field"><label for="a-yearone">If you led a lab at OL, what's one thing you'd want to build or offer in year one?</label><textarea id="a-yearone" name="yearone" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-unable">What would you want to do that you haven't been able to do in your current role?</label><textarea id="a-unable" name="unable" data-save></textarea></div>
+        </section>
+
+        <section class="app-section" aria-label="Fit and motivation">
+          <div class="app-section-label">Section 6 of 7</div>
+          <h2>Fit and motivation</h2>
+          <div class="field"><label for="a-whynow">Why Optimistic Labs, why now?</label><textarea id="a-whynow" name="whynow" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-hoping">What are you hoping to get out of this that you don't currently have?</label><textarea id="a-hoping" name="hoping" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-questions">What questions do you have for us?</label><textarea id="a-questions" name="questions" data-save></textarea></div>
+        </section>
+
+        <section class="app-section" aria-label="Logistics">
+          <div class="app-section-label">Section 7 of 7</div>
+          <h2>Logistics</h2>
+          <div class="field"><label for="a-timeline">What's your timeline? When could you realistically start?</label><textarea id="a-timeline" name="timeline" data-save></textarea></div>
+          <div class="field" style="margin-top:18px"><label for="a-avail">Anything that would affect your availability (notice period, non-compete, other commitments)?</label><textarea id="a-avail" name="avail" data-save></textarea></div>
+        </section>
+
+        <div class="app-section">
+          <button type="submit" class="pill pill-primary">Submit application →</button>
+          <div class="app-status" id="saveStatus" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== POST-SUBMIT ===== -->
+    <section id="appDone" aria-label="Application submitted">
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Application received</span>
+      <h1 class="display" style="font-size:clamp(30px,4.4vw,44px)">Thanks so much for submitting your <em class="em-italic">application</em>.</h1>
+      <p>As a next step, please use <a data-book style="color:var(--violet);font-weight:500;cursor:pointer">this calendar link</a> to set a call to go over your lab idea with us. We'll review the application in advance and be prepared to discuss.</p>
+      <p>If you have any questions or issues in the meantime, please don't hesitate to email us at <a href="mailto:hello@optimisticlabs.com" style="color:var(--violet)">hello@optimisticlabs.com</a>.</p>
+      <div class="cta-row" style="margin-top:26px"><a class="pill pill-primary" data-book>Set a call →</a></div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      <a class="footer-logo" href="index.html" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+      <div class="footer-tag">Trust is the <em class="em-italic">advantage.</em></div>
+      <div class="footer-loc">Built from Atlanta, GA and Syracuse, NY.</div>
+    </div>
+    <div class="footer-links">
+      <a data-book>Book a call</a>
+      <a href="faith-lab.html">Faith Lab</a>
+      <a href="policy-lab.html">Policy Lab</a>
+      <a href="philanthropy-lab.html">Philanthropy Lab</a>
+      <a href="become-a-lab-leader.html">Become a Lab Leader</a>
+      <a href="about.html">About</a>
+      <a id="linkedInLink">LinkedIn</a>
+    </div>
+    <div class="footer-sign">© 2026 Optimistic Labs · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a> · Built with ❤️</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  "use strict";
+  var STORE_KEY='ol-lab-leader-application';
+  var form=document.getElementById('appForm');
+  var fields=Array.prototype.slice.call(form.querySelectorAll('[data-save]'));
+  var saveStatus=document.getElementById('saveStatus');
+  var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  /* ---- draft autosave (localStorage; same device and browser only) ---- */
+  function restore(){
+    var raw=null;
+    try{ raw=localStorage.getItem(STORE_KEY); }catch(e){}
+    if(!raw) return;
+    try{
+      var data=JSON.parse(raw);
+      fields.forEach(function(f){ if(data[f.name]) f.value=data[f.name]; });
+      saveStatus.textContent='Draft restored from your last visit.';
+    }catch(e){}
+  }
+  var saveTimer=null;
+  function save(){
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(function(){
+      var data={};
+      fields.forEach(function(f){ if(f.value) data[f.name]=f.value; });
+      try{ localStorage.setItem(STORE_KEY,JSON.stringify(data)); saveStatus.textContent='Draft saved in this browser.'; }catch(e){}
+    },400);
+  }
+  fields.forEach(function(f){ f.addEventListener('input',save); });
+  restore();
+
+  /* ---- validation + submit ---- */
+  function setErr(input,msg){
+    input.setAttribute('aria-invalid','true');
+    var err=input.parentNode.querySelector('.field-err');
+    if(!err){ err=document.createElement('span'); err.className='field-err'; err.setAttribute('role','alert'); input.parentNode.appendChild(err); }
+    err.textContent=msg;
+  }
+  function clearErr(input){ input.removeAttribute('aria-invalid'); var e=input.parentNode.querySelector('.field-err'); if(e) e.textContent=''; }
+  var nameInput=document.getElementById('a-name'), emailInput=document.getElementById('a-email');
+  [nameInput,emailInput].forEach(function(inp){ inp.addEventListener('input',function(){ if(inp.getAttribute('aria-invalid')) clearErr(inp); }); });
+
+  var LABELS={name:'Name',email:'Email',phone:'Phone',link:'LinkedIn or website',role:'Current role',location:'Based in',
+    career:'Career snapshot / through-line',mgmt:'Management or leadership experience',sales:'Sold own work before',
+    focus:'Lab focus (industry / community / space)',why:'Why this space / connection to it',serve:'Who they want to serve',
+    network:'Existing relationships / network',warm:'Warm vs dormant pipeline',
+    yearone:'Year-one build or offer',unable:"What they haven't been able to do in current role",
+    whynow:'Why Optimistic Labs, why now',hoping:'Hoping to get out of this',questions:'Questions for us',
+    timeline:'Timeline / start date',avail:'Availability constraints'};
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var firstBad=null;
+    if(!nameInput.value.trim()){ setErr(nameInput,'Please add your name.'); firstBad=nameInput; } else clearErr(nameInput);
+    var ev=(emailInput.value||'').trim();
+    if(!EMAIL_RE.test(ev)){ setErr(emailInput,ev?'Enter a valid email address.':'Email is required.'); if(!firstBad) firstBad=emailInput; } else clearErr(emailInput);
+    if(firstBad){ firstBad.scrollIntoView({behavior:'smooth',block:'center'}); firstBad.focus(); return; }
+
+    var CONFIG=window.OL_CONFIG||{};
+    var payload={Source:'Lab Leader Application'};
+    fields.forEach(function(f){ payload[LABELS[f.name]||f.name]=f.value.trim()||'(blank)'; });
+
+    function done(){
+      try{ localStorage.removeItem(STORE_KEY); }catch(err){}
+      document.getElementById('appMain').style.display='none';
+      var doneEl=document.getElementById('appDone');
+      doneEl.classList.add('show');
+      window.scrollTo({top:0,behavior:'auto'});
+    }
+    if(CONFIG.formEndpoint){
+      fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+        .then(done).catch(done);
+    } else {
+      var lines=[]; for(var k in payload){ lines.push(k+':\n'+payload[k]+'\n'); }
+      window.location.href='mailto:'+(CONFIG.contactEmail||'hello@optimisticlabs.com')+
+        '?subject='+encodeURIComponent('Lab Leader Application · '+nameInput.value.trim())+
+        '&body='+encodeURIComponent(lines.join('\n'));
+      done();
+    }
+  });
+})();
+</script>
+</body>
+</html>
