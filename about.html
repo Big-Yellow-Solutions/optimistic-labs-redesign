@@ -18,9 +18,30 @@
 .value-title{font-family:var(--head);font-weight:700;letter-spacing:-.015em;font-size:24px;line-height:1.1;color:var(--ink);margin-bottom:12px}
 .value p{font-size:15.5px;line-height:1.62;color:var(--ink-soft);max-width:30ch;margin:0 auto}
 .momentum{margin-top:46px}
-.team-cards-track .team-card{width:min(350px,80vw)}
-.team-note--wide{max-width:none;font-size:17.5px;line-height:1.65;margin-top:14px}
 .contact-lead-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:26px 0 40px}
+
+/* ---- meet the founders ---- */
+.founders-heading{margin:0 0 20px;font-family:var(--head);font-weight:800;font-size:clamp(40px,7.5vw,64px);
+  line-height:1.02;letter-spacing:-.03em;color:var(--ink)}
+.founders-heading .em-italic{font-weight:500}
+.founders-intro{max-width:680px;margin:0 0 72px}
+.founder-block{margin-bottom:72px}
+.founder-block:last-child{margin-bottom:0}
+.founder-photo{width:360px;height:440px;border-radius:18px;overflow:hidden;background:var(--violet-pale)}
+.founder-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.founder-photo--left{float:left;margin:6px 44px 20px 0}
+.founder-photo--right{float:right;margin:6px 0 20px 44px}
+.founder-name{margin:0 0 6px;font-family:var(--head);font-weight:800;font-size:34px;letter-spacing:-.02em;color:var(--ink)}
+.founder-role{margin:0 0 22px;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
+.founder-bio{margin:0 0 18px;max-width:none;font-size:17px;line-height:1.62;color:var(--ink)}
+.founder-bio strong{font-weight:700}
+.founder-bio--secondary{margin:0;color:var(--ink-soft)}
+.founder-bio--secondary strong{color:var(--ink)}
+.founder-clear{clear:both}
+@media (max-width:720px){
+  .founder-photo--left,.founder-photo--right{float:none;width:100%;height:auto;aspect-ratio:360/440;margin:0 0 24px}
+  .founder-block{margin-bottom:48px}
+}
 </style>
 </head>
 <body>
@@ -68,7 +89,7 @@
   <!-- ===== HERO (light, split, photo-ready) ===== -->
   <section class="hero-light" aria-label="About Optimistic Labs">
     <div class="inner2">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />About us</span>
         <h1 class="display" style="font-size:clamp(38px,5.2vw,60px)">Where optimism meets <em class="em-italic">action</em>.</h1>
         <p class="lead">We help organizations build communities that make their brands stronger, their growth stickier, and their strategy more human. Here is who we are and how we think.</p>
@@ -86,49 +107,29 @@
     </div>
   </section>
 
-  <!-- ===== MEET THE TEAM ===== -->
-  <section class="section section--mid reveal" id="team" aria-label="Meet the team">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Meet the team</span>
-    <h2 class="h-sec">The people behind <em class="em-italic">Optimistic Labs</em>.</h2>
-    <div class="carousel" data-carousel>
-      <button class="car-btn prev" type="button" aria-label="Previous team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="carousel-track team-cards-track">
-      <article class="team-card" tabindex="0">
-        <div class="team-card-photo"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
-        <div class="team-card-body">
-          <h3>Seth Cohen</h3>
-          <div class="team-role">Co-founder</div>
-          <p>Seth believes there is tremendous power at the intersection of storytelling, community, and action. He brings more than 25 years across media, philanthropy, and civic leadership, most recently as Chief Impact Officer at Forbes, where he founded the Forbes Impact Lab, and before that at the Schusterman Family Philanthropies.</p>
-        </div>
-      </article>
-      <article class="team-card" tabindex="0">
-        <div class="team-card-photo"><img src="assets/liz-russell.jpg" alt="Liz Russell" /></div>
-        <div class="team-card-body">
-          <h3>Liz Russell</h3>
-          <div class="team-role">Co-founder</div>
-          <p>Liz believes strong communities depend on strong, easy-to-use systems. She designs the operational foundations that let communities grow, drawing on more than a decade across SaaS, emergency management, and GovTech, most recently as VP of Customer Success at Forerunner.</p>
-        </div>
-      </article>
-      <article class="team-card" tabindex="0">
-        <div class="team-card-photo"><img src="assets/lauren-hall.jpg" alt="Lauren Hall" /></div>
-        <div class="team-card-body">
-          <h3>Lauren Hall, PhD</h3>
-          <div class="team-role">Senior Advisor</div>
-          <p>Lauren is a political theorist and Associate Dean of Academic Affairs at the Rochester Institute of Technology, and co-founder of the Excelsior Center for Civic Innovation. She advises Optimistic Labs on pluralism, narrative change, and civic capacity-building, drawing on nearly two decades of scholarship and two published books.</p>
-        </div>
-      </article>
-      <article class="team-card" tabindex="0">
-        <div class="team-card-photo"><img src="assets/aliza-goodman.jpg" alt="Aliza Goodman" /></div>
-        <div class="team-card-body">
-          <h3>Aliza Goodman</h3>
-          <div class="team-role">Lab Leader, Faith</div>
-          <p>Aliza believes lasting communities are built on infrastructure, not just inspiration. She brings more than 20 years designing and scaling professional development programs in Jewish and Israel education, including 16 years as a senior leader at The iCenter for Israel Education, where she built two of the field's most recognized programs. She holds an MBA in Social Policy and Management and an MA in Jewish Professional Leadership from Brandeis University.</p>
-        </div>
-      </article>
-      </div>
-      <button class="car-btn next" type="button" aria-label="Next team members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <!-- ===== MEET THE FOUNDERS ===== -->
+  <section class="section reveal" aria-label="Meet the founders">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Our founders</span>
+    <h2 class="founders-heading">Meet <em class="em-italic">Seth &amp; Liz</em>.</h2>
+    <p class="lead founders-intro">We started Optimistic Labs on the conviction that community isn't found, it's built, and that it's a company's most durable advantage.</p>
+
+    <div class="founder-block">
+      <div class="founder-photo founder-photo--left"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
+      <h3 class="founder-name">Seth Cohen</h3>
+      <p class="founder-role">Co-founder</p>
+      <p class="founder-bio"><strong>Seth believes there is tremendous power at the intersection of storytelling, community, and action.</strong> He works with leaders to help organizations turn community into a strategic advantage, designing ecosystems that connect people through shared purpose, knowledge, and curiosity. Drawing on more than 25 years across media, philanthropy, and civic leadership, Seth focuses on helping organizations cultivate communities that deepen trust, strengthen networks, and create lasting momentum.</p>
+      <p class="founder-bio founder-bio--secondary">Most recently he served as <strong>Chief Impact Officer at Forbes and founder of the Forbes Impact Lab</strong>, and before that as a Senior Director at Charles and Lynn Schusterman Family Philanthropies. Earlier in his career, Seth was a nationally recognized corporate attorney in Atlanta and has held numerous nonprofit leadership roles focused on civic engagement and community development.</p>
+      <div class="founder-clear"></div>
     </div>
-    <p class="team-note team-note--wide">Plus a trusted network of <b>fractional executives and specialists</b> who support our clients across strategy, technology, content, and community operations.</p>
+
+    <div class="founder-block">
+      <div class="founder-photo founder-photo--right"><img src="assets/liz-russell.jpg" alt="Liz Russell" /></div>
+      <h3 class="founder-name">Liz Russell</h3>
+      <p class="founder-role">Co-founder</p>
+      <p class="founder-bio"><strong>Liz believes that strong communities depend on strong, easy-to-use systems.</strong> She works with leaders to design the operational foundations that allow communities to grow, building the structures that connect people through shared purpose, knowledge, and curiosity. Drawing on more than a decade across SaaS, emergency management, and GovTech, Liz specializes in turning complexity into clear, scalable systems.</p>
+      <p class="founder-bio founder-bio--secondary">Most recently she served as <strong>Vice President of Customer Success at Forerunner</strong>, where she scaled the company's Customer Success organization and strengthened retention, customer insight, and cross-functional alignment. Earlier she was Director of Product for the Perdix Knowledge Management System and managed FEMA and HUD disaster recovery initiatives overseeing more than $2.6&nbsp;billion in federal funding.</p>
+      <div class="founder-clear"></div>
+    </div>
   </section>
 
   <!-- ===== APPLIED OPTIMISM ===== -->
