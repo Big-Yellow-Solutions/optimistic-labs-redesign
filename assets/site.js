@@ -11,6 +11,7 @@
     bookingUrl:   '',                                   // TODO Liz: Calendly/SavvyCal link. Empty = mailto fallback.
     faithUrl:     'faith-lab.html',
     leaderUrl:    'become-a-lab-leader.html',
+    applicationFormUrl: '#apply',              // TODO: Lab Leader application form URL, once it exists.
     formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to teddy@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
@@ -98,6 +99,36 @@
           '<p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-soft)">'+escHtml(cfg.intro||'')+'</p>'+
         '</div>'+
         '<div class="wyg-grid">'+cardsHtml+'</div>';
+    });
+
+    /* ---- lab leaders recruiting grid (data-driven) ---- */
+    document.querySelectorAll('[data-lab-leaders]').forEach(function(root){
+      var cfgEl = root.querySelector('script[data-lab-leaders-config]');
+      var grid = root.querySelector('[data-lab-leaders-grid]');
+      if(!cfgEl || !grid) return;
+      var cfg;
+      try { cfg = JSON.parse(cfgEl.textContent); } catch(e){ return; }
+      var arrow = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '+
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+      var labsHtml = (cfg.labs||[]).map(function(lab){
+        return '<a class="ll-card" href="'+escHtml(lab.applyUrl||CONFIG.applicationFormUrl)+'">'+
+          '<div class="ll-card-img"><img src="'+escHtml(lab.imageUrl)+'" alt="'+escHtml(lab.title)+'" /></div>'+
+          '<div class="ll-card-body">'+
+            '<div class="ll-card-title">'+escHtml(lab.title)+'</div>'+
+            '<span class="ll-card-link">Apply to lead this lab '+arrow+'</span>'+
+          '</div>'+
+        '</a>';
+      }).join('');
+      var ctaHtml =
+        '<a class="ll-card ll-card--cta" href="'+escHtml(CONFIG.applicationFormUrl)+'">'+
+          '<div class="ll-card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" '+
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>'+
+          '<div class="ll-card-body">'+
+            '<div class="ll-card-title">Design your own lab</div>'+
+            '<span class="ll-card-link">Apply to lead this lab '+arrow+'</span>'+
+          '</div>'+
+        '</a>';
+      grid.innerHTML = labsHtml + ctaHtml;
     });
 
     /* ---- service-area audience switcher (data-driven) ---- */
@@ -189,6 +220,7 @@
     });
     document.querySelectorAll('[data-href="faith"]').forEach(function(el){ el.setAttribute('href', CONFIG.faithUrl); });
     document.querySelectorAll('[data-href="leader"]').forEach(function(el){ el.setAttribute('href', CONFIG.leaderUrl); });
+    document.querySelectorAll('[data-href="application"]').forEach(function(el){ el.setAttribute('href', CONFIG.applicationFormUrl); });
     document.querySelectorAll('#linkedInLink,[data-href="linkedin"]').forEach(function(el){
       el.setAttribute('href', CONFIG.linkedInUrl); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
     });
