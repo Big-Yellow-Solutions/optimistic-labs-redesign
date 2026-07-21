@@ -259,7 +259,7 @@
     document.querySelectorAll('[data-href="faith"]').forEach(function(el){ el.setAttribute('href', CONFIG.faithUrl); });
     document.querySelectorAll('[data-href="leader"]').forEach(function(el){ el.setAttribute('href', CONFIG.leaderUrl); });
     document.querySelectorAll('[data-href="application"]').forEach(function(el){ el.setAttribute('href', CONFIG.applicationFormUrl); });
-    document.querySelectorAll('#linkedInLink,[data-href="linkedin"]').forEach(function(el){
+    document.querySelectorAll('[data-href="linkedin"]').forEach(function(el){
       el.setAttribute('href', CONFIG.linkedInUrl); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
     });
 
