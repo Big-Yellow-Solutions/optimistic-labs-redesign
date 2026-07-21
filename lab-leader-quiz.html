@@ -268,7 +268,7 @@
 
   function deliverLead(firstName,email,score,tier){
     var CONFIG=window.OL_CONFIG||{};
-    var payload={FirstName:firstName,Email:email,Score:score+' of 21',Tier:'Tier '+tier.n+': '+tier.name,Source:'Lab Leader Fit Quiz'};
+    var payload={_subject:'Lab Leader Fit Quiz · '+firstName+' scored '+score+' of 21',FirstName:firstName,Email:email,Score:score+' of 21',Tier:'Tier '+tier.n+': '+tier.name,Source:'Lab Leader Fit Quiz'};
     QUESTIONS.forEach(function(item,i){
       payload['Q'+(i+1)+' ('+item.key+')']=answers[i]!==null?item.opts[answers[i]].t+' ['+item.opts[answers[i]].s+']':'(skipped)';
     });

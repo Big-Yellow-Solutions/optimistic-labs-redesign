@@ -11,7 +11,7 @@
     bookingUrl:   '',                                   // TODO Liz: Calendly/SavvyCal link. Empty = mailto fallback.
     faithUrl:     'faith-lab.html',
     leaderUrl:    'become-a-lab-leader.html',
-    formEndpoint: '',                                   // Formspree etc. for newsletter + contact. Empty = mailto.
+    formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to teddy@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
   };
@@ -418,7 +418,7 @@
     function flashBtn(btn){ if(!btn) return; btn.disabled=true; setTimeout(function(){btn.disabled=false;},900); }
     function deliver(payload,subject,done){
       if(CONFIG.formEndpoint){
-        fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+        fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({_subject:subject},payload))})
           .then(function(){done();}).catch(function(){done();});
       } else {
         var lines=[]; for(var k in payload){ if(payload[k]) lines.push(k+': '+payload[k]); }

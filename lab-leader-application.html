@@ -242,7 +242,7 @@
     if(firstBad){ firstBad.scrollIntoView({behavior:'smooth',block:'center'}); firstBad.focus(); return; }
 
     var CONFIG=window.OL_CONFIG||{};
-    var payload={Source:'Lab Leader Application'};
+    var payload={_subject:'Lab Leader Application · '+nameInput.value.trim(),Source:'Lab Leader Application'};
     fields.forEach(function(f){ payload[LABELS[f.name]||f.name]=f.value.trim()||'(blank)'; });
 
     function done(){

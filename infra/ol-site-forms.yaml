@@ -1,0 +1,137 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Optimistic Labs website form backend: a public Lambda Function URL that
+  receives form submissions (contact form, Lab Leader Fit Quiz, Lab Leader
+  Application) and emails them via SES. Deployed in the OL account
+  (371361645693), us-east-1. Wire the FunctionUrl output into
+  CONFIG.formEndpoint in assets/site.js.
+
+Parameters:
+  FromAddress:
+    Type: String
+    Default: teddy@optimisticlabs.com
+    Description: Verified SES identity the notification is sent from.
+  ToAddress:
+    Type: String
+    Default: teddy@optimisticlabs.com
+    Description: >
+      Where form submissions are delivered. While SES is in sandbox mode this
+      must also be a verified identity.
+
+Resources:
+  TeddyEmailIdentity:
+    Type: AWS::SES::EmailIdentity
+    Properties:
+      EmailIdentity: teddy@optimisticlabs.com
+
+  HelloEmailIdentity:
+    Type: AWS::SES::EmailIdentity
+    Properties:
+      EmailIdentity: hello@optimisticlabs.com
+
+  FormFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/ol-site-forms
+      RetentionInDays: 30
+
+  FormFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ol-site-forms-lambda-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: lambda.amazonaws.com }
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ol-site-forms-permissions
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [ 'logs:CreateLogStream', 'logs:PutLogEvents' ]
+                Resource: !GetAtt FormFunctionLogGroup.Arn
+              - Effect: Allow
+                Action: 'ses:SendEmail'
+                Resource: !Sub 'arn:aws:ses:${AWS::Region}:${AWS::AccountId}:identity/*'
+
+  FormFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: ol-site-forms
+      Description: Receives Optimistic Labs website form posts and emails them via SES.
+      Runtime: nodejs22.x
+      Handler: index.handler
+      MemorySize: 128
+      Timeout: 10
+      Role: !GetAtt FormFunctionRole.Arn
+      Environment:
+        Variables:
+          FROM_ADDR: !Ref FromAddress
+          TO_ADDR: !Ref ToAddress
+      Code:
+        ZipFile: |
+          const {SESv2Client,SendEmailCommand}=require("@aws-sdk/client-sesv2");
+          const ses=new SESv2Client({});
+          const CORS={"Access-Control-Allow-Origin":"*"};
+          const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          exports.handler=async(e)=>{
+            try{
+              const method=e.requestContext&&e.requestContext.http&&e.requestContext.http.method;
+              if(method==="OPTIONS")return{statusCode:204,headers:CORS};
+              if(method!=="POST")return{statusCode:405,headers:CORS,body:'{"ok":false}'};
+              let raw=e.body||"{}";
+              if(e.isBase64Encoded)raw=Buffer.from(raw,"base64").toString("utf8");
+              if(raw.length>200000)return{statusCode:413,headers:CORS,body:'{"ok":false}'};
+              let b;try{b=JSON.parse(raw);}catch(_){return{statusCode:400,headers:CORS,body:'{"ok":false}'};}
+              if(!b||typeof b!=="object"||Array.isArray(b))return{statusCode:400,headers:CORS,body:'{"ok":false}'};
+              if(b._gotcha)return{statusCode:204,headers:CORS}; /* honeypot: pretend success */
+              const subject=String(b._subject||b.Source||"Website form").replace(/[\r\n]/g," ").slice(0,120);
+              const entries=Object.entries(b).filter(([k])=>k!=="_gotcha"&&k!=="_subject").slice(0,80);
+              if(!entries.length)return{statusCode:400,headers:CORS,body:'{"ok":false}'};
+              const lines=entries.map(([k,v])=>String(k).slice(0,200)+":\n"+String(v).slice(0,5000)).join("\n\n");
+              const replyTo=(typeof b.Email==="string"&&EMAIL_RE.test(b.Email.trim()))?[b.Email.trim()]:[];
+              await ses.send(new SendEmailCommand({
+                FromEmailAddress:process.env.FROM_ADDR,
+                Destination:{ToAddresses:[process.env.TO_ADDR]},
+                ReplyToAddresses:replyTo,
+                Content:{Simple:{
+                  Subject:{Data:subject},
+                  Body:{Text:{Data:lines.slice(0,150000)}}}}
+              }));
+              return{statusCode:200,headers:Object.assign({"Content-Type":"application/json"},CORS),body:'{"ok":true}'};
+            }catch(err){
+              console.error(err);
+              return{statusCode:500,headers:CORS,body:'{"ok":false}'};
+            }
+          };
+
+  FormFunctionUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      TargetFunctionArn: !GetAtt FormFunction.Arn
+      AuthType: NONE
+      Cors:
+        AllowOrigins: [ '*' ]
+        AllowMethods: [ 'POST' ]
+        AllowHeaders: [ 'content-type' ]
+        MaxAge: 86400
+
+  # Statement 1 of 2 for public AuthType NONE URLs. Statement 2
+  # (lambda:InvokeFunction with the InvokedViaFunctionUrl condition) is not
+  # expressible in CloudFormation and is added via CLI after deploy; see
+  # infra/README note in the stack description.
+  FormFunctionUrlPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref FormFunction
+      Action: lambda:InvokeFunctionUrl
+      Principal: '*'
+      FunctionUrlAuthType: NONE
+
+Outputs:
+  FunctionUrl:
+    Description: Public form endpoint. Set as CONFIG.formEndpoint in assets/site.js.
+    Value: !GetAtt FormFunctionUrl.FunctionUrl
