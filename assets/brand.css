@@ -281,38 +281,29 @@ p{max-width:64ch}
 .step-title{margin:0 0 12px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:var(--h-sec);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
 .step-body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:44ch}
 
-/* ---------- lab leaders recruiting (dark, data-driven) ---------- */
-.lab-leaders{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:88px clamp(24px,5vw,64px);
-  display:flex;align-items:center;min-height:100vh}
-.lab-leaders-glow{position:absolute;pointer-events:none}
-.lab-leaders-glow--a{top:-20%;right:-6%;width:64%;height:130%;
-  background:radial-gradient(56% 52% at 62% 42%,rgba(124,109,245,.26),transparent 70%);filter:blur(26px)}
-.lab-leaders-glow--b{inset:0;background:radial-gradient(120% 90% at 8% 105%,rgba(61,47,212,.32),transparent 58%)}
+/* ---------- lab leaders recruiting (light purple, data-driven) ---------- */
+.lab-leaders{position:relative;overflow:hidden;background:var(--violet-pale);color:var(--ink);
+  padding:88px clamp(24px,5vw,64px);display:flex;align-items:center;min-height:100vh}
 .lab-leaders-layout{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;
   display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:clamp(40px,5vw,88px);align-items:center}
-.lab-leaders-intro .eyebrow{color:var(--violet-light)}
-.lab-leaders-h1{margin:20px 0 0;font-size:clamp(38px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;color:#fff}
-.lab-leaders-h1 .em-italic{color:var(--violet-light)}
-.lab-leaders-lead{margin:24px 0 0;max-width:42ch;font-size:17px;line-height:1.6;color:rgba(255,255,255,.7)}
-.lab-leaders-intro .pill-primary{margin-top:32px}
+.lab-leaders-h1{margin:20px 0 0;font-size:clamp(38px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+.lab-leaders-lead{margin:24px 0 0;max-width:42ch;font-size:17px;line-height:1.6;color:var(--ink-soft)}
 
 .lab-leaders-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .ll-card{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;
+  background:#fff;border:1px solid var(--hair);color:var(--ink);
   transition:transform .28s cubic-bezier(.4,0,.2,1),box-shadow .28s ease}
-.ll-card:hover{transform:translateY(-4px);box-shadow:0 28px 54px -18px rgba(61,47,212,.4),0 10px 24px rgba(0,0,0,.3)}
-.ll-card-img{aspect-ratio:16/10;background:rgba(255,255,255,.04)}
+.ll-card:hover{transform:translateY(-4px);box-shadow:0 28px 54px -18px rgba(61,47,212,.35),0 10px 24px rgba(17,17,17,.14)}
+.ll-card-img{aspect-ratio:16/10;background:var(--violet-pale)}
 .ll-card-img img{width:100%;height:100%;object-fit:cover;display:block}
 .ll-card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px}
-.ll-card-title{font-family:var(--head);font-weight:600;font-size:17px;letter-spacing:-.01em;color:#fff}
-.ll-card-link{font-family:var(--head);font-weight:600;font-size:13px;color:var(--violet-light);
+.ll-card-title{font-family:var(--head);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+.ll-card-link{font-family:var(--head);font-weight:600;font-size:13px;color:var(--violet);
   display:inline-flex;align-items:center;gap:7px}
 .ll-card--cta{justify-content:space-between;gap:16px;padding:20px;border-color:transparent;
-  background:linear-gradient(155deg,var(--violet-deep),color-mix(in srgb,var(--violet-deep) 75%,black))}
-.ll-card--cta::after{content:"";position:absolute;top:-30%;right:-15%;width:70%;height:120%;
-  background:radial-gradient(circle at center,rgba(255,255,255,.22),transparent 65%);pointer-events:none}
+  background:var(--violet-deep);color:#fff}
 .ll-card--cta .ll-card-body{padding:0}
-.ll-card--cta .ll-card-title{font-size:19px}
+.ll-card--cta .ll-card-title{font-size:19px;color:#fff}
 .ll-card--cta .ll-card-link{color:#fff;opacity:.92}
 .ll-card-badge{position:relative;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
   background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
