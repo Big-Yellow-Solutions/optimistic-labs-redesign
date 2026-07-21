@@ -18,9 +18,10 @@
 .labs-carousel{margin-top:18px}
 .labs-track .lab-card{width:min(470px,86vw)}
 .lab-card{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
-.lab-card .lock-wrap{background:var(--violet-pale);display:flex;align-items:center;justify-content:center;padding:52px 20px}
-.lab-card .lock{height:38px;width:auto}
-.lab-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px}
+.lab-card .lab-card-img{aspect-ratio:16/10;overflow:hidden}
+.lab-card .lab-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.lab-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:12px}
+.lab-card-title{font-size:22px;line-height:1.15;letter-spacing:-.01em;color:var(--ink)}
 .lab-card p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
 .lab-card .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
 .lab-card a.more{font-weight:500;color:var(--violet);font-size:14px}
@@ -37,6 +38,7 @@
 .coverflow-dots{display:flex;justify-content:center;gap:10px;margin-top:14px}
 .coverflow-dots button{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:var(--hair);cursor:pointer;transition:background .2s,transform .2s}
 .coverflow-dots button.active{background:var(--violet);transform:scale(1.25)}
+section[aria-label="Who this is for"] .bullets li{font-size:17px}
 </style>
 </head>
 <body>
@@ -115,31 +117,27 @@
         <div class="coverflow-viewport">
           <div class="carousel-track labs-track">
           <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs · Faith" /></div>
+            <div class="lab-card-img"><img src="assets/faith-hero.jpg" alt="Faith Lab" /></div>
             <div class="lab-card-body">
+              <h3 class="lab-card-title">Faith Lab</h3>
               <p>Led by Aliza Goodman. The first lab with a dedicated practice, and the model for how a lab leader brings the community while OL brings the apparatus.</p>
               <div class="row"><span class="chip">Live</span><a class="more" href="faith-lab.html">Visit Faith Lab →</a></div>
             </div>
           </div>
           <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/impact-logo.svg" alt="Optimistic Labs · Impact" /></div>
+            <div class="lab-card-img"><img src="assets/policy-hero.jpg" alt="Policy Lab" /></div>
             <div class="lab-card-body">
-              <p>A practice built for leaders and organizations working toward measurable good: strategy and trusted networks pointed at outcomes that matter.</p>
-              <div class="row"><span class="chip chip--soft">In formation</span></div>
-            </div>
-          </div>
-          <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs · Policy" /></div>
-            <div class="lab-card-body">
+              <h3 class="lab-card-title">Policy Lab</h3>
               <p>Led by the OL co-founders. An impact-focused strategy studio and activation engine for institutions working to restore civic trust and advance policy through connection, clarity, and creativity.</p>
               <div class="row"><span class="chip">Live</span><a class="more" href="policy-lab.html">Visit Policy Lab →</a></div>
             </div>
           </div>
           <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/sports-logo.svg" alt="Optimistic Labs · Sports" /></div>
+            <div class="lab-card-img"><img src="assets/philanthropy-hero.jpg" alt="Philanthropy Lab" /></div>
             <div class="lab-card-body">
-              <p>A lab for the people building the culture, the connection, and the systems around sport, on and off the field.</p>
-              <div class="row"><span class="chip chip--soft">In formation</span></div>
+              <h3 class="lab-card-title">Philanthropy Lab</h3>
+              <p>A dynamic advisory and activation platform for the full philanthropic ecosystem, from major foundations and philanthropic investors to grassroots NGOs and emerging philanthropists.</p>
+              <div class="row"><span class="chip">Live</span><a class="more" href="philanthropy-lab.html">Visit Philanthropy Lab →</a></div>
             </div>
           </div>
           </div>
@@ -154,15 +152,27 @@
   <section class="section section--mid reveal" aria-label="How it works">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How it works</span>
     <h2 class="h-sec">From your idea to a lab in market.</h2>
-    <div class="spine" style="margin-top:20px">
-      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">01</div><div class="spine-title">Bring your idea and your community</div><p class="spine-desc">Start with the mission and the people you already serve. Pitch us the lab you want to build: the vertical, the point of view, the community you have momentum with. This is a conversation, not an application.</p></div></div>
-      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">02</div><div class="spine-title">Design the lab with us</div><p class="spine-desc">We architect it together: the methodology, the packaged offerings and tiers, the positioning, and the co-branded lockup. Community has to be designed, so we design yours on purpose, not by accident.</p></div></div>
-      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">03</div><div class="spine-title">Launch with OL's apparatus</div><p class="spine-desc">Your lab goes to market with the strategy, platforms, brand, and trusted network behind it. You step into leadership on day one with the operating system already running underneath you.</p></div></div>
-      <div class="spine-item"><div class="spine-rail"><div class="spine-node"></div><div class="spine-line"></div></div>
-        <div><div class="spine-ix">04</div><div class="spine-title">Grow and compound</div><p class="spine-desc">We support the practice as it scales: demand generation, new offerings, shared learnings from across the ecosystem. Your lab gets stronger, and so does every lab next to it.</p></div></div>
+    <div class="steps" style="margin-top:20px">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Bring your idea and your community</h3>
+        <p class="step-body">Start with the mission and the people you already serve. Pitch us the lab you want to build: the vertical, the point of view, the community you have momentum with. This is a conversation, not an application.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Design the lab with us</h3>
+        <p class="step-body">We architect it together: the methodology, the packaged offerings and tiers, the positioning, and the co-branded lockup. Community has to be designed, so we design yours on purpose, not by accident.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Launch with OL's apparatus</h3>
+        <p class="step-body">Your lab goes to market with the strategy, platforms, brand, and trusted network behind it. You step into leadership on day one with the operating system already running underneath you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Grow and compound</h3>
+        <p class="step-body">We support the practice as it scales: demand generation, new offerings, shared learnings from across the ecosystem. Your lab gets stronger, and so does every lab next to it.</p>
+      </div>
     </div>
   </section>
 
@@ -214,17 +224,17 @@
   <!-- ===== THE ECONOMICS ===== -->
   <section class="section section--mid reveal" aria-label="The economics">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The economics</span>
-    <div class="econ-lead">You keep as much as possible. <em class="em-italic">Full stop.</em></div>
-    <p class="lead" style="max-width:64ch">Lab Leaders earn a substantial percentage of direct client revenue, referral revenue for clients sent to other Labs, and profit-sharing in the platform as it grows.</p>
+    <h2 class="h-sec">You keep as much as possible. Full stop.</h2>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch">Lab Leaders earn a substantial percentage of direct client revenue, referral revenue for clients sent to other Labs, and profit-sharing in the platform as it grows.</p>
     <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px">Your existing contracts stay 100% yours, outside the platform arrangement entirely. New client work, renewals, and expansions are structured collaboratively during onboarding, with the goal of keeping as much income in your pocket as possible while sustaining the platform.</p>
-    <div class="pull-quote" style="margin-top:28px;max-width:34ch">We're not taking a cut so you can use our logo. We're taking a cut because we're helping you sell, deliver, and grow.</div>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px"><em class="em-italic">We're not taking a cut so you can use our logo. We're taking a cut because we're helping you sell, deliver, and grow.</em></p>
   </section>
 
   <!-- ===== WHO THIS IS FOR (kept + addition) ===== -->
   <section class="section section--mid reveal" aria-label="Who this is for">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who this is for</span>
     <h2 class="h-sec">Who leads a lab.</h2>
-    <p class="lead" style="max-width:64ch">Lab leaders are experienced practitioners and community leaders, operators with a real audience and a real point of view who want to build a practice, not just a personal brand. If you've already earned trust in a community and you're ready to turn it into something durable, this is built for you.</p>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch">Lab leaders are experienced practitioners and community leaders, operators with a real audience and a real point of view who want to build a practice, not just a personal brand. If you've already earned trust in a community and you're ready to turn it into something durable, this is built for you.</p>
     <ul class="bullets" style="margin-top:22px;max-width:60ch">
       <li>You serve a specific community or vertical and know it deeply</li>
       <li>You have a methodology or point of view that's yours, not borrowed</li>
@@ -232,6 +242,7 @@
       <li>You'd rather lead the mission than assemble the back office</li>
       <li>You value independence, but you're done building it all alone</li>
     </ul>
+    <div class="cta-row" style="margin-top:26px"><a class="pill pill-primary" href="apply.html">Apply to lead a lab</a><a class="pill pill-outline" href="lab-leader-quiz.html">Take the fit quiz</a></div>
     <div class="card" style="margin-top:28px;background:var(--violet-pale);border-color:transparent">
       <p style="font-size:15.5px;line-height:1.62;color:var(--ink);max-width:none;text-align:center"><strong style="font-weight:600">Not ready to lead a Lab but want to plug in?</strong> We also work with subject matter experts on a more limited basis, as a spot consultant, facilitator, or fractional contributor to specific projects. <a href="work-with-us.html" style="color:var(--violet);font-weight:500">See the ways to work with OL →</a></p>
     </div>
