@@ -10,38 +10,94 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
-.quiz-shell{max-width:720px;margin:0 auto;padding:56px 24px 96px;min-height:calc(100vh - var(--nav-h) - 220px)}
+/* ===== Split Screen quiz (design direction 1B) ===== */
+.quiz-stage{padding:56px 24px 88px;display:flex;justify-content:center}
+.quiz-shell2{width:min(1000px,100%);min-height:600px;border-radius:16px;overflow:hidden;
+  box-shadow:0 12px 40px rgba(17,17,17,.10);border:1px solid #e7e3da;
+  display:grid;grid-template-columns:38% 62%;background:#fff}
+
+/* ---- left panel ---- */
+.qp-left{background:var(--violet-deep);position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;padding:36px 32px}
+.qp-left .rings{position:absolute;inset:0;width:100%;height:100%;opacity:.3;pointer-events:none}
+.qp-logo{position:relative;height:30px;width:auto}
+.qp-foot{position:relative}
+.lp-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-light)}
+.lp-num{font-family:var(--serif);font-style:italic;font-weight:500;font-size:44px;color:#fff;line-height:1}
+.lp-num span{font-size:22px;color:var(--violet-light)}
+.lp-num + .lp-label{margin-top:10px}
+.lp-head{font-family:var(--serif);font-style:italic;font-weight:500;font-size:34px;color:#fff;line-height:1.15}
+.lp-head span{display:block}
+.lp-head + .lp-label{margin-top:12px}
+.qp-foot [hidden]{display:none}
+
+/* ---- right panel ---- */
+.qp-right{background:#fff;padding:56px;display:flex;flex-direction:column;justify-content:center;position:relative}
 .quiz-screen{display:none}
-.quiz-screen.active{display:block;animation:qfade .45s var(--ease-signal)}
-@keyframes qfade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.quiz-progress{display:flex;align-items:center;gap:14px;margin-bottom:30px}
-.quiz-progress-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
-.quiz-bar{flex:1;height:5px;border-radius:99px;background:var(--violet-pale);overflow:hidden}
-.quiz-bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--violet);transition:width .4s var(--ease-signal)}
-.quiz-q{font-size:clamp(24px,3.4vw,32px);line-height:1.18;margin-bottom:26px}
-.quiz-opts{display:flex;flex-direction:column;gap:12px}
-.quiz-opt{font-family:var(--sans);font-size:16px;line-height:1.45;text-align:left;color:var(--ink);
-  background:#fff;border:1px solid var(--hair);border-radius:14px;padding:16px 20px;cursor:pointer;
-  transition:border-color .18s,background .18s,transform .18s var(--ease-ripple)}
-.quiz-opt:hover{border-color:var(--violet);transform:translateY(-1px)}
-.quiz-opt.selected{border-color:var(--violet);background:var(--violet-pale)}
-.quiz-back{display:inline-block;margin-top:26px;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--violet);background:none;border:none;cursor:pointer;padding:4px 0}
-.quiz-back:hover{text-decoration:underline}
-.quiz-fine{font-size:13px;line-height:1.6;color:var(--warm-gray);margin-top:18px;max-width:56ch}
-.result-chip{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
-.result-score{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray)}
-.result-h{font-size:clamp(26px,3.8vw,38px);line-height:1.15;margin-bottom:18px}
-.result-body p{font-size:17px;line-height:1.7;color:var(--ink-soft)}
-.result-sub{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:26px 0 10px}
-.result-body .bullets li{font-size:16px}
-.result-body ol{margin:0 0 0 20px;display:flex;flex-direction:column;gap:8px}
-.result-body ol li{font-size:16px;line-height:1.6;color:var(--ink-soft)}
-.result-cta{margin-top:30px}
-.result-subcta{margin-top:22px;font-size:15px;color:var(--ink-soft)}
+.quiz-screen.active{display:flex;flex-direction:column;justify-content:center;animation:qfade .4s var(--ease-signal);min-height:100%}
+@keyframes qfade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.q-serif{font-family:var(--serif);font-weight:700;color:var(--ink);letter-spacing:0}
+.qw-h{font-size:32px;line-height:1.15;margin-bottom:18px}
+.qw-p{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink-soft);margin-bottom:30px;max-width:44ch}
+.q-pill{display:inline-flex;align-items:center;gap:8px;background:var(--violet-deep);color:#fff;
+  font-family:var(--sans);font-weight:500;font-size:15px;border-radius:999px;padding:14px 28px;
+  width:fit-content;border:none;cursor:pointer;transition:background .22s var(--ease-soft),transform .2s var(--ease-ripple)}
+.q-pill:hover{background:var(--violet);transform:translateY(-1px)}
+
+/* question */
+.qq-title{font-size:25px;line-height:1.28;margin-bottom:28px}
+.q-rows{display:flex;flex-direction:column}
+.q-row{display:flex;align-items:center;gap:14px;padding:17px 4px;border-bottom:1px solid var(--violet-pale);
+  background:none;border-left:none;border-right:none;border-top:none;cursor:pointer;text-align:left;width:100%}
+.q-row:last-child{border-bottom:none}
+.q-dot{width:18px;height:18px;border-radius:50%;border:2px solid #d8d3c8;flex:none;transition:border-color .18s,background .18s,box-shadow .18s}
+.q-row-label{font-family:var(--sans);font-size:15px;line-height:1.45;color:var(--ink-soft);font-weight:400;transition:color .18s,font-weight .18s}
+.q-row:hover .q-dot{border-color:var(--violet)}
+.q-row.selected .q-dot{border-color:var(--violet-deep);background:var(--violet-deep);box-shadow:inset 0 0 0 3px #fff}
+.q-row.selected .q-row-label{font-weight:600;color:var(--ink)}
+.quiz-back{align-self:flex-start;margin-top:22px;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--warm-gray);background:none;border:none;cursor:pointer;padding:4px 0}
+.quiz-back:hover{color:var(--violet)}
+
+/* email capture */
+.qe-h{font-size:30px;margin-bottom:10px}
+.qe-p{font-family:var(--sans);font-size:15.5px;color:var(--ink-soft);margin-bottom:26px}
+.qe-fields{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;max-width:380px}
+.quiz-fine{font-family:var(--sans);font-size:12px;line-height:1.5;color:var(--warm-gray);margin-top:16px;max-width:44ch}
+
+/* result */
+.result-tag{display:inline-flex;width:fit-content;background:var(--violet-pale);color:var(--violet);
+  border-radius:999px;padding:6px 14px;font-family:var(--sans);font-weight:600;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.result-tag.solid{background:var(--violet-deep);color:#fff}
+.qr-h{font-size:27px;line-height:1.22;margin-bottom:14px}
+.qr-h.long{font-size:24px;line-height:1.26}
+.qr-p{font-family:var(--sans);font-size:15px;line-height:1.62;color:var(--ink-soft);margin-bottom:22px}
+.qr-list{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:9px}
+.qr-list li{position:relative;padding-left:22px;font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.qr-list li::before{content:"";position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--violet)}
+.qr-list.deep li::before{background:var(--violet-deep)}
+.result-subcta{font-family:var(--sans);font-size:12.5px;color:var(--warm-gray);margin-top:12px}
 .result-subcta a{color:var(--violet);font-weight:500}
 .result-subcta a:hover{text-decoration:underline}
-.quiz-note{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);margin-top:14px;display:none}
-.quiz-note.show{display:block}
+
+/* ---- responsive: stack the split below 820px ---- */
+@media (max-width:820px){
+  .quiz-stage{padding:24px 14px 64px}
+  .quiz-shell2{grid-template-columns:1fr;min-height:0}
+  .qp-left{flex-direction:row;align-items:center;gap:16px;padding:18px 22px;min-height:0}
+  .qp-logo{height:24px}
+  .qp-foot{text-align:right}
+  .lp-num{font-size:26px}
+  .lp-num span{font-size:14px}
+  .lp-num + .lp-label{margin-top:4px}
+  .lp-head{font-size:20px;line-height:1.2}
+  .lp-head span{display:inline}
+  .lp-head + .lp-label{margin-top:4px}
+  .qp-right{padding:34px 24px;min-height:440px}
+  .qw-h{font-size:26px}
+  .qq-title{font-size:21px}
+}
 </style>
 </head>
 <body>
@@ -87,52 +143,74 @@
 </nav>
 
 <main>
-  <div class="quiz-shell">
+  <div class="quiz-stage">
+    <div class="quiz-shell2">
 
-    <!-- ===== WELCOME ===== -->
-    <section class="quiz-screen active" id="screenWelcome" aria-label="Welcome">
-      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Lab Leader fit quiz</span>
-      <h1 class="display" style="font-size:clamp(34px,5vw,52px)">Could you lead a Lab at Optimistic <em class="em-italic">Labs?</em></h1>
-      <p class="lead" style="margin-top:18px;max-width:56ch">Seven quick questions on experience, sales, and domain depth: the same lens we use when we evaluate real candidates. Give us about two minutes, and you'll get a straight answer.</p>
-      <div class="cta-row" style="margin-top:28px"><button class="pill pill-primary" id="startBtn" type="button">Start the check →</button></div>
-    </section>
-
-    <!-- ===== QUESTIONS (rendered by JS) ===== -->
-    <section class="quiz-screen" id="screenQ" aria-label="Quiz question">
-      <div class="quiz-progress">
-        <span class="quiz-progress-label" id="qLabel">Question 1 of 7</span>
-        <div class="quiz-bar" aria-hidden="true"><i id="qBar"></i></div>
-      </div>
-      <h2 class="quiz-q" id="qText"></h2>
-      <div class="quiz-opts" id="qOpts" role="group" aria-labelledby="qText"></div>
-      <button class="quiz-back" id="qBack" type="button">← Back</button>
-    </section>
-
-    <!-- ===== EMAIL CAPTURE ===== -->
-    <section class="quiz-screen" id="screenEmail" aria-label="Get your results">
-      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />One last step</span>
-      <h2 class="quiz-q">Almost there.</h2>
-      <p class="lead" style="margin-bottom:24px">Where should we send your results?</p>
-      <form class="form" id="quizEmailForm" novalidate>
-        <div class="field-row">
-          <div class="field"><label for="qz-name">First name</label><input id="qz-name" type="text" name="firstName" autocomplete="given-name" /></div>
-          <div class="field"><label for="qz-email">Email</label><input id="qz-email" type="email" name="email" autocomplete="email" /></div>
+      <!-- ===== LEFT PANEL ===== -->
+      <aside class="qp-left" aria-hidden="false">
+        <svg class="rings" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <circle cx="80" cy="330" r="70" fill="none" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="80" cy="330" r="130" fill="none" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="80" cy="330" r="190" fill="none" stroke="#fff" stroke-width="1.2"/>
+        </svg>
+        <img class="qp-logo" src="assets/ol-logo-white.svg" alt="Optimistic Labs" />
+        <div class="qp-foot">
+          <div id="lpWelcome" class="lp-label">Lab Leader Fit Quiz</div>
+          <div id="lpQuestion" hidden>
+            <div class="lp-num" id="lpNum">01<span>/07</span></div>
+            <div class="lp-label" id="lpCat"></div>
+          </div>
+          <div id="lpEmail" class="lp-label" hidden>7 of 7 answered</div>
+          <div id="lpResult" hidden>
+            <div class="lp-head" id="lpTierHead"></div>
+            <div class="lp-label" id="lpTierNum"></div>
+          </div>
         </div>
-        <button type="submit" class="pill pill-primary">See my results →</button>
-      </form>
-      <p class="quiz-fine">If you're a great fit, we may reach out to talk about building a lab. We'll also send you the occasional note from Optimistic Labs. Unsubscribe anytime.</p>
-      <button class="quiz-back" id="emailBack" type="button">← Back</button>
-    </section>
+      </aside>
 
-    <!-- ===== RESULT ===== -->
-    <section class="quiz-screen" id="screenResult" aria-label="Your result">
-      <div class="result-chip"><span class="chip" id="resultTier"></span><span class="result-score" id="resultScore"></span></div>
-      <h2 class="result-h" id="resultH"></h2>
-      <div class="result-body" id="resultBody"></div>
-      <div class="cta-row result-cta" id="resultCta"></div>
-      <p class="result-subcta" id="resultSub"></p>
-    </section>
+      <!-- ===== RIGHT PANEL ===== -->
+      <div class="qp-right">
 
+        <!-- WELCOME -->
+        <section class="quiz-screen active" id="screenWelcome" aria-label="Welcome">
+          <h1 class="q-serif qw-h">Could you lead a Lab at Optimistic Labs?</h1>
+          <p class="qw-p">Seven quick questions on experience, sales, and domain depth: the same lens we use when we evaluate real candidates. About two minutes, and you'll get a straight answer.</p>
+          <button class="q-pill" id="startBtn" type="button">Start the check →</button>
+        </section>
+
+        <!-- QUESTION -->
+        <section class="quiz-screen" id="screenQ" aria-label="Quiz question">
+          <h2 class="q-serif qq-title" id="qText"></h2>
+          <div class="q-rows" id="qOpts" role="group" aria-labelledby="qText"></div>
+          <button class="quiz-back" id="qBack" type="button">← Back</button>
+        </section>
+
+        <!-- EMAIL CAPTURE -->
+        <section class="quiz-screen" id="screenEmail" aria-label="Get your results">
+          <h2 class="q-serif qe-h">Almost there.</h2>
+          <p class="qe-p">Where should we send your results?</p>
+          <form id="quizEmailForm" novalidate>
+            <div class="qe-fields">
+              <div class="field"><label class="sr-only" for="qz-name">First name</label><input id="qz-name" type="text" name="firstName" placeholder="First name" autocomplete="given-name" /></div>
+              <div class="field"><label class="sr-only" for="qz-email">Email</label><input id="qz-email" type="email" name="email" placeholder="Email" autocomplete="email" /></div>
+            </div>
+            <button type="submit" class="q-pill">See my results →</button>
+          </form>
+          <p class="quiz-fine">If you're a great fit, we may reach out to talk about building a lab. We'll also send you the occasional note from Optimistic Labs. Unsubscribe anytime.</p>
+          <button class="quiz-back" id="emailBack" type="button">← Back</button>
+        </section>
+
+        <!-- RESULT -->
+        <section class="quiz-screen" id="screenResult" aria-label="Your result">
+          <span class="result-tag" id="resultTag"></span>
+          <h2 class="q-serif qr-h" id="resultH"></h2>
+          <div id="resultBody"></div>
+          <div id="resultCta"></div>
+          <p class="result-subcta" id="resultSub"></p>
+        </section>
+
+      </div>
+    </div>
   </div>
 </main>
 
@@ -204,35 +282,45 @@
 
   var answers=new Array(QUESTIONS.length).fill(null);
   var current=0;
+  var advanceTimer=null;
 
   var screens={welcome:document.getElementById('screenWelcome'),q:document.getElementById('screenQ'),
     email:document.getElementById('screenEmail'),result:document.getElementById('screenResult')};
-  var qLabel=document.getElementById('qLabel'),qBar=document.getElementById('qBar'),
-      qText=document.getElementById('qText'),qOpts=document.getElementById('qOpts');
+  var leftStates={welcome:document.getElementById('lpWelcome'),q:document.getElementById('lpQuestion'),
+    email:document.getElementById('lpEmail'),result:document.getElementById('lpResult')};
+  var qText=document.getElementById('qText'),qOpts=document.getElementById('qOpts'),
+      lpNum=document.getElementById('lpNum'),lpCat=document.getElementById('lpCat');
 
   function show(name){
-    Object.keys(screens).forEach(function(k){ screens[k].classList.toggle('active',k===name); });
+    Object.keys(screens).forEach(function(k){
+      screens[k].classList.toggle('active',k===name);
+      leftStates[k].hidden=(k!==name);
+    });
     window.scrollTo({top:0,behavior:'auto'});
   }
 
   function renderQ(){
     var item=QUESTIONS[current];
-    qLabel.textContent='Question '+(current+1)+' of '+QUESTIONS.length;
-    qBar.style.width=Math.round(((current)/QUESTIONS.length)*100)+'%';
+    lpNum.innerHTML='0'+(current+1)+'<span>/07</span>';
+    lpCat.textContent=item.key;
     qText.textContent=item.q;
     qOpts.innerHTML='';
     item.opts.forEach(function(opt,i){
       var b=document.createElement('button');
-      b.type='button'; b.className='quiz-opt'; b.textContent=opt.t;
+      b.type='button'; b.className='q-row'; b.setAttribute('aria-pressed',answers[current]===i?'true':'false');
       if(answers[current]===i) b.classList.add('selected');
+      var dot=document.createElement('span'); dot.className='q-dot';
+      var label=document.createElement('span'); label.className='q-row-label'; label.textContent=opt.t;
+      b.appendChild(dot); b.appendChild(label);
       b.addEventListener('click',function(){
+        clearTimeout(advanceTimer);
         answers[current]=i;
-        Array.prototype.forEach.call(qOpts.children,function(c){ c.classList.remove('selected'); });
-        b.classList.add('selected');
-        setTimeout(function(){
+        Array.prototype.forEach.call(qOpts.children,function(c){ c.classList.remove('selected'); c.setAttribute('aria-pressed','false'); });
+        b.classList.add('selected'); b.setAttribute('aria-pressed','true');
+        advanceTimer=setTimeout(function(){
           if(current<QUESTIONS.length-1){ current++; renderQ(); }
           else { show('email'); var f=document.getElementById('qz-name'); if(f) f.focus(); }
-        },240);
+        },340);
       });
       qOpts.appendChild(b);
     });
@@ -241,6 +329,7 @@
 
   document.getElementById('startBtn').addEventListener('click',function(){ current=0; renderQ(); });
   document.getElementById('qBack').addEventListener('click',function(){
+    clearTimeout(advanceTimer);
     if(current>0){ current--; renderQ(); } else { show('welcome'); }
   });
   document.getElementById('emailBack').addEventListener('click',function(){ current=QUESTIONS.length-1; renderQ(); });
@@ -261,9 +350,9 @@
     return s;
   }
   function tierFor(score){
-    if(score>=16) return {n:3,name:'Founding Lab Leader Fit'};
-    if(score>=10) return {n:2,name:'Building Toward It'};
-    return {n:1,name:'Stay Close'};
+    if(score>=16) return {n:3,name:'Founding Lab Leader Fit',head:'<span>Founding</span> <span>Lab Leader</span>'};
+    if(score>=10) return {n:2,name:'Building Toward It',head:'<span>Building</span> <span>Toward It</span>'};
+    return {n:1,name:'Stay Close',head:'<span>Stay</span> <span>Close</span>'};
   }
 
   function deliverLead(firstName,email,score,tier){
@@ -282,37 +371,36 @@
     }
   }
 
-  function renderResult(firstName){
+  function renderResult(){
     var score=totalScore(), tier=tierFor(score);
-    document.getElementById('resultTier').textContent=tier.name;
-    document.getElementById('resultScore').textContent='Score: '+score+' of 21';
+    document.getElementById('lpTierHead').innerHTML=tier.head;
+    document.getElementById('lpTierNum').textContent='Tier '+tier.n+' of 3';
+    var tag=document.getElementById('resultTag');
+    tag.textContent='Tier '+tier.n+' · '+tier.name;
+    tag.classList.toggle('solid',tier.n===3);
     var h=document.getElementById('resultH'), body=document.getElementById('resultBody'),
         cta=document.getElementById('resultCta'), sub=document.getElementById('resultSub');
-    var hi=firstName?firstName+', y':'Y';
 
     if(tier.n===3){
-      h.textContent=hi+"ou've got the leadership track record, sales instincts, and domain depth we look for in a Lab Leader.";
+      h.textContent="You've got the leadership track record, sales instincts, and domain depth we look for in a Lab Leader.";
+      h.classList.add('long');
       body.innerHTML=
-        '<p>This is the actual profile: someone who has led at a senior level, sold and owned their own client relationships, knows exactly who they serve, and has real relationships in that market already. That\'s rare, and it\'s exactly what makes a Lab work from day one.</p>'+
-        '<div class="result-sub">What\'s working</div>'+
-        '<ul class="bullets"><li>Demonstrated management and sales track record</li>'+
-        '<li>Clear, sharp point of view on who you serve and why</li>'+
-        '<li>Real domain depth and an activatable pipeline</li></ul>'+
-        '<div class="result-sub">Next moves</div>'+
-        '<ol><li>Apply to lead a Lab</li>'+
-        '<li>Book a follow-up call with us and come ready to talk through your Lab concept: ICP, offerings, and how you\'d build it</li></ol>';
-      cta.innerHTML='<a class="pill pill-primary" href="lab-leader-application.html">Apply to lead a Lab →</a>';
-      sub.innerHTML='Not ready to apply just yet? <a href="work-with-us.html">Check out the other ways to contribute to Optimistic Labs.</a>';
+        '<p class="qr-p">This is the actual profile: someone who has led at a senior level, sold and owned their own client relationships, knows exactly who they serve, and has real relationships in that market already. That\'s rare, and it\'s exactly what makes a Lab work from day one.</p>'+
+        '<ul class="qr-list deep">'+
+        '<li>Apply to lead a Lab</li>'+
+        '<li>Book a follow-up call with us and come ready to talk through your Lab concept: ICP, offerings, and how you\'d build it</li></ul>';
+      cta.innerHTML='<a class="q-pill" href="lab-leader-application.html">Apply to Lead a Lab</a>';
+      sub.innerHTML='Not ready to apply just yet? <a href="work-with-us.html">See other ways to contribute.</a>';
     } else {
-      h.textContent=hi+"ou've got real momentum!";
+      h.textContent="You've got real momentum!";
+      h.classList.remove('long');
       body.innerHTML=
-        '<p>You\'re building the pieces that make a strong Lab Leader, whether it\'s management chops, domain depth, a sense of who you\'d serve, or a pipeline that\'s warming up. Everyone who leads a lab at OL started somewhere on this path. The fastest way to close the distance is usually from inside OL, not outside it: working alongside the org, inside real client engagements, while you sharpen your ICP and build your track record.</p>'+
-        '<div class="result-sub">What\'s in motion for you</div>'+
-        '<ul class="bullets"><li>Management or sales experience that\'s real but still building its track record</li>'+
+        '<p class="qr-p">You\'re building the pieces that make a strong Lab Leader, whether it\'s management chops, domain depth, a sense of who you\'d serve, or a pipeline that\'s warming up. Everyone who leads a lab at OL started somewhere on this path. The fastest way to close the distance is usually from inside OL, not outside it: working alongside the org, inside real client engagements, while you sharpen your ICP and build your track record.</p>'+
+        '<ul class="qr-list">'+
+        '<li>Management or sales experience that\'s real but still building its track record</li>'+
         '<li>An ICP or domain focus that\'s taking shape</li>'+
-        '<li>A pipeline that\'s warming up but not fully activated yet</li></ul>'+
-        '<p style="margin-top:22px">See the paths available to work with Optimistic Labs, and then book time to talk through yours.</p>';
-      cta.innerHTML='<a class="pill pill-primary" href="work-with-us.html">See the ways to work with OL →</a>';
+        '<li>A pipeline that\'s warming up but not fully activated yet</li></ul>';
+      cta.innerHTML='<a class="q-pill" href="work-with-us.html">See the paths to work with OL →</a>';
       sub.innerHTML='';
     }
     show('result');
@@ -330,7 +418,7 @@
     if(firstBad){ firstBad.focus(); return; }
     var score=totalScore(), tier=tierFor(score);
     deliverLead(nameV,emailV,score,tier);
-    renderResult(nameV);
+    renderResult();
   });
 })();
 </script>
