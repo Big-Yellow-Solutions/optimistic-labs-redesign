@@ -68,33 +68,20 @@
 .team-cards-track .team-card{width:min(350px,80vw)}
 .team-note--wide{max-width:none;font-size:17.5px;line-height:1.65;margin-top:14px}
 
-/* lab map (hero) */
-.map-wrap{position:relative}
-#labMap{display:block;width:100%;height:auto}
-.map-ring{fill:none;stroke:#fff}
-.lab-node{cursor:pointer}
-.lab-node .node-inner{transition:transform .3s var(--ease-ripple);transform-origin:0 0}
-.lab-node .halo{fill:none;stroke:#fff;opacity:0;transition:opacity .3s}
-.lab-node .dot{filter:drop-shadow(0 3px 5px rgba(0,0,0,.45))}
-.lab-node:hover .halo,.lab-node:focus .halo{opacity:.5}
-.lab-node:hover .node-inner,.lab-node:focus .node-inner{transform:scale(1.25)}
-.lab-node:focus{outline:none}
-.lab-node:focus-visible .halo{opacity:.95;stroke-width:2.5}
-.lab-name{font-family:var(--serif);font-size:clamp(11px,1.9vw,16px);fill:#fff}
-.lab-status{font-family:var(--sans);font-weight:600;font-size:clamp(7px,1.3vw,9.5px);letter-spacing:.13em;text-transform:uppercase;fill:#B0A6FA}
-.lab-status--needed{fill:var(--warm-gray);font-weight:800}
-.legend{margin-top:18px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.legend b{color:#fff;font-weight:600}
-.lab-backdrop{position:fixed;inset:0;background:rgba(17,17,17,.32);opacity:0;pointer-events:none;transition:opacity .35s;z-index:80}
-.lab-backdrop.open{opacity:1;pointer-events:auto}
-.lab-panel{position:fixed;top:0;right:0;height:100vh;width:360px;max-width:88vw;background:var(--paper);color:var(--ink);
-  border-left:3px solid var(--violet);z-index:90;padding:40px 32px;transform:translateX(100%);transition:transform .45s var(--ease-signal);overflow-y:auto}
-.lab-panel.open{transform:translateX(0)}
-.lab-panel-x{position:absolute;top:22px;right:20px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--warm-gray);font-size:22px}
-.chip--needed{background:rgba(158,149,137,.18);color:var(--warm-gray);font-weight:800}
-.lab-panel h3{margin:14px 0 12px}
-.lab-panel p{font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:22px}
-@media (max-width:560px){.lab-panel{width:100%;max-width:100%;height:74vh;top:auto;bottom:0;border-left:none;border-top:3px solid var(--violet);border-radius:18px 18px 0 0;transform:translateY(100%)}.lab-panel.open{transform:translateY(0)}}
+/* our labs carousel (lives inside the hero banner) */
+.hero .labs-carousel{position:relative;z-index:2;max-width:1400px;width:100%;margin:48px auto 0}
+.labs-track .ll-card{width:min(280px,68vw)}
+.ll-card-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.coverflow-stage{position:relative}
+.coverflow-viewport{overflow:hidden}
+.coverflow-viewport .labs-track{overflow:visible;scroll-snap-type:none;padding-top:44px;padding-bottom:44px;transition:transform .6s cubic-bezier(.5,.05,.2,1)}
+.coverflow-viewport .labs-track .ll-card{transition:transform .6s cubic-bezier(.5,.05,.2,1),opacity .6s cubic-bezier(.5,.05,.2,1),box-shadow .6s cubic-bezier(.5,.05,.2,1);cursor:pointer}
+.coverflow-viewport .labs-track .ll-card.is-focal{cursor:default;box-shadow:0 28px 54px -14px rgba(61,47,212,.35),0 10px 24px rgba(17,17,17,.14)}
+.coverflow-dots{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.coverflow-dots button{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:var(--hair);cursor:pointer;transition:background .2s,transform .2s}
+.coverflow-dots button.active{background:var(--violet);transform:scale(1.25)}
+.hero .coverflow-dots button{background:rgba(255,255,255,.3)}
+.hero .coverflow-dots button.active{background:#fff}
 
 /* fork */
 .fork-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px}
@@ -161,103 +148,81 @@
 </nav>
 
 <main>
-  <!-- ===== HERO ===== -->
+  <!-- ===== HERO (with labs carousel) ===== -->
   <section class="hero" id="hero" aria-label="Trust is the advantage">
-    <div class="inner2">
-      <div class="hero-copy">
-        <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
-        <p class="lead">We help organizations build communities that make their brands stronger, their growth stickier, and their strategy more human.</p>
-        <div class="cta-row">
-          <a class="pill pill-primary" data-book>Book a call</a>
+    <div class="hero-copy">
+      <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
+      <p class="lead">We help organizations build communities that make their brands stronger, their growth stickier, and their strategy more human.</p>
+      <div class="cta-row">
+        <a class="pill pill-primary" data-book>Book a call</a>
+      </div>
+    </div>
+    <div class="carousel labs-carousel" id="labs" aria-label="Our labs" data-coverflow data-autoplay="true" data-interval="4000" data-pause-hover="true">
+      <div class="coverflow-stage">
+        <button class="car-btn prev" type="button" aria-label="Previous labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="coverflow-viewport">
+          <div class="carousel-track labs-track">
+          <a class="ll-card" href="faith-lab.html">
+            <div class="ll-card-img"><img src="assets/faith-hero.jpg" alt="Faith Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Faith Lab</div>
+              <div class="ll-card-row"><span class="chip">Live</span><span class="ll-card-link">Visit Faith Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="policy-lab.html">
+            <div class="ll-card-img"><img src="assets/policy-hero.jpg" alt="Policy Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Policy Lab</div>
+              <div class="ll-card-row"><span class="chip">Live</span><span class="ll-card-link">Visit Policy Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="philanthropy-lab.html">
+            <div class="ll-card-img"><img src="assets/philanthropy-hero.jpg" alt="Philanthropy Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Philanthropy Lab</div>
+              <div class="ll-card-row"><span class="chip">Live</span><span class="ll-card-link">Visit Philanthropy Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
+            <div class="ll-card-img"><img src="assets/lab-leaders/customer-success-lab.jpg" alt="Customer Success Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Customer Success Lab</div>
+              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
+            <div class="ll-card-img"><img src="assets/lab-leaders/ai-lab.jpg" alt="AI Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">AI Lab</div>
+              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
+            <div class="ll-card-img"><img src="assets/lab-leaders/food-lab.jpg" alt="Food Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Food Lab</div>
+              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
+            <div class="ll-card-img"><img src="assets/lab-leaders/sports-lab.jpg" alt="Sports Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Sports Lab</div>
+              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
+            <div class="ll-card-img"><img src="assets/lab-leaders/workforce-lab.jpg" alt="Workforce Lab" /></div>
+            <div class="ll-card-body">
+              <div class="ll-card-title">Workforce Lab</div>
+              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </a>
+          </div>
         </div>
-        <div class="legend"><b>Filled</b> = live &nbsp;·&nbsp; <b>Outlined</b> = lab leader needed &nbsp;·&nbsp; Click a lab to explore</div>
+        <button class="car-btn next" type="button" aria-label="Next labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="map-wrap" id="labs">
-        <svg id="labMap" viewBox="0 0 600 600" role="group" aria-label="Our labs: Faith, Policy, Philanthropy, Sports, Customer Success, AI, Workforce, and Food, arranged around the Optimistic Labs mark in orbiting rings. Activate a lab to learn more.">
-          <circle class="map-ring" cx="300" cy="300" r="70" stroke-width="1" opacity=".30"/>
-          <circle class="map-ring" cx="300" cy="300" r="140" stroke-width="1" opacity=".18"/>
-          <circle class="map-ring" cx="300" cy="300" r="210" stroke-width="1" opacity=".10"/>
-          <image href="assets/ol-mark-white.svg" x="266" y="265" width="68" height="70"/>
-          <!-- Nodes are positioned by JS: three evenly-spaced concentric rings, each orbiting at
-               its own speed (the middle ring runs counter to the inner and outer ones), pausing
-               on hover/focus or while the panel is open -->
-          <!-- Faith (live) - ring 0 -->
-          <g class="lab-node" data-id="faith" data-ring="0" data-phase="-45" data-safe-hw="41" tabindex="0" role="button" aria-label="Faith Lab: live. Open a quick preview.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
-              <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle">Faith Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
-            </g>
-          </g>
-          <!-- Policy (live) - ring 1 -->
-          <g class="lab-node" data-id="policy" data-ring="1" data-phase="0" data-safe-hw="45" tabindex="0" role="button" aria-label="Policy Lab: live. Open a quick preview.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
-              <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle">Policy Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
-            </g>
-          </g>
-          <!-- Philanthropy (live) - ring 1 -->
-          <g class="lab-node" data-id="philanthropy" data-ring="1" data-phase="120" data-safe-hw="66" tabindex="0" role="button" aria-label="Philanthropy Lab: live. Open a quick preview.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="22" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="10" fill="#fff"/>
-              <image href="assets/star.svg" x="11" y="-19" width="14" height="14" aria-hidden="true"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle">Philanthropy Lab</text>
-              <text class="lab-status" x="0" y="51" text-anchor="middle" fill="#B0A6FA">Live</text>
-            </g>
-          </g>
-          <!-- AI (lab leader needed) - ring 1 -->
-          <g class="lab-node" data-id="ai" data-ring="1" data-phase="240" data-safe-hw="76" tabindex="0" role="button" aria-label="AI Lab: lab leader needed. Learn more.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">AI Lab</text>
-              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
-            </g>
-          </g>
-          <!-- Sports (lab leader needed) - ring 2 -->
-          <g class="lab-node" data-id="sports" data-ring="2" data-phase="45" data-safe-hw="76" tabindex="0" role="button" aria-label="Sports Lab: lab leader needed. Learn more.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Sports Lab</text>
-              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
-            </g>
-          </g>
-          <!-- Workforce (lab leader needed) - ring 2 -->
-          <g class="lab-node" data-id="workforce" data-ring="2" data-phase="135" data-safe-hw="76" tabindex="0" role="button" aria-label="Workforce Lab: lab leader needed. Learn more.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Workforce Lab</text>
-              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
-            </g>
-          </g>
-          <!-- Food (lab leader needed) - ring 2 -->
-          <g class="lab-node" data-id="food" data-ring="2" data-phase="225" data-safe-hw="76" tabindex="0" role="button" aria-label="Food Lab: lab leader needed. Learn more.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Food Lab</text>
-              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
-            </g>
-          </g>
-          <!-- Customer Success (lab leader needed) - ring 2 -->
-          <g class="lab-node" data-id="customer-success" data-ring="2" data-phase="315" data-safe-hw="83" tabindex="0" role="button" aria-label="Customer Success Lab: lab leader needed. Learn more.">
-            <g class="node-inner">
-              <circle class="halo" cx="0" cy="0" r="20" stroke-width="1.5"/>
-              <circle class="dot" cx="0" cy="0" r="8" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text class="lab-name" x="0" y="33" text-anchor="middle" opacity=".88">Customer Success Lab</text>
-              <text class="lab-status lab-status--needed" x="0" y="51" text-anchor="middle">Lab Leader Needed</text>
-            </g>
-          </g>
-        </svg>
-      </div>
+      <div class="coverflow-dots" aria-label="Choose a lab"></div>
     </div>
   </section>
 
@@ -429,145 +394,10 @@
   </div>
 </footer>
 
-<!-- lab detail panel -->
-<div class="lab-backdrop" id="labBackdrop"></div>
-<aside class="lab-panel" id="labPanel" role="dialog" aria-modal="true" aria-label="Lab details" aria-hidden="true">
-  <button class="lab-panel-x" id="labPanelX" aria-label="Close">×</button>
-  <div class="chip chip--needed" id="lpChip">Lab Leader Needed</div>
-  <h3 id="lpName"></h3>
-  <p id="lpLine"></p>
-  <a class="pill pill-primary" id="lpCta" data-book>Book a call →</a>
-</aside>
-
 <script src="assets/site.js"></script>
 <!-- Supascribe loader (newsletter feed + subscribe embeds) -->
 <script src="https://js.supascribe.com/v1/loader/4FRyWbKbkShk3nGqWqq3HTijyR82.js" async></script>
 <script>
-/* ---- labs map interaction (homepage only) ---- */
-(function(){
-  "use strict";
-  var INFO={
-    faith:{name:'Faith Lab', status:'Live',
-      line:"Faith Lab helps faith-based organizations close the gap between their values and their work, through honest assessment, intentional design, and gatherings that actually mean something. Led by Aliza Goodman, it’s our first live lab.",
-      cta:{label:'Explore the Faith Lab →', href:'faith-lab.html'}},
-    policy:{name:'Policy Lab', status:'Live',
-      line:"Policy Lab is an impact-focused strategy studio and activation engine for institutions, associations, nonprofits, and public affairs teams working to restore civic trust and advance policy through connection, clarity, and creativity. Led by the OL co-founders.",
-      cta:{label:'Explore the Policy Lab →', href:'policy-lab.html'}},
-    philanthropy:{name:'Philanthropy Lab', status:'Live',
-      line:"Philanthropy Lab is a dynamic advisory and activation platform built to serve the full spectrum of the philanthropic ecosystem, from major foundations and philanthropic investors to grassroots NGOs and family and emerging philanthropists. Led by the OL co-founders.",
-      cta:{label:'Explore the Philanthropy Lab →', href:'philanthropy-lab.html'}},
-    sports:{name:'Sports Lab', status:'Lab Leader Needed',
-      line:"Sports Lab is coming soon. We’re convening the people building culture, connection, and systems around sport, on and off the field.",
-      cta:{label:'Book a call →', book:true}},
-    'customer-success':{name:'Customer Success Lab', status:'Lab Leader Needed',
-      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Book a call if you want to help shape it or be first to know.",
-      cta:{label:'Book a call →', book:true}},
-    ai:{name:'AI Lab', status:'Lab Leader Needed',
-      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      cta:{label:'Book a call →', book:true}},
-    workforce:{name:'Workforce Lab', status:'Lab Leader Needed',
-      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      cta:{label:'Book a call →', book:true}},
-    food:{name:'Food Lab', status:'Lab Leader Needed',
-      line:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      cta:{label:'Book a call →', book:true}}
-  };
-  var panel=document.getElementById('labPanel'), backdrop=document.getElementById('labBackdrop'),
-      x=document.getElementById('labPanelX'), lpChip=document.getElementById('lpChip'), lpName=document.getElementById('lpName'),
-      lpLine=document.getElementById('lpLine'), lpCta=document.getElementById('lpCta'), lastFocus=null;
-  function bookingHref(){
-    var c=window.OL_CONFIG||{};
-    return c.bookingUrl || ('mailto:'+(c.contactEmail||'hello@optimisticlabs.com')+'?subject='+encodeURIComponent('Book a call · Optimistic Labs'));
-  }
-  function trap(e){
-    if(e.key!=='Tab') return;
-    var first=x, last=lpCta;
-    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
-  }
-  function openPanel(id){
-    var d=INFO[id]; if(!d) return;
-    lastFocus=document.activeElement;
-    lpChip.textContent=d.status||'Coming soon';
-    lpChip.classList.toggle('chip--needed', d.status==='Lab Leader Needed');
-    lpName.textContent=d.name; lpLine.textContent=d.line;
-    var cta=d.cta||{};
-    lpCta.textContent=cta.label||'Book a call →';
-    if(cta.href){
-      lpCta.setAttribute('href',cta.href); lpCta.removeAttribute('target'); lpCta.removeAttribute('rel');
-    } else {
-      lpCta.setAttribute('href',bookingHref());
-      if(window.OL_CONFIG&&window.OL_CONFIG.bookingUrl){ lpCta.setAttribute('target','_blank'); lpCta.setAttribute('rel','noopener'); }
-      else { lpCta.removeAttribute('target'); lpCta.removeAttribute('rel'); }
-    }
-    panel.classList.add('open'); backdrop.classList.add('open'); panel.setAttribute('aria-hidden','false');
-    panel.addEventListener('keydown',trap);
-    x.focus();
-  }
-  function closePanel(){
-    panel.classList.remove('open'); backdrop.classList.remove('open'); panel.setAttribute('aria-hidden','true');
-    panel.removeEventListener('keydown',trap);
-    if(lastFocus&&lastFocus.focus) lastFocus.focus();
-  }
-  function activate(node){
-    openPanel(node.getAttribute('data-id'));
-  }
-  document.querySelectorAll('#labMap .lab-node').forEach(function(node){
-    node.addEventListener('click',function(){ activate(node); });
-    node.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(node); } });
-  });
-  x.addEventListener('click',closePanel);
-  backdrop.addEventListener('click',closePanel);
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&panel.classList.contains('open')) closePanel(); });
-
-  /* ---- orbital rotation: three evenly-spaced concentric rings, each orbiting at its own
-         speed - the middle ring runs opposite the inner and outer ones. Paused on hover/focus
-         or while the panel is open. ---- */
-  (function(){
-    var CX=300, CY=300;
-    var DEG=Math.PI/180;
-    var RINGS=[
-      {r:70, speed:9},
-      {r:140, speed:-6},
-      {r:210, speed:4}
-    ];
-    var nodes=Array.prototype.slice.call(document.querySelectorAll('#labMap .lab-node'));
-    if(!nodes.length) return;
-    /* Each node just orbits its own ring at that ring's constant speed - no per-frame collision
-       correction. Plain, predictable, and perfectly smooth. */
-    nodes.forEach(function(n){
-      n._ring=RINGS[parseInt(n.getAttribute('data-ring'),10)||0];
-      n._deg=parseFloat(n.getAttribute('data-phase'))||0;
-    });
-    var last=null, hovering=false;
-    var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function place(){
-      nodes.forEach(function(n){
-        var t=n._deg*DEG;
-        var x=n._ring.r*Math.cos(t), y=n._ring.r*Math.sin(t);
-        n.setAttribute('transform','translate('+(CX+x).toFixed(2)+' '+(CY+y).toFixed(2)+')');
-      });
-    }
-    nodes.forEach(function(n){
-      n.addEventListener('mouseenter',function(){ hovering=true; });
-      n.addEventListener('mouseleave',function(){ hovering=false; });
-      n.addEventListener('focus',function(){ hovering=true; });
-      n.addEventListener('blur',function(){ hovering=false; });
-    });
-    function tick(t){
-      if(last===null) last=t;
-      var dt=Math.min((t-last)/1000,.1); last=t;
-      if(!hovering && !panel.classList.contains('open')){
-        nodes.forEach(function(n){ n._deg=(n._deg+n._ring.speed*dt)%360; });
-        place();
-      }
-      requestAnimationFrame(tick);
-    }
-    place();
-    if(!reduceMotion) requestAnimationFrame(tick);
-  })();
-})();
-
 /* ---- pillars: one shared title size (longest title fills its column), then each
        paragraph is constrained to exactly its own title's width ---- */
 (function(){
