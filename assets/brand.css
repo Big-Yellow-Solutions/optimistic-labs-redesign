@@ -440,23 +440,38 @@ p{max-width:64ch}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq .faq-a{padding:0 44px 24px 0;font-size:15.5px;line-height:1.65;color:var(--ink-soft);max-width:70ch}
 
-/* ---------- footer ---------- */
-.footer{background:var(--ink);color:rgba(255,255,255,.6);padding:64px 32px 48px}
-.footer .inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;align-items:flex-start}
-.footer-logo img{height:30px}
-.footer-tag{font-family:var(--serif);font-size:22px;color:#fff;margin:16px 0 8px}
-.footer-tag .em-italic{color:var(--violet-light)}
-.footer-loc{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm-gray)}
-.footer-links{display:flex;flex-direction:column;gap:10px}
-.footer-links a{font-family:var(--sans);font-size:14px;color:rgba(255,255,255,.7);position:relative;width:max-content}
-.footer-links a::after{content:"";position:absolute;left:0;bottom:-3px;height:1.5px;width:100%;background:var(--violet-light);
-  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-signal)}
-.footer-links a:hover::after{transform:scaleX(1)}
-.footer-links a:hover{color:#fff}
-.footer-sign{width:100%;border-top:1px solid rgba(255,255,255,.1);margin-top:14px;padding-top:18px;
-  font-family:var(--sans);font-size:12px;color:var(--warm-gray)}
-.footer-sign a{color:rgba(255,255,255,.6);text-decoration:underline;text-underline-offset:3px;transition:color .2s}
-.footer-sign a:hover{color:#fff}
+/* ---------- footer (flat black, two-column, data-driven from site.js) ---------- */
+.footer{background:#000;padding:72px 32px 0}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:start}
+.footer-identity{display:flex;flex-direction:column;gap:26px}
+.footer-headline{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.4vw,52px);line-height:1.05;letter-spacing:-.01em;color:#f3f2f8}
+.footer-headline em{font-style:italic;font-weight:500;color:#9184d9}
+.footer-mark{height:40px;width:auto;opacity:.9;margin-top:4px}
+.footer-groups{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px;padding-top:8px}
+.footer-group{display:flex;flex-direction:column;gap:14px}
+.footer-group-label{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5c5a78;font-weight:600}
+.footer-group a{font-family:var(--sans);font-size:16px;color:#b8b1e6;transition:color .15s}
+.footer-group a:hover{color:#fff}
+.footer-explore{display:inline-flex;align-items:center;gap:7px}
+.footer-cta{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:11px 20px;border:1px solid #9184d9;border-radius:8px;
+  font-family:var(--sans);font-size:14px;font-weight:500;color:#c8c2ee;transition:background .15s,color .15s;width:max-content}
+.footer-cta:hover{background:rgba(145,132,217,.14);color:#fff}
+.footer-bottom{max-width:1280px;margin:72px auto 0;padding:22px 0;border-top:1px solid rgba(255,255,255,.06);
+  display:flex;justify-content:space-between;align-items:center;gap:24px 24px;flex-wrap:wrap}
+.footer-copyright{font-family:var(--sans);font-size:13px;color:#6e6c86}
+.footer-legal{display:flex;gap:22px;align-items:center;font-size:13px;flex-wrap:wrap}
+.footer-legal a{font-family:var(--sans);color:#8b89a4;transition:color .15s}
+.footer-legal a:hover{color:#fff}
+.footer-legal .footer-loc{color:#6e6c86}
+.footer-heart{color:#e0574f}
+@media (max-width:768px){
+  .footer{padding:64px 24px 0}
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .footer-groups{grid-template-columns:1fr;gap:28px}
+  .footer-cta{width:100%;justify-content:center}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;margin-top:40px}
+  .footer-legal{order:-1}
+}
 
 /* ---------- helpers ---------- */
 .divider-ripple{display:block;margin:0 auto;width:60px;height:18px;opacity:.55}
@@ -476,7 +491,6 @@ p{max-width:64ch}
   .section{padding:64px 22px}
   .section--principles{padding:64px 22px}
   .hero{padding:72px 22px 64px}
-  .footer .inner{flex-direction:column;gap:24px}
 }
 @media (max-width:560px){
   .display{font-size:40px}

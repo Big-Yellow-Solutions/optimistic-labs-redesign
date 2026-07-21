@@ -11,6 +11,8 @@
     bookingUrl:   '',                                   // TODO Liz: Calendly/SavvyCal link. Empty = mailto fallback.
     faithUrl:     'faith-lab.html',
     leaderUrl:    'become-a-lab-leader.html',
+    aboutUrl:     'about.html',
+    labsUrl:      'index.html#labs',
     applicationFormUrl: '#apply',              // TODO: Lab Leader application form URL, once it exists.
     formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to teddy@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
@@ -28,6 +30,42 @@
         return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
       });
     }
+
+    /* ---- shared footer: single template, every page just has <footer data-site-footer> ---- */
+    document.querySelectorAll('[data-site-footer]').forEach(function(root){
+      root.innerHTML =
+        '<div class="footer-grid">'+
+          '<div class="footer-identity">'+
+            '<h2 class="footer-headline">Build momentum. <em>Build community.</em></h2>'+
+            '<img class="footer-mark" src="assets/ol-mark-white.svg" alt="Optimistic Labs" />'+
+          '</div>'+
+          '<div class="footer-groups">'+
+            '<div class="footer-group">'+
+              '<span class="footer-group-label">Explore</span>'+
+              '<a class="footer-explore" href="'+escHtml(CONFIG.labsUrl)+'">Explore the Labs '+
+                '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
+              '</a>'+
+              '<a href="'+escHtml(CONFIG.leaderUrl)+'">Become a Lab Leader</a>'+
+            '</div>'+
+            '<div class="footer-group">'+
+              '<span class="footer-group-label">Company</span>'+
+              '<a href="'+escHtml(CONFIG.aboutUrl)+'">About</a>'+
+              '<a href="'+escHtml(CONFIG.linkedInUrl)+'" target="_blank" rel="noopener">LinkedIn</a>'+
+              '<a class="footer-cta" data-book>Book a call '+
+                '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
+              '</a>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+        '<div class="footer-bottom">'+
+          '<span class="footer-copyright">© 2026 Optimistic Labs</span>'+
+          '<div class="footer-legal">'+
+            '<a href="privacy.html">Privacy Policy</a>'+
+            '<a href="terms.html">Terms of Use</a>'+
+            '<span class="footer-loc">Built with <span class="footer-heart">♥</span> from Atlanta, GA and Syracuse, NY</span>'+
+          '</div>'+
+        '</div>';
+    });
     document.querySelectorAll('[data-lab-team]').forEach(function(root){
       var cfgEl = root.querySelector('script[data-lab-team-config]');
       if(!cfgEl) return;
@@ -221,7 +259,7 @@
     document.querySelectorAll('[data-href="faith"]').forEach(function(el){ el.setAttribute('href', CONFIG.faithUrl); });
     document.querySelectorAll('[data-href="leader"]').forEach(function(el){ el.setAttribute('href', CONFIG.leaderUrl); });
     document.querySelectorAll('[data-href="application"]').forEach(function(el){ el.setAttribute('href', CONFIG.applicationFormUrl); });
-    document.querySelectorAll('#linkedInLink,[data-href="linkedin"]').forEach(function(el){
+    document.querySelectorAll('[data-href="linkedin"]').forEach(function(el){
       el.setAttribute('href', CONFIG.linkedInUrl); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
     });
 
