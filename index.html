@@ -71,7 +71,7 @@
 /* our labs carousel (lives inside the hero banner) */
 .hero .labs-carousel{position:relative;z-index:2;max-width:1400px;width:100%;margin:48px auto 0}
 .labs-track .ll-card{width:min(280px,68vw)}
-.ll-card-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ll-card-chip{position:absolute;top:12px;left:12px;z-index:2}
 .coverflow-stage{position:relative}
 .coverflow-viewport{overflow:hidden}
 .coverflow-viewport .labs-track{overflow:visible;scroll-snap-type:none;padding-top:44px;padding-bottom:44px;transition:transform .6s cubic-bezier(.5,.05,.2,1)}
@@ -152,70 +152,70 @@
   <section class="hero" id="hero" aria-label="Trust is the advantage">
     <div class="hero-copy">
       <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
-      <p class="lead">We help organizations build communities that make their brands stronger, their growth stickier, and their strategy more human.</p>
+      <p class="lead">Optimistic Labs is a network of focused labs built to help organizations build communities that make their brands stronger, their growth stickier, and their strategy more human. Click a lab to explore.</p>
       <div class="cta-row">
         <a class="pill pill-primary" data-book>Book a call</a>
       </div>
     </div>
-    <div class="carousel labs-carousel" id="labs" aria-label="Our labs" data-coverflow data-autoplay="true" data-interval="4000" data-pause-hover="true">
+    <div class="carousel labs-carousel" id="labs" aria-label="Our labs" data-coverflow data-wide-focus="true" data-autoplay="true" data-interval="4000" data-pause-hover="true">
       <div class="coverflow-stage">
         <button class="car-btn prev" type="button" aria-label="Previous labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <div class="coverflow-viewport">
           <div class="carousel-track labs-track">
           <a class="ll-card" href="faith-lab.html">
-            <div class="ll-card-img"><img src="assets/faith-hero.jpg" alt="Faith Lab" /></div>
+            <div class="ll-card-img"><span class="chip ll-card-chip">Live</span><img src="assets/faith-hero.jpg" alt="Faith Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Faith Lab</div>
-              <div class="ll-card-row"><span class="chip">Live</span><span class="ll-card-link">Visit Faith Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Visit Faith Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="policy-lab.html">
-            <div class="ll-card-img"><img src="assets/policy-hero.jpg" alt="Policy Lab" /></div>
+            <div class="ll-card-img"><span class="chip ll-card-chip">Live</span><img src="assets/policy-hero.jpg" alt="Policy Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Policy Lab</div>
-              <div class="ll-card-row"><span class="chip">Live</span><span class="ll-card-link">Visit Policy Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Visit Policy Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="philanthropy-lab.html">
-            <div class="ll-card-img"><img src="assets/philanthropy-hero.jpg" alt="Philanthropy Lab" /></div>
+            <div class="ll-card-img"><span class="chip ll-card-chip">Live</span><img src="assets/philanthropy-hero.jpg" alt="Philanthropy Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Philanthropy Lab</div>
-              <div class="ll-card-row"><span class="chip">Live</span><span class="ll-card-link">Visit Philanthropy Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Visit Philanthropy Lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
-            <div class="ll-card-img"><img src="assets/lab-leaders/customer-success-lab.jpg" alt="Customer Success Lab" /></div>
+            <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><img src="assets/lab-leaders/customer-success-lab.jpg" alt="Customer Success Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Customer Success Lab</div>
-              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
-            <div class="ll-card-img"><img src="assets/lab-leaders/ai-lab.jpg" alt="AI Lab" /></div>
+            <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><img src="assets/lab-leaders/ai-lab.jpg" alt="AI Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">AI Lab</div>
-              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
-            <div class="ll-card-img"><img src="assets/lab-leaders/food-lab.jpg" alt="Food Lab" /></div>
+            <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><img src="assets/lab-leaders/food-lab.jpg" alt="Food Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Food Lab</div>
-              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
-            <div class="ll-card-img"><img src="assets/lab-leaders/sports-lab.jpg" alt="Sports Lab" /></div>
+            <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><img src="assets/lab-leaders/sports-lab.jpg" alt="Sports Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Sports Lab</div>
-              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           <a class="ll-card" href="become-a-lab-leader.html" data-href="application">
-            <div class="ll-card-img"><img src="assets/lab-leaders/workforce-lab.jpg" alt="Workforce Lab" /></div>
+            <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><img src="assets/lab-leaders/workforce-lab.jpg" alt="Workforce Lab" /></div>
             <div class="ll-card-body">
               <div class="ll-card-title">Workforce Lab</div>
-              <div class="ll-card-row"><span class="chip chip--soft">Lab Leader Wanted</span><span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <span class="ll-card-link">Apply to lead this lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </a>
           </div>

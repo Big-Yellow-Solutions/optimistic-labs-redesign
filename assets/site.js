@@ -324,24 +324,26 @@
       var autoplayEnabled=root.getAttribute('data-autoplay')!=='false';
       var intervalMs=parseInt(root.getAttribute('data-interval'),10)||4000;
       var pauseOnHover=root.getAttribute('data-pause-hover')!=='false';
+      var wideFocus=root.getAttribute('data-wide-focus')==='true';
 
       function cardWidth(){ return cards[0]?cards[0].offsetWidth:0; }
       function gap(){ return parseFloat(getComputedStyle(track).columnGap)||24; }
+      function isFocal(dist){ return wideFocus?dist<=1:dist===0; }
 
       function applyTransforms(){
         var w=cardWidth(),g=gap(),step=w+g;
         var translate=viewport.clientWidth/2-(index*step+w/2);
         track.style.transform='translateX('+translate+'px)';
         cards.forEach(function(card,i){
-          var dist=Math.abs(i-index), scale, opacity;
-          if(dist===0){ scale=1; opacity=1; }
-          else if(dist===1){ scale=.84; opacity=.6; }
+          var dist=Math.abs(i-index), focal=isFocal(dist), scale, opacity;
+          if(focal){ scale=1; opacity=1; }
+          else if(dist===(wideFocus?2:1)){ scale=.84; opacity=.6; }
           else { scale=.7; opacity=.22; }
           card.style.transform='translateY('+(dist===0?-10:0)+'px) scale('+scale+')';
           card.style.opacity=opacity;
-          card.classList.toggle('is-focal',dist===0);
-          card.setAttribute('aria-hidden',dist===0?'false':'true');
-          card.toggleAttribute('inert',dist!==0);
+          card.classList.toggle('is-focal',focal);
+          card.setAttribute('aria-hidden',focal?'false':'true');
+          card.toggleAttribute('inert',!focal);
         });
         updateDots();
       }
@@ -412,7 +414,7 @@
       cards.forEach(function(card){
         card.addEventListener('click',function(e){
           var dist=Math.abs(cards.indexOf(card)-index);
-          if(dist===0) return;
+          if(isFocal(dist)) return;
           e.preventDefault();
           jumpTo(parseInt(card.getAttribute('data-real-index'),10));
           restartAutoplay();
