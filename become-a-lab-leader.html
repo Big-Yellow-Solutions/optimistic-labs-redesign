@@ -18,9 +18,10 @@
 .labs-carousel{margin-top:18px}
 .labs-track .lab-card{width:min(470px,86vw)}
 .lab-card{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
-.lab-card .lock-wrap{background:var(--violet-pale);display:flex;align-items:center;justify-content:center;padding:52px 20px}
-.lab-card .lock{height:38px;width:auto}
-.lab-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px}
+.lab-card .lab-card-img{aspect-ratio:16/10;overflow:hidden}
+.lab-card .lab-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.lab-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:12px}
+.lab-card-title{font-size:22px;line-height:1.15;letter-spacing:-.01em;color:var(--ink)}
 .lab-card p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
 .lab-card .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
 .lab-card a.more{font-weight:500;color:var(--violet);font-size:14px}
@@ -115,31 +116,27 @@
         <div class="coverflow-viewport">
           <div class="carousel-track labs-track">
           <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/faith-logo.svg" alt="Optimistic Labs · Faith" /></div>
+            <div class="lab-card-img"><img src="assets/faith-hero.jpg" alt="Faith Lab" /></div>
             <div class="lab-card-body">
+              <h3 class="lab-card-title">Faith Lab</h3>
               <p>Led by Aliza Goodman. The first lab with a dedicated practice, and the model for how a lab leader brings the community while OL brings the apparatus.</p>
               <div class="row"><span class="chip">Live</span><a class="more" href="faith-lab.html">Visit Faith Lab →</a></div>
             </div>
           </div>
           <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/impact-logo.svg" alt="Optimistic Labs · Impact" /></div>
+            <div class="lab-card-img"><img src="assets/policy-hero.jpg" alt="Policy Lab" /></div>
             <div class="lab-card-body">
-              <p>A practice built for leaders and organizations working toward measurable good: strategy and trusted networks pointed at outcomes that matter.</p>
-              <div class="row"><span class="chip chip--soft">In formation</span></div>
-            </div>
-          </div>
-          <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/policy-logo.svg" alt="Optimistic Labs · Policy" /></div>
-            <div class="lab-card-body">
+              <h3 class="lab-card-title">Policy Lab</h3>
               <p>Led by the OL co-founders. An impact-focused strategy studio and activation engine for institutions working to restore civic trust and advance policy through connection, clarity, and creativity.</p>
               <div class="row"><span class="chip">Live</span><a class="more" href="policy-lab.html">Visit Policy Lab →</a></div>
             </div>
           </div>
           <div class="lab-card">
-            <div class="lock-wrap"><img class="lock" src="assets/sports-logo.svg" alt="Optimistic Labs · Sports" /></div>
+            <div class="lab-card-img"><img src="assets/philanthropy-hero.jpg" alt="Philanthropy Lab" /></div>
             <div class="lab-card-body">
-              <p>A lab for the people building the culture, the connection, and the systems around sport, on and off the field.</p>
-              <div class="row"><span class="chip chip--soft">In formation</span></div>
+              <h3 class="lab-card-title">Philanthropy Lab</h3>
+              <p>A dynamic advisory and activation platform for the full philanthropic ecosystem, from major foundations and philanthropic investors to grassroots NGOs and emerging philanthropists.</p>
+              <div class="row"><span class="chip">Live</span><a class="more" href="philanthropy-lab.html">Visit Philanthropy Lab →</a></div>
             </div>
           </div>
           </div>
