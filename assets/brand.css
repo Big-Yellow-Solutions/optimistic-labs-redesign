@@ -316,7 +316,7 @@ p{max-width:64ch}
 
 /* ---------- hero / bands ---------- */
 .hero{position:relative;background:var(--violet-deep);color:#fff;overflow:hidden;
-  padding:96px 32px 88px;text-align:center}
+  padding:96px 32px 64px;text-align:center}
 .hero .hero-copy{position:relative;z-index:2;max-width:720px;margin:0 auto;
   display:flex;flex-direction:column;align-items:center;gap:18px}
 .hero h1{color:#fff;font-size:clamp(36px,4.6vw,58px)}

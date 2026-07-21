@@ -68,10 +68,9 @@
 .team-cards-track .team-card{width:min(350px,80vw)}
 .team-note--wide{max-width:none;font-size:17.5px;line-height:1.65;margin-top:14px}
 
-/* our labs carousel */
-#labs{max-width:1400px}
-.labs-carousel{margin-top:18px}
-.labs-track .ll-card{width:min(470px,86vw)}
+/* our labs carousel (lives inside the hero banner) */
+.hero .labs-carousel{position:relative;z-index:2;max-width:1400px;width:100%;margin:48px auto 0}
+.labs-track .ll-card{width:min(280px,68vw)}
 .ll-card-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .coverflow-stage{position:relative}
 .coverflow-viewport{overflow:hidden}
@@ -81,6 +80,8 @@
 .coverflow-dots{display:flex;justify-content:center;gap:10px;margin-top:14px}
 .coverflow-dots button{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:var(--hair);cursor:pointer;transition:background .2s,transform .2s}
 .coverflow-dots button.active{background:var(--violet);transform:scale(1.25)}
+.hero .coverflow-dots button{background:rgba(255,255,255,.3)}
+.hero .coverflow-dots button.active{background:#fff}
 
 /* fork */
 .fork-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px}
@@ -147,7 +148,7 @@
 </nav>
 
 <main>
-  <!-- ===== HERO ===== -->
+  <!-- ===== HERO (with labs carousel) ===== -->
   <section class="hero" id="hero" aria-label="Trust is the advantage">
     <div class="hero-copy">
       <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
@@ -156,13 +157,7 @@
         <a class="pill pill-primary" data-book>Book a call</a>
       </div>
     </div>
-  </section>
-
-  <!-- ===== OUR LABS (carousel: live + open opportunities) ===== -->
-  <section class="section reveal" id="labs" aria-label="Our labs">
-    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Our labs</span>
-    <h2 class="h-sec">Live labs, and the ones we're building <em class="em-italic">next</em>.</h2>
-    <div class="carousel labs-carousel" data-coverflow data-autoplay="true" data-interval="4000" data-pause-hover="true">
+    <div class="carousel labs-carousel" id="labs" aria-label="Our labs" data-coverflow data-autoplay="true" data-interval="4000" data-pause-hover="true">
       <div class="coverflow-stage">
         <button class="car-btn prev" type="button" aria-label="Previous labs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <div class="coverflow-viewport">
