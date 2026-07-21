@@ -276,10 +276,10 @@ p{max-width:64ch}
 /* ---------- ripple motif ---------- */
 .ripple-glyph{display:inline-block;width:34px;height:34px;flex:none}
 .steps{display:flex;flex-direction:column;gap:clamp(48px,6vw,88px)}
-.step{display:grid;grid-template-columns:minmax(96px,140px) 1fr;column-gap:clamp(24px,4vw,64px);row-gap:24px;align-items:center}
-.step-num{grid-row:1;grid-column:1;font-family:var(--serif);font-style:italic;font-weight:500;font-size:var(--display);line-height:.9;letter-spacing:-.01em;color:var(--violet)}
-.step-title{grid-row:1;grid-column:2;margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:var(--h-sec);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
-.step-body{grid-row:2;grid-column:2;margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:44ch}
+.step{display:grid;grid-template-columns:minmax(96px,140px) 1fr;column-gap:clamp(24px,4vw,64px)}
+.step-num{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(56px,7.5vw,100px);line-height:.9;letter-spacing:-.01em;color:var(--violet)}
+.step-title{margin:0 0 12px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:var(--h-sec);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+.step-body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:44ch}
 
 /* ---------- hero / bands ---------- */
 .hero{position:relative;background:var(--violet-deep);color:#fff;overflow:hidden;
