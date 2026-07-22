@@ -66,6 +66,16 @@ p{max-width:64ch}
 .sheet a{font-family:var(--serif);font-size:28px;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}
 .sheet .navcta{margin-top:auto;border-bottom:none;font-family:var(--sans);font-weight:500;font-size:16px;
   background:#fff;color:var(--violet-deep);border-radius:999px;padding:15px 0;text-align:center}
+.sheet-dd{border-bottom:1px solid rgba(255,255,255,.12)}
+.sheet-dd-trigger{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;
+  font-family:var(--serif);font-size:28px;color:#fff;padding:10px 0}
+.sheet-dd-chev{width:16px;height:16px;flex:none;transition:transform .3s var(--ease-signal)}
+.sheet-dd.open .sheet-dd-chev{transform:rotate(180deg)}
+.sheet-dd-panel{max-height:0;overflow:hidden;transition:max-height .35s var(--ease-signal)}
+.sheet-dd.open .sheet-dd-panel{max-height:320px}
+.sheet-dd-panel a{display:block;font-family:var(--sans);font-weight:500;font-size:18px;color:rgba(255,255,255,.78);padding:9px 0 9px 8px;border-bottom:none}
+.sheet-dd-panel a:hover{color:#fff}
+.sheet-dd-panel{padding-bottom:12px}
 .sheet-x{position:absolute;top:22px;right:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
   background:none;border:none;cursor:pointer;color:#fff;font-size:24px}
 
