@@ -8,7 +8,6 @@
 
   /* ---- single source of truth for destinations ---- */
   var CONFIG = {
-    bookingUrl:   '',                                   // TODO Liz: Calendly/SavvyCal link. Empty = mailto fallback.
     faithUrl:     'faith-lab.html',
     leaderUrl:    'become-a-lab-leader.html',
     aboutUrl:     'about.html',
@@ -19,7 +18,10 @@
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
   };
   window.OL_CONFIG = CONFIG;
-  var bookHref = CONFIG.bookingUrl || ('mailto:' + CONFIG.contactEmail + '?subject=' + encodeURIComponent('Book a call · Optimistic Labs'));
+  /* "Connect With Us" CTAs go to the contact form: the homepage's, unless we're
+     already on a page (home or About) that has its own local contact form. */
+  var thisPage = location.pathname.split('/').pop();
+  var connectHref = (thisPage===''||thisPage==='index.html'||thisPage==='about.html') ? '#contact' : 'index.html#contact';
 
   function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
 
@@ -51,7 +53,7 @@
               '<span class="footer-group-label">Company</span>'+
               '<a href="'+escHtml(CONFIG.aboutUrl)+'">About</a>'+
               '<a href="'+escHtml(CONFIG.linkedInUrl)+'" target="_blank" rel="noopener">LinkedIn</a>'+
-              '<a class="footer-cta" data-book>Book a call '+
+              '<a class="footer-cta" data-book>Connect With Us '+
                 '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
               '</a>'+
             '</div>'+
@@ -102,7 +104,7 @@
             '<div class="leader-role">'+escHtml(L.role)+'</div>'+
             '<p class="leader-bio">'+escHtml(L.bio)+'</p>'+
             '<div class="leader-stats">'+statsHtml+'</div>'+
-            '<a class="pill pill-outline leader-cta" data-book>'+escHtml(L.ctaText||'Book a conversation')+
+            '<a class="pill pill-outline leader-cta" data-book>'+escHtml(L.ctaText||'Connect With Us')+
               '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '+
               'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
             '</a>'+
@@ -253,8 +255,7 @@
 
     /* ---- wire destinations ---- */
     document.querySelectorAll('[data-book]').forEach(function(el){
-      el.setAttribute('href', bookHref);
-      if(CONFIG.bookingUrl){ el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+      el.setAttribute('href', connectHref);
     });
     document.querySelectorAll('[data-href="faith"]').forEach(function(el){ el.setAttribute('href', CONFIG.faithUrl); });
     document.querySelectorAll('[data-href="leader"]').forEach(function(el){ el.setAttribute('href', CONFIG.leaderUrl); });
