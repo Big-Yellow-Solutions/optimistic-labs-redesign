@@ -333,9 +333,6 @@ p{max-width:64ch}
   display:flex;flex-direction:column;align-items:center;gap:18px}
 .hero h1{color:#fff;font-size:clamp(36px,4.6vw,58px)}
 .hero .lead{color:rgba(255,255,255,.82);max-width:740px;margin:0}
-.hero-ripples{position:absolute;inset:0;z-index:1;pointer-events:none;display:flex;align-items:center;justify-content:center}
-.hero-ripples svg{width:min(1100px,160%);height:auto;opacity:.5}
-.hero .ring,.band .ring{fill:none;stroke:#fff;transform-box:fill-box;transform-origin:center}
 .band{background:var(--violet-deep);color:#fff;text-align:center;padding:80px 32px}
 .band .inner{max-width:720px;margin:0 auto}
 .band h2{color:#fff;margin-bottom:16px}
@@ -516,12 +513,7 @@ p{max-width:64ch}
 /* ============================================================
    MOTION
    ============================================================ */
-@keyframes ripple-out{0%{transform:scale(.82);opacity:.34}80%{opacity:.05}100%{transform:scale(1.32);opacity:0}}
 @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:none}}
-.hero .ring.r1,.band .ring.r1{animation:ripple-out 6s var(--ease-soft) infinite}
-.hero .ring.r2,.band .ring.r2{animation:ripple-out 6s var(--ease-soft) 1.2s infinite}
-.hero .ring.r3,.band .ring.r3{animation:ripple-out 6s var(--ease-soft) 2.4s infinite}
-.hero .ring.r4,.band .ring.r4{animation:ripple-out 6s var(--ease-soft) 3.6s infinite}
 .hero .hero-copy>*{animation:fadeUp .7s var(--ease-signal) both}
 .hero .hero-copy>*:nth-child(2){animation-delay:.06s}
 .hero .hero-copy>*:nth-child(3){animation-delay:.12s}
@@ -530,5 +522,4 @@ p{max-width:64ch}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
-  .hero .ring{opacity:.12!important}
 }
