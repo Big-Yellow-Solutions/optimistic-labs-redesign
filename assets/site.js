@@ -265,14 +265,35 @@
 
     /* ---- mobile nav ---- */
     var burger=document.getElementById('burger'), sheet=document.getElementById('sheet'), sheetX=document.getElementById('sheetX');
-    function closeSheet(){ if(!sheet) return; sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); if(burger){burger.setAttribute('aria-expanded','false');burger.focus();} }
+    function closeSheetAccordions(){
+      if(!sheet) return;
+      sheet.querySelectorAll('[data-sheet-dd]').forEach(function(dd){
+        dd.classList.remove('open');
+        var t=dd.querySelector('.sheet-dd-trigger'); if(t) t.setAttribute('aria-expanded','false');
+      });
+    }
+    function closeSheet(){
+      if(!sheet) return;
+      sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true');
+      if(burger){burger.setAttribute('aria-expanded','false');burger.focus();}
+      closeSheetAccordions();
+    }
     if(burger&&sheet){
       burger.addEventListener('click',function(){
         var open=sheet.classList.toggle('open'); sheet.setAttribute('aria-hidden',!open); burger.setAttribute('aria-expanded',open);
-        if(open){ var f=sheet.querySelector('a'); if(f) f.focus(); }
+        if(open){ var f=sheet.querySelector('.sheet-dd-trigger,a'); if(f) f.focus(); }
       });
       if(sheetX) sheetX.addEventListener('click',closeSheet);
       sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',closeSheet); });
+      sheet.querySelectorAll('[data-sheet-dd]').forEach(function(dd){
+        var trigger=dd.querySelector('.sheet-dd-trigger');
+        if(!trigger) return;
+        trigger.addEventListener('click',function(){
+          var open=!dd.classList.contains('open');
+          dd.classList.toggle('open',open);
+          trigger.setAttribute('aria-expanded',open?'true':'false');
+        });
+      });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&sheet.classList.contains('open')) closeSheet(); });
     }
 
