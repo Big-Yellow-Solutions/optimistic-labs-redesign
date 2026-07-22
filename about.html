@@ -12,8 +12,7 @@
 <style>
 .hero-light .inner2{align-items:stretch}
 .hero-light .people-photo{aspect-ratio:auto}
-.hero-light .about-hero-photo{min-height:600px}
-@media (max-width:820px){.hero-light .people-photo{aspect-ratio:5/4}.hero-light .about-hero-photo{min-height:0}}
+@media (max-width:820px){.hero-light .people-photo{aspect-ratio:5/4}}
 /* ---- about-page-specific ---- */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:38px 34px;margin-top:38px;text-align:center}
 @media (max-width:760px){.values{grid-template-columns:1fr;gap:42px}}
@@ -37,12 +36,11 @@
 .founder-photo--right{float:right;margin:6px 0 20px 44px}
 .founder-name{margin:0 0 6px;font-family:var(--head);font-weight:800;font-size:34px;letter-spacing:-.02em;color:var(--ink)}
 .founder-role{margin:0 0 22px;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
-.founder-role-sep{opacity:.4;margin:0 2px}
-.founder-role-link{color:var(--violet)}
-.founder-role-link:hover{text-decoration:underline}
 .founder-bio{margin:0 0 18px;max-width:none;font-size:17px;line-height:1.62;color:var(--ink)}
 .founder-bio strong{font-weight:700}
-.founder-bio--secondary{margin:0;color:var(--ink-soft)}
+.founder-bio--secondary{margin:0 0 18px;color:var(--ink-soft)}
+.founder-role-link{display:inline-block;font-family:var(--sans);font-weight:600;font-size:14px;color:var(--violet)}
+.founder-role-link:hover{text-decoration:underline}
 .founder-bio--secondary strong{color:var(--ink)}
 .founder-clear{clear:both}
 @media (max-width:720px){
@@ -107,10 +105,10 @@
       <div class="hero-copy">
         <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />About us</span>
         <h1 class="display" style="font-size:clamp(38px,5.2vw,60px)">Where optimism meets <em class="em-italic">action</em>.</h1>
-        <p class="lead">We help organizations build communities that make their brands stronger, their growth stickier, and their strategy more human. Here is who we are and how we think.</p>
+        <p class="lead">Most organizations treat community like just another marketing metric. We started Optimistic Labs to close that gap, designing the systems and stories that turn community into something that actually creates change.</p>
         <div class="cta-row"><a class="pill pill-primary" data-book>Book a call</a></div>
       </div>
-      <div class="people-photo about-hero-photo">
+      <div class="people-photo">
         <img src="assets/about-hero.jpg" alt="A team huddled together with arms around each other outdoors" />
       </div>
     </div>
@@ -125,18 +123,20 @@
     <div class="founder-block">
       <div class="founder-photo founder-photo--left"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
       <h3 class="founder-name">Seth Cohen</h3>
-      <p class="founder-role">Co-founder <span class="founder-role-sep">|</span> <a class="founder-role-link" href="https://www.linkedin.com/in/sethacohen33/" target="_blank" rel="noopener">Connect with Seth on LinkedIn →</a></p>
+      <p class="founder-role">Co-founder</p>
       <p class="founder-bio"><strong>Seth believes there is tremendous power at the intersection of storytelling, community, and action.</strong> He works with leaders to help organizations turn community into a strategic advantage, designing ecosystems that connect people through shared purpose, knowledge, and curiosity. Drawing on more than 25 years across media, philanthropy, and civic leadership, Seth focuses on helping organizations cultivate communities that deepen trust, strengthen networks, and create lasting momentum.</p>
       <p class="founder-bio founder-bio--secondary">Most recently he served as <strong>Chief Impact Officer at Forbes and founder of the Forbes Impact Lab</strong>, and before that as a Senior Director at Charles and Lynn Schusterman Family Philanthropies. Earlier in his career, Seth was a nationally recognized corporate attorney in Atlanta and has held numerous nonprofit leadership roles focused on civic engagement and community development.</p>
+      <a class="founder-role-link" href="https://www.linkedin.com/in/sethacohen33/" target="_blank" rel="noopener">Connect with Seth on LinkedIn →</a>
       <div class="founder-clear"></div>
     </div>
 
     <div class="founder-block">
       <div class="founder-photo founder-photo--right"><img src="assets/liz-russell.jpg" alt="Liz Russell" /></div>
       <h3 class="founder-name">Liz Russell</h3>
-      <p class="founder-role">Co-founder <span class="founder-role-sep">|</span> <a class="founder-role-link" href="https://www.linkedin.com/in/elizabethhrussell/" target="_blank" rel="noopener">Connect with Liz on LinkedIn →</a></p>
+      <p class="founder-role">Co-founder</p>
       <p class="founder-bio"><strong>Liz believes that strong communities depend on strong, easy-to-use systems.</strong> She works with leaders to design the operational foundations that allow communities to grow, building the structures that connect people through shared purpose, knowledge, and curiosity. Drawing on more than a decade across SaaS, emergency management, and GovTech, Liz specializes in turning complexity into clear, scalable systems.</p>
       <p class="founder-bio founder-bio--secondary">Most recently she served as <strong>Vice President of Customer Success at Forerunner</strong>, where she scaled the company's Customer Success organization and strengthened retention, customer insight, and cross-functional alignment. Earlier she was Director of Product for the Perdix Knowledge Management System and managed FEMA and HUD disaster recovery initiatives overseeing more than $2.6&nbsp;billion in federal funding.</p>
+      <a class="founder-role-link" href="https://www.linkedin.com/in/elizabethhrussell/" target="_blank" rel="noopener">Connect with Liz on LinkedIn →</a>
       <div class="founder-clear"></div>
     </div>
   </section>
