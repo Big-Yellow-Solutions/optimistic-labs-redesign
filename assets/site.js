@@ -8,11 +8,11 @@
 
   /* ---- single source of truth for destinations ---- */
   var CONFIG = {
-    faithUrl:     'faith-lab.html',
-    leaderUrl:    'become-a-lab-leader.html',
-    aboutUrl:     'about.html',
-    labsUrl:      'index.html#labs',
-    applicationFormUrl: 'lab-leader-application.html',
+    faithUrl:     '/faith-lab',
+    leaderUrl:    '/become-a-lab-leader',
+    aboutUrl:     '/about',
+    labsUrl:      '/#labs',
+    applicationFormUrl: '/lab-leader-application',
     formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to hello@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
@@ -21,7 +21,8 @@
   /* "Connect With Us" CTAs go to the contact form: the homepage's, unless we're
      already on a page (home or About) that has its own local contact form. */
   var thisPage = location.pathname.split('/').pop();
-  var connectHref = (thisPage===''||thisPage==='index.html'||thisPage==='about.html') ? '#contact' : 'index.html#contact';
+  var onHomeOrAbout = thisPage===''||thisPage==='index.html'||thisPage==='about'||thisPage==='about.html';
+  var connectHref = onHomeOrAbout ? '#contact' : '/#contact';
 
   function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
 
@@ -62,8 +63,8 @@
         '<div class="footer-bottom">'+
           '<span class="footer-copyright">© 2026 Optimistic Labs</span>'+
           '<div class="footer-legal">'+
-            '<a href="privacy.html">Privacy Policy</a>'+
-            '<a href="terms.html">Terms of Use</a>'+
+            '<a href="/privacy">Privacy Policy</a>'+
+            '<a href="/terms">Terms of Use</a>'+
             '<span class="footer-loc">Built with <span class="footer-heart">♥</span> from Atlanta, GA and Syracuse, NY</span>'+
           '</div>'+
         '</div>';
@@ -280,6 +281,34 @@
     document.querySelectorAll('[data-href="linkedin"]').forEach(function(el){
       el.setAttribute('href', CONFIG.linkedInUrl); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
     });
+
+    /* ---- keep #contact aligned with the viewport when it's the scroll target ----
+       The newsletter section above it (id="latest") embeds async Supascribe widgets
+       that start empty and grow once their script loads, which can shove #contact
+       down the page after the initial anchor jump already landed (worst on mobile,
+       where that load lags behind the tap). Re-snap to #contact while its section
+       is still settling, but stop the moment the visitor takes the wheel back. */
+    var newsBand = document.querySelector('.news-band');
+    if(newsBand && 'MutationObserver' in window){
+      var watchingContact = false, watchUntil = 0;
+      function snapToContact(){
+        var target = document.getElementById('contact');
+        if(!target) return;
+        var navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+        window.scrollTo({ top: Math.max(target.getBoundingClientRect().top + window.pageYOffset - (navH + 16), 0) });
+      }
+      function checkContactHash(){
+        if(location.hash === '#contact'){ watchingContact = true; watchUntil = Date.now() + 6000; snapToContact(); }
+      }
+      window.addEventListener('hashchange', checkContactHash);
+      checkContactHash();
+      ['wheel','touchmove','keydown'].forEach(function(evt){
+        window.addEventListener(evt, function(){ watchingContact = false; }, { passive:true });
+      });
+      new MutationObserver(function(){
+        if(watchingContact && Date.now() < watchUntil) snapToContact();
+      }).observe(newsBand, { childList:true, subtree:true });
+    }
 
     /* ---- mobile nav ---- */
     var burger=document.getElementById('burger'), sheet=document.getElementById('sheet'), sheetX=document.getElementById('sheetX');
@@ -578,7 +607,7 @@
         var subject='New inquiry · Optimistic Labs';
         var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Message:cf.message.value.trim()};
         deliver(payload,subject,function(){
-          window.location.href='thank-you.html';
+          window.location.href='/thank-you';
         },function(){
           if(formErrorCta) formErrorCta.setAttribute('href',mailtoHref(payload,subject));
           if(formError) formError.classList.add('show');
