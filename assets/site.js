@@ -129,7 +129,7 @@
           '<div class="roster-col">'+
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
             '<div class="mosaic-grid">'+
-              '<div class="mosaic-col">'+personCard(team[2],2)+personCard(team[0],0)+'</div>'+
+              '<div class="mosaic-col">'+personCard(team[0],0)+personCard(team[2],2)+'</div>'+
               '<div class="mosaic-col">'+personCard(team[1],1)+networkHtml+'</div>'+
             '</div>'+
           '</div>'+
