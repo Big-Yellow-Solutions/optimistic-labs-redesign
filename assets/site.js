@@ -12,7 +12,7 @@
     leaderUrl:    'become-a-lab-leader.html',
     aboutUrl:     'about.html',
     labsUrl:      'index.html#labs',
-    applicationFormUrl: '#apply',              // TODO: Lab Leader application form URL, once it exists.
+    applicationFormUrl: 'lab-leader-application.html',
     formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to teddy@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
