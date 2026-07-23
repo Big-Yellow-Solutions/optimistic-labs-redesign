@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>/* redirect old .html URLs to their clean path (GitHub Pages has no server-side redirects) */(function(){var p=location.pathname;if(p.slice(-5)===".html"){var c=p.slice(0,-5).replace(/\/index$/,"")||"/";history.replaceState(null,"",c+location.search+location.hash);}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Page not found · Optimistic Labs</title>
+<link rel="canonical" href="https://optimisticlabs.com/404" />
+<meta name="description" content="The page you're looking for doesn't exist or may have moved. Head back to the Optimistic Labs homepage or find us on LinkedIn." />
+<meta name="robots" content="noindex" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Page not found · Optimistic Labs" />
+<meta property="og:description" content="The page you're looking for doesn't exist or may have moved. Head back to the Optimistic Labs homepage or find us on LinkedIn." />
+<meta property="og:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Page not found · Optimistic Labs" />
+<meta name="twitter:description" content="The page you're looking for doesn't exist or may have moved. Head back to the Optimistic Labs homepage or find us on LinkedIn." />
+<meta name="twitter:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+<style>
+/* ===== 404 page ("Nocturne" dark surface, same tokens as thank-you.html) ===== */
+body.nf-body{background:var(--noir-bg);color:var(--noir-text)}
+
+.nf-glow{position:absolute;top:-160px;left:50%;width:640px;height:420px;opacity:.24;transform:translateX(-50%);
+  background:radial-gradient(circle,var(--noir-accent) 0%,transparent 70%);filter:blur(70px);
+  pointer-events:none;z-index:0;animation:nfGlowPulse 6s var(--ease-soft) infinite}
+@keyframes nfGlowPulse{
+  0%,100%{opacity:.24;transform:translateX(-50%) scale(1)}
+  50%{opacity:.34;transform:translateX(-50%) scale(1.08)}
+}
+
+.nf-wrap{position:relative;z-index:1;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column}
+
+.nf-logo{position:absolute;top:30px;left:30px;height:30px;width:auto}
+
+.nf-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  gap:34px;max-width:640px;margin:0 auto;padding:120px 28px 80px;box-sizing:border-box}
+
+@keyframes nfRise{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
+.nf-anim{animation:nfRise .7s var(--ease-signal) both}
+.nf-logo{animation-delay:0ms}
+.nf-404{animation-delay:70ms}
+.nf-intro{animation-delay:140ms}
+.nf-option-grid{animation-delay:210ms}
+.nf-card{animation-delay:280ms}
+.nf-back{animation-delay:350ms}
+
+.nf-404{display:flex;align-items:center;justify-content:center;line-height:1;font-size:clamp(128px,23vw,236px)}
+.nf-404-digit{font-family:var(--head);font-weight:500;letter-spacing:-.03em;color:var(--noir-text)}
+.nf-404-mark{height:1.04em;width:auto;transform:translateY(-2%);
+  filter:drop-shadow(0 0 32px var(--noir-accent));animation:nfSpin 16s linear infinite}
+@keyframes nfSpin{
+  from{transform:translateY(-2%) rotate(0deg)}
+  to{transform:translateY(-2%) rotate(360deg)}
+}
+
+.nf-intro{display:flex;flex-direction:column;align-items:center;gap:18px}
+.nf-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-weight:500;font-size:12.5px;
+  letter-spacing:.02em;color:var(--noir-accent-tint);border:1px solid var(--noir-accent);border-radius:999px;
+  padding:6px 14px 6px 12px}
+.nf-badge i{font-size:14px}
+.nf-headline{font-family:var(--head);font-weight:500;font-size:clamp(30px,4.4vw,42px);line-height:1.15;
+  letter-spacing:-.015em;max-width:18ch;color:var(--noir-text);margin:0}
+.nf-lead{font-family:var(--sans);font-size:17px;line-height:1.6;max-width:46ch;color:var(--noir-text);
+  opacity:.82;margin:0}
+
+.nf-option-grid{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.nf-option-card{background:var(--noir-surface);border:1px solid var(--noir-hair);border-radius:10px;padding:22px 20px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;color:inherit;text-decoration:none;
+  transition:border-color .2s var(--ease-soft),background .2s var(--ease-soft),transform .2s var(--ease-soft)}
+.nf-option-card:hover,.nf-option-card:focus-visible{border-color:var(--noir-accent);
+  background:color-mix(in srgb,var(--noir-accent) 9%,var(--noir-surface));transform:translateY(-2px)}
+.nf-option-icon{width:42px;height:42px;flex:none;border-radius:10px;background:var(--noir-accent-deep);
+  display:flex;align-items:center;justify-content:center;color:var(--noir-accent-tint);font-size:20px}
+.nf-option-title{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--noir-text)}
+.nf-option-sub{font-family:var(--sans);font-size:12.5px;color:var(--noir-text-muted);margin-top:2px}
+.nf-option-cta{margin-top:auto;font-family:var(--head);font-weight:500;font-size:13px;color:var(--noir-accent-tint);
+  display:inline-flex;align-items:center;gap:6px}
+.nf-option-cta i{transition:transform .2s var(--ease-soft)}
+.nf-option-card:hover .nf-option-cta i{transform:translateX(3px)}
+
+.nf-card{width:100%;box-sizing:border-box;background:var(--noir-surface);border:1px solid var(--noir-hair);
+  border-radius:14px;padding:26px 28px;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.nf-card-head{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px}
+.nf-card-icon{width:38px;height:38px;flex:none;border-radius:10px;background:var(--noir-accent-deep);
+  display:flex;align-items:center;justify-content:center;color:var(--noir-accent-tint);font-size:19px}
+.nf-card-title{font-family:var(--head);font-weight:500;font-size:22px;line-height:1.2;letter-spacing:-.01em;
+  color:var(--noir-text);margin:0}
+.nf-card-sub{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--noir-text-muted)}
+.nf-card [data-supascribe-subscribe] input{background:var(--noir-bg)!important;color:var(--noir-text)!important;
+  border:1px solid var(--noir-hair)!important;border-radius:8px!important;font-family:var(--sans)!important}
+.nf-card [data-supascribe-subscribe] button{background:transparent!important;color:var(--noir-accent-tint)!important;
+  border:1px solid var(--noir-accent)!important;border-radius:8px!important;font-family:var(--sans)!important}
+
+.nf-back{font-family:var(--sans);font-size:14.5px;color:var(--noir-text-muted);display:inline-flex;
+  align-items:center;gap:8px;text-decoration:none;transition:color .2s var(--ease-soft)}
+.nf-back:hover{color:var(--noir-accent-tint)}
+
+.nf-main :focus-visible{outline:2px solid var(--noir-accent);outline-offset:2px;border-radius:4px}
+
+@media (max-width:480px){
+  .nf-main{padding:96px 22px 64px}
+  .nf-card{padding:22px 20px}
+}
+</style>
+</head>
+<body class="nf-body">
+
+<div class="nf-glow" data-nf-glow aria-hidden="true"></div>
+
+<div class="nf-wrap">
+  <img class="nf-logo nf-anim" src="assets/ol-logo-nocturne.svg" alt="Optimistic Labs" />
+
+  <div class="nf-main">
+    <div class="nf-404 nf-anim">
+      <span class="nf-404-digit">4</span>
+      <img class="nf-404-mark" src="assets/ol-mark-white.svg" alt="" aria-hidden="true" />
+      <span class="nf-404-digit">4</span>
+    </div>
+
+    <div class="nf-intro nf-anim">
+      <span class="nf-badge"><i class="ph ph-compass" aria-hidden="true"></i>Page not found</span>
+      <h1 class="nf-headline">This page took a wrong turn.</h1>
+      <p class="nf-lead">The link may be broken or the page may have moved. No worries — here are a few good places to land instead.</p>
+    </div>
+
+    <div class="nf-option-grid nf-anim">
+      <a class="nf-option-card" id="nfHome" href="https://optimisticlabs.com">
+        <span class="nf-option-icon"><i class="ph ph-house" aria-hidden="true"></i></span>
+        <div>
+          <div class="nf-option-title">Go to the homepage</div>
+          <div class="nf-option-sub">Start fresh from optimisticlabs.com</div>
+        </div>
+        <span class="nf-option-cta">Take me home <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </a>
+      <a class="nf-option-card" href="https://www.linkedin.com/company/optimistic-labs/" target="_blank" rel="noopener">
+        <span class="nf-option-icon"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></span>
+        <div>
+          <div class="nf-option-title">Follow on LinkedIn</div>
+          <div class="nf-option-sub">See what we're building in real time</div>
+        </div>
+        <span class="nf-option-cta">Optimistic Labs <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </a>
+    </div>
+
+    <div class="nf-card nf-anim" data-nf-newsletter>
+      <div class="nf-card-head">
+        <span class="nf-card-icon"><i class="ph ph-envelope-simple" aria-hidden="true"></i></span>
+        <div>
+          <h2 class="nf-card-title">Or join the newsletter</h2>
+          <p class="nf-card-sub">Occasional notes on what we're building and learning. No noise.</p>
+        </div>
+      </div>
+      <div data-supascribe-embed-id="193078040495" data-supascribe-subscribe></div>
+    </div>
+
+    <a class="nf-back nf-anim" id="nfBack" href="https://optimisticlabs.com"><i class="ph ph-arrow-left" aria-hidden="true"></i>Back to homepage</a>
+  </div>
+</div>
+
+<!-- Supascribe loader (newsletter subscribe embed) -->
+<script src="https://js.supascribe.com/v1/loader/4FRyWbKbkShk3nGqWqq3HTijyR82.js" async></script>
+
+<script>
+(function(){
+  "use strict";
+  var params=new URLSearchParams(location.search);
+  var showNewsletter=params.has('newsletter')?params.get('newsletter')!=='0':true;
+  var showGlow=params.has('glow')?params.get('glow')!=='0':true;
+  var homeUrl=params.get('home')||'https://optimisticlabs.com';
+
+  if(!showNewsletter){ var nl=document.querySelector('[data-nf-newsletter]'); if(nl) nl.remove(); }
+  if(!showGlow){ var g=document.querySelector('[data-nf-glow]'); if(g) g.remove(); }
+  document.getElementById('nfHome').setAttribute('href',homeUrl);
+  document.getElementById('nfBack').setAttribute('href',homeUrl);
+})();
+</script>
+
+</body>
+</html>
