@@ -12,7 +12,7 @@
     leaderUrl:    'become-a-lab-leader.html',
     aboutUrl:     'about.html',
     labsUrl:      'index.html#labs',
-    applicationFormUrl: '#apply',              // TODO: Lab Leader application form URL, once it exists.
+    applicationFormUrl: 'lab-leader-application.html',
     formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to teddy@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
@@ -80,6 +80,23 @@
       }).join('');
       function personCard(p,idx){
         if(!p) return '';
+        if(p.wanted){
+          return '<a class="mosaic-card mosaic-card--wanted" data-idx="'+idx+'" href="'+escHtml(p.href||CONFIG.applicationFormUrl)+'">'+
+            '<div class="mosaic-photo">'+
+              '<span class="chip mosaic-chip">'+escHtml(p.chip||'Wanted')+'</span>'+
+              '<span class="mosaic-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '+
+                'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>'+
+            '</div>'+
+            '<div class="mosaic-card-body">'+
+              '<span class="roster-name">'+escHtml(p.title||'')+'</span>'+
+              '<p class="roster-bio">'+escHtml(p.blurb||'')+'</p>'+
+              '<span class="mosaic-card-link">'+escHtml(p.ctaText||'Apply')+' '+
+                '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" '+
+                'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
+              '</span>'+
+            '</div>'+
+          '</a>';
+        }
         return '<div class="mosaic-card" data-idx="'+idx+'">'+
           '<div class="mosaic-photo"><img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
           '<div class="mosaic-card-body">'+
