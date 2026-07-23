@@ -19,7 +19,8 @@
 /* ---- left panel ---- */
 .qp-left{background:var(--violet-deep);position:relative;overflow:hidden;
   display:flex;flex-direction:column;justify-content:space-between;padding:36px 32px}
-.qp-left .rings{position:absolute;inset:0;width:100%;height:100%;opacity:.3;pointer-events:none}
+.qp-left .qp-mark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:60%;max-width:260px;height:auto;opacity:.14;pointer-events:none}
 .qp-logo{position:relative;height:30px;width:auto}
 .qp-foot{position:relative}
 .lp-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-light)}
@@ -46,7 +47,7 @@
 .q-pill:hover{background:var(--violet);transform:translateY(-1px)}
 
 /* question */
-.qq-title{font-size:25px;line-height:1.28;margin-bottom:28px}
+.qq-title{font-family:var(--sans);font-size:25px;line-height:1.28;margin-bottom:28px}
 .q-rows{display:flex;flex-direction:column}
 .q-row{display:flex;align-items:center;gap:14px;padding:17px 4px;border-bottom:1px solid var(--violet-pale);
   background:none;border-left:none;border-right:none;border-top:none;cursor:pointer;text-align:left;width:100%}
@@ -126,7 +127,6 @@
       </div>
     </div>
     <a href="about.html">About</a>
-    <a href="become-a-lab-leader.html">Become a Lab Leader</a>
     <a class="pill pill-primary navcta" data-book>Connect With Us</a>
   </nav>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -154,11 +154,7 @@
 
       <!-- ===== LEFT PANEL ===== -->
       <aside class="qp-left" aria-hidden="false">
-        <svg class="rings" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <circle cx="80" cy="330" r="70" fill="none" stroke="#fff" stroke-width="1.2"/>
-          <circle cx="80" cy="330" r="130" fill="none" stroke="#fff" stroke-width="1.2"/>
-          <circle cx="80" cy="330" r="190" fill="none" stroke="#fff" stroke-width="1.2"/>
-        </svg>
+        <img class="qp-mark" src="assets/ol-mark-white.svg" alt="" aria-hidden="true" />
         <img class="qp-logo" src="assets/ol-logo-white.svg" alt="Optimistic Labs" />
         <div class="qp-foot">
           <div id="lpWelcome" class="lp-label">Lab Leader Fit Quiz</div>
@@ -383,21 +379,21 @@
       h.textContent="You've got the leadership track record, sales instincts, and domain depth we look for in a Lab Leader.";
       h.classList.add('long');
       body.innerHTML=
-        '<p class="qr-p">This is the actual profile: someone who has led at a senior level, sold and owned their own client relationships, knows exactly who they serve, and has real relationships in that market already. That\'s rare, and it\'s exactly what makes a Lab work from day one.</p>'+
         '<ul class="qr-list deep">'+
         '<li>Apply to lead a Lab</li>'+
-        '<li>Book a follow-up call with us and come ready to talk through your Lab concept: ICP, offerings, and how you\'d build it</li></ul>';
+        '<li>Book a follow-up call with us and come ready to talk through your Lab concept: ICP, offerings, and how you\'d build it</li></ul>'+
+        '<p class="qr-p">This is the actual profile: someone who has led at a senior level, sold and owned their own client relationships, knows exactly who they serve, and has real relationships in that market already. That\'s rare, and it\'s exactly what makes a Lab work from day one.</p>';
       cta.innerHTML='<a class="q-pill" href="lab-leader-application.html">Apply to Lead a Lab</a>';
       sub.innerHTML='Not ready to apply just yet? <a href="work-with-us.html">See other ways to contribute.</a>';
     } else {
       h.textContent="You've got real momentum!";
       h.classList.remove('long');
       body.innerHTML=
-        '<p class="qr-p">You\'re building the pieces that make a strong Lab Leader, whether it\'s management chops, domain depth, a sense of who you\'d serve, or a pipeline that\'s warming up. Everyone who leads a lab at OL started somewhere on this path. The fastest way to close the distance is usually from inside OL, not outside it: working alongside the org, inside real client engagements, while you sharpen your ICP and build your track record.</p>'+
         '<ul class="qr-list">'+
         '<li>Management or sales experience that\'s real but still building its track record</li>'+
         '<li>An ICP or domain focus that\'s taking shape</li>'+
-        '<li>A pipeline that\'s warming up but not fully activated yet</li></ul>';
+        '<li>A pipeline that\'s warming up but not fully activated yet</li></ul>'+
+        '<p class="qr-p">You\'re building the pieces that make a strong Lab Leader, whether it\'s management chops, domain depth, a sense of who you\'d serve, or a pipeline that\'s warming up. Everyone who leads a lab at OL started somewhere on this path. The fastest way to close the distance is usually from inside OL, not outside it: working alongside the org, inside real client engagements, while you sharpen your ICP and build your track record.</p>';
       cta.innerHTML='<a class="q-pill" href="work-with-us.html">See the paths to work with OL →</a>';
       sub.innerHTML='';
     }

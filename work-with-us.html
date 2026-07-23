@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <style>
+.hero-light .inner2{align-items:stretch}
+.hero-light .people-photo{aspect-ratio:auto}
+@media (max-width:820px){.hero-light .people-photo{aspect-ratio:5/4}}
 .paths{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:30px;max-width:1080px}
 .path-card{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:34px 32px;display:flex;flex-direction:column;gap:18px}
 .path-card h3{font-size:clamp(21px,2.4vw,26px)}
@@ -75,11 +78,15 @@
 <main>
   <!-- ===== HERO ===== -->
   <section class="hero-light" aria-label="Work with Optimistic Labs">
-    <div style="max-width:1080px;margin:0 auto">
-      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Work with Optimistic Labs</span>
-      <h1 class="display" style="font-size:clamp(36px,5vw,56px)">The best work happens <em class="em-italic">in community</em>.</h1>
-      <p class="lead" style="margin-top:18px;max-width:60ch">Whether you're ready to build a full practice, want to contribute your expertise on specific projects, or see an opportunity to create something together, there's a place for you here.</p>
-      <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:64ch;margin-top:16px"><strong style="font-weight:600;color:var(--ink)">There are two ways to engage with Optimistic Labs.</strong> They're not a hierarchy; each is a genuine and valued path. The right one depends on where you are, what you want to build, and how much you want to take on.</p>
+    <div class="inner2">
+      <div class="hero-copy">
+        <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Work with Optimistic Labs</span>
+        <h1 class="display" style="font-size:clamp(36px,5vw,56px)">The best work happens <em class="em-italic">in community</em>.</h1>
+        <p class="lead" style="margin-top:18px;max-width:60ch">Whether you're ready to build a full practice, want to contribute your expertise on specific projects, or see an opportunity to create something together, there's a place for you here.</p>
+      </div>
+      <div class="people-photo">
+        <img src="assets/work-with-us-hero.jpg" alt="Two colleagues smiling and collaborating around a laptop in a bright office" />
+      </div>
     </div>
   </section>
 
@@ -87,7 +94,7 @@
   <section class="section section--mid reveal" aria-label="Find your path" style="max-width:1160px">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Find your path</span>
     <h2 class="h-sec">Two ways in. Both <em class="em-italic">real</em>.</h2>
-    <p class="lead" style="max-width:56ch">Neither is a stepping stone to the other unless you want it to be.</p>
+    <p class="lead" style="max-width:56ch">There are two ways to engage with Optimistic Labs. They're not a hierarchy; each is a genuine and valued path. The right one depends on where you are, what you want to build, and how much you want to take on.</p>
 
     <div class="paths">
 
