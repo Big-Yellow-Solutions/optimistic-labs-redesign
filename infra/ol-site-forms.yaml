@@ -75,22 +75,20 @@ Resources:
         ZipFile: |
           const {SESv2Client,SendEmailCommand}=require("@aws-sdk/client-sesv2");
           const ses=new SESv2Client({});
-          const CORS={"Access-Control-Allow-Origin":"*"};
           const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           exports.handler=async(e)=>{
             try{
               const method=e.requestContext&&e.requestContext.http&&e.requestContext.http.method;
-              if(method==="OPTIONS")return{statusCode:204,headers:CORS};
-              if(method!=="POST")return{statusCode:405,headers:CORS,body:'{"ok":false}'};
+              if(method!=="POST")return{statusCode:405,body:'{"ok":false}'};
               let raw=e.body||"{}";
               if(e.isBase64Encoded)raw=Buffer.from(raw,"base64").toString("utf8");
-              if(raw.length>200000)return{statusCode:413,headers:CORS,body:'{"ok":false}'};
-              let b;try{b=JSON.parse(raw);}catch(_){return{statusCode:400,headers:CORS,body:'{"ok":false}'};}
-              if(!b||typeof b!=="object"||Array.isArray(b))return{statusCode:400,headers:CORS,body:'{"ok":false}'};
-              if(b._gotcha)return{statusCode:204,headers:CORS}; /* honeypot: pretend success */
+              if(raw.length>200000)return{statusCode:413,body:'{"ok":false}'};
+              let b;try{b=JSON.parse(raw);}catch(_){return{statusCode:400,body:'{"ok":false}'};}
+              if(!b||typeof b!=="object"||Array.isArray(b))return{statusCode:400,body:'{"ok":false}'};
+              if(b._gotcha)return{statusCode:204}; /* honeypot: pretend success */
               const subject=String(b._subject||b.Source||"Website form").replace(/[\r\n]/g," ").slice(0,120);
               const entries=Object.entries(b).filter(([k])=>k!=="_gotcha"&&k!=="_subject").slice(0,80);
-              if(!entries.length)return{statusCode:400,headers:CORS,body:'{"ok":false}'};
+              if(!entries.length)return{statusCode:400,body:'{"ok":false}'};
               const lines=entries.map(([k,v])=>String(k).slice(0,200)+":\n"+String(v).slice(0,5000)).join("\n\n");
               const replyTo=(typeof b.Email==="string"&&EMAIL_RE.test(b.Email.trim()))?[b.Email.trim()]:[];
               await ses.send(new SendEmailCommand({
@@ -101,10 +99,10 @@ Resources:
                   Subject:{Data:subject},
                   Body:{Text:{Data:lines.slice(0,150000)}}}}
               }));
-              return{statusCode:200,headers:Object.assign({"Content-Type":"application/json"},CORS),body:'{"ok":true}'};
+              return{statusCode:200,headers:{"Content-Type":"application/json"},body:'{"ok":true}'};
             }catch(err){
               console.error(err);
-              return{statusCode:500,headers:CORS,body:'{"ok":false}'};
+              return{statusCode:500,body:'{"ok":false}'};
             }
           };
 
