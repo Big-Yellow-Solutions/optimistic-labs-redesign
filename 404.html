@@ -20,41 +20,27 @@
 <meta name="twitter:image" content="https://optimisticlabs.com/assets/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/brand.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 <style>
-/* ===== 404 page ("Nocturne" dark surface, same tokens as thank-you.html) ===== */
-body.nf-body{background:var(--noir-bg);color:var(--noir-text)}
+/* ===== 404 page (on-brand violet-deep, no gradients) ===== */
+.nf-band{background:var(--violet-deep);color:#fff}
 
-.nf-glow{position:absolute;top:-160px;left:50%;width:640px;height:420px;opacity:.24;transform:translateX(-50%);
-  background:radial-gradient(circle,var(--noir-accent) 0%,transparent 70%);filter:blur(70px);
-  pointer-events:none;z-index:0;animation:nfGlowPulse 6s var(--ease-soft) infinite}
-@keyframes nfGlowPulse{
-  0%,100%{opacity:.24;transform:translateX(-50%) scale(1)}
-  50%{opacity:.34;transform:translateX(-50%) scale(1.08)}
-}
-
-.nf-wrap{position:relative;z-index:1;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column}
-
-.nf-logo{position:absolute;top:30px;left:30px;height:30px;width:auto}
-
-.nf-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  gap:34px;max-width:640px;margin:0 auto;padding:120px 28px 80px;box-sizing:border-box}
+.nf-main{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  gap:34px;max-width:640px;margin:0 auto;padding:96px 28px 96px;box-sizing:border-box;min-height:calc(100vh - var(--nav-h) - 220px)}
 
 @keyframes nfRise{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
 .nf-anim{animation:nfRise .7s var(--ease-signal) both}
-.nf-logo{animation-delay:0ms}
-.nf-404{animation-delay:70ms}
-.nf-intro{animation-delay:140ms}
-.nf-option-grid{animation-delay:210ms}
-.nf-card{animation-delay:280ms}
-.nf-back{animation-delay:350ms}
+.nf-404{animation-delay:0ms}
+.nf-intro{animation-delay:70ms}
+.nf-option-grid{animation-delay:140ms}
+.nf-card{animation-delay:210ms}
+.nf-back{animation-delay:280ms}
 
 .nf-404{display:flex;align-items:center;justify-content:center;line-height:1;font-size:clamp(128px,23vw,236px)}
-.nf-404-digit{font-family:var(--head);font-weight:500;letter-spacing:-.03em;color:var(--noir-text)}
-.nf-404-mark{height:1.04em;width:auto;transform:translateY(-2%);
-  filter:drop-shadow(0 0 32px var(--noir-accent));animation:nfSpin 16s linear infinite}
+.nf-404-digit{font-family:var(--head);font-weight:500;letter-spacing:-.03em;color:#fff}
+.nf-404-mark{height:1.04em;width:auto;transform:translateY(-2%);animation:nfSpin 16s linear infinite}
 @keyframes nfSpin{
   from{transform:translateY(-2%) rotate(0deg)}
   to{transform:translateY(-2%) rotate(360deg)}
@@ -62,61 +48,102 @@ body.nf-body{background:var(--noir-bg);color:var(--noir-text)}
 
 .nf-intro{display:flex;flex-direction:column;align-items:center;gap:18px}
 .nf-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-weight:500;font-size:12.5px;
-  letter-spacing:.02em;color:var(--noir-accent-tint);border:1px solid var(--noir-accent);border-radius:999px;
+  letter-spacing:.02em;color:#fff;border:1px solid rgba(255,255,255,.55);border-radius:999px;
   padding:6px 14px 6px 12px}
 .nf-badge i{font-size:14px}
 .nf-headline{font-family:var(--head);font-weight:500;font-size:clamp(30px,4.4vw,42px);line-height:1.15;
-  letter-spacing:-.015em;max-width:18ch;color:var(--noir-text);margin:0}
-.nf-lead{font-family:var(--sans);font-size:17px;line-height:1.6;max-width:46ch;color:var(--noir-text);
-  opacity:.82;margin:0}
+  letter-spacing:-.015em;max-width:18ch;color:#fff;margin:0}
+.nf-lead{font-family:var(--sans);font-size:17px;line-height:1.6;max-width:46ch;color:rgba(255,255,255,.82);margin:0}
 
 .nf-option-grid{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.nf-option-card{background:var(--noir-surface);border:1px solid var(--noir-hair);border-radius:10px;padding:22px 20px;
+.nf-option-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:22px 20px;
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;color:inherit;text-decoration:none;
   transition:border-color .2s var(--ease-soft),background .2s var(--ease-soft),transform .2s var(--ease-soft)}
-.nf-option-card:hover,.nf-option-card:focus-visible{border-color:var(--noir-accent);
-  background:color-mix(in srgb,var(--noir-accent) 9%,var(--noir-surface));transform:translateY(-2px)}
-.nf-option-icon{width:42px;height:42px;flex:none;border-radius:10px;background:var(--noir-accent-deep);
-  display:flex;align-items:center;justify-content:center;color:var(--noir-accent-tint);font-size:20px}
-.nf-option-title{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--noir-text)}
-.nf-option-sub{font-family:var(--sans);font-size:12.5px;color:var(--noir-text-muted);margin-top:2px}
-.nf-option-cta{margin-top:auto;font-family:var(--head);font-weight:500;font-size:13px;color:var(--noir-accent-tint);
+.nf-option-card:hover,.nf-option-card:focus-visible{border-color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.13);transform:translateY(-2px)}
+.nf-option-icon{width:42px;height:42px;flex:none;border-radius:10px;background:rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
+.nf-option-title{font-family:var(--sans);font-weight:500;font-size:16px;color:#fff}
+.nf-option-sub{font-family:var(--sans);font-size:12.5px;color:rgba(255,255,255,.7);margin-top:2px}
+.nf-option-cta{margin-top:auto;font-family:var(--head);font-weight:500;font-size:13px;color:#fff;
   display:inline-flex;align-items:center;gap:6px}
 .nf-option-cta i{transition:transform .2s var(--ease-soft)}
 .nf-option-card:hover .nf-option-cta i{transform:translateX(3px)}
 
-.nf-card{width:100%;box-sizing:border-box;background:var(--noir-surface);border:1px solid var(--noir-hair);
-  border-radius:14px;padding:26px 28px;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.nf-card{width:100%;box-sizing:border-box;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;padding:26px 28px}
 .nf-card-head{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px}
-.nf-card-icon{width:38px;height:38px;flex:none;border-radius:10px;background:var(--noir-accent-deep);
-  display:flex;align-items:center;justify-content:center;color:var(--noir-accent-tint);font-size:19px}
+.nf-card-icon{width:38px;height:38px;flex:none;border-radius:10px;background:rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px}
 .nf-card-title{font-family:var(--head);font-weight:500;font-size:22px;line-height:1.2;letter-spacing:-.01em;
-  color:var(--noir-text);margin:0}
-.nf-card-sub{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--noir-text-muted)}
-.nf-card [data-supascribe-subscribe] input{background:var(--noir-bg)!important;color:var(--noir-text)!important;
-  border:1px solid var(--noir-hair)!important;border-radius:8px!important;font-family:var(--sans)!important}
-.nf-card [data-supascribe-subscribe] button{background:transparent!important;color:var(--noir-accent-tint)!important;
-  border:1px solid var(--noir-accent)!important;border-radius:8px!important;font-family:var(--sans)!important}
+  color:#fff;margin:0}
+.nf-card-sub{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.7)}
+.nf-card [data-supascribe-subscribe] input{background:rgba(255,255,255,.08)!important;color:#fff!important;
+  border:1px solid rgba(255,255,255,.24)!important;border-radius:8px!important;font-family:var(--sans)!important}
+.nf-card [data-supascribe-subscribe] button{background:#fff!important;color:var(--violet-deep)!important;
+  border:1px solid #fff!important;border-radius:8px!important;font-family:var(--sans)!important}
 
-.nf-back{font-family:var(--sans);font-size:14.5px;color:var(--noir-text-muted);display:inline-flex;
+.nf-back{font-family:var(--sans);font-size:14.5px;color:rgba(255,255,255,.7);display:inline-flex;
   align-items:center;gap:8px;text-decoration:none;transition:color .2s var(--ease-soft)}
-.nf-back:hover{color:var(--noir-accent-tint)}
+.nf-back:hover{color:#fff}
 
-.nf-main :focus-visible{outline:2px solid var(--noir-accent);outline-offset:2px;border-radius:4px}
+.nf-main :focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
 
 @media (max-width:480px){
-  .nf-main{padding:96px 22px 64px}
+  .nf-main{padding:72px 22px 72px}
   .nf-card{padding:22px 20px}
 }
 </style>
 </head>
-<body class="nf-body">
+<body>
 
-<div class="nf-glow" data-nf-glow aria-hidden="true"></div>
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="/" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-dd" data-dd>
+      <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="false">Our Labs
+        <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dd-panel" aria-label="Our Labs">
+        <div class="nav-dd-grid">
+          <a class="nav-dd-feature" href="/become-a-lab-leader">
+            <img src="assets/ol-mark-white.svg" alt="" />
+            <span class="nav-dd-feature-title">Become a Lab Leader</span>
+            <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+          </a>
+          <ul class="nav-dd-list">
+            <li><a href="/faith-lab"><span class="nav-dd-item-title">Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+            <li><a href="/policy-lab"><span class="nav-dd-item-title">Policy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+            <li><a href="/philanthropy-lab"><span class="nav-dd-item-title">Philanthropy Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="/about">About</a>
+    <a class="pill pill-primary navcta" data-book>Connect With Us</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <div class="sheet-dd" data-sheet-dd>
+    <button class="sheet-dd-trigger" type="button" aria-expanded="false">Our Labs
+      <svg class="sheet-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="sheet-dd-panel">
+      <a href="/become-a-lab-leader">Become a Lab Leader</a>
+      <a href="/faith-lab">Faith Lab</a>
+      <a href="/policy-lab">Policy Lab</a>
+      <a href="/philanthropy-lab">Philanthropy Lab</a>
+    </div>
+  </div>
+  <a href="/about">About</a>
+  <a class="pill pill-primary navcta" data-book>Connect With Us</a>
+</nav>
 
-<div class="nf-wrap">
-  <img class="nf-logo nf-anim" src="assets/ol-logo-nocturne.svg" alt="Optimistic Labs" />
-
+<main>
+<div class="nf-band">
   <div class="nf-main">
     <div class="nf-404 nf-anim">
       <span class="nf-404-digit">4</span>
@@ -163,7 +190,12 @@ body.nf-body{background:var(--noir-bg);color:var(--noir-text)}
     <a class="nf-back nf-anim" id="nfBack" href="https://optimisticlabs.com"><i class="ph ph-arrow-left" aria-hidden="true"></i>Back to homepage</a>
   </div>
 </div>
+</main>
 
+<!-- ===== FOOTER ===== -->
+<footer class="footer" data-site-footer></footer>
+
+<script src="assets/site.js"></script>
 <!-- Supascribe loader (newsletter subscribe embed) -->
 <script src="https://js.supascribe.com/v1/loader/4FRyWbKbkShk3nGqWqq3HTijyR82.js" async></script>
 
@@ -172,11 +204,9 @@ body.nf-body{background:var(--noir-bg);color:var(--noir-text)}
   "use strict";
   var params=new URLSearchParams(location.search);
   var showNewsletter=params.has('newsletter')?params.get('newsletter')!=='0':true;
-  var showGlow=params.has('glow')?params.get('glow')!=='0':true;
   var homeUrl=params.get('home')||'https://optimisticlabs.com';
 
   if(!showNewsletter){ var nl=document.querySelector('[data-nf-newsletter]'); if(nl) nl.remove(); }
-  if(!showGlow){ var g=document.querySelector('[data-nf-glow]'); if(g) g.remove(); }
   document.getElementById('nfHome').setAttribute('href',homeUrl);
   document.getElementById('nfBack').setAttribute('href',homeUrl);
 })();
