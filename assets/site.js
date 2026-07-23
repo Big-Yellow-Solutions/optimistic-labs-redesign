@@ -562,7 +562,6 @@
 
     var contactForm=document.getElementById('contactForm');
     if(contactForm){
-      var formNote=document.getElementById('formNote');
       var formError=document.getElementById('formError'), formErrorCta=document.getElementById('formErrorCta');
       var cf={name:document.getElementById('cf-name'),email:document.getElementById('cf-email'),message:document.getElementById('cf-message')};
       Object.keys(cf).forEach(function(k){ if(cf[k]) cf[k].addEventListener('input',function(){ if(cf[k].getAttribute('aria-invalid')) clearErr(cf[k]); }); });
@@ -576,12 +575,10 @@
         if(firstBad){ firstBad.focus(); return; }
         flashBtn(contactForm.querySelector('button[type=submit]'));
         if(formError) formError.classList.remove('show');
-        if(formNote) formNote.classList.remove('show');
         var subject='New inquiry · Optimistic Labs';
         var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Message:cf.message.value.trim()};
         deliver(payload,subject,function(){
-          if(formNote) formNote.classList.add('show');
-          cf.name.value=cf.email.value=cf.message.value='';
+          window.location.href='thank-you.html';
         },function(){
           if(formErrorCta) formErrorCta.setAttribute('href',mailtoHref(payload,subject));
           if(formError) formError.classList.add('show');

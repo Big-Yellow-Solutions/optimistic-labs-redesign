@@ -15,6 +15,11 @@
   --ease-ripple:cubic-bezier(.34,1.2,.64,1);
   --nav-h:68px; --focus:var(--violet);
   --display:clamp(44px,7vw,82px); --h-sec:clamp(32px,4.6vw,52px); --h3:clamp(21px,2.2vw,27px);
+
+  /* ---- dark-surface tokens ("Nocturne") — for one-off dark pages like thank-you.html ---- */
+  --noir-bg:#161826; --noir-surface:#232532; --noir-text:#e9e9ed;
+  --noir-text-muted:rgba(233,233,237,.6); --noir-hair:rgba(233,233,237,.16);
+  --noir-accent:var(--violet); --noir-accent-tint:var(--violet-light); --noir-accent-deep:#2b2741;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:calc(var(--nav-h) + 16px)}

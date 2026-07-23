@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Message sent · Optimistic Labs</title>
+<meta name="description" content="Thanks for reaching out to Optimistic Labs — we'll be in touch shortly." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+<style>
+/* ===== Thank-you page ("Nocturne" dark surface) =====
+   Tokens (--noir-*) live in brand.css :root so any future dark page reuses them. */
+body.ty-body{background:var(--noir-bg);color:var(--noir-text)}
+
+.ty-glow{position:fixed;top:-160px;left:50%;transform:translateX(-50%);width:640px;height:420px;
+  background:radial-gradient(circle,var(--noir-accent) 0%,transparent 70%);opacity:.26;filter:blur(70px);
+  pointer-events:none;z-index:0}
+
+.ty-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;min-height:100vh;box-sizing:border-box;
+  padding:56px 28px 72px;display:flex;flex-direction:column;align-items:flex-start;gap:44px}
+.ty-wrap>*{animation:fadeUp .7s var(--ease-signal) both}
+.ty-wrap>*:nth-child(2){animation-delay:.06s}
+.ty-wrap>*:nth-child(3){animation-delay:.12s}
+.ty-wrap>*:nth-child(4){animation-delay:.18s}
+.ty-wrap>*:nth-child(5){animation-delay:.24s}
+.ty-wrap>*:nth-child(6){animation-delay:.30s}
+.ty-wrap>*:nth-child(7){animation-delay:.36s}
+
+.ty-logo{height:34px;width:auto;display:block}
+
+.ty-badge{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-family:var(--sans);
+  font-weight:500;font-size:12.5px;letter-spacing:.02em;color:var(--noir-accent-tint);
+  border:1px solid var(--noir-accent);border-radius:999px;padding:6px 14px 6px 12px}
+.ty-badge i{font-size:14px}
+
+.ty-headline{font-family:var(--head);font-weight:500;font-size:46px;line-height:1.08;letter-spacing:-.015em;
+  max-width:16ch;color:var(--noir-text);margin:0}
+
+.ty-lead{font-family:var(--sans);font-size:18px;line-height:1.6;max-width:52ch;color:var(--noir-text);
+  opacity:.82;margin:0}
+
+.ty-card{width:100%;box-sizing:border-box;background:var(--noir-surface);border:1px solid var(--noir-hair);
+  border-radius:14px;padding:26px 28px;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.ty-card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.ty-card-icon{width:38px;height:38px;flex:none;border-radius:10px;background:var(--noir-accent-deep);
+  display:flex;align-items:center;justify-content:center;color:var(--noir-accent-tint);font-size:19px}
+.ty-card-title{font-family:var(--head);font-weight:500;font-size:22px;line-height:1.2;letter-spacing:-.01em;
+  color:var(--noir-text);margin:0}
+.ty-card-sub{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--noir-text-muted);margin-top:4px}
+
+/* theme the injected Supascribe form to match the dark surface */
+.ty-card [data-supascribe-subscribe] input{background:var(--noir-bg)!important;color:var(--noir-text)!important;
+  border:1px solid var(--noir-hair)!important;border-radius:8px!important;font-family:var(--sans)!important}
+.ty-card [data-supascribe-subscribe] button{background:transparent!important;color:var(--noir-accent-tint)!important;
+  border:1px solid var(--noir-accent)!important;border-radius:8px!important;font-family:var(--sans)!important}
+
+.ty-follow{width:100%}
+.ty-follow-label{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--noir-text-muted);margin-bottom:14px}
+.ty-follow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.ty-follow-card{background:var(--noir-surface);border:1px solid var(--noir-hair);border-radius:10px;padding:18px;
+  display:flex;flex-direction:column;gap:12px;color:inherit;text-decoration:none;
+  transition:border-color .2s var(--ease-soft),background .2s var(--ease-soft),transform .2s var(--ease-soft)}
+.ty-follow-card:hover,.ty-follow-card:focus-visible{border-color:var(--noir-accent);
+  background:color-mix(in srgb,var(--noir-accent) 9%,var(--noir-surface));transform:translateY(-2px)}
+.ty-follow-icon{width:42px;height:42px;flex:none;border-radius:10px;background:var(--noir-accent-deep);
+  display:flex;align-items:center;justify-content:center;color:var(--noir-accent-tint);font-size:20px}
+.ty-follow-name{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--noir-text)}
+.ty-follow-role{font-family:var(--sans);font-size:12.5px;color:var(--noir-text-muted);margin-top:2px}
+.ty-follow-cta{margin-top:auto;font-family:var(--head);font-weight:500;font-size:13px;color:var(--noir-accent-tint);
+  display:inline-flex;align-items:center;gap:6px}
+.ty-follow-cta i{transition:transform .2s var(--ease-soft)}
+.ty-follow-card:hover .ty-follow-cta i{transform:translateX(3px)}
+
+.ty-back{margin-top:auto;padding-top:8px;font-family:var(--sans);font-size:14.5px;color:var(--noir-text-muted);
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;text-decoration:none;
+  transition:color .2s var(--ease-soft)}
+.ty-back:hover{color:var(--noir-accent-tint)}
+
+.ty-wrap :focus-visible{outline:2px solid var(--noir-accent);outline-offset:2px;border-radius:4px}
+
+@media (max-width:480px){
+  .ty-headline{font-size:34px}
+  .ty-card{padding:22px 20px}
+}
+</style>
+</head>
+<body class="ty-body">
+
+<div class="ty-glow" data-ty-glow aria-hidden="true"></div>
+
+<div class="ty-wrap">
+  <img class="ty-logo" src="assets/ol-logo-nocturne.svg" alt="Optimistic Labs" />
+
+  <span class="ty-badge"><i class="ph ph-sparkle" aria-hidden="true"></i>Message sent</span>
+
+  <h1 class="ty-headline">Thank you — we're so glad you reached out.</h1>
+
+  <p class="ty-lead">Your message has been sent our way. Someone from the Optimistic Labs team will be in touch shortly — we look forward to connecting!</p>
+
+  <div class="ty-card" data-ty-newsletter>
+    <div class="ty-card-head">
+      <span class="ty-card-icon"><i class="ph ph-envelope-simple" aria-hidden="true"></i></span>
+      <div>
+        <h2 class="ty-card-title">While you wait, stay in the loop</h2>
+        <p class="ty-card-sub">Occasional notes on what we're building and learning. No noise.</p>
+      </div>
+    </div>
+    <div data-supascribe-embed-id="193078040495" data-supascribe-subscribe></div>
+  </div>
+
+  <div class="ty-follow">
+    <div class="ty-follow-label">Follow along on LinkedIn</div>
+    <div class="ty-follow-grid">
+      <a class="ty-follow-card" href="https://www.linkedin.com/company/optimistic-labs/" target="_blank" rel="noopener">
+        <span class="ty-follow-icon"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></span>
+        <div>
+          <div class="ty-follow-name">Optimistic Labs</div>
+          <div class="ty-follow-role">Company page</div>
+        </div>
+        <span class="ty-follow-cta">Follow <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </a>
+      <a class="ty-follow-card" href="https://www.linkedin.com/in/sethacohen33/" target="_blank" rel="noopener">
+        <span class="ty-follow-icon"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></span>
+        <div>
+          <div class="ty-follow-name">Seth Cohen</div>
+          <div class="ty-follow-role">Co-founder</div>
+        </div>
+        <span class="ty-follow-cta">Follow <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </a>
+      <a class="ty-follow-card" href="https://www.linkedin.com/in/elizabethhrussell/" target="_blank" rel="noopener">
+        <span class="ty-follow-icon"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></span>
+        <div>
+          <div class="ty-follow-name">Liz Russell</div>
+          <div class="ty-follow-role">Co-founder</div>
+        </div>
+        <span class="ty-follow-cta">Follow <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </a>
+    </div>
+  </div>
+
+  <a class="ty-back" id="tyBack" href="https://optimisticlabs.com"><i class="ph ph-arrow-left" aria-hidden="true"></i>Back to homepage</a>
+</div>
+
+<!-- Supascribe loader (newsletter subscribe embed) -->
+<script src="https://js.supascribe.com/v1/loader/4FRyWbKbkShk3nGqWqq3HTijyR82.js" async></script>
+
+<script>
+(function(){
+  "use strict";
+  var params=new URLSearchParams(location.search);
+  var showNewsletter=params.has('newsletter')?params.get('newsletter')!=='0':true;
+  var showGlow=params.has('glow')?params.get('glow')!=='0':true;
+  var homeUrl=params.get('home')||'https://optimisticlabs.com';
+
+  if(!showNewsletter){ var nl=document.querySelector('[data-ty-newsletter]'); if(nl) nl.remove(); }
+  if(!showGlow){ var g=document.querySelector('[data-ty-glow]'); if(g) g.remove(); }
+  var back=document.getElementById('tyBack');
+  if(back) back.setAttribute('href',homeUrl);
+})();
+</script>
+
+</body>
+</html>
