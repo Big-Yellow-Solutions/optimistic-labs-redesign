@@ -240,6 +240,16 @@ p{max-width:64ch}
 .mosaic-network{background:var(--violet-pale);border:1px solid var(--hair);border-radius:16px;padding:24px;
   display:flex;flex-direction:column;justify-content:center;gap:12px;flex:1}
 
+.mosaic-card--wanted{cursor:pointer;transition:transform .28s cubic-bezier(.4,0,.2,1),box-shadow .28s ease,border-color .28s ease}
+.mosaic-card--wanted:hover{transform:translateY(-3px);box-shadow:0 20px 40px -16px rgba(61,47,212,.3);border-color:var(--violet-light)}
+.mosaic-card--wanted .mosaic-photo{display:flex;align-items:center;justify-content:center}
+.mosaic-chip{position:absolute;top:12px;left:12px}
+.mosaic-plus{width:52px;height:52px;border-radius:14px;background:rgba(124,109,245,.14);
+  display:flex;align-items:center;justify-content:center;color:var(--violet)}
+.mosaic-card-link{font-family:var(--head);font-weight:600;font-size:13px;color:var(--violet);
+  display:inline-flex;align-items:center;gap:7px;margin-top:10px;align-self:flex-start}
+.mosaic-card--wanted:hover .mosaic-card-link{text-decoration:underline}
+
 /* ---------- what-you-get card grid ----------
    Data-driven: markup is rendered by site.js from a <script type="application/json"
    data-wyg-config> block inside [data-wyg]. See become-a-lab-leader.html for an
