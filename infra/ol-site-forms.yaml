@@ -13,7 +13,7 @@ Parameters:
     Description: Verified SES identity the notification is sent from.
   ToAddress:
     Type: String
-    Default: teddy@optimisticlabs.com
+    Default: hello@optimisticlabs.com
     Description: >
       Where form submissions are delivered. While SES is in sandbox mode this
       must also be a verified identity.

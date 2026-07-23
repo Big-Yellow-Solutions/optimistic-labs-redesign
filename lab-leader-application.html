@@ -150,6 +150,10 @@
         <div class="app-section">
           <button type="submit" class="pill pill-primary">Submit application →</button>
           <div class="app-status" id="saveStatus" role="status" aria-live="polite"></div>
+          <div class="form-error" id="appError" role="alert">
+            <p>Something went wrong submitting your application. Please try again, or email us directly instead — your answers are still saved in this browser.</p>
+            <a class="pill pill-outline" id="appErrorCta">Email hello@optimisticlabs.com</a>
+          </div>
         </div>
       </form>
     </div>
@@ -233,6 +237,15 @@
     var payload={_subject:'Lab Leader Application · '+nameInput.value.trim(),Source:'Lab Leader Application'};
     fields.forEach(function(f){ payload[LABELS[f.name]||f.name]=f.value.trim()||'(blank)'; });
 
+    var appError=document.getElementById('appError'), appErrorCta=document.getElementById('appErrorCta');
+    if(appError) appError.classList.remove('show');
+
+    function mailtoHref(){
+      var lines=[]; for(var k in payload){ lines.push(k+':\n'+payload[k]+'\n'); }
+      return 'mailto:'+(CONFIG.contactEmail||'hello@optimisticlabs.com')+
+        '?subject='+encodeURIComponent('Lab Leader Application · '+nameInput.value.trim())+
+        '&body='+encodeURIComponent(lines.join('\n'));
+    }
     function done(){
       try{ localStorage.removeItem(STORE_KEY); }catch(err){}
       document.getElementById('appMain').style.display='none';
@@ -240,14 +253,16 @@
       doneEl.classList.add('show');
       window.scrollTo({top:0,behavior:'auto'});
     }
+    function showError(){
+      if(appErrorCta) appErrorCta.setAttribute('href',mailtoHref());
+      if(appError) appError.classList.add('show');
+    }
     if(CONFIG.formEndpoint){
       fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
-        .then(done).catch(done);
+        .then(function(res){ if(res.ok) done(); else showError(); })
+        .catch(showError);
     } else {
-      var lines=[]; for(var k in payload){ lines.push(k+':\n'+payload[k]+'\n'); }
-      window.location.href='mailto:'+(CONFIG.contactEmail||'hello@optimisticlabs.com')+
-        '?subject='+encodeURIComponent('Lab Leader Application · '+nameInput.value.trim())+
-        '&body='+encodeURIComponent(lines.join('\n'));
+      window.location.href=mailtoHref();
       done();
     }
   });

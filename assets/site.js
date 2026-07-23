@@ -13,7 +13,7 @@
     aboutUrl:     'about.html',
     labsUrl:      'index.html#labs',
     applicationFormUrl: 'lab-leader-application.html',
-    formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to teddy@optimisticlabs.com.
+    formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to hello@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
     linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
   };
@@ -527,14 +527,18 @@
     }
     function clearErr(input){ input.removeAttribute('aria-invalid'); var e=input.parentNode.querySelector('.field-err'); if(e) e.textContent=''; }
     function flashBtn(btn){ if(!btn) return; btn.disabled=true; setTimeout(function(){btn.disabled=false;},900); }
-    function deliver(payload,subject,done){
+    function mailtoHref(payload,subject){
+      var lines=[]; for(var k in payload){ if(payload[k]) lines.push(k+': '+payload[k]); }
+      return 'mailto:'+CONFIG.contactEmail+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
+    }
+    function deliver(payload,subject,onSuccess,onError){
       if(CONFIG.formEndpoint){
         fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({_subject:subject},payload))})
-          .then(function(){done();}).catch(function(){done();});
+          .then(function(res){ if(res.ok) onSuccess(); else onError(); })
+          .catch(function(){ onError(); });
       } else {
-        var lines=[]; for(var k in payload){ if(payload[k]) lines.push(k+': '+payload[k]); }
-        window.location.href='mailto:'+CONFIG.contactEmail+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
-        done();
+        window.location.href=mailtoHref(payload,subject);
+        onSuccess();
       }
     }
 
@@ -547,8 +551,11 @@
         var v=(newsEmail.value||'').trim();
         if(!EMAIL_RE.test(v)){ setErr(newsEmail,v?'Enter a valid email address.':'Email is required.'); newsEmail.focus(); return; }
         clearErr(newsEmail); flashBtn(newsForm.querySelector('button'));
-        deliver({Email:v,Source:'Newsletter signup'},'Newsletter signup · Optimistic Labs',function(){
+        var newsPayload={Email:v,Source:'Newsletter signup'}, newsSubject='Newsletter signup · Optimistic Labs';
+        deliver(newsPayload,newsSubject,function(){
           if(newsNote) newsNote.classList.add('show'); newsEmail.value='';
+        },function(){
+          window.location.href=mailtoHref(newsPayload,newsSubject);
         });
       });
     }
@@ -556,6 +563,7 @@
     var contactForm=document.getElementById('contactForm');
     if(contactForm){
       var formNote=document.getElementById('formNote');
+      var formError=document.getElementById('formError'), formErrorCta=document.getElementById('formErrorCta');
       var cf={name:document.getElementById('cf-name'),email:document.getElementById('cf-email'),message:document.getElementById('cf-message')};
       Object.keys(cf).forEach(function(k){ if(cf[k]) cf[k].addEventListener('input',function(){ if(cf[k].getAttribute('aria-invalid')) clearErr(cf[k]); }); });
       contactForm.addEventListener('submit',function(e){
@@ -567,10 +575,16 @@
         check(cf.message, cf.message.value.trim().length>0, 'Tell us a little about what you’re building.');
         if(firstBad){ firstBad.focus(); return; }
         flashBtn(contactForm.querySelector('button[type=submit]'));
+        if(formError) formError.classList.remove('show');
+        if(formNote) formNote.classList.remove('show');
+        var subject='New inquiry · Optimistic Labs';
         var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Message:cf.message.value.trim()};
-        deliver(payload,'New inquiry · Optimistic Labs',function(){
+        deliver(payload,subject,function(){
           if(formNote) formNote.classList.add('show');
           cf.name.value=cf.email.value=cf.message.value='';
+        },function(){
+          if(formErrorCta) formErrorCta.setAttribute('href',mailtoHref(payload,subject));
+          if(formError) formError.classList.add('show');
         });
       });
     }

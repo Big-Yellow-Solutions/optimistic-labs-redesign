@@ -213,6 +213,10 @@
           <div id="resultBody"></div>
           <div id="resultCta"></div>
           <p class="result-subcta" id="resultSub"></p>
+          <div class="form-error" id="quizError" role="alert">
+            <p>We couldn't record your results automatically. Mind emailing them to us instead?</p>
+            <a class="pill pill-outline" id="quizErrorCta">Email hello@optimisticlabs.com</a>
+          </div>
         </section>
 
       </div>
@@ -343,19 +347,25 @@
     return {n:1,name:'Stay Close',head:'<span>Stay</span> <span>Close</span>'};
   }
 
-  function deliverLead(firstName,email,score,tier){
+  function quizMailtoHref(payload,firstName){
+    var CONFIG=window.OL_CONFIG||{};
+    var lines=[]; for(var k in payload){ lines.push(k+': '+payload[k]); }
+    return 'mailto:'+(CONFIG.contactEmail||'hello@optimisticlabs.com')+
+      '?subject='+encodeURIComponent('Lab Leader Fit Quiz result · '+firstName)+
+      '&body='+encodeURIComponent(lines.join('\n'));
+  }
+  function deliverLead(firstName,email,score,tier,onError){
     var CONFIG=window.OL_CONFIG||{};
     var payload={_subject:'Lab Leader Fit Quiz · '+firstName+' scored '+score+' of 21',FirstName:firstName,Email:email,Score:score+' of 21',Tier:'Tier '+tier.n+': '+tier.name,Source:'Lab Leader Fit Quiz'};
     QUESTIONS.forEach(function(item,i){
       payload['Q'+(i+1)+' ('+item.key+')']=answers[i]!==null?item.opts[answers[i]].t+' ['+item.opts[answers[i]].s+']':'(skipped)';
     });
     if(CONFIG.formEndpoint){
-      fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+      fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+        .then(function(res){ if(!res.ok) onError(payload,firstName); })
+        .catch(function(){ onError(payload,firstName); });
     } else {
-      var lines=[]; for(var k in payload){ lines.push(k+': '+payload[k]); }
-      window.location.href='mailto:'+(CONFIG.contactEmail||'hello@optimisticlabs.com')+
-        '?subject='+encodeURIComponent('Lab Leader Fit Quiz result · '+firstName)+
-        '&body='+encodeURIComponent(lines.join('\n'));
+      window.location.href=quizMailtoHref(payload,firstName);
     }
   }
 
@@ -405,7 +415,12 @@
     if(!EMAIL_RE.test(emailV)){ setErr(emailInput,emailV?'Enter a valid email address.':'Email is required.'); if(!firstBad) firstBad=emailInput; } else clearErr(emailInput);
     if(firstBad){ firstBad.focus(); return; }
     var score=totalScore(), tier=tierFor(score);
-    deliverLead(nameV,emailV,score,tier);
+    var quizError=document.getElementById('quizError'), quizErrorCta=document.getElementById('quizErrorCta');
+    if(quizError) quizError.classList.remove('show');
+    deliverLead(nameV,emailV,score,tier,function(payload,firstName){
+      if(quizErrorCta) quizErrorCta.setAttribute('href',quizMailtoHref(payload,firstName));
+      if(quizError) quizError.classList.add('show');
+    });
     renderResult();
   });
 })();

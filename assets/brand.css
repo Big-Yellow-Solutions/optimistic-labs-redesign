@@ -446,6 +446,12 @@ p{max-width:64ch}
 .note{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);opacity:0;transition:opacity .3s;margin-top:12px}
 .note.show{opacity:1}
 
+.form-error{display:none;flex-direction:column;align-items:flex-start;gap:10px;margin-top:14px;
+  padding:16px 18px;border-radius:12px;background:rgba(162,59,42,.06);border:1px solid rgba(162,59,42,.22)}
+.form-error.show{display:flex}
+.form-error p{margin:0;font-size:14px;line-height:1.5;color:#a23b2a;max-width:none}
+.form-error .pill{padding:9px 18px;font-size:13px}
+
 /* ---------- FAQ ---------- */
 .faq{display:flex;flex-direction:column;gap:0;margin-top:10px;border-top:1px solid var(--hair)}
 .faq details{border-bottom:1px solid var(--hair)}
