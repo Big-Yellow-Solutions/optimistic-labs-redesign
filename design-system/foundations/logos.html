@@ -1,0 +1,36 @@
+<!-- @dsCard group="Foundations" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Logos &amp; Marks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:48px 40px}
+  .ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;max-width:1080px;margin:0 auto}
+  .ds-tile{border:1px solid var(--hair);border-radius:14px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:140px}
+  .ds-tile.dark{background:var(--violet-deep)}
+  .ds-tile.black{background:#000}
+  .ds-tile img{max-height:44px;width:auto}
+  .ds-tile-label{font-family:var(--sans);font-size:12px;color:var(--warm-gray)}
+  .ds-tile.dark .ds-tile-label,.ds-tile.black .ds-tile-label{color:rgba(255,255,255,.7)}
+</style>
+</head>
+<body>
+  <div class="ds-grid">
+    <div class="ds-tile"><img src="../assets/ol-logo.svg" alt="Optimistic Labs" /><span class="ds-tile-label">Primary lockup</span></div>
+    <div class="ds-tile dark"><img src="../assets/ol-logo-white.svg" alt="Optimistic Labs" /><span class="ds-tile-label">On violet-deep (nav)</span></div>
+    <div class="ds-tile"><img src="../assets/ol-mark.svg" alt="Optimistic Labs mark" /><span class="ds-tile-label">Mark only</span></div>
+    <div class="ds-tile dark"><img src="../assets/ol-mark-white.svg" alt="Optimistic Labs mark" /><span class="ds-tile-label">Mark, on dark</span></div>
+    <div class="ds-tile"><img src="../assets/o-mark.svg" alt="O mark" /><span class="ds-tile-label">O mark</span></div>
+    <div class="ds-tile black"><img src="../assets/ol-logo-nocturne.svg" alt="Optimistic Labs nocturne" /><span class="ds-tile-label">Nocturne (thank-you page)</span></div>
+    <div class="ds-tile"><img src="../assets/star.svg" alt="Star motif" /><span class="ds-tile-label">Star / ripple motif</span></div>
+    <div class="ds-tile"><img src="../assets/faith-logo.svg" alt="Faith Lab" style="max-height:36px" /><span class="ds-tile-label">Faith Lab co-brand</span></div>
+    <div class="ds-tile dark"><img src="../assets/faith-logo-white.svg" alt="Faith Lab" style="max-height:36px" /><span class="ds-tile-label">Faith Lab, on dark</span></div>
+    <div class="ds-tile"><img src="../assets/policy-logo.svg" alt="Policy Lab" style="max-height:36px" /><span class="ds-tile-label">Policy Lab co-brand</span></div>
+    <div class="ds-tile"><img src="../assets/impact-logo.svg" alt="Philanthropy Lab" style="max-height:36px" /><span class="ds-tile-label">Philanthropy Lab co-brand</span></div>
+    <div class="ds-tile"><img src="../assets/sports-logo.svg" alt="Sports Lab" style="max-height:36px" /><span class="ds-tile-label">Sports Lab co-brand (concept)</span></div>
+  </div>
+</body>
+</html>

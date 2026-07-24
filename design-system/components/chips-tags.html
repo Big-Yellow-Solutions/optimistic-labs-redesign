@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Chips, Tags &amp; Bullets</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:48px 40px;max-width:900px;margin:0 auto}
+  .ds-row{margin-bottom:36px}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+</style>
+</head>
+<body>
+  <div class="ds-row">
+    <div class="ds-label">Chips · .chip / .chip--soft (used on lab-card thumbnails)</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span class="chip">Live</span>
+      <span class="chip chip--soft">Lab Leader Wanted</span>
+    </div>
+  </div>
+  <div class="ds-row">
+    <div class="ds-label">Tags · .tag-row / .tag</div>
+    <div class="tag-row">
+      <span class="tag">Strategy</span>
+      <span class="tag">Community Design</span>
+      <span class="tag">Trusted Networks</span>
+    </div>
+  </div>
+  <div class="ds-row">
+    <div class="ds-label">Bullet list · .bullets (ripple-dot marker)</div>
+    <ul class="bullets">
+      <li>Strategy and infrastructure behind you.</li>
+      <li>A trusted network of operators, creators, and builders already in motion.</li>
+      <li>Help productizing and pricing your offerings.</li>
+    </ul>
+  </div>
+  <div class="ds-row">
+    <div class="ds-label">Roster pills · .roster-pill (network chips)</div>
+    <div class="roster-pills" style="background:var(--violet-pale);padding:16px;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <span class="roster-pill">Strategy</span>
+      <span class="roster-pill">Content</span>
+      <span class="roster-pill">Technology</span>
+      <span class="roster-pill">Community Ops</span>
+    </div>
+  </div>
+</body>
+</html>

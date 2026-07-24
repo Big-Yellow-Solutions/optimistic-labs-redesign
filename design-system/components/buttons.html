@@ -1,0 +1,49 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Buttons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:48px 40px}
+  .ds-row{margin-bottom:36px;max-width:900px}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+  .ds-surface{padding:32px;border-radius:16px}
+  .ds-surface.paper{background:var(--paper);border:1px solid var(--hair)}
+  .ds-surface.violet{background:var(--violet-deep)}
+</style>
+</head>
+<body>
+  <div class="ds-row">
+    <div class="ds-label">Pills · on light surface</div>
+    <div class="ds-surface paper cta-row">
+      <a class="pill pill-primary" href="#">Connect With Us</a>
+      <a class="pill pill-outline" href="#">Meet the Team</a>
+    </div>
+  </div>
+  <div class="ds-row">
+    <div class="ds-label">Pills · on violet-deep (hero / band / on-dark)</div>
+    <div class="ds-surface violet cta-row on-dark">
+      <a class="pill pill-primary" href="#">Connect With Us</a>
+      <a class="pill pill-outline" href="#">Meet the Team</a>
+    </div>
+  </div>
+  <div class="ds-row">
+    <div class="ds-label">Nav CTA · .nav .pill-primary (compact)</div>
+    <header class="nav" style="position:static">
+      <a class="pill pill-primary navcta" href="#">Connect With Us</a>
+    </header>
+  </div>
+  <div class="ds-row">
+    <div class="ds-label">Form submit button</div>
+    <div class="ds-surface paper">
+      <button type="button" class="pill pill-primary">Send message</button>
+    </div>
+  </div>
+</body>
+</html>

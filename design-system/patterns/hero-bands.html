@@ -1,0 +1,55 @@
+<!-- @dsCard group="Patterns" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Hero &amp; Bands</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);padding:32px 40px 0}
+  .people-photo .ds-photo-fill{position:absolute;inset:0;background:var(--violet-pale)}
+  /* freeze the load-in animation so the preview shows its resting state, not a transient frame */
+  .hero .hero-copy>*{animation:none!important;opacity:1!important;transform:none!important}
+</style>
+</head>
+<body>
+  <div class="ds-label">Dark hero · .hero (violet-deep, homepage)</div>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><img class="star" src="../assets/star.svg" alt="" />Trust is the advantage</span>
+      <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
+      <p class="lead">Optimistic Labs is a network of focused labs designed to help organizations and leaders create and scale communities that make their brands stronger, their growth stickier, and their strategy more human.</p>
+      <div class="cta-row">
+        <a class="pill pill-primary" href="#">Connect With Us</a>
+        <a class="pill pill-outline" href="#">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ds-label">Light split hero · .hero-light (subpages)</div>
+  <section class="hero-light">
+    <div class="inner2">
+      <div class="hero-copy">
+        <span class="eyebrow">Become a Lab Leader</span>
+        <h1 class="display" style="font-size:clamp(36px,4.6vw,58px)">Bring your expertise. We bring the <em class="em-italic">infrastructure</em>.</h1>
+        <p class="lead">You bring the audience, the point of view, and the trust you've already earned.</p>
+        <div class="cta-row"><a class="pill pill-primary" href="#">Connect With Us</a></div>
+      </div>
+      <div class="people-photo"><div class="ds-photo-fill"></div><span class="ph">Portrait</span></div>
+    </div>
+  </section>
+
+  <div class="ds-label">Band · .band (centered CTA banner)</div>
+  <section class="band">
+    <div class="inner">
+      <h2>Founding Lab Leaders have a first-mover advantage.</h2>
+      <p>That window is open now. The platform is being built with early Lab Leaders, which means you get a hand in shaping it.</p>
+      <div class="cta-row"><a class="pill pill-primary" href="#">Connect With Us</a><a class="pill pill-outline" href="#">Take the fit quiz</a></div>
+    </div>
+  </section>
+</body>
+</html>

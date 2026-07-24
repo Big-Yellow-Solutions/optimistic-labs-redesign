@@ -1,0 +1,64 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Lab Cards &amp; Carousel Controls</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:48px 40px;background:var(--paper)}
+  .ds-row{margin-bottom:44px;max-width:1080px;margin-left:auto;margin-right:auto}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+  .ds-photo{width:100%;height:100%;background:var(--violet-pale);display:flex;align-items:center;justify-content:center;color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .arrow{width:14px;height:14px;flex:none}
+  .ll-card-chip{position:absolute;top:12px;left:12px;z-index:2}
+  .ll-card-chip.chip--soft{background:color-mix(in srgb, var(--warm-gray) 32%, #fff);color:var(--ink);border:none}
+</style>
+</head>
+<body>
+  <div class="ds-row">
+    <div class="ds-label">Lab card · .ll-card (live lab)</div>
+    <div class="grid grid-3" style="max-width:640px">
+      <a class="ll-card" href="#">
+        <div class="ll-card-img"><span class="chip ll-card-chip">Live</span><div class="ds-photo">Faith Lab</div></div>
+        <div class="ll-card-body">
+          <div class="ll-card-title">Faith Lab</div>
+          <span class="ll-card-link">Visit Faith Lab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="ll-card" href="#">
+        <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><div class="ds-photo">AI Lab</div></div>
+        <div class="ll-card-body">
+          <div class="ll-card-title">AI Lab</div>
+          <span class="ll-card-link">Apply to lead this lab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="ll-card ll-card--cta" href="#">
+        <div class="ll-card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="ll-card-body">
+          <div class="ll-card-title">Design your own lab</div>
+          <span class="ll-card-link">Apply to lead this lab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="ds-row">
+    <div class="ds-label">Carousel nav buttons · .car-btn (prev / next / disabled)</div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <button class="car-btn" type="button" style="position:static" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="car-btn" type="button" style="position:static" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="car-btn" type="button" style="position:static" disabled aria-label="Disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="coverflow-dots" style="margin-top:0">
+        <button class="active" aria-label="Slide 1"></button>
+        <button aria-label="Slide 2"></button>
+        <button aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Forms</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:48px 40px}
+  .ds-row{margin-bottom:44px;max-width:680px}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+</style>
+</head>
+<body>
+  <div class="ds-row">
+    <div class="ds-label">Contact form · .form / .field / .field-row</div>
+    <form class="form" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="ds-name">Name</label><input id="ds-name" type="text" /></div>
+        <div class="field"><label for="ds-email">Email</label><input id="ds-email" type="email" /></div>
+      </div>
+      <div class="field"><label for="ds-msg">What are you building?</label><textarea id="ds-msg" placeholder="Tell us about your community, your organization, or the lab you want to lead."></textarea></div>
+      <button type="submit" class="pill pill-primary" onclick="return false">Send message</button>
+    </form>
+  </div>
+
+  <div class="ds-row">
+    <div class="ds-label">Field error state · [aria-invalid]</div>
+    <div class="field">
+      <label for="ds-err">Email</label>
+      <input id="ds-err" type="email" aria-invalid="true" value="not-an-email" />
+      <span class="field-err">Please enter a valid email address.</span>
+    </div>
+  </div>
+
+  <div class="ds-row">
+    <div class="ds-label">Form-level error · .form-error.show</div>
+    <div class="form-error show" role="alert">
+      <p>Something went wrong sending your message. Please try again, or email us directly instead.</p>
+      <a class="pill pill-outline" href="#">Email hello@optimisticlabs.com</a>
+    </div>
+  </div>
+
+  <div class="ds-row">
+    <div class="ds-label">Newsletter signup · .news-form</div>
+    <form class="news-form" novalidate>
+      <input type="email" placeholder="you@email.com" />
+      <button type="button" class="pill pill-primary">Subscribe</button>
+    </form>
+    <div class="note show">Thanks for subscribing!</div>
+  </div>
+</body>
+</html>

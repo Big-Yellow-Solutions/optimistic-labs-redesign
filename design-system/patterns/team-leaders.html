@@ -1,0 +1,115 @@
+<!-- @dsCard group="Patterns" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Team &amp; Leader Rosters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:48px 40px}
+  .ds-row{margin-bottom:52px;max-width:1080px;margin-left:auto;margin-right:auto}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+  .ds-photo{width:100%;height:100%;background:var(--violet-pale);display:flex;align-items:center;justify-content:center;color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px}
+  .team-photo.ds-circle{display:flex;align-items:center;justify-content:center;background:var(--violet-pale);color:var(--violet);font-size:11px;font-family:var(--sans);font-weight:600}
+</style>
+</head>
+<body>
+  <div class="ds-row">
+    <div class="ds-label">Team circles · .team-row / .team-member</div>
+    <div class="team-row">
+      <div class="team-member">
+        <div class="team-photo ds-circle" style="width:124px;height:124px">Photo</div>
+        <h3>Seth Cohen</h3>
+        <div class="team-role">Co-founder</div>
+        <p>25+ years across media, philanthropy, and civic leadership.</p>
+      </div>
+      <div class="team-member">
+        <div class="team-photo ds-circle" style="width:124px;height:124px">Photo</div>
+        <h3>Liz Russell</h3>
+        <div class="team-role">Co-founder</div>
+        <p>A decade across SaaS, emergency management, and GovTech.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-row">
+    <div class="ds-label">Team lightbox cards · .team-card (hover to enlarge)</div>
+    <div class="team-cards">
+      <article class="team-card" tabindex="0">
+        <div class="team-card-photo"><div class="ds-photo">Photo</div></div>
+        <div class="team-card-body">
+          <h3>Lauren Hall, PhD</h3>
+          <div class="team-role">Senior Advisor</div>
+          <p>Political theorist and Associate Dean of Academic Affairs, RIT.</p>
+        </div>
+      </article>
+      <article class="team-card" tabindex="0">
+        <div class="team-card-photo"><div class="ds-photo">Photo</div></div>
+        <div class="team-card-body">
+          <h3>Aliza Goodman</h3>
+          <div class="team-role">Lab Leader, Faith</div>
+          <p>20+ years designing and scaling professional development programs.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="ds-row">
+    <div class="ds-label">Lab leader + roster · .leader-grid / .roster-panel / .mosaic-grid (data-driven from site.js)</div>
+    <div class="leader-grid">
+      <div class="leader-col">
+        <span class="eyebrow"><img class="star" src="../assets/star.svg" alt="" />The Lab Leader</span>
+        <div class="leader-photo-lg"><div class="ds-photo">Portrait</div></div>
+        <h3 class="leader-name">Aliza Goodman</h3>
+        <div class="leader-role">Lab Leader, Faith</div>
+        <p class="leader-bio">Aliza believes lasting communities are built on infrastructure, not just inspiration.</p>
+        <div class="leader-stats">
+          <div class="leader-stat"><div class="leader-stat-value">20+</div><div class="leader-stat-label">Years experience</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">2</div><div class="leader-stat-label">Programs built</div></div>
+        </div>
+        <a class="pill pill-outline leader-cta" href="#">Connect With Us</a>
+      </div>
+      <div class="roster-col">
+        <p class="roster-lead">Backed by a growing bench of specialists and collaborators.</p>
+        <div class="mosaic-grid">
+          <div class="mosaic-col">
+            <div class="mosaic-card">
+              <div class="mosaic-photo"><div class="ds-photo">Photo</div></div>
+              <div class="mosaic-card-body">
+                <span class="roster-name">Jordan Lee</span>
+                <span class="roster-role">Community Strategist</span>
+                <p class="roster-bio">Leads program design and member engagement strategy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mosaic-col">
+            <a class="mosaic-card mosaic-card--wanted" href="#">
+              <div class="mosaic-photo">
+                <span class="chip mosaic-chip">Wanted</span>
+                <span class="mosaic-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </div>
+              <div class="mosaic-card-body">
+                <span class="roster-name">Content Lead</span>
+                <p class="roster-bio">Own storytelling and editorial across channels.</p>
+                <span class="mosaic-card-link">Apply <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </a>
+            <div class="mosaic-network">
+              <div class="roster-footer-label">+ a network of fractional executives and SMEs</div>
+              <div class="roster-pills">
+                <span class="roster-pill">Strategy</span>
+                <span class="roster-pill">Technology</span>
+                <span class="roster-pill">Content</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
