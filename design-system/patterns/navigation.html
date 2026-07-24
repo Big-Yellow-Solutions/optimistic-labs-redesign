@@ -1,0 +1,67 @@
+<!-- @dsCard group="Patterns" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Navigation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  body{padding:0 0 48px}
+  .ds-section{padding:32px 40px 0}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+  .nav-dd.open .nav-dd-panel{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translate(-50%,0)!important}
+</style>
+</head>
+<body>
+  <div class="ds-section"><div class="ds-label">Desktop nav bar with "Our Labs" mega-dropdown (open state)</div></div>
+  <header class="nav" style="position:static">
+    <a class="nav-logo" href="#" aria-label="Optimistic Labs home"><img src="../assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-dd open" data-dd>
+        <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="true">Our Labs
+          <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dd-panel" aria-label="Our Labs">
+          <div class="nav-dd-grid">
+            <a class="nav-dd-feature" href="#">
+              <img src="../assets/ol-mark-white.svg" alt="" />
+              <span class="nav-dd-feature-title">Become a Lab Leader</span>
+              <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+            </a>
+            <ul class="nav-dd-list">
+              <li><a href="#"><span class="nav-dd-item-title">Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+              <li><a href="#"><span class="nav-dd-item-title">Policy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+              <li><a href="#"><span class="nav-dd-item-title">Philanthropy Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <a href="#">About</a>
+      <a class="pill pill-primary navcta" href="#">Connect With Us</a>
+    </nav>
+    <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </header>
+
+  <div class="ds-section" style="margin-top:280px"><div class="ds-label">Mobile menu sheet · .sheet.open</div></div>
+  <nav class="sheet open" style="position:relative;height:auto;transform:none" aria-hidden="false">
+    <button class="sheet-x" aria-label="Close menu">×</button>
+    <div class="sheet-dd open" data-sheet-dd>
+      <button class="sheet-dd-trigger" type="button" aria-expanded="true">Our Labs
+        <svg class="sheet-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="sheet-dd-panel" style="max-height:320px">
+        <a href="#">Become a Lab Leader</a>
+        <a href="#">Faith Lab</a>
+        <a href="#">Policy Lab</a>
+        <a href="#">Philanthropy Lab</a>
+      </div>
+    </div>
+    <a href="#">About</a>
+    <a class="pill pill-primary navcta" href="#">Connect With Us</a>
+  </nav>
+</body>
+</html>

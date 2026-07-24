@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Optimistic Labs — Design System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared/brand.css" />
+<style>
+  /* ===== bundle scaffolding (not part of the brand system itself) ===== */
+  body{background:var(--paper)}
+  .ds-group-title{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--ink);padding:22px 40px}
+  .ds-page-title{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--violet-deep);padding:14px 40px}
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:14px}
+  .ds-row{max-width:1100px;margin:0 auto 44px;padding:0 40px}
+  .ds-page{padding-top:36px;padding-bottom:8px}
+  .ds-photo{width:100%;height:100%;background:var(--violet-pale);display:flex;align-items:center;justify-content:center;color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+  /* colors */
+  .ds-group{max-width:1080px;margin:0 auto 56px;padding:0 40px}
+  .ds-group h2{font-size:20px;margin-bottom:18px}
+  .ds-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
+  .ds-swatch{border-radius:14px;overflow:hidden;border:1px solid var(--hair)}
+  .ds-swatch-color{height:88px}
+  .ds-swatch-meta{padding:12px 14px;background:#fff}
+  .ds-swatch-name{font-weight:600;font-size:13px;color:var(--ink)}
+  .ds-swatch-value{font-family:monospace;font-size:12px;color:var(--warm-gray);margin-top:2px}
+
+  /* logos */
+  .ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;max-width:1080px;margin:0 auto;padding:0 40px}
+  .ds-tile{border:1px solid var(--hair);border-radius:14px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:140px}
+  .ds-tile.dark{background:var(--violet-deep)}
+  .ds-tile.black{background:#000}
+  .ds-tile img{max-height:44px;width:auto}
+  .ds-tile-label{font-family:var(--sans);font-size:12px;color:var(--warm-gray)}
+  .ds-tile.dark .ds-tile-label,.ds-tile.black .ds-tile-label{color:rgba(255,255,255,.7)}
+
+  /* buttons */
+  .ds-surface{padding:32px;border-radius:16px}
+  .ds-surface.paper{background:var(--paper);border:1px solid var(--hair)}
+  .ds-surface.violet{background:var(--violet-deep)}
+
+  /* cards */
+  .svc-note{font-style:italic;font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:88ch;margin-top:14px}
+  .fork-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .fork-card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:34px 32px}
+  .fork-card.org{border-top:3px solid var(--violet-deep)}
+  .fork-card.leader{border-top:3px solid var(--violet)}
+  .fork-card .kicker{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:12px}
+  .fork-card h3{margin-bottom:12px}
+  .fork-card>p{font-size:15.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:18px}
+  .fork-card .cta-row{margin-top:22px}
+
+  /* lab cards */
+  .arrow{width:14px;height:14px;flex:none}
+  .ll-card-chip{position:absolute;top:12px;left:12px;z-index:2}
+  .ll-card-chip.chip--soft{background:color-mix(in srgb, var(--warm-gray) 32%, #fff);color:var(--ink);border:none}
+
+  /* navigation */
+  .ds-section{padding:32px 40px 0}
+  .nav-dd.open .nav-dd-panel{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translate(-50%,0)!important}
+
+  /* hero & bands */
+  .people-photo .ds-photo-fill{position:absolute;inset:0;background:var(--violet-pale)}
+  .hero .hero-copy>*{animation:none!important;opacity:1!important;transform:none!important}
+
+  /* team & leaders */
+  .team-photo.ds-circle{display:flex;align-items:center;justify-content:center;background:var(--violet-pale);color:var(--violet);font-size:11px;font-family:var(--sans);font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- =================================================================== -->
+<!-- FOUNDATIONS                                                        -->
+<!-- =================================================================== -->
+<div class="ds-group-title">Foundations</div>
+
+<section class="ds-page" id="colors">
+  <div class="ds-page-title">Colors</div>
+  <div style="padding-top:36px">
+    <div class="ds-group">
+      <h2>Core palette</h2>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#3D2FD4"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Violet Deep</div><div class="ds-swatch-value">--violet-deep · #3D2FD4</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#7C6DF5"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Violet</div><div class="ds-swatch-value">--violet · #7C6DF5</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#B0A6FA"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Violet Light</div><div class="ds-swatch-value">--violet-light · #B0A6FA</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#ECEAFE"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Violet Pale</div><div class="ds-swatch-value">--violet-pale · #ECEAFE</div></div></div>
+      </div>
+    </div>
+    <div class="ds-group">
+      <h2>Neutrals</h2>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#F8F6F2"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Paper</div><div class="ds-swatch-value">--paper · #F8F6F2</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#111111"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Ink</div><div class="ds-swatch-value">--ink · #111111</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:rgba(17,17,17,.82)"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Ink Soft</div><div class="ds-swatch-value">--ink-soft · rgba(17,17,17,.82)</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#9E9589"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Warm Gray</div><div class="ds-swatch-value">--warm-gray · #9E9589</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FFFFFF;border-bottom:1px solid var(--hair)"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Card / White</div><div class="ds-swatch-value">--card / --white · #FFFFFF</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:rgba(124,109,245,.20)"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Hairline</div><div class="ds-swatch-value">--hair · rgba(124,109,245,.20)</div></div></div>
+      </div>
+    </div>
+    <div class="ds-group">
+      <h2>Nocturne (dark-surface pages)</h2>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#161826"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Noir BG</div><div class="ds-swatch-value">--noir-bg · #161826</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#232532"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Noir Surface</div><div class="ds-swatch-value">--noir-surface · #232532</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#e9e9ed"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Noir Text</div><div class="ds-swatch-value">--noir-text · #e9e9ed</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#2b2741"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Noir Accent Deep</div><div class="ds-swatch-value">--noir-accent-deep · #2b2741</div></div></div>
+      </div>
+    </div>
+    <div class="ds-group">
+      <h2>Footer (flat black)</h2>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#000"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Footer BG</div><div class="ds-swatch-value">#000</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#9184d9"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Footer Accent</div><div class="ds-swatch-value">#9184d9</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#b8b1e6"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Footer Link</div><div class="ds-swatch-value">#b8b1e6</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch-color" style="background:#e0574f"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Footer Heart</div><div class="ds-swatch-value">#e0574f</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="typography">
+  <div class="ds-page-title">Typography &amp; Motifs</div>
+  <div class="ds-row" style="max-width:900px;padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Display · h1.display — Playfair italic accent</div>
+      <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
+    </div>
+    <div class="ds-row"><div class="ds-label">Section heading · h2.h-sec</div>
+      <h2 class="h-sec">That&rsquo;s where <em class="em-italic">Optimistic Labs</em> comes in.</h2>
+    </div>
+    <div class="ds-row"><div class="ds-label">h3 (card / row titles)</div>
+      <h3>Strategic Design</h3>
+    </div>
+    <div class="ds-row"><div class="ds-label">Lead paragraph · p.lead</div>
+      <p class="lead">Optimistic Labs is a network of focused labs designed to help organizations and leaders create and scale communities that make their brands stronger, their growth stickier, and their strategy more human.</p>
+    </div>
+    <div class="ds-row"><div class="ds-label">Body paragraph</div>
+      <p>Community building is not a static playbook. It evolves. Together, we test ideas, build prototypes, launch initiatives, and refine what works, turning strategy into real-world momentum.</p>
+    </div>
+    <div class="ds-row"><div class="ds-label">Eyebrow · .eyebrow (with star motif)</div>
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How we work</span>
+    </div>
+    <div class="ds-row"><div class="ds-label">Pull quote · .pull-quote</div>
+      <p class="pull-quote">Trust is the advantage.</p>
+    </div>
+    <div class="ds-row"><div class="ds-label">Numbered index · .step-num / .svc-index / .principle-index (Playfair italic)</div>
+      <div style="display:flex;gap:36px;align-items:baseline">
+        <span class="step-num">01</span>
+        <span class="svc-index">02</span>
+        <span class="principle-index">03</span>
+      </div>
+    </div>
+    <div class="ds-row"><div class="ds-label">Muted text · .muted</div>
+      <p class="muted">Built with a network of fractional executives and specialists.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="logos">
+  <div class="ds-page-title">Logos &amp; Marks</div>
+  <div style="padding-top:36px">
+    <div class="ds-grid">
+      <div class="ds-tile"><img src="assets/ol-logo.svg" alt="Optimistic Labs" /><span class="ds-tile-label">Primary lockup</span></div>
+      <div class="ds-tile dark"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /><span class="ds-tile-label">On violet-deep (nav)</span></div>
+      <div class="ds-tile"><img src="assets/ol-mark.svg" alt="Optimistic Labs mark" /><span class="ds-tile-label">Mark only</span></div>
+      <div class="ds-tile dark"><img src="assets/ol-mark-white.svg" alt="Optimistic Labs mark" /><span class="ds-tile-label">Mark, on dark</span></div>
+      <div class="ds-tile"><img src="assets/o-mark.svg" alt="O mark" /><span class="ds-tile-label">O mark</span></div>
+      <div class="ds-tile black"><img src="assets/ol-logo-nocturne.svg" alt="Optimistic Labs nocturne" /><span class="ds-tile-label">Nocturne (thank-you page)</span></div>
+      <div class="ds-tile"><img src="assets/star.svg" alt="Star motif" /><span class="ds-tile-label">Star / ripple motif</span></div>
+      <div class="ds-tile"><img src="assets/faith-logo.svg" alt="Faith Lab" style="max-height:36px" /><span class="ds-tile-label">Faith Lab co-brand</span></div>
+      <div class="ds-tile dark"><img src="assets/faith-logo-white.svg" alt="Faith Lab" style="max-height:36px" /><span class="ds-tile-label">Faith Lab, on dark</span></div>
+      <div class="ds-tile"><img src="assets/policy-logo.svg" alt="Policy Lab" style="max-height:36px" /><span class="ds-tile-label">Policy Lab co-brand</span></div>
+      <div class="ds-tile"><img src="assets/impact-logo.svg" alt="Philanthropy Lab" style="max-height:36px" /><span class="ds-tile-label">Philanthropy Lab co-brand</span></div>
+      <div class="ds-tile"><img src="assets/sports-logo.svg" alt="Sports Lab" style="max-height:36px" /><span class="ds-tile-label">Sports Lab co-brand (concept)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<!-- COMPONENTS                                                         -->
+<!-- =================================================================== -->
+<div class="ds-group-title">Components</div>
+
+<section class="ds-page" id="buttons">
+  <div class="ds-page-title">Buttons</div>
+  <div style="padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Pills · on light surface</div>
+      <div class="ds-surface paper cta-row">
+        <a class="pill pill-primary" href="#">Connect With Us</a>
+        <a class="pill pill-outline" href="#">Meet the Team</a>
+      </div>
+    </div>
+    <div class="ds-row"><div class="ds-label">Pills · on violet-deep (hero / band / on-dark)</div>
+      <div class="ds-surface violet cta-row on-dark">
+        <a class="pill pill-primary" href="#">Connect With Us</a>
+        <a class="pill pill-outline" href="#">Meet the Team</a>
+      </div>
+    </div>
+    <div class="ds-row"><div class="ds-label">Nav CTA · .nav .pill-primary (compact)</div>
+      <header class="nav" style="position:static">
+        <a class="pill pill-primary navcta" href="#">Connect With Us</a>
+      </header>
+    </div>
+    <div class="ds-row"><div class="ds-label">Form submit button</div>
+      <div class="ds-surface paper">
+        <button type="button" class="pill pill-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="chips-tags">
+  <div class="ds-page-title">Chips, Tags &amp; Bullets</div>
+  <div style="padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Chips · .chip / .chip--soft (used on lab-card thumbnails)</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span class="chip">Live</span>
+        <span class="chip chip--soft">Lab Leader Wanted</span>
+      </div>
+    </div>
+    <div class="ds-row"><div class="ds-label">Tags · .tag-row / .tag</div>
+      <div class="tag-row">
+        <span class="tag">Strategy</span>
+        <span class="tag">Community Design</span>
+        <span class="tag">Trusted Networks</span>
+      </div>
+    </div>
+    <div class="ds-row"><div class="ds-label">Bullet list · .bullets (ripple-dot marker)</div>
+      <ul class="bullets">
+        <li>Strategy and infrastructure behind you.</li>
+        <li>A trusted network of operators, creators, and builders already in motion.</li>
+        <li>Help productizing and pricing your offerings.</li>
+      </ul>
+    </div>
+    <div class="ds-row"><div class="ds-label">Roster pills · .roster-pill (network chips)</div>
+      <div class="roster-pills" style="background:var(--violet-pale);padding:16px;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <span class="roster-pill">Strategy</span>
+        <span class="roster-pill">Content</span>
+        <span class="roster-pill">Technology</span>
+        <span class="roster-pill">Community Ops</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="cards">
+  <div class="ds-page-title">Cards</div>
+  <div style="padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Basic card · .card</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <img class="glyph" src="assets/icons/icon-lightbulb.png" alt="" width="30" height="30" />
+          <h3>Strategic Design</h3>
+          <p>We work alongside leaders as strategic partners, clarifying goals and designing communities.</p>
+        </div>
+        <div class="card">
+          <img class="glyph" src="assets/icons/icon-network.png" alt="" width="30" height="30" />
+          <h3>Trusted Networks</h3>
+          <p>When organizations need specialized support, we connect them with the right people.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">Service card · .svc-card (numbered offering grid)</div>
+      <div class="svc svc--4">
+        <article class="svc-card">
+          <div class="svc-card-head">
+            <span class="svc-index">01</span>
+            <h3>Narrative Strategy &amp; Public Positioning</h3>
+          </div>
+          <div class="svc-card-body">
+            <p>Clear, emotionally intelligent messaging that speaks across stakeholder segments, including message platform development and values framing.</p>
+          </div>
+        </article>
+        <article class="svc-card">
+          <div class="svc-card-head">
+            <span class="svc-index">02</span>
+            <h3>Stakeholder Engagement &amp; Community Activation</h3>
+          </div>
+          <div class="svc-card-body">
+            <p>Digital and in-person experiences that bring together unusual allies and elevate public participation.</p>
+          </div>
+        </article>
+      </div>
+      <p class="svc-note">All work is grounded in respect for diverse perspectives and a commitment to designing systems that invite, not dictate.</p>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">What-you-get card · .wyg-card</div>
+      <div class="wyg-grid">
+        <div class="wyg-card">
+          <img class="wyg-icon" src="assets/icons/icon-toolbox.png" alt="" />
+          <h3>Strategy and infrastructure</h3>
+          <p>The scaffolding behind you so you can focus on the community, not the back office.</p>
+        </div>
+        <div class="wyg-card">
+          <img class="wyg-icon" src="assets/icons/icon-network.png" alt="" />
+          <h3>A trusted network</h3>
+          <p>Operators, creators, and builders already in motion, ready to plug in.</p>
+        </div>
+        <div class="wyg-card">
+          <img class="wyg-icon" src="assets/icons/icon-webpage.png" alt="" />
+          <h3>Brand and credibility</h3>
+          <p>The co-branded lockup and go-to-market support to launch with confidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">Fork card · .fork-card (org vs. leader path)</div>
+      <div class="fork-grid" style="max-width:760px">
+        <div class="fork-card org">
+          <div class="kicker">For organizations</div>
+          <h3>Design a community</h3>
+          <p>Partner with a lab to build the strategy and infrastructure behind your community.</p>
+          <div class="cta-row"><a class="pill pill-outline" href="#">Connect With Us</a></div>
+        </div>
+        <div class="fork-card leader">
+          <div class="kicker">For leaders</div>
+          <h3>Lead a lab</h3>
+          <p>Bring your expertise and network; we bring the productized practice around it.</p>
+          <div class="cta-row"><a class="pill pill-outline" href="#">Apply</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="lab-cards">
+  <div class="ds-page-title">Lab Cards &amp; Carousel Controls</div>
+  <div style="padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Lab card · .ll-card (live lab)</div>
+      <div class="grid grid-3" style="max-width:640px">
+        <a class="ll-card" href="#">
+          <div class="ll-card-img"><span class="chip ll-card-chip">Live</span><div class="ds-photo">Faith Lab</div></div>
+          <div class="ll-card-body">
+            <div class="ll-card-title">Faith Lab</div>
+            <span class="ll-card-link">Visit Faith Lab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="ll-card" href="#">
+          <div class="ll-card-img"><span class="chip chip--soft ll-card-chip">Lab Leader Wanted</span><div class="ds-photo">AI Lab</div></div>
+          <div class="ll-card-body">
+            <div class="ll-card-title">AI Lab</div>
+            <span class="ll-card-link">Apply to lead this lab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="ll-card ll-card--cta" href="#">
+          <div class="ll-card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="ll-card-body">
+            <div class="ll-card-title">Design your own lab</div>
+            <span class="ll-card-link">Apply to lead this lab <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">Carousel nav buttons · .car-btn (prev / next / disabled)</div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <button class="car-btn" type="button" style="position:static" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="car-btn" type="button" style="position:static" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button class="car-btn" type="button" style="position:static" disabled aria-label="Disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="coverflow-dots" style="margin-top:0">
+          <button class="active" aria-label="Slide 1"></button>
+          <button aria-label="Slide 2"></button>
+          <button aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="forms">
+  <div class="ds-page-title">Forms</div>
+  <div style="padding-top:36px">
+    <div class="ds-row" style="max-width:680px"><div class="ds-label">Contact form · .form / .field / .field-row</div>
+      <form class="form" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="ds-name">Name</label><input id="ds-name" type="text" /></div>
+          <div class="field"><label for="ds-email">Email</label><input id="ds-email" type="email" /></div>
+        </div>
+        <div class="field"><label for="ds-msg">What are you building?</label><textarea id="ds-msg" placeholder="Tell us about your community, your organization, or the lab you want to lead."></textarea></div>
+        <button type="submit" class="pill pill-primary" onclick="return false">Send message</button>
+      </form>
+    </div>
+
+    <div class="ds-row" style="max-width:680px"><div class="ds-label">Field error state · [aria-invalid]</div>
+      <div class="field">
+        <label for="ds-err">Email</label>
+        <input id="ds-err" type="email" aria-invalid="true" value="not-an-email" />
+        <span class="field-err">Please enter a valid email address.</span>
+      </div>
+    </div>
+
+    <div class="ds-row" style="max-width:680px"><div class="ds-label">Form-level error · .form-error.show</div>
+      <div class="form-error show" role="alert">
+        <p>Something went wrong sending your message. Please try again, or email us directly instead.</p>
+        <a class="pill pill-outline" href="#">Email hello@optimisticlabs.com</a>
+      </div>
+    </div>
+
+    <div class="ds-row" style="max-width:680px"><div class="ds-label">Newsletter signup · .news-form</div>
+      <form class="news-form" novalidate>
+        <input type="email" placeholder="you@email.com" />
+        <button type="button" class="pill pill-primary">Subscribe</button>
+      </form>
+      <div class="note show">Thanks for subscribing!</div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="faq">
+  <div class="ds-page-title">FAQ</div>
+  <div style="padding-top:36px">
+    <div class="ds-row" style="max-width:760px">
+      <div class="ds-label">FAQ accordion · .faq / details+summary</div>
+      <div class="faq">
+        <details open><summary>What exactly is a "lab"?</summary><div class="faq-a">A lab is a productized practice serving a specific community or vertical. It has a clear methodology, packaged offerings and tiers, go-to-market support, co-branding, and Optimistic Labs' leadership and infrastructure behind it.</div></details>
+        <details><summary>Do I keep ownership of my brand and my community?</summary><div class="faq-a">Yes. Your name, your voice, and your relationships stay yours and stay front and center.</div></details>
+        <details><summary>What do I actually get from Optimistic Labs?</summary><div class="faq-a">Strategy and infrastructure behind you; a trusted network of operators, creators, and builders already in motion; help productizing and pricing your offerings.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<!-- PATTERNS                                                           -->
+<!-- =================================================================== -->
+<div class="ds-group-title">Patterns</div>
+
+<section class="ds-page" id="navigation">
+  <div class="ds-page-title">Navigation</div>
+  <div class="ds-section"><div class="ds-label">Desktop nav bar with "Our Labs" mega-dropdown (open state)</div></div>
+  <header class="nav" style="position:static">
+    <a class="nav-logo" href="#" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-dd open" data-dd>
+        <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="true">Our Labs
+          <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dd-panel" aria-label="Our Labs">
+          <div class="nav-dd-grid">
+            <a class="nav-dd-feature" href="#">
+              <img src="assets/ol-mark-white.svg" alt="" />
+              <span class="nav-dd-feature-title">Become a Lab Leader</span>
+              <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+            </a>
+            <ul class="nav-dd-list">
+              <li><a href="#"><span class="nav-dd-item-title">Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+              <li><a href="#"><span class="nav-dd-item-title">Policy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+              <li><a href="#"><span class="nav-dd-item-title">Philanthropy Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <a href="#">About</a>
+      <a class="pill pill-primary navcta" href="#">Connect With Us</a>
+    </nav>
+    <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </header>
+
+  <div class="ds-section" style="margin-top:280px"><div class="ds-label">Mobile menu sheet · .sheet.open</div></div>
+  <nav class="sheet open" style="position:relative;height:auto;transform:none" aria-hidden="false">
+    <button class="sheet-x" aria-label="Close menu">×</button>
+    <div class="sheet-dd open" data-sheet-dd>
+      <button class="sheet-dd-trigger" type="button" aria-expanded="true">Our Labs
+        <svg class="sheet-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="sheet-dd-panel" style="max-height:320px">
+        <a href="#">Become a Lab Leader</a>
+        <a href="#">Faith Lab</a>
+        <a href="#">Policy Lab</a>
+        <a href="#">Philanthropy Lab</a>
+      </div>
+    </div>
+    <a href="#">About</a>
+    <a class="pill pill-primary navcta" href="#">Connect With Us</a>
+  </nav>
+</section>
+
+<section class="ds-page" id="hero-bands">
+  <div class="ds-page-title">Hero &amp; Bands</div>
+  <div class="ds-label" style="padding:32px 40px 0">Dark hero · .hero (violet-deep, homepage)</div>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Trust is the advantage</span>
+      <h1 class="display">In the age of AI, trust is the <em class="em-italic">advantage</em>.</h1>
+      <p class="lead">Optimistic Labs is a network of focused labs designed to help organizations and leaders create and scale communities that make their brands stronger, their growth stickier, and their strategy more human.</p>
+      <div class="cta-row">
+        <a class="pill pill-primary" href="#">Connect With Us</a>
+        <a class="pill pill-outline" href="#">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ds-label" style="padding:32px 40px 0">Light split hero · .hero-light (subpages)</div>
+  <section class="hero-light">
+    <div class="inner2">
+      <div class="hero-copy">
+        <span class="eyebrow">Become a Lab Leader</span>
+        <h1 class="display" style="font-size:clamp(36px,4.6vw,58px)">Bring your expertise. We bring the <em class="em-italic">infrastructure</em>.</h1>
+        <p class="lead">You bring the audience, the point of view, and the trust you've already earned.</p>
+        <div class="cta-row"><a class="pill pill-primary" href="#">Connect With Us</a></div>
+      </div>
+      <div class="people-photo"><div class="ds-photo-fill"></div><span class="ph">Portrait</span></div>
+    </div>
+  </section>
+
+  <div class="ds-label" style="padding:32px 40px 0">Band · .band (centered CTA banner)</div>
+  <section class="band">
+    <div class="inner">
+      <h2>Founding Lab Leaders have a first-mover advantage.</h2>
+      <p>That window is open now. The platform is being built with early Lab Leaders, which means you get a hand in shaping it.</p>
+      <div class="cta-row"><a class="pill pill-primary" href="#">Connect With Us</a><a class="pill pill-outline" href="#">Take the fit quiz</a></div>
+    </div>
+  </section>
+</section>
+
+<section class="ds-page" id="team-leaders">
+  <div class="ds-page-title">Team &amp; Leader Rosters</div>
+  <div style="padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Team circles · .team-row / .team-member</div>
+      <div class="team-row">
+        <div class="team-member">
+          <div class="team-photo ds-circle" style="width:124px;height:124px">Photo</div>
+          <h3>Seth Cohen</h3>
+          <div class="team-role">Co-founder</div>
+          <p>25+ years across media, philanthropy, and civic leadership.</p>
+        </div>
+        <div class="team-member">
+          <div class="team-photo ds-circle" style="width:124px;height:124px">Photo</div>
+          <h3>Liz Russell</h3>
+          <div class="team-role">Co-founder</div>
+          <p>A decade across SaaS, emergency management, and GovTech.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">Team lightbox cards · .team-card (hover to enlarge)</div>
+      <div class="team-cards">
+        <article class="team-card" tabindex="0">
+          <div class="team-card-photo"><div class="ds-photo">Photo</div></div>
+          <div class="team-card-body">
+            <h3>Lauren Hall, PhD</h3>
+            <div class="team-role">Senior Advisor</div>
+            <p>Political theorist and Associate Dean of Academic Affairs, RIT.</p>
+          </div>
+        </article>
+        <article class="team-card" tabindex="0">
+          <div class="team-card-photo"><div class="ds-photo">Photo</div></div>
+          <div class="team-card-body">
+            <h3>Aliza Goodman</h3>
+            <div class="team-role">Lab Leader, Faith</div>
+            <p>20+ years designing and scaling professional development programs.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">Lab leader + roster · .leader-grid / .roster-panel / .mosaic-grid (data-driven from site.js)</div>
+      <div class="leader-grid">
+        <div class="leader-col">
+          <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The Lab Leader</span>
+          <div class="leader-photo-lg"><div class="ds-photo">Portrait</div></div>
+          <h3 class="leader-name">Aliza Goodman</h3>
+          <div class="leader-role">Lab Leader, Faith</div>
+          <p class="leader-bio">Aliza believes lasting communities are built on infrastructure, not just inspiration.</p>
+          <div class="leader-stats">
+            <div class="leader-stat"><div class="leader-stat-value">20+</div><div class="leader-stat-label">Years experience</div></div>
+            <div class="leader-stat"><div class="leader-stat-value">2</div><div class="leader-stat-label">Programs built</div></div>
+          </div>
+          <a class="pill pill-outline leader-cta" href="#">Connect With Us</a>
+        </div>
+        <div class="roster-col">
+          <p class="roster-lead">Backed by a growing bench of specialists and collaborators.</p>
+          <div class="mosaic-grid">
+            <div class="mosaic-col">
+              <div class="mosaic-card">
+                <div class="mosaic-photo"><div class="ds-photo">Photo</div></div>
+                <div class="mosaic-card-body">
+                  <span class="roster-name">Jordan Lee</span>
+                  <span class="roster-role">Community Strategist</span>
+                  <p class="roster-bio">Leads program design and member engagement strategy.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mosaic-col">
+              <a class="mosaic-card mosaic-card--wanted" href="#">
+                <div class="mosaic-photo">
+                  <span class="chip mosaic-chip">Wanted</span>
+                  <span class="mosaic-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+                </div>
+                <div class="mosaic-card-body">
+                  <span class="roster-name">Content Lead</span>
+                  <p class="roster-bio">Own storytelling and editorial across channels.</p>
+                  <span class="mosaic-card-link">Apply <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+              <div class="mosaic-network">
+                <div class="roster-footer-label">+ a network of fractional executives and SMEs</div>
+                <div class="roster-pills">
+                  <span class="roster-pill">Strategy</span>
+                  <span class="roster-pill">Technology</span>
+                  <span class="roster-pill">Content</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="principles-steps">
+  <div class="ds-page-title">Principles &amp; Steps</div>
+  <div style="padding-top:36px">
+    <div class="ds-row"><div class="ds-label">Sticky-intro principles grid · .principles-grid / .principle-row</div>
+      <div class="principles-grid">
+        <div class="principles-intro">
+          <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Our principles</span>
+          <h2 class="h-sec">How we <em class="em-italic">operate</em>.</h2>
+        </div>
+        <div>
+          <div class="principle-row">
+            <span class="principle-index">01</span>
+            <div><h3>Community, not just brand</h3><p>We design for the relationships that outlast any single campaign.</p></div>
+          </div>
+          <div class="principle-row">
+            <span class="principle-index">02</span>
+            <div><h3>Strategy before tactics</h3><p>Every initiative traces back to a clear point of view.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-row"><div class="ds-label">Numbered steps · .steps / .step</div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div><h3 class="step-title">Listen</h3><p class="step-body">We start with deep listening: your community, your goals, your constraints.</p></div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div><h3 class="step-title">Design</h3><p class="step-body">We shape the methodology, offerings, and positioning together.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-page" id="footer">
+  <div class="ds-page-title">Footer</div>
+  <footer class="footer" style="margin-top:36px">
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <h2 class="footer-headline">Build momentum. <em>Build community.</em></h2>
+        <img class="footer-mark" src="assets/ol-mark-white.svg" alt="Optimistic Labs" />
+      </div>
+      <div class="footer-groups">
+        <div class="footer-group">
+          <span class="footer-group-label">Explore</span>
+          <a class="footer-explore" href="#">Explore the Labs
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#">Become a Lab Leader</a>
+        </div>
+        <div class="footer-group">
+          <span class="footer-group-label">Company</span>
+          <a href="#">About</a>
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="footer-cta" href="#">Connect With Us
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2026 Optimistic Labs</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <span class="footer-loc">Built with <span class="footer-heart">♥</span> from Atlanta, GA and Syracuse, NY</span>
+      </div>
+    </div>
+  </footer>
+</section>
+
+</body>
+</html>
