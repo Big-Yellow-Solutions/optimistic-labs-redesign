@@ -209,6 +209,7 @@
               <div class="field"><label class="sr-only" for="qz-name">First name</label><input id="qz-name" type="text" name="firstName" placeholder="First name" autocomplete="given-name" /></div>
               <div class="field"><label class="sr-only" for="qz-email">Email</label><input id="qz-email" type="email" name="email" placeholder="Email" autocomplete="email" /></div>
             </div>
+            <div class="field hp-field" aria-hidden="true"><label for="qz-hp">Leave this field blank</label><input id="qz-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
             <button type="submit" class="q-pill">See my results →</button>
           </form>
           <p class="quiz-fine">If you're a great fit, we may reach out to talk about building a lab. We'll also send you the occasional note from Optimistic Labs. Unsubscribe anytime.</p>
@@ -369,6 +370,8 @@
     QUESTIONS.forEach(function(item,i){
       payload['Q'+(i+1)+' ('+item.key+')']=answers[i]!==null?item.opts[answers[i]].t+' ['+item.opts[answers[i]].s+']':'(skipped)';
     });
+    var hp=document.getElementById('qz-hp');
+    if(hp) payload._gotcha=hp.value;
     if(CONFIG.formEndpoint){
       fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
         .then(function(res){ if(!res.ok) onError(payload,firstName); })

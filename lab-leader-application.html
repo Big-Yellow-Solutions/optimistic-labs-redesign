@@ -159,6 +159,8 @@
           <div class="field" style="margin-top:18px"><label for="a-avail">Anything that would affect your availability (notice period, non-compete, other commitments)?</label><textarea id="a-avail" name="avail" data-save></textarea></div>
         </section>
 
+        <div class="field hp-field" aria-hidden="true"><label for="a-hp">Leave this field blank</label><input id="a-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+
         <div class="app-section">
           <button type="submit" class="pill pill-primary">Submit application →</button>
           <div class="app-status" id="saveStatus" role="status" aria-live="polite"></div>
@@ -248,6 +250,8 @@
     var CONFIG=window.OL_CONFIG||{};
     var payload={_subject:'Lab Leader Application · '+nameInput.value.trim(),Source:'Lab Leader Application'};
     fields.forEach(function(f){ payload[LABELS[f.name]||f.name]=f.value.trim()||'(blank)'; });
+    var hp=document.getElementById('a-hp');
+    if(hp) payload._gotcha=hp.value;
 
     var appError=document.getElementById('appError'), appErrorCta=document.getElementById('appErrorCta');
     if(appError) appError.classList.remove('show');

@@ -605,7 +605,9 @@
         flashBtn(contactForm.querySelector('button[type=submit]'));
         if(formError) formError.classList.remove('show');
         var subject='New inquiry · Optimistic Labs';
+        var hp=document.getElementById('cf-hp');
         var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Message:cf.message.value.trim()};
+        if(hp) payload._gotcha=hp.value;
         deliver(payload,subject,function(){
           window.location.href='/thank-you';
         },function(){
