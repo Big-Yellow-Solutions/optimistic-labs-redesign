@@ -82,7 +82,7 @@
       function personCard(p,idx){
         if(!p) return '';
         if(p.wanted){
-          return '<a class="mosaic-card mosaic-card--wanted" data-idx="'+idx+'" href="'+escHtml(p.href||CONFIG.applicationFormUrl)+'">'+
+          return '<a class="mosaic-card mosaic-card--wanted" data-idx="'+idx+'" style="order:'+idx+'" href="'+escHtml(p.href||CONFIG.applicationFormUrl)+'">'+
             '<div class="mosaic-photo">'+
               '<span class="chip mosaic-chip">'+escHtml(p.chip||'Wanted')+'</span>'+
               '<span class="mosaic-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '+
@@ -98,7 +98,7 @@
             '</div>'+
           '</a>';
         }
-        return '<div class="mosaic-card" data-idx="'+idx+'">'+
+        return '<div class="mosaic-card" data-idx="'+idx+'" style="order:'+idx+'">'+
           '<div class="mosaic-photo"><img src="'+escHtml(p.photo)+'" alt="'+escHtml(p.name)+'" /></div>'+
           '<div class="mosaic-card-body">'+
             '<span class="roster-name">'+escHtml(p.name)+'</span>'+
@@ -109,10 +109,20 @@
       }
       var team = cfg.team || [];
       var pillsHtml = (cfg.pills||[]).map(function(t){ return '<span class="roster-pill">'+escHtml(t)+'</span>'; }).join('');
-      var networkHtml =
-        '<div class="mosaic-network"><div class="roster-footer-label">'+
-        escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
-        '<div class="roster-pills">'+pillsHtml+'</div></div>';
+      function networkBlock(standalone){
+        return '<div class="mosaic-network'+(standalone?' mosaic-network--standalone':'')+'" style="order:'+team.length+'">'+
+          '<div class="roster-footer-label">'+escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
+          '<div class="roster-pills">'+pillsHtml+'</div></div>';
+      }
+      /* Split the roster into two columns by alternating index. When that leaves
+         one column shorter, the network card tucks in beside it (as before); when
+         the columns come out even there's no room, so the network drops to its
+         own full-width row below the grid instead. */
+      var col0Html = '', col1Html = '';
+      team.forEach(function(p,i){
+        if(i % 2 === 0) col0Html += personCard(p,i); else col1Html += personCard(p,i);
+      });
+      var networkBelow = Math.floor(team.length/2) >= Math.ceil(team.length/2);
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
@@ -130,9 +140,10 @@
           '<div class="roster-col">'+
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
             '<div class="mosaic-grid">'+
-              '<div class="mosaic-col">'+personCard(team[0],0)+personCard(team[2],2)+'</div>'+
-              '<div class="mosaic-col">'+personCard(team[1],1)+networkHtml+'</div>'+
+              '<div class="mosaic-col">'+col0Html+'</div>'+
+              '<div class="mosaic-col">'+col1Html+(networkBelow?'':networkBlock(false))+'</div>'+
             '</div>'+
+            (networkBelow?networkBlock(true):'')+
           '</div>'+
         '</div>';
     });
