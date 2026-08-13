@@ -82,8 +82,9 @@
       function personCard(p,idx){
         if(!p) return '';
         if(p.wanted){
+          var photoStyle = p.photoAspect ? ' style="aspect-ratio:'+escHtml(p.photoAspect)+'"' : '';
           return '<a class="mosaic-card mosaic-card--wanted" data-idx="'+idx+'" style="order:'+idx+'" href="'+escHtml(p.href||CONFIG.applicationFormUrl)+'">'+
-            '<div class="mosaic-photo">'+
+            '<div class="mosaic-photo"'+photoStyle+'>'+
               '<span class="chip mosaic-chip">'+escHtml(p.chip||'Wanted')+'</span>'+
               '<span class="mosaic-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '+
                 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>'+
