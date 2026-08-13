@@ -109,20 +109,19 @@
       }
       var team = cfg.team || [];
       var pillsHtml = (cfg.pills||[]).map(function(t){ return '<span class="roster-pill">'+escHtml(t)+'</span>'; }).join('');
-      function networkBlock(standalone){
-        return '<div class="mosaic-network'+(standalone?' mosaic-network--standalone':'')+'" style="order:'+team.length+'">'+
+      var networkHtml =
+        '<div class="mosaic-network" style="order:'+team.length+'">'+
           '<div class="roster-footer-label">'+escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
           '<div class="roster-pills">'+pillsHtml+'</div></div>';
-      }
-      /* Split the roster into two columns by alternating index. When that leaves
-         one column shorter, the network card tucks in beside it (as before); when
-         the columns come out even there's no room, so the network drops to its
-         own full-width row below the grid instead. */
+      /* Roster is authored in row-major order (top-left, top-right, next row
+         left, next row right, ...); alternating index splits it back into the
+         two stacked columns. The network card always tucks in at the bottom of
+         the right-hand column, filling whatever space is left there. */
       var col0Html = '', col1Html = '';
       team.forEach(function(p,i){
         if(i % 2 === 0) col0Html += personCard(p,i); else col1Html += personCard(p,i);
       });
-      var networkBelow = Math.floor(team.length/2) >= Math.ceil(team.length/2);
+      col1Html += networkHtml;
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
@@ -141,9 +140,8 @@
             '<p class="roster-lead">'+escHtml(cfg.rosterLead||'')+'</p>'+
             '<div class="mosaic-grid">'+
               '<div class="mosaic-col">'+col0Html+'</div>'+
-              '<div class="mosaic-col">'+col1Html+(networkBelow?'':networkBlock(false))+'</div>'+
+              '<div class="mosaic-col">'+col1Html+'</div>'+
             '</div>'+
-            (networkBelow?networkBlock(true):'')+
           '</div>'+
         '</div>';
     });
