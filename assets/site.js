@@ -109,19 +109,21 @@
       }
       var team = cfg.team || [];
       var pillsHtml = (cfg.pills||[]).map(function(t){ return '<span class="roster-pill">'+escHtml(t)+'</span>'; }).join('');
+      var networkBelow = !!cfg.networkBelow;
       var networkHtml =
-        '<div class="mosaic-network" style="order:'+team.length+'">'+
+        '<div class="mosaic-network'+(networkBelow?' mosaic-network--standalone':'')+'" style="order:'+team.length+'">'+
           '<div class="roster-footer-label">'+escHtml(cfg.networkLabel||'+ a network of fractional executives and SMEs')+'</div>'+
           '<div class="roster-pills">'+pillsHtml+'</div></div>';
       /* Roster is authored in row-major order (top-left, top-right, next row
          left, next row right, ...); alternating index splits it back into the
-         two stacked columns. The network card always tucks in at the bottom of
-         the right-hand column, filling whatever space is left there. */
+         two stacked columns. By default the network card tucks in at the
+         bottom of the right-hand column; cfg.networkBelow instead drops it to
+         its own full-width row under both columns. */
       var col0Html = '', col1Html = '';
       team.forEach(function(p,i){
         if(i % 2 === 0) col0Html += personCard(p,i); else col1Html += personCard(p,i);
       });
-      col1Html += networkHtml;
+      if(!networkBelow) col1Html += networkHtml;
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
@@ -142,6 +144,7 @@
               '<div class="mosaic-col">'+col0Html+'</div>'+
               '<div class="mosaic-col">'+col1Html+'</div>'+
             '</div>'+
+            (networkBelow?networkHtml:'')+
           '</div>'+
         '</div>';
     });
