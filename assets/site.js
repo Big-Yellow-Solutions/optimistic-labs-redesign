@@ -8,7 +8,7 @@
 
   /* ---- single source of truth for destinations ---- */
   var CONFIG = {
-    faithUrl:     '/faith-lab',
+    faithUrl:     '/optimistic-faith-lab',
     leaderUrl:    '/become-a-lab-leader',
     aboutUrl:     '/about',
     labsUrl:      '/#labs',
