@@ -1,7 +1,7 @@
 /* ============================================================
    OPTIMISTIC LABS · shared brand system
    Official brand: violet ramp · Playfair Display + Inter · ripple/star motif
-   Used by index.html, faith-lab.html, become-a-lab-leader.html
+   Used by index.html, optimistic-faith-lab.html, become-a-lab-leader.html
    ============================================================ */
 :root{
   --violet-deep:#3D2FD4; --violet:#7C6DF5; --violet-light:#B0A6FA; --violet-pale:#ECEAFE;
@@ -200,7 +200,7 @@ p{max-width:64ch}
 
 /* ---------- lab leader & team roster ----------
    Data-driven: markup is rendered by site.js from a <script type="application/json"
-   data-lab-team-config> block inside [data-lab-team]. See faith-lab.html for an example
+   data-lab-team-config> block inside [data-lab-team]. See optimistic-faith-lab.html for an example
    payload (leader, team[], pills[]) to copy onto other lab pages.
 */
 .leader-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
