@@ -42,6 +42,7 @@ a.eyebrow-link:hover .eyebrow{color:var(--violet-pale)}
 .beineinu-hero .cta-row{margin-top:34px}
 .beineinu-hero-media{border-radius:20px;overflow:hidden;height:clamp(260px,32vw,400px);
   background:var(--violet-pale);position:relative}
+.beineinu-hero-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 
 /* generic photo placeholder */
 .photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
@@ -56,9 +57,6 @@ a.eyebrow-link:hover .eyebrow{color:var(--violet-pale)}
 .facts-cell{background:#fff;padding:24px 26px}
 .facts-label{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
 .facts-value{margin-top:8px;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
-
-/* indented section variant (Who It's For) */
-.section--indent{padding-left:clamp(0px,4vw,64px);padding-right:clamp(0px,12vw,200px)}
 
 /* smaller ripple-dot list variant (program objectives) */
 .bullets--sm li{padding-left:28px;font-size:16px;line-height:1.55}
@@ -184,7 +182,7 @@ a.eyebrow-link:hover .eyebrow{color:var(--violet-pale)}
         </div>
       </div>
       <div class="beineinu-hero-media">
-        <div class="photo-ph"><span>Beineinu cohort photo — placeholder</span></div>
+        <img src="assets/beineinu-hero.jpg" alt="A group of visitors gathered along Tel Aviv's beachfront promenade" />
       </div>
     </div>
   </section>
@@ -200,12 +198,10 @@ a.eyebrow-link:hover .eyebrow{color:var(--violet-pale)}
   </div>
 
   <!-- ===== WHO IT'S FOR ===== -->
-  <section class="section reveal" aria-label="Who it's for">
-    <div class="section--indent">
-      <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who it's for</span>
-      <h2 class="h-sec" style="max-width:24ch">Leaders ready to <em class="em-italic">co-create</em>, not just learn about each other.</h2>
-      <p style="margin-top:26px;max-width:72ch;font-size:17px;line-height:1.66;color:var(--ink-soft)">Beineinu gathers multicultural professionals—educators, social entrepreneurs, artists, and organizational leaders—who want to deepen their practice and impact through genuine Israeli-North American partnership.</p>
-    </div>
+  <section class="section section--mid reveal" aria-label="Who it's for">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who it's for</span>
+    <h2 class="h-sec">Leaders ready to <em class="em-italic">co-create</em>, not just learn about each other.</h2>
+    <p class="lead" style="max-width:64ch">Beineinu gathers multicultural professionals—educators, social entrepreneurs, artists, and organizational leaders—who want to deepen their practice and impact through genuine Israeli-North American partnership.</p>
   </section>
 
   <!-- ===== WHAT SETS BEINEINU APART ===== -->
