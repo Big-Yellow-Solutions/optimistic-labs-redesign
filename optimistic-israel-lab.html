@@ -28,10 +28,6 @@
 
 /* ===== DRAFT COMPONENTS — Optimistic Israel only, for review before promoting to brand.css ===== */
 
-/* generic photo placeholder, used until real photography is ready */
-.photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
-.photo-ph span{color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:16px}
-
 /* two products, side by side: 1:1 consulting vs. the Beineinu cohort */
 .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
 .product-card{background:var(--card);border:1px solid var(--hair);border-radius:22px;padding:40px 36px;display:flex;flex-direction:column;gap:18px}
@@ -205,39 +201,40 @@
     </div>
   </section>
 
-  <!-- ===== LAB LEADERS & TEAM (two co-equal leaders — draft, placeholders throughout) ===== -->
+  <!-- ===== LAB LEADERS & TEAM (two co-equal leaders) ===== -->
   <section class="section reveal" aria-label="Lab Leaders and team">
     <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The Optimistic Israel Lab Leaders</span>
     <h2 class="h-sec" style="font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 40px;max-width:22ch">Led together, on both sides of the relationship.</h2>
     <div class="dual-leader-grid">
       <article class="dual-leader-card">
-        <div class="leader-photo-lg"><div class="photo-ph"><span class="ph">Leader photo — placeholder</span></div></div>
-        <h3 class="leader-name">[Leader Name]</h3>
-        <div class="leader-role">Lab Leader · Optimistic Israel, Israel</div>
-        <p class="leader-bio">Placeholder bio — replace with the Israel-based co-lead's background, experience, and connection to Optimistic Israel's mission.</p>
+        <div class="leader-photo-lg"><img src="assets/anne-lanski.jpg" alt="Anne Lanski" /></div>
+        <h3 class="leader-name">Anne Lanski</h3>
+        <div class="leader-role">Lab Leader · Optimistic Israel</div>
+        <p class="leader-bio">Anne is a renowned institution-builder, strategist, and educator with more than four decades in Jewish education and Israel engagement. She is the founding CEO of The iCenter for Israel Education, reaching tens of thousands of educators worldwide, and founded Shorashim, pioneering the mifgash model that transformed Israel educational travel. She's known for seeing connections where others see boundaries, and for turning ambitious ideas into tangible possibility.</p>
         <div class="leader-stats">
-          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
-          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">40+</div><div class="leader-stat-label">years in the field</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">Founding CEO</div><div class="leader-stat-label">The iCenter for Israel Education</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">Founder</div><div class="leader-stat-label">Shorashim</div></div>
         </div>
-        <a class="pill pill-outline leader-cta" data-book>Connect with [Leader Name]
+        <a class="pill pill-outline leader-cta" data-book>Connect with Anne Lanski
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </article>
       <article class="dual-leader-card">
-        <div class="leader-photo-lg"><div class="photo-ph"><span class="ph">Leader photo — placeholder</span></div></div>
-        <h3 class="leader-name">[Leader Name]</h3>
-        <div class="leader-role">Lab Leader · Optimistic Israel, North America</div>
-        <p class="leader-bio">Placeholder bio — replace with the North America-based co-lead's background, experience, and connection to Optimistic Israel's mission.</p>
+        <div class="leader-photo-lg"><img src="assets/yehudit-werchow.jpg" alt="Yehudit Werchow" /></div>
+        <h3 class="leader-name">Yehudit Werchow</h3>
+        <div class="leader-role">Lab Leader · Optimistic Israel</div>
+        <p class="leader-bio">Yehudit believes that genuine relationships and creativity are the true catalysts for action and positive change. Born in Argentina and raised in Israel, bridging cultural worlds is a core way of being that defines her collaborative approach. As an educational consultant, she focuses on change management, professional learning, and Jewish and Israel education.</p>
         <div class="leader-stats">
-          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
-          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">BA</div><div class="leader-stat-label">Political Science &amp; Literature, Hebrew University</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">MA</div><div class="leader-stat-label">Jewish Education, HUC-JIR</div></div>
         </div>
-        <a class="pill pill-outline leader-cta" data-book>Connect with [Leader Name]
+        <a class="pill pill-outline leader-cta" data-book>Connect with Yehudit Werchow
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </article>
     </div>
-    <p class="team-roster-lead">[Leader Name] and [Leader Name] bring Optimistic Israel's practice expertise, but they're backed by the full Optimistic Labs team.</p>
+    <p class="team-roster-lead">Anne and Yehudit bring Optimistic Israel's practice expertise, but they're backed by the full Optimistic Labs team.</p>
     <div class="team-roster-grid">
       <div class="mosaic-card">
         <div class="mosaic-photo"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
