@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>/* redirect old .html URLs to their clean path (GitHub Pages has no server-side redirects) */(function(){var p=location.pathname;if(p.slice(-5)===".html"){var c=p.slice(0,-5).replace(/\/index$/,"")||"/";history.replaceState(null,"",c+location.search+location.hash);}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Optimistic Israel · Optimistic Labs</title>
+<link rel="canonical" href="https://optimisticlabs.com/optimistic-israel-lab" />
+<meta name="description" content="Optimistic Israel connects Israeli and North American visionary leaders to co-create genuine connection in business and in life, through 1:1 consulting and the Beineinu cohort." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://optimisticlabs.com/optimistic-israel-lab" />
+<meta property="og:title" content="Optimistic Israel · Optimistic Labs" />
+<meta property="og:description" content="Optimistic Israel connects Israeli and North American visionary leaders to co-create genuine connection in business and in life, through 1:1 consulting and the Beineinu cohort." />
+<meta property="og:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Optimistic Israel · Optimistic Labs" />
+<meta name="twitter:description" content="Optimistic Israel connects Israeli and North American visionary leaders to co-create genuine connection in business and in life, through 1:1 consulting and the Beineinu cohort." />
+<meta name="twitter:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+.hero-light .inner2{align-items:stretch}
+
+/* ===== DRAFT COMPONENTS — Optimistic Israel only, for review before promoting to brand.css ===== */
+
+/* generic photo placeholder, used until real photography is ready */
+.photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
+.photo-ph span{color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:16px}
+
+/* two products, side by side: 1:1 consulting vs. the Beineinu cohort */
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.product-card{background:var(--card);border:1px solid var(--hair);border-radius:22px;padding:40px 36px;display:flex;flex-direction:column;gap:18px}
+.product-card--cohort{background:var(--violet-pale);border-color:transparent}
+.product-card-kicker{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.product-card--cohort .product-card-kicker{color:var(--violet-deep)}
+.product-card h3{font-size:clamp(22px,2.1vw,28px);line-height:1.18;margin:0}
+.product-card-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0}
+.product-card-title .hebrew{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-deep)}
+.product-card-tagline{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet);font-size:18px;margin:-10px 0 0}
+.product-card>p{font-size:16px;line-height:1.65;color:var(--ink-soft);margin:0}
+.product-card .bullets{margin:2px 0 4px}
+.product-card .cta-row{margin-top:auto;padding-top:6px}
+@media (max-width:760px){.product-grid{grid-template-columns:1fr}}
+
+/* two co-equal lab leaders, with the supporting team flowing full-width below */
+.dual-leader-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-bottom:72px}
+.dual-leader-card{display:flex;flex-direction:column}
+@media (max-width:760px){.dual-leader-grid{grid-template-columns:1fr;gap:48px}}
+.team-roster-lead{font-size:18px;line-height:1.55;color:var(--ink-soft);margin:0 0 24px;max-width:70ch}
+.team-roster-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+@media (max-width:900px){.team-roster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.team-roster-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="/" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-dd" data-dd>
+      <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="false">Our Labs
+        <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dd-panel" aria-label="Our Labs">
+        <div class="nav-dd-grid">
+          <a class="nav-dd-feature" href="/become-a-lab-leader">
+            <img src="assets/ol-mark-white.svg" alt="" />
+            <span class="nav-dd-feature-title">Become a Lab Leader</span>
+            <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+          </a>
+          <ul class="nav-dd-list">
+            <li><a href="/optimistic-faith-lab"><span class="nav-dd-item-title">Optimistic Faith Lab</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+            <li><a href="/optimistic-democracy-lab"><span class="nav-dd-item-title">Optimistic Democracy Lab</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+            <li><a href="/impact-lab"><span class="nav-dd-item-title">Impact Lab</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="/about">About</a>
+    <a class="pill pill-primary navcta" data-book>Connect With Us</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <div class="sheet-dd" data-sheet-dd>
+    <button class="sheet-dd-trigger" type="button" aria-expanded="false">Our Labs
+      <svg class="sheet-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="sheet-dd-panel">
+      <a href="/become-a-lab-leader">Become a Lab Leader</a>
+      <a href="/optimistic-faith-lab">Optimistic Faith Lab</a>
+      <a href="/optimistic-democracy-lab">Optimistic Democracy Lab</a>
+      <a href="/impact-lab">Impact Lab</a>
+    </div>
+  </div>
+  <a href="/about">About</a>
+  <a class="pill pill-primary navcta" data-book>Connect With Us</a>
+</nav>
+
+<main>
+  <!-- ===== HERO (light, split, photo-ready) ===== -->
+  <section class="hero-light" aria-label="Optimistic Israel">
+    <div class="inner2">
+      <div class="hero-copy">
+        <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Optimistic Labs | Optimistic Israel</span>
+        <h1 class="display" style="font-size:clamp(38px,5.2vw,60px)">Your Israel relationship is your biggest <em class="em-italic">asset</em>. We help you leverage it.</h1>
+        <p class="lead">Optimistic Israel connects Israeli and North American visionary leaders to co-create genuine connection in business and in life.</p>
+        <div class="cta-row"><a class="pill pill-primary" data-book>Connect with the Lab</a></div>
+      </div>
+      <div class="people-photo">
+        <span class="ph">Hero photo — placeholder</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO WE WORK WITH ===== -->
+  <section class="section section--mid reveal" aria-label="Who we work with">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who we work with</span>
+    <h2 class="h-sec">Built for organizations working across Israel and North America.</h2>
+    <p class="lead" style="max-width:64ch">We believe that Israel–North America relationships can be a genuine engine for innovation. Optimistic Israel is for leaders ready to activate those relationships intentionally: to design partnerships that treat every difference in experience and context as an asset, not a gap. Whether you're in a moment of transition or scaling something already moving, we bring the facilitation, education expertise, and network knowledge to turn potential into productive work.</p>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="section reveal" aria-label="How we work with you">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How We Work With You</span>
+    <h2 class="h-sec" style="font-size:clamp(34px,5vw,58px);line-height:1.05;letter-spacing:-0.02em;max-width:18ch;margin:0 0 48px">Two ways to work with <em class="em-italic">us</em>.</h2>
+    <div class="product-grid">
+      <article class="product-card">
+        <span class="product-card-kicker">1:1 Consulting</span>
+        <h3>For organizations ready to activate Israel relationships <em class="em-italic">now</em>.</h3>
+        <p>Fee-for-service engagements in sectors where Israeli talent and partnerships already exist organically. Optimistic Israel brings relationship-building, facilitation, and network expertise to help you:</p>
+        <ul class="bullets">
+          <li>Expertise navigating the intercultural friction that stalls cross-border teams.</li>
+          <li>Partnership structures that make difference an asset, not a liability.</li>
+          <li>Deep sector knowledge: tech, finance, culinary, STEM, arts, sports.</li>
+          <li>Vetted partners sourced through warm relationships, not cold outreach.</li>
+        </ul>
+        <div class="cta-row"><a class="pill pill-outline" data-book>Start a conversation
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a></div>
+      </article>
+      <article class="product-card product-card--cohort">
+        <span class="product-card-kicker">Cohort</span>
+        <h3 class="product-card-title">Beineinu <span class="hebrew">בינינו</span></h3>
+        <p class="product-card-tagline">The Center for Shared Experiences</p>
+        <p>A year-long intensive that brings together 24–30 Israeli and North American leaders in your sector to move from relationship to co-creation.</p>
+        <ul class="bullets">
+          <li>Four phases over twelve months: Connect, Immerse, Create, Act.</li>
+          <li>Working prototypes in your field, not just connections.</li>
+          <li>A documented, reusable framework for Israeli–North American partnership.</li>
+          <li>Ongoing guidance from a curated 5–8 person Israeli/American advisory council.</li>
+        </ul>
+        <div class="cta-row"><a class="pill pill-primary" href="/optimistic-israel-beineinu">Explore Beineinu
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== HOW WE'RE DIFFERENT ===== -->
+  <section class="section--principles reveal" aria-label="How we're different">
+    <div class="principles-grid">
+      <div class="principles-intro">
+        <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />How We're Different</span>
+        <h2 class="h-sec" style="font-size:clamp(34px,4vw,52px);line-height:1.06;letter-spacing:-0.02em;margin:0 0 20px">What Optimistic Israel <em class="em-italic">is</em>.</h2>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:38ch">We're not just another Israel advocacy or education organization. We build real community that compounds.</p>
+      </div>
+      <div>
+        <div class="principle-row">
+          <span class="principle-index">01</span>
+          <div>
+            <h3>Practical partnership</h3>
+            <p>Participants build real prototypes, products, programs that lead to measurable outcomes, not just warm feelings.</p>
+          </div>
+        </div>
+        <div class="principle-row">
+          <span class="principle-index">02</span>
+          <div>
+            <h3>Assets-based</h3>
+            <p>Every difference in context and experience is treated as an asset to leverage, not a gap to bridge.</p>
+          </div>
+        </div>
+        <div class="principle-row">
+          <span class="principle-index">03</span>
+          <div>
+            <h3>Field-specific</h3>
+            <p>We work within your sector's existing culture and norms, to build connections that stick.</p>
+          </div>
+        </div>
+        <div class="principle-row">
+          <span class="principle-index">04</span>
+          <div>
+            <h3>Scalable</h3>
+            <p>Outcomes are documented into reusable frameworks so that you can scale everything you learn across your organization and broader professional life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAB LEADERS & TEAM (two co-equal leaders — draft, placeholders throughout) ===== -->
+  <section class="section reveal" aria-label="Lab Leaders and team">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The Optimistic Israel Lab Leaders</span>
+    <h2 class="h-sec" style="font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 40px;max-width:22ch">Led together, on both sides of the relationship.</h2>
+    <div class="dual-leader-grid">
+      <article class="dual-leader-card">
+        <div class="leader-photo-lg"><div class="photo-ph"><span class="ph">Leader photo — placeholder</span></div></div>
+        <h3 class="leader-name">[Leader Name]</h3>
+        <div class="leader-role">Lab Leader · Optimistic Israel, Israel</div>
+        <p class="leader-bio">Placeholder bio — replace with the Israel-based co-lead's background, experience, and connection to Optimistic Israel's mission.</p>
+        <div class="leader-stats">
+          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
+        </div>
+        <a class="pill pill-outline leader-cta" data-book>Connect with [Leader Name]
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+      <article class="dual-leader-card">
+        <div class="leader-photo-lg"><div class="photo-ph"><span class="ph">Leader photo — placeholder</span></div></div>
+        <h3 class="leader-name">[Leader Name]</h3>
+        <div class="leader-role">Lab Leader · Optimistic Israel, North America</div>
+        <p class="leader-bio">Placeholder bio — replace with the North America-based co-lead's background, experience, and connection to Optimistic Israel's mission.</p>
+        <div class="leader-stats">
+          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
+          <div class="leader-stat"><div class="leader-stat-value">—</div><div class="leader-stat-label">stat placeholder</div></div>
+        </div>
+        <a class="pill pill-outline leader-cta" data-book>Connect with [Leader Name]
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+    </div>
+    <p class="team-roster-lead">[Leader Name] and [Leader Name] bring Optimistic Israel's practice expertise, but they're backed by the full Optimistic Labs team.</p>
+    <div class="team-roster-grid">
+      <div class="mosaic-card">
+        <div class="mosaic-photo"><img src="assets/seth-cohen.jpg" alt="Seth Cohen" /></div>
+        <div class="mosaic-card-body">
+          <span class="roster-name">Seth Cohen</span>
+          <span class="roster-role">Co-Founder</span>
+          <p class="roster-bio">25+ years across media, philanthropy, and civic leadership, most recently Chief Impact Officer at Forbes and founder of the Forbes Impact Lab.</p>
+        </div>
+      </div>
+      <div class="mosaic-card">
+        <div class="mosaic-photo"><img src="assets/liz-russell.jpg" alt="Liz Russell" /></div>
+        <div class="mosaic-card-body">
+          <span class="roster-name">Liz Russell</span>
+          <span class="roster-role">Co-Founder</span>
+          <p class="roster-bio">Turns complexity into clear, scalable systems. Most recently VP of Customer Success at Forerunner; earlier oversaw $2.6B+ in federal disaster-recovery funding.</p>
+        </div>
+      </div>
+      <div class="mosaic-card">
+        <div class="mosaic-photo"><img src="assets/lauren-hall.jpg" alt="Lauren Hall, PhD" /></div>
+        <div class="mosaic-card-body">
+          <span class="roster-name">Lauren Hall, PhD</span>
+          <span class="roster-role">Senior Advisor</span>
+          <p class="roster-bio">Political theorist and Associate Dean of Academic Affairs at RIT, and co-founder of the Excelsior Center for Civic Innovation.</p>
+        </div>
+      </div>
+      <div class="mosaic-network">
+        <div class="roster-footer-label">+ a network of fractional executives and SMEs</div>
+        <div class="roster-pills">
+          <span class="roster-pill">Tech</span>
+          <span class="roster-pill">Community Ops</span>
+          <span class="roster-pill">AI</span>
+          <span class="roster-pill">Marketing</span>
+          <span class="roster-pill">Design</span>
+          <span class="roster-pill">Strategy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="band reveal" aria-label="Let's start with a conversation">
+    <div class="inner" style="position:relative;z-index:2">
+      <h2>Let's start with a conversation.</h2>
+      <p>Every engagement begins with a call: no agenda, no pitch. Just a chance to understand where your organization is and whether Optimistic Israel is the right fit.</p>
+      <div class="cta-row" style="justify-content:center"><a class="pill pill-primary" data-book>Connect with the Lab</a></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" data-site-footer></footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
