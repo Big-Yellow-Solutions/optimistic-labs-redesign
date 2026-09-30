@@ -40,7 +40,7 @@
         '<div class="footer-grid">'+
           '<div class="footer-identity">'+
             '<h2 class="footer-headline">Build momentum. <em>Build community.</em></h2>'+
-            '<img class="footer-mark" src="assets/ol-mark-white.svg" alt="Optimistic Labs" />'+
+            '<img class="footer-mark" src="/assets/ol-mark-white.svg" alt="Optimistic Labs" />'+
           '</div>'+
           '<div class="footer-groups">'+
             '<div class="footer-group">'+
@@ -128,7 +128,7 @@
       root.innerHTML =
         '<div class="leader-grid">'+
           '<div class="leader-col">'+
-            '<span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />'+escHtml(cfg.leaderKicker||'The Lab Leader')+'</span>'+
+            '<span class="eyebrow"><img class="star" src="/assets/star.svg" alt="" />'+escHtml(cfg.leaderKicker||'The Lab Leader')+'</span>'+
             '<div class="leader-photo-lg"><img src="'+escHtml(L.photo)+'" alt="'+escHtml(L.name)+'" /></div>'+
             '<h3 class="leader-name">'+escHtml(L.name)+'</h3>'+
             '<div class="leader-role">'+escHtml(L.role)+'</div>'+
@@ -165,7 +165,7 @@
       }).join('');
       root.innerHTML =
         '<div class="wyg-header">'+
-          '<div><span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />'+escHtml(cfg.kicker||'What you get')+'</span>'+
+          '<div><span class="eyebrow"><img class="star" src="/assets/star.svg" alt="" />'+escHtml(cfg.kicker||'What you get')+'</span>'+
           '<h2 class="h-sec" style="letter-spacing:-0.035em;line-height:1.02;margin:0">'+escHtml(cfg.heading||'')+'</h2></div>'+
           '<p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-soft)">'+escHtml(cfg.intro||'')+'</p>'+
         '</div>'+
