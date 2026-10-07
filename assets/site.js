@@ -22,7 +22,15 @@
      already on a page (home or About) that has its own local contact form. */
   var thisPage = location.pathname.split('/').pop();
   var onHomeOrAbout = thisPage===''||thisPage==='index.html'||thisPage==='about'||thisPage==='about.html';
-  var connectHref = onHomeOrAbout ? '#contact' : '/#contact';
+  /* Lab pages tag the contact form with their interest (?interest=<key>), which
+     preselects the form's dropdown and becomes the Kit tag. */
+  var INTEREST_BY_PAGE = {
+    'optimistic-faith-lab':'faith','optimistic-democracy-lab':'democracy','impact-lab':'impact',
+    'optimistic-israel-lab':'israel','optimistic-alumni-lab':'alumni',
+    'become-a-lab-leader':'lab-leader','lab-leader-application':'lab-leader','lab-leader-quiz':'lab-leader'
+  };
+  var pageInterest = INTEREST_BY_PAGE[thisPage.replace(/\.html$/,'')];
+  var connectHref = onHomeOrAbout ? '#contact' : (pageInterest ? '/?interest='+pageInterest+'#contact' : '/#contact');
 
   function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
 
@@ -570,7 +578,7 @@
     function clearErr(input){ input.removeAttribute('aria-invalid'); var e=input.parentNode.querySelector('.field-err'); if(e) e.textContent=''; }
     function flashBtn(btn){ if(!btn) return; btn.disabled=true; setTimeout(function(){btn.disabled=false;},900); }
     function mailtoHref(payload,subject){
-      var lines=[]; for(var k in payload){ if(payload[k]) lines.push(k+': '+payload[k]); }
+      var lines=[]; for(var k in payload){ if(payload[k]&&k.charAt(0)!=='_') lines.push(k+': '+payload[k]); }
       return 'mailto:'+CONFIG.contactEmail+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
     }
     function deliver(payload,subject,onSuccess,onError){
@@ -606,6 +614,11 @@
     if(contactForm){
       var formError=document.getElementById('formError'), formErrorCta=document.getElementById('formErrorCta');
       var cf={name:document.getElementById('cf-name'),email:document.getElementById('cf-email'),message:document.getElementById('cf-message')};
+      var cfInterest=document.getElementById('cf-interest'), cfSubscribe=document.getElementById('cf-subscribe');
+      if(cfInterest){
+        var wanted=(new URLSearchParams(location.search).get('interest')||'').toLowerCase();
+        for(var oi=0;oi<cfInterest.options.length;oi++){ if(cfInterest.options[oi].value===wanted){ cfInterest.value=wanted; break; } }
+      }
       Object.keys(cf).forEach(function(k){ if(cf[k]) cf[k].addEventListener('input',function(){ if(cf[k].getAttribute('aria-invalid')) clearErr(cf[k]); }); });
       contactForm.addEventListener('submit',function(e){
         e.preventDefault();
@@ -617,9 +630,12 @@
         if(firstBad){ firstBad.focus(); return; }
         flashBtn(contactForm.querySelector('button[type=submit]'));
         if(formError) formError.classList.remove('show');
-        var subject='New inquiry · Optimistic Labs';
+        var interestKey=cfInterest?cfInterest.value:'general';
+        var interestLabel=cfInterest?cfInterest.options[cfInterest.selectedIndex].text:'General inquiry';
+        var subscribed=!!(cfSubscribe&&cfSubscribe.checked);
+        var subject='New inquiry · '+interestLabel;
         var hp=document.getElementById('cf-hp');
-        var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Message:cf.message.value.trim()};
+        var payload={Name:cf.name.value.trim(),Email:cf.email.value.trim(),Interest:interestLabel,MailingList:subscribed?'Yes (opted in)':'No',_interest:interestKey,_subscribe:subscribed?'yes':'no',Message:cf.message.value.trim()};
         if(hp) payload._gotcha=hp.value;
         deliver(payload,subject,function(){
           window.location.href='/thank-you';
