@@ -394,7 +394,18 @@
     <form class="form" id="contactForm" novalidate>
       <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" autocomplete="name" /></div>
       <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" autocomplete="email" /></div>
+      <div class="field"><label for="cf-interest">I'm interested in</label>
+        <select id="cf-interest" name="interest">
+          <option value="general">General inquiry</option>
+          <option value="faith">Optimistic Faith Lab</option>
+          <option value="democracy">Optimistic Democracy Lab</option>
+          <option value="impact">Impact Lab</option>
+          <option value="israel">Optimistic Israel Lab</option>
+          <option value="alumni">Optimistic Alumni Lab</option>
+          <option value="lab-leader">Leading a lab of my own</option>
+        </select></div>
       <div class="field"><label for="cf-message">What are you building?</label><textarea id="cf-message" name="message" placeholder="Tell us about your community, your organization, or the lab you want to lead."></textarea></div>
+      <label class="check-field" for="cf-subscribe"><input id="cf-subscribe" type="checkbox" name="subscribe" /><span>Also keep me updated on Optimistic Labs news. You can unsubscribe anytime. See our <a href="/privacy">Privacy Policy</a>.</span></label>
       <div class="field hp-field" aria-hidden="true"><label for="cf-hp">Leave this field blank</label><input id="cf-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
       <button type="submit" class="pill pill-primary">Send message</button>
       <div class="form-error" id="formError" role="alert">

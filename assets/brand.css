@@ -434,10 +434,14 @@ p{max-width:64ch}
 .field{display:flex;flex-direction:column;gap:7px}
 .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .field label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.04em;color:var(--ink)}
-.field input,.field textarea,.news-form input{font-family:var(--sans);font-size:16px;padding:13px 16px;
+.field input,.field textarea,.field select,.news-form input{font-family:var(--sans);font-size:16px;padding:13px 16px;
   border:1px solid var(--hair);border-radius:12px;background:#fff;color:var(--ink);width:100%}
 .field textarea{min-height:120px;resize:vertical}
-.field input:focus,.field textarea:focus,.news-form input:focus{outline:none;border-color:var(--violet);
+.field select{appearance:auto}
+.check-field{display:flex;gap:10px;align-items:flex-start;font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink);cursor:pointer}
+.check-field input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--violet)}
+.check-field a{text-decoration:underline}
+.field input:focus,.field textarea:focus,.field select:focus,.news-form input:focus{outline:none;border-color:var(--violet);
   box-shadow:0 0 0 2px var(--violet-pale)}
 .field-err{display:block;width:100%;font-family:var(--sans);font-size:12.5px;color:#a23b2a;margin-top:6px}
 .field-err:empty{display:none}
