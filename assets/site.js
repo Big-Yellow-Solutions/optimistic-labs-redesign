@@ -15,7 +15,8 @@
     applicationFormUrl: '/lab-leader-application',
     formEndpoint: 'https://fwzz6n3qfiudxyvdkex5c2ypsa0weaen.lambda-url.us-east-1.on.aws/', // AWS Lambda + SES (stack ol-site-forms, OL account). Emails submissions to hello@optimisticlabs.com.
     contactEmail: 'hello@optimisticlabs.com',
-    linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/'
+    linkedInUrl:  'https://www.linkedin.com/company/optimistic-labs/',
+    instagramUrl: 'https://www.instagram.com/optimisticlabs'
   };
   window.OL_CONFIG = CONFIG;
   /* "Connect With Us" CTAs go to the contact form: the homepage's, unless we're
@@ -62,6 +63,7 @@
               '<span class="footer-group-label">Company</span>'+
               '<a href="'+escHtml(CONFIG.aboutUrl)+'">About</a>'+
               '<a href="'+escHtml(CONFIG.linkedInUrl)+'" target="_blank" rel="noopener">LinkedIn</a>'+
+              '<a href="'+escHtml(CONFIG.instagramUrl)+'" target="_blank" rel="noopener">Instagram</a>'+
               '<a class="footer-cta" data-book>Connect With Us '+
                 '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
               '</a>'+
