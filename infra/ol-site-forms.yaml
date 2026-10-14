@@ -19,6 +19,21 @@ Parameters:
       Where form submissions are delivered. While SES is in sandbox mode this
       must also be a verified identity.
 
+  CreateTeddyIdentity:
+    Type: String
+    Default: 'true'
+    AllowedValues: ['true', 'false']
+    Description: >
+      Create the SES identity for teddy@optimisticlabs.com. Set to false if
+      that address is already registered in SES outside this stack.
+  CreateHelloIdentity:
+    Type: String
+    Default: 'true'
+    AllowedValues: ['true', 'false']
+    Description: >
+      Create the SES identity for hello@optimisticlabs.com. Set to false if
+      that address is already registered in SES outside this stack (a "Resource
+      name conflict" deployment validation means it is).
   KitApiKey:
     Type: String
     NoEcho: true
@@ -34,14 +49,20 @@ Parameters:
       {"general":111,"faith":222,"democracy":333,"impact":444,"israel":555,"alumni":666,"lab-leader":777}.
       Tags must already exist in Kit. Unknown interests fall back to "general".
 
+Conditions:
+  MakeTeddyIdentity: !Equals [!Ref CreateTeddyIdentity, 'true']
+  MakeHelloIdentity: !Equals [!Ref CreateHelloIdentity, 'true']
+
 Resources:
   TeddyEmailIdentity:
     Type: AWS::SES::EmailIdentity
+    Condition: MakeTeddyIdentity
     Properties:
       EmailIdentity: teddy@optimisticlabs.com
 
   HelloEmailIdentity:
     Type: AWS::SES::EmailIdentity
+    Condition: MakeHelloIdentity
     Properties:
       EmailIdentity: hello@optimisticlabs.com
 
