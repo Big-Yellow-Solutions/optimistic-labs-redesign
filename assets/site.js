@@ -27,7 +27,7 @@
      preselects the form's dropdown and becomes the Kit tag. */
   var INTEREST_BY_PAGE = {
     'optimistic-faith-lab':'faith','optimistic-democracy-lab':'democracy','impact-lab':'impact',
-    'optimistic-israel-lab':'israel','optimistic-alumni-lab':'alumni',
+    'optimistic-israel-lab':'israel',
     'become-a-lab-leader':'lab-leader','lab-leader-application':'lab-leader','lab-leader-quiz':'lab-leader'
   };
   var pageInterest = INTEREST_BY_PAGE[thisPage.replace(/\.html$/,'')];
