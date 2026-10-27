@@ -29,24 +29,12 @@
 .ho-done h2{font-family:var(--head);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.01em;margin:0 0 12px}
 .ho-done p{font-family:var(--sans);font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px}
 
-.ho-inside{background:var(--paper);padding:72px 28px 88px}
-.ho-inside-inner{max-width:760px;margin:0 auto}
-.ho-inside h2{font-family:var(--head);font-weight:700;font-size:clamp(26px,3.2vw,34px);letter-spacing:-.015em;margin:0 0 8px}
-.ho-inside-intro{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink-soft);margin:0 0 28px;max-width:56ch}
-.ho-toc{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
-.ho-toc li{display:flex;align-items:baseline;gap:20px;padding:15px 0;border-bottom:1px solid var(--hair);
-  font-family:var(--sans);font-size:17px;color:var(--ink)}
-.ho-toc .n{flex:none;width:30px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;color:var(--violet)}
-.ho-toc .n--star{width:30px;height:12px;align-self:center}
-
 @media (max-width:860px){
   .ho-hero{padding:48px 22px 56px}
   .ho-hero-inner{grid-template-columns:1fr;gap:36px}
   .ho-hero-star{width:420px;height:420px;right:-160px;top:-40px}
   .ho-sub{max-width:none}
-  .ho-inside{padding:56px 22px 72px}
 }
 @media (max-width:480px){
   .ho-card{padding:24px 20px}
-  .ho-toc li{font-size:16px;gap:14px}
 }
