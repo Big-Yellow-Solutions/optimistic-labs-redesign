@@ -1,0 +1,40 @@
+/* ===== Course handout landing pages (shared). One HTML page per course. ===== */
+.ho-hero{position:relative;overflow:hidden;background:var(--violet-deep);color:#fff;padding:72px 28px 88px}
+.ho-hero-star{position:absolute;right:-140px;top:-60px;width:620px;height:620px;opacity:.16;pointer-events:none}
+.ho-hero-inner{position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;align-items:center}
+.ho-hero-inner>*{animation:fadeUp .7s var(--ease-signal) both}
+.ho-hero-inner>*:nth-child(2){animation-delay:.1s}
+
+.ho-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--violet-light);margin-bottom:22px}
+.ho-eyebrow img{width:12px;height:12px;flex:none}
+.ho-title{font-family:var(--head);font-weight:700;font-size:clamp(34px,4.6vw,54px);line-height:1.06;letter-spacing:-.02em;
+  color:#fff;margin:0 0 22px}
+.ho-title em{display:block;font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-light);
+  font-size:1.1em;line-height:1.15;letter-spacing:-.01em}
+.ho-sub{font-family:var(--sans);font-size:19px;line-height:1.55;color:rgba(255,255,255,.85);max-width:34ch;margin:0 0 18px}
+.ho-lead{font-family:var(--sans);font-size:16px;line-height:1.6;color:rgba(255,255,255,.72);max-width:46ch;margin:0}
+
+.ho-card{background:var(--card);color:var(--ink);border-radius:16px;padding:30px 28px;box-shadow:0 24px 60px rgba(17,10,90,.28)}
+.ho-card-title{font-family:var(--head);font-weight:600;font-size:22px;letter-spacing:-.01em;line-height:1.2;margin:0 0 6px}
+.ho-card-sub{font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink-soft);margin:0 0 20px}
+.ho-card .form{max-width:none}
+.ho-card .form button[type="submit"]{align-self:stretch}
+.ho-card [hidden]{display:none}
+.ho-fine{font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--warm-gray);margin:0}
+.ho-fine a{text-decoration:underline}
+.ho-done{display:none}
+.ho-done.show{display:block}
+.ho-done:focus{outline:none}
+.ho-done h2{font-family:var(--head);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.01em;margin:0 0 12px}
+.ho-done p{font-family:var(--sans);font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px}
+
+@media (max-width:860px){
+  .ho-hero{padding:48px 22px 56px}
+  .ho-hero-inner{grid-template-columns:1fr;gap:36px}
+  .ho-hero-star{width:420px;height:420px;right:-160px;top:-40px}
+  .ho-sub{max-width:none}
+}
+@media (max-width:480px){
+  .ho-card{padding:24px 20px}
+}
