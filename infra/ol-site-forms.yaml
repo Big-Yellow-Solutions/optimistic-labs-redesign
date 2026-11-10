@@ -46,7 +46,7 @@ Parameters:
     Default: '{}'
     Description: >
       JSON map of interest key to Kit tag id, for example
-      {"general":111,"faith":222,"democracy":333,"impact":444,"israel":555,"alumni":666,"lab-leader":777}.
+      {"general":111,"faith":222,"democracy":333,"impact":444,"israel":555,"alumni":666,"lab-leader":777,"jobs-newsletter":888}.
       Tags must already exist in Kit. Unknown interests fall back to "general".
 
 Conditions:

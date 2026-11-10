@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>/* redirect old .html URLs to their clean path (GitHub Pages has no server-side redirects) */(function(){var p=location.pathname;if(p.slice(-5)===".html"){var c=p.slice(0,-5).replace(/\/index$/,"")||"/";history.replaceState(null,"",c+location.search+location.hash);}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Submit a job · Optimistic Labs</title>
+<link rel="canonical" href="https://optimisticlabs.com/submit-a-job" />
+<meta name="description" content="Submit a job to be considered for the Optimistic Labs jobs newsletter for people leaving politics." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://optimisticlabs.com/submit-a-job" />
+<meta property="og:title" content="Submit a job to the jobs newsletter" />
+<meta property="og:description" content="Submit a job to be considered for the Optimistic Labs jobs newsletter for people leaving politics." />
+<meta property="og:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Submit a job to the jobs newsletter" />
+<meta name="twitter:description" content="Submit a job to be considered for the Optimistic Labs jobs newsletter for people leaving politics." />
+<meta name="twitter:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/handout.css" />
+<link rel="stylesheet" href="assets/jobs-newsletter.css" />
+<script src="assets/consent.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-logo" href="/" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+</header>
+
+<main>
+<section class="ho-hero">
+  <img class="ho-hero-star" src="assets/star.svg" alt="" aria-hidden="true" />
+  <div class="ho-hero-inner">
+    <div>
+      <a class="jn-back" href="/jobs-newsletter">← About the jobs newsletter</a><br />
+      <span class="ho-eyebrow"><img src="assets/star.svg" alt="" />Jobs newsletter</span>
+      <h1 class="ho-title">Have a role to <em>share?</em></h1>
+      <p class="ho-sub">Submit a job for the newsletter that reaches people leaving politics.</p>
+      <p class="ho-lead">Our readers have run campaigns, worked on the Hill, and organized at every level. If your role is a good fit for them, send it our way. We review every submission before it goes in, and we'll only reach out if we have questions.</p>
+    </div>
+
+    <div class="ho-card">
+      <div id="sjCardHead">
+        <h2 class="ho-card-title">Submit a job</h2>
+        <p class="ho-card-sub">Share the basics and a link to the posting.</p>
+      </div>
+      <form class="form" id="jnSubmitForm" novalidate>
+        <div class="field"><label for="sj-title">Job title</label><input id="sj-title" type="text" name="title" /></div>
+        <div class="field"><label for="sj-org">Organization</label><input id="sj-org" type="text" name="organization" autocomplete="organization" /></div>
+        <div class="field"><label for="sj-link">Link to the posting</label><input id="sj-link" type="url" name="link" inputmode="url" placeholder="https://" /></div>
+        <div class="field"><label for="sj-location">Location or remote <span class="opt">(optional)</span></label><input id="sj-location" type="text" name="location" /></div>
+        <div class="field"><label for="sj-note">Anything we should know? <span class="opt">(optional)</span></label><textarea id="sj-note" name="note" placeholder="For example: why this role suits someone coming out of politics."></textarea></div>
+        <div class="field-row">
+          <div class="field"><label for="sj-name">Your name</label><input id="sj-name" type="text" name="name" autocomplete="name" /></div>
+          <div class="field"><label for="sj-email">Your email</label><input id="sj-email" type="email" name="email" autocomplete="email" /></div>
+        </div>
+        <div class="field hp-field" aria-hidden="true"><label for="sj-hp">Leave this field blank</label><input id="sj-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+        <button type="submit" class="pill pill-primary">Submit job</button>
+        <p class="ho-fine">Submitting a job doesn't subscribe you to anything. See our <a href="/privacy">Privacy Policy</a>.</p>
+        <div class="form-error" id="sjError" role="alert">
+          <p>Something went wrong. Please try again, or email the details to us directly.</p>
+          <a class="pill pill-outline" id="sjErrorCta">Email hello@optimisticlabs.com</a>
+        </div>
+      </form>
+      <div class="ho-done" id="sjDone" role="status" tabindex="-1">
+        <h2>Thank you. We've got it.</h2>
+        <p>We'll review your job and consider it for an upcoming issue. We'll only email you if we have questions.</p>
+        <p>Have another role to share? <a href="/submit-a-job" style="color:var(--violet);font-weight:500">Submit another</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer" data-site-footer></footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/jobs-newsletter.js"></script>
+</body>
+</html>
