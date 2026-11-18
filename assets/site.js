@@ -396,6 +396,72 @@
       document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
     }
 
+    /* ---- testimonials: auto-advancing, data-driven banner ----
+       <section class="testimonials"><div data-testimonials>
+         <script type="application/json" data-testimonials-config>{"eyebrow":"…","items":[{"quote":["para","para"],"name":"…","role":"…"}]}</script>
+       </div></section>
+       One item renders static (no controls); two or more auto-advance. Pauses on hover,
+       focus, and when off-screen or the tab is hidden; never autoplays under reduced motion. */
+    document.querySelectorAll('[data-testimonials]').forEach(function(root){
+      var cfgEl=root.querySelector('script[data-testimonials-config]');
+      if(!cfgEl) return;
+      var cfg; try{ cfg=JSON.parse(cfgEl.textContent); }catch(e){ return; }
+      var items=(cfg.items||[]).filter(function(t){ return t&&t.quote; });
+      if(!items.length) return;
+      var section=root.closest('.testimonials')||root;
+      var single=items.length===1;
+      if(single) section.setAttribute('data-single','');
+      var STAR='<svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.6 4.8 11.4 12 12-7.2.6-11.4 5.4-12 12-.6-6.6-4.8-11.4-12-12C7.2 11.4 11.4 6.6 12 0z"/></svg>';
+      var CHEV={prev:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>',
+                next:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>'};
+      function paras(q){ return (Array.isArray(q)?q:String(q).split(/\n\s*\n/)).map(function(p){ return '<p>'+escHtml(p)+'</p>'; }).join(''); }
+      function words(t){ return (Array.isArray(t.quote)?t.quote.join(' '):String(t.quote)).split(/\s+/).length; }
+      var slides=items.map(function(t,i){
+        return '<figure class="t-slide" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of '+items.length+'">'+
+          '<span class="t-mark" aria-hidden="true">&ldquo;</span>'+
+          '<blockquote class="t-quote">'+paras(t.quote)+'</blockquote>'+
+          '<figcaption class="t-cite"><span class="t-name">'+escHtml(t.name||'')+'</span>'+(t.role?'<span class="t-role">'+escHtml(t.role)+'</span>':'')+'</figcaption></figure>';
+      }).join('');
+      root.innerHTML='<div class="t-wrap" role="region" aria-roledescription="carousel" aria-label="Testimonials">'+
+        (cfg.eyebrow?'<span class="eyebrow t-eyebrow">'+STAR+escHtml(cfg.eyebrow)+'</span>':'')+
+        '<div class="t-viewport"><div class="t-track">'+slides+'</div></div>'+
+        '<div class="t-controls"><button type="button" class="t-btn" data-t-prev aria-label="Previous testimonial">'+CHEV.prev+'</button>'+
+        '<div class="t-dots"></div>'+
+        '<button type="button" class="t-btn" data-t-next aria-label="Next testimonial">'+CHEV.next+'</button></div></div>';
+      if(single) return;
+      var track=root.querySelector('.t-track'), slideEls=[].slice.call(root.querySelectorAll('.t-slide')), dotsEl=root.querySelector('.t-dots'),
+          cur=0, timer=null, hovering=false, focused=false, visible=true;
+      var dots=items.map(function(_,i){
+        var b=document.createElement('button'); b.type='button'; b.className='t-dot'; b.setAttribute('aria-label','Show testimonial '+(i+1));
+        b.addEventListener('click',function(){ go(i); }); dotsEl.appendChild(b); return b;
+      });
+      function go(i){
+        cur=(i+items.length)%items.length;
+        track.style.transform='translateX(-'+(cur*100)+'%)';
+        slideEls.forEach(function(s,k){ if(k===cur) s.removeAttribute('inert'); else s.setAttribute('inert',''); s.setAttribute('aria-hidden',k===cur?'false':'true'); });
+        dots.forEach(function(d,k){ if(k===cur) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current'); });
+        schedule();
+      }
+      /* dwell scales with quote length (~4 words/sec, min 8s) so long quotes are readable */
+      function dwell(){ return Math.max(8000, words(items[cur])*250); }
+      function schedule(){
+        clearTimeout(timer);
+        if(reduceMotion||hovering||focused||!visible||document.hidden) return;
+        timer=setTimeout(function(){ go(cur+1); },dwell());
+      }
+      root.querySelector('[data-t-prev]').addEventListener('click',function(){ go(cur-1); });
+      root.querySelector('[data-t-next]').addEventListener('click',function(){ go(cur+1); });
+      root.addEventListener('mouseenter',function(){ hovering=true; schedule(); });
+      root.addEventListener('mouseleave',function(){ hovering=false; schedule(); });
+      root.addEventListener('focusin',function(e){ focused=!!(e.target.matches&&e.target.matches(':focus-visible')); schedule(); }); /* keyboard focus only; a mouse click must not pause autoplay */
+      root.addEventListener('focusout',function(){ focused=false; schedule(); });
+      document.addEventListener('visibilitychange',schedule);
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){ visible=es[0].isIntersecting; schedule(); },{threshold:.3}).observe(root);
+      }
+      go(0);
+    });
+
     /* ---- carousels ---- */
     document.querySelectorAll('[data-carousel]').forEach(function(car){
       var track=car.querySelector('.carousel-track'),
