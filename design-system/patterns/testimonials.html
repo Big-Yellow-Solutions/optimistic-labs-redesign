@@ -1,0 +1,43 @@
+<!-- @dsCard group="Patterns" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Testimonials</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/brand.css" />
+<style>
+  .ds-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-gray);padding:32px 40px 12px}
+  .ds-note{font-family:var(--sans);font-size:13px;color:var(--ink-soft);padding:0 40px 24px;max-width:80ch}
+  .testimonials{padding:56px 32px}
+</style>
+</head>
+<body>
+  <div class="ds-label">Testimonials · .testimonials (violet-deep, default)</div>
+  <p class="ds-note">Data-driven: drop a <code>[data-testimonials]</code> block with a JSON config into a <code>section.testimonials</code> (site.js renders it). One item shows static; two or more auto-advance (dwell scales with quote length), pause on hover/keyboard focus, and never autoplay under reduced motion.</p>
+  <section class="testimonials">
+    <div class="t-wrap">
+      <span class="eyebrow t-eyebrow"><img class="star" src="../assets/star.svg" alt="" />In their words</span>
+      <div class="t-viewport"><div class="t-track">
+        <figure class="t-slide"><span class="t-mark">&ldquo;</span>
+          <blockquote class="t-quote"><p>She helped us turn an ambitious vision into a thoughtful, cohesive experience, always pushing us to think about how participants would experience it.</p></blockquote>
+          <figcaption class="t-cite"><span class="t-name">Moshe Lender</span><span class="t-role">Director of Campus Affairs, American Jewish Committee</span></figcaption></figure>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="ds-label">Light variant · .testimonials--light</div>
+  <section class="testimonials testimonials--light">
+    <div class="t-wrap">
+      <div class="t-viewport"><div class="t-track">
+        <figure class="t-slide"><span class="t-mark">&ldquo;</span>
+          <blockquote class="t-quote"><p>The Summit was stronger, more focused, and more intentional because of her.</p></blockquote>
+          <figcaption class="t-cite"><span class="t-name">Moshe Lender</span><span class="t-role">Director of Campus Affairs, American Jewish Committee</span></figcaption></figure>
+      </div></div>
+    </div>
+  </section>
+</body>
+</html>

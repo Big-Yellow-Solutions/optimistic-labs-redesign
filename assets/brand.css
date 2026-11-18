@@ -422,6 +422,44 @@ p{max-width:64ch}
 @media (max-width:560px){.car-btn.prev{left:-6px}.car-btn.next{right:-6px}}
 .carousel .team-card:hover,.carousel .team-card:focus-within{transform:scale(1.02)}
 
+/* ---------- testimonials (reusable, data-driven · see site.js [data-testimonials]) ---------- */
+.testimonials{background:var(--violet-deep);color:#fff;padding:88px 32px;position:relative;overflow:hidden}
+.testimonials .t-wrap{max-width:880px;margin:0 auto;position:relative}
+.testimonials .t-eyebrow{display:flex;justify-content:center;color:var(--violet-light);margin-bottom:32px}
+.t-viewport{overflow:hidden}
+.t-track{display:flex;transition:transform .7s var(--ease-signal);will-change:transform}
+.t-slide{flex:0 0 100%;min-width:0;padding:0 4px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.t-mark{font-family:var(--serif);font-size:84px;line-height:.6;height:40px;color:var(--violet-light);opacity:.7;user-select:none}
+.t-quote{margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(18px,2vw,23px);line-height:1.6;color:#fff}
+.t-quote p{max-width:none;margin:0 0 1.1em}
+.t-quote p:last-child{margin-bottom:0}
+.t-cite{margin-top:32px;font-style:normal;display:flex;flex-direction:column;gap:3px}
+.t-name{font-family:var(--sans);font-weight:600;font-size:16px;color:#fff}
+.t-role{font-family:var(--sans);font-size:14px;color:rgba(255,255,255,.72)}
+.t-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:36px}
+.t-btn{width:42px;height:42px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+.t-btn:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.t-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.t-btn svg{width:16px;height:16px}
+.t-dots{display:flex;gap:10px}
+.t-dot{width:9px;height:9px;padding:0;border-radius:50%;border:none;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s,transform .2s}
+.t-dot:hover{background:rgba(255,255,255,.65)}
+.t-dot[aria-current="true"]{background:#fff;transform:scale(1.3)}
+.t-dot:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.testimonials[data-single] .t-controls{display:none}
+/* light variant: sits on paper between sections */
+.testimonials--light{background:var(--violet-pale);color:var(--ink)}
+.testimonials--light .t-eyebrow,.testimonials--light .t-mark{color:var(--violet)}
+.testimonials--light .t-quote,.testimonials--light .t-name{color:var(--ink)}
+.testimonials--light .t-role{color:var(--ink-soft)}
+.testimonials--light .t-btn{color:var(--violet-deep);border-color:var(--hair)}
+.testimonials--light .t-btn:hover{background:#fff;border-color:var(--violet)}
+.testimonials--light .t-btn:focus-visible,.testimonials--light .t-dot:focus-visible{outline-color:var(--violet)}
+.testimonials--light .t-dot{background:rgba(124,109,245,.3)}
+.testimonials--light .t-dot[aria-current="true"]{background:var(--violet-deep)}
+@media (max-width:860px){.testimonials{padding:64px 22px}}
+
 /* ---------- economics ---------- */
 .econ-lead{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.2;color:var(--ink);margin-bottom:20px}
 .econ-lead .em-italic{color:var(--violet)}
