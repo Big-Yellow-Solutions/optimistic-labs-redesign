@@ -428,7 +428,7 @@ p{max-width:64ch}
 .testimonials .t-eyebrow{display:flex;justify-content:center;color:var(--violet-light);margin-bottom:32px}
 .t-viewport{overflow:hidden}
 .t-track{display:flex;transition:transform .7s var(--ease-signal);will-change:transform}
-.t-slide{flex:0 0 100%;min-width:0;padding:0 4px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.t-slide{flex:0 0 100%;min-width:0;padding:0 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .t-mark{font-family:var(--serif);font-size:84px;line-height:.6;height:40px;color:var(--violet-light);opacity:.7;user-select:none}
 .t-quote{margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(18px,2vw,23px);line-height:1.6;color:#fff}
 .t-quote p{max-width:none;margin:0 0 1.1em}
