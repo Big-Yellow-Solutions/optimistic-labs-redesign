@@ -8,7 +8,7 @@
 
   /* ---- single source of truth for destinations ---- */
   var CONFIG = {
-    faithUrl:     '/optimistic-faith-lab',
+    faithUrl:     '/faith',
     leaderUrl:    '/become-a-lab-leader',
     aboutUrl:     '/about',
     labsUrl:      '/#labs',
@@ -26,8 +26,8 @@
   /* Lab pages tag the contact form with their interest (?interest=<key>), which
      preselects the form's dropdown and becomes the Kit tag. */
   var INTEREST_BY_PAGE = {
-    'optimistic-faith-lab':'faith','optimistic-democracy-lab':'democracy','impact-lab':'impact',
-    'optimistic-israel-lab':'israel',
+    'faith':'faith','democracy':'democracy','impact':'impact',
+    'israel':'israel',
     'become-a-lab-leader':'lab-leader','lab-leader-application':'lab-leader','lab-leader-quiz':'lab-leader'
   };
   var pageInterest = INTEREST_BY_PAGE[thisPage.replace(/\.html$/,'')];

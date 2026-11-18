@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>/* redirect old .html URLs to their clean path (GitHub Pages has no server-side redirects) */(function(){var p=location.pathname;if(p.slice(-5)===".html"){var c=p.slice(0,-5).replace(/\/index$/,"")||"/";history.replaceState(null,"",c+location.search+location.hash);}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Beineinu · Optimistic Labs | Israel</title>
+<link rel="canonical" href="https://optimisticlabs.com/beineinu" />
+<meta name="description" content="Beineinu is Optimistic Labs | Israel's year-long cohort for 24–30 Israeli and North American leaders, moving from relationship to co-creation across four phases: Connect, Immerse, Create, Act." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://optimisticlabs.com/beineinu" />
+<meta property="og:title" content="Beineinu · Optimistic Labs | Israel" />
+<meta property="og:description" content="Beineinu is Optimistic Labs | Israel's year-long cohort for 24–30 Israeli and North American leaders, moving from relationship to co-creation across four phases: Connect, Immerse, Create, Act." />
+<meta property="og:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Beineinu · Optimistic Labs | Israel" />
+<meta name="twitter:description" content="Beineinu is Optimistic Labs | Israel's year-long cohort for 24–30 Israeli and North American leaders, moving from relationship to co-creation across four phases: Connect, Immerse, Create, Act." />
+<meta name="twitter:image" content="https://optimisticlabs.com/assets/og-image.png" />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/brand.css" />
+<style>
+/* ===== DRAFT COMPONENTS — Beineinu product page only, recreated from design handoff ===== */
+
+.eyebrow .mark{width:18px;height:18px;flex:none;opacity:.9}
+a.eyebrow-link{color:inherit}
+a.eyebrow-link:hover .eyebrow{color:var(--violet-pale)}
+
+/* hero — full-bleed dark, split two-up */
+.beineinu-hero{background:var(--violet-deep);color:#fff}
+.beineinu-hero-inner{max-width:1080px;margin:0 auto;padding:76px 32px 84px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center}
+.beineinu-hero h1{color:#fff;font-weight:700;font-size:clamp(38px,5.2vw,66px);line-height:1.06;letter-spacing:-.018em}
+.beineinu-hero .hebrew{font-weight:600;letter-spacing:0;color:var(--violet-light)}
+.beineinu-hero .tagline{margin:14px 0 0;font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:clamp(22px,2.4vw,30px);color:var(--violet-light)}
+.beineinu-hero .lead{margin:26px 0 0;max-width:50ch;font-size:20px;line-height:1.6;color:rgba(255,255,255,.84)}
+.beineinu-hero .cta-row{margin-top:34px}
+.beineinu-hero-media{border-radius:20px;overflow:hidden;aspect-ratio:1010/664;
+  background:var(--violet-pale);position:relative}
+.beineinu-hero-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+
+/* generic photo placeholder */
+.photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
+.photo-ph span{color:var(--violet);font-family:var(--sans);font-weight:600;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;padding:16px}
+
+/* facts strip — overlaps the hero */
+.facts-strip-wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+.facts-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;
+  background:var(--hair);border:1px solid var(--hair);border-radius:16px;overflow:hidden;
+  margin-top:-34px;box-shadow:0 20px 44px -24px rgba(61,47,212,.28);position:relative;z-index:2}
+.facts-cell{background:#fff;padding:24px 26px}
+.facts-label{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
+.facts-value{margin-top:8px;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+
+/* smaller ripple-dot list variant (program objectives) */
+.bullets--sm li{padding-left:28px;font-size:16px;line-height:1.55}
+.bullets--sm li::before{width:12px;height:12px;
+  background:radial-gradient(circle,var(--violet) 0 2.5px,transparent 3.5px),
+             radial-gradient(circle,transparent 0 4.5px,var(--violet) 4.5px 5.5px,transparent 6.5px)}
+
+/* "what sets Beineinu apart" — dark band with single-open accordion */
+.shift-band{margin-top:96px;background:var(--violet-deep)}
+.shift-band-inner{max-width:1080px;margin:0 auto;padding:84px 32px 88px}
+.shift-grid{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(340px,1.3fr);gap:40px;align-items:start}
+.shift-intro h2{max-width:20ch;color:#fff}
+.shift-intro p{margin:20px 0 0;max-width:44ch;font-size:17.5px;line-height:1.66;color:rgba(255,255,255,.82)}
+.shift-list{display:flex;flex-direction:column}
+.shift-row{border-top:1px solid rgba(255,255,255,.22)}
+.shift-trigger{width:100%;background:none;border:0;padding:18px 0;text-align:left;cursor:pointer;
+  color:inherit;font:inherit;display:flex;align-items:baseline;gap:12px}
+.shift-pair{flex:1;display:flex;align-items:baseline;flex-wrap:nowrap;gap:8px;min-width:0}
+.shift-from{font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.72);white-space:nowrap}
+.shift-arrow{font-size:15px;color:var(--violet-light)}
+.shift-to{font-size:16.5px;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:#fff;white-space:nowrap}
+.shift-sign{font-size:20px;line-height:1;color:var(--violet-light);flex:none}
+.shift-body{margin:0 0 20px;padding-right:32px;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.78)}
+@media (max-width:700px){.shift-grid{grid-template-columns:1fr}}
+@media (max-width:400px){.shift-pair{flex-wrap:wrap}.shift-from,.shift-to{white-space:normal}}
+
+/* program phase selector */
+.phase-panel{background:var(--violet-pale);border-radius:26px;padding:8px}
+.phase-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.phase-tab{background:transparent;border:0;border-radius:20px;padding:16px 14px 14px;text-align:center;
+  cursor:pointer;font-family:inherit;color:var(--ink-soft);
+  transition:background .2s var(--ease-soft),color .2s var(--ease-soft)}
+.phase-tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(17,17,17,.06)}
+.phase-tab-title{display:block;font-weight:700;font-size:16px;letter-spacing:-.01em}
+.phase-tab-months{display:block;margin-top:4px;font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;opacity:.72}
+.phase-detail{margin-top:8px;background:#fff;border-radius:20px;padding:36px 34px 38px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:44px;align-items:start}
+.phase-tag{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.phase-title{margin:12px 0 0;font-weight:700;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.02em;line-height:1.1}
+.phase-body{margin:16px 0 0;max-width:44ch;font-size:17px;line-height:1.62;color:var(--ink-soft)}
+.phase-deliverable{margin-top:28px;background:var(--violet-pale);border-radius:16px;padding:22px 24px 24px}
+.phase-deliverable-label{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-deep)}
+.phase-deliverable-text{margin:8px 0 0;font-size:15.5px;line-height:1.58;color:var(--ink)}
+@media (max-width:640px){.phase-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+
+/* "what you walk away with" — pale band */
+.walkaway-band{margin-top:100px;background:var(--violet-pale);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.walkaway-inner{max-width:1080px;margin:0 auto;padding:76px 32px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center}
+.walkaway-media{border-radius:16px;overflow:hidden;border:1px solid var(--hair);background:#fff;
+  aspect-ratio:4/3;position:relative}
+.walkaway-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+
+/* launch / CTA */
+.launch-cta{padding:104px 32px 120px}
+.launch-cta-inner{max-width:1080px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start}
+
+@media (prefers-reduced-motion:reduce){.phase-tab{transition:none}}
+</style>
+<script src="assets/consent.js"></script>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="nav-logo" href="/" aria-label="Optimistic Labs home"><img src="assets/ol-logo-white.svg" alt="Optimistic Labs" /></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-dd" data-dd>
+      <button class="nav-dd-trigger" type="button" aria-haspopup="true" aria-expanded="false">Our Labs
+        <svg class="nav-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dd-panel" aria-label="Our Labs">
+        <div class="nav-dd-grid">
+          <a class="nav-dd-feature" href="/become-a-lab-leader">
+            <img src="assets/ol-mark-white.svg" alt="" />
+            <span class="nav-dd-feature-title">Become a Lab Leader</span>
+            <span class="nav-dd-feature-desc">You bring the expertise, the vision, and the relationships. We bring everything else.</span>
+          </a>
+          <ul class="nav-dd-list">
+            <li><a href="/faith"><span class="nav-dd-item-title">Optimistic Labs | Faith</span><span class="nav-dd-item-desc">Helping faith-based organizations close the gap between their values and their work.</span></a></li>
+            <li><a href="/democracy"><span class="nav-dd-item-title">Optimistic Labs | Democracy</span><span class="nav-dd-item-desc">A strategy studio and activation engine for institutions restoring civic trust.</span></a></li>
+            <li><a href="/impact"><span class="nav-dd-item-title">Optimistic Labs | Impact</span><span class="nav-dd-item-desc">Advisory and activation across the full philanthropic ecosystem.</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="/about">About</a>
+    <a class="pill pill-primary navcta" data-book>Connect With Us</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="sheet" id="sheet" aria-hidden="true">
+  <button class="sheet-x" id="sheetX" aria-label="Close menu">×</button>
+  <div class="sheet-dd" data-sheet-dd>
+    <button class="sheet-dd-trigger" type="button" aria-expanded="false">Our Labs
+      <svg class="sheet-dd-chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="sheet-dd-panel">
+      <a href="/become-a-lab-leader">Become a Lab Leader</a>
+      <a href="/faith">Optimistic Labs | Faith</a>
+      <a href="/democracy">Optimistic Labs | Democracy</a>
+      <a href="/impact">Optimistic Labs | Impact</a>
+    </div>
+  </div>
+  <a href="/about">About</a>
+  <a class="pill pill-primary navcta" data-book>Connect With Us</a>
+</nav>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="beineinu-hero on-dark" aria-label="Beineinu">
+    <div class="beineinu-hero-inner">
+      <div>
+        <a class="eyebrow-link" href="/israel">
+          <span class="eyebrow"><img class="mark" src="assets/ol-mark-white.svg" alt="" />A product from Optimistic Labs | Israel</span>
+        </a>
+        <h1>Beineinu <span class="hebrew" lang="he" dir="rtl">בינינו</span></h1>
+        <p class="tagline">The Center for Shared Experiences</p>
+        <p class="lead">A year-long intensive that brings together 24–30 Israeli and North American leaders to move from relationship to co-creation.</p>
+        <div class="cta-row">
+          <a class="pill pill-primary" data-book>Sign up for updates</a>
+          <a class="pill pill-outline" href="#program">See the program</a>
+        </div>
+      </div>
+      <div class="beineinu-hero-media">
+        <img src="assets/beineinu-hero.jpg" alt="A group of visitors gathered along Tel Aviv's beachfront promenade" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FACTS STRIP ===== -->
+  <div class="facts-strip-wrap">
+    <div class="facts-strip">
+      <div class="facts-cell"><div class="facts-label">Format</div><div class="facts-value">Year-long intensive</div></div>
+      <div class="facts-cell"><div class="facts-label">Cohort size</div><div class="facts-value">24–30 leaders</div></div>
+      <div class="facts-cell"><div class="facts-label">Launch</div><div class="facts-value">Spring 2027</div></div>
+    </div>
+  </div>
+
+  <!-- ===== WHO IT'S FOR ===== -->
+  <section class="section section--mid reveal" aria-label="Who it's for">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />Who it's for</span>
+    <h2 class="h-sec">Leaders ready to <em class="em-italic">co-create</em>, not just learn about each other.</h2>
+    <p class="lead" style="max-width:64ch">Beineinu gathers multicultural professionals—educators, social entrepreneurs, artists, and organizational leaders—who want to deepen their practice and impact through genuine Israeli-North American partnership.</p>
+  </section>
+
+  <!-- ===== WHAT SETS BEINEINU APART ===== -->
+  <section class="shift-band on-dark reveal" aria-label="What sets Beineinu apart">
+    <div class="shift-band-inner">
+      <div class="shift-grid">
+        <div class="shift-intro">
+          <span class="eyebrow"><img class="mark" src="assets/ol-mark-white.svg" alt="" style="width:16px;height:16px" />What sets Beineinu apart</span>
+          <h2 class="h-sec" style="font-size:clamp(28px,3.2vw,40px);line-height:1.14;letter-spacing:-.015em">We don't teach about the other. We learn <em class="em-italic">with</em> the other.</h2>
+          <p>Beineinu is built around a fundamental shift in educational practice.</p>
+        </div>
+        <div class="shift-list">
+          <div class="shift-row">
+            <button class="shift-trigger" type="button" aria-expanded="true" aria-controls="shift-panel-0">
+              <span class="shift-pair"><span class="shift-from">From representation</span><span class="shift-arrow">→</span><span class="shift-to">Relationship</span></span>
+              <span class="shift-sign" aria-hidden="true">−</span>
+            </button>
+            <p class="shift-body" id="shift-panel-0">Bringing diverse professionals together as co-creators, where different experiences, perspectives, and contexts are assets in building meaningful partnerships.</p>
+          </div>
+          <div class="shift-row">
+            <button class="shift-trigger" type="button" aria-expanded="false" aria-controls="shift-panel-1">
+              <span class="shift-pair"><span class="shift-from">From teaching about</span><span class="shift-arrow">→</span><span class="shift-to">Learning with and from</span></span>
+              <span class="shift-sign" aria-hidden="true">+</span>
+            </button>
+            <p class="shift-body" id="shift-panel-1" hidden>Co-creating knowledge by bringing together people with different experiences and viewpoints—recognizing that diversity of perspective is essential to learning and growth.</p>
+          </div>
+          <div class="shift-row">
+            <button class="shift-trigger" type="button" aria-expanded="false" aria-controls="shift-panel-2">
+              <span class="shift-pair"><span class="shift-from">From transmitting knowledge</span><span class="shift-arrow">→</span><span class="shift-to">Creating knowledge together</span></span>
+              <span class="shift-sign" aria-hidden="true">+</span>
+            </button>
+            <p class="shift-body" id="shift-panel-2" hidden>Testing ideas collaboratively, grounded in pragmatic optimism, to build knowledge and practices toward the futures we want to inhabit.</p>
+          </div>
+          <div class="shift-row">
+            <button class="shift-trigger" type="button" aria-expanded="false" aria-controls="shift-panel-3">
+              <span class="shift-pair"><span class="shift-from">From program delivery</span><span class="shift-arrow">→</span><span class="shift-to">Experimentation and prototyping</span></span>
+              <span class="shift-sign" aria-hidden="true">+</span>
+            </button>
+            <p class="shift-body" id="shift-panel-3" hidden>Every experience is a threshold propelling participants into deeper practice—leaving with prototypes, tools, relationships, and practices they carry into their communities.</p>
+          </div>
+          <div class="shift-row">
+            <button class="shift-trigger" type="button" aria-expanded="false" aria-controls="shift-panel-4">
+              <span class="shift-pair"><span class="shift-from">From isolated excellence</span><span class="shift-arrow">→</span><span class="shift-to">Shared impact</span></span>
+              <span class="shift-sign" aria-hidden="true">+</span>
+            </button>
+            <p class="shift-body" id="shift-panel-4" hidden>Recognizing that meaningful change happens when excellence is built collectively, and every participant's work ripples through their networks and institutions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE PROGRAM ===== -->
+  <section class="section reveal" id="program" aria-label="The program">
+    <span class="eyebrow"><img class="star" src="assets/star.svg" alt="" />The program</span>
+    <h2 class="h-sec" style="margin:0 0 20px;font-size:clamp(28px,3.2vw,40px);line-height:1.14;letter-spacing:-.015em">What happens in <em class="em-italic">Beineinu</em>.</h2>
+    <p style="margin:0 0 44px;max-width:66ch;font-size:17.5px;line-height:1.66;color:var(--ink-soft)">A year-long process of relationship building, shared experience, experimentation, and action, moving through four stages: Connect, Immerse, Create, Act.</p>
+
+    <div class="phase-panel">
+      <div class="phase-tabs" role="tablist" aria-label="Program phase">
+        <button class="phase-tab" type="button" role="tab" id="phase-tab-0" aria-controls="phase-detail" aria-selected="true" tabindex="0" data-idx="0">
+          <span class="phase-tab-title">Connect</span><span class="phase-tab-months">Months 1–3</span>
+        </button>
+        <button class="phase-tab" type="button" role="tab" id="phase-tab-1" aria-controls="phase-detail" aria-selected="false" tabindex="-1" data-idx="1">
+          <span class="phase-tab-title">Immerse</span><span class="phase-tab-months">Months 4–7</span>
+        </button>
+        <button class="phase-tab" type="button" role="tab" id="phase-tab-2" aria-controls="phase-detail" aria-selected="false" tabindex="-1" data-idx="2">
+          <span class="phase-tab-title">Create</span><span class="phase-tab-months">Months 8–10</span>
+        </button>
+        <button class="phase-tab" type="button" role="tab" id="phase-tab-3" aria-controls="phase-detail" aria-selected="false" tabindex="-1" data-idx="3">
+          <span class="phase-tab-title">Act</span><span class="phase-tab-months">Months 11–12</span>
+        </button>
+      </div>
+      <div class="phase-detail" id="phase-detail" role="tabpanel" aria-labelledby="phase-tab-0">
+        <div>
+          <div class="phase-tag" data-field="tag">Phase I · Build the community</div>
+          <h3 class="phase-title" data-field="title">Connect</h3>
+          <p class="phase-body" data-field="body">The cohort comes together for an intensive in-person experience in Israel.</p>
+          <div class="phase-deliverable">
+            <div class="phase-deliverable-label">Deliverable</div>
+            <p class="phase-deliverable-text" data-field="deliverable">A connected cohort with a shared sense of purpose and a clear set of questions to explore together.</p>
+          </div>
+        </div>
+        <ul class="bullets bullets--sm" data-field="objectives">
+          <li>Establish the culture and principles of the Lab.</li>
+          <li>Identify and recruit the inaugural cohort.</li>
+          <li>Begin building relationships before participants meet in person.</li>
+          <li>Surface participants' questions, expertise, challenges, and aspirations.</li>
+          <li>Establish the research and learning framework for the year.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT YOU WALK AWAY WITH ===== -->
+  <section class="walkaway-band reveal" aria-label="What you walk away with">
+    <div class="walkaway-inner">
+      <div class="walkaway-media">
+        <img src="assets/beineinu-cohort.jpg" alt="Four professionals walking and talking together along a palm-lined city street" loading="lazy" />
+      </div>
+      <div>
+        <h3 style="margin:0 0 16px;font-size:22px;letter-spacing:-.01em">What you walk away with</h3>
+        <ul class="bullets">
+          <li>Working prototypes in your field (not just connections).</li>
+          <li>A new shared language and framework for Israeli–North American partnership (documented, reusable).</li>
+          <li>A live network effect: participants leave as ambassadors in their sectors.</li>
+          <li>Ongoing guidance from a curated 5–8 person Israeli/American advisory council.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAUNCH / CTA ===== -->
+  <section class="launch-cta reveal" id="apply" aria-label="Launch">
+    <div class="launch-cta-inner">
+      <h2 style="margin:0;font-size:clamp(30px,3.8vw,48px);line-height:1.1;letter-spacing:-.018em">Launch targeted for <em class="em-italic">Spring 2027</em>.</h2>
+      <div>
+        <p style="margin:0 0 24px;font-size:17px;line-height:1.64;color:var(--ink-soft)">We're gauging interest in the inaugural cohort now — sign up to be notified when applications open. Beineinu is philanthropically funded, so if you'd like to support the launch as a donor, hit contribute to learn more.</p>
+        <div class="cta-row">
+          <a class="pill pill-primary" data-book>Sign up for updates</a>
+          <a class="pill pill-outline" data-book>Contribute</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" data-site-footer></footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ---- shift accordion (single-open) ---- */
+  var shiftRows = Array.prototype.slice.call(document.querySelectorAll('.shift-row'));
+  shiftRows.forEach(function(row){
+    var trigger = row.querySelector('.shift-trigger');
+    var sign = row.querySelector('.shift-sign');
+    var panel = row.querySelector('.shift-body');
+    trigger.addEventListener('click', function(){
+      var wasOpen = trigger.getAttribute('aria-expanded') === 'true';
+      shiftRows.forEach(function(r){
+        var t = r.querySelector('.shift-trigger'), s = r.querySelector('.shift-sign'), p = r.querySelector('.shift-body');
+        t.setAttribute('aria-expanded', 'false');
+        s.textContent = '+';
+        p.hidden = true;
+      });
+      if(!wasOpen){
+        trigger.setAttribute('aria-expanded', 'true');
+        sign.textContent = '−';
+        panel.hidden = false;
+      }
+    });
+  });
+
+  /* ---- program phase selector ---- */
+  var phases = [
+    { tag: 'Phase I · Build the community', title: 'Connect', body: 'The cohort comes together for an intensive in-person experience in Israel.',
+      objectives: ['Establish the culture and principles of the Lab.', 'Identify and recruit the inaugural cohort.', 'Begin building relationships before participants meet in person.', 'Surface participants’ questions, expertise, challenges, and aspirations.', 'Establish the research and learning framework for the year.'],
+      deliverable: 'A connected cohort with a shared sense of purpose and a clear set of questions to explore together.' },
+    { tag: 'Phase II · Shared experience', title: 'Immerse', body: 'The cohort comes together for an intensive in-person experience in North America.',
+      objectives: ['Deepen relationships through shared experience.', 'Encounter innovative educational and communal work.', 'Move beyond discussion into lived experience.', 'Challenge assumptions about Israel, North American Jewish life, and education.', 'Begin identifying opportunities for collaboration.'],
+      deliverable: 'A shared body of experiences, enduring relationships, inspiration, and emerging ideas.' },
+    { tag: 'Phase III · Prototype', title: 'Create', body: 'Participants move from learning to making.',
+      objectives: ['Transform shared experiences into educational ideas.', 'Develop new pedagogical approaches.', 'Form cross-border design teams.', 'Prototype and test new educational tools and experiences.'],
+      deliverable: '3–6 tested educational prototypes developed collaboratively by Israeli and North American participants.' },
+    { tag: 'Phase IV · Implement and scale', title: 'Act', body: 'The final phase moves from prototype to practice.',
+      objectives: ['Test ideas in community settings.', 'Gather evidence and feedback.', 'Refine the methodology.', 'Identify opportunities for institutional adoption.', 'Build the ongoing Beineinu network.'],
+      deliverable: 'Tested educational tools and practices, the Beineinu methodology, case studies documenting impact, an alumni network, and a plan for expansion.' }
+  ];
+
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.phase-tab'));
+  var detail = document.getElementById('phase-detail');
+  var active = 0;
+  if(tabs.length && detail){
+    var tagEl = detail.querySelector('[data-field="tag"]');
+    var titleEl = detail.querySelector('[data-field="title"]');
+    var bodyEl = detail.querySelector('[data-field="body"]');
+    var deliverableEl = detail.querySelector('[data-field="deliverable"]');
+    var objectivesEl = detail.querySelector('[data-field="objectives"]');
+
+    function renderPhase(i){
+      var p = phases[i];
+      tagEl.textContent = p.tag;
+      titleEl.textContent = p.title;
+      bodyEl.textContent = p.body;
+      deliverableEl.textContent = p.deliverable;
+      objectivesEl.innerHTML = p.objectives.map(function(o){ return '<li>'+o+'</li>'; }).join('');
+    }
+
+    function selectPhase(i){
+      if(i === active) return;
+      active = i;
+      tabs.forEach(function(t, idx){
+        var isActive = idx === i;
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        t.tabIndex = isActive ? 0 : -1;
+      });
+      detail.setAttribute('aria-labelledby', 'phase-tab-' + i);
+      renderPhase(i);
+    }
+
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){ selectPhase(i); });
+    });
+    document.querySelector('.phase-tabs').addEventListener('keydown', function(e){
+      var i;
+      if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){ i = (active + 1) % tabs.length; }
+      else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ i = (active - 1 + tabs.length) % tabs.length; }
+      else return;
+      e.preventDefault();
+      tabs[i].focus();
+      selectPhase(i);
+    });
+  }
+})();
+</script>
+</body>
+</html>
